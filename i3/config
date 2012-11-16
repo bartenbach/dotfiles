@@ -1,0 +1,56 @@
+#Mod key
+set $mod Control
+
+#Font
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+#Basic Setup
+floating_modifier $mod
+new_window 1pixel
+hide_edge_borders both
+workspace_layout tabbed
+
+#Launch Bindings
+bindsym $mod+Return exec urxvtc
+bindsym $mod+o exec dmenu_run
+
+#Kill
+bindsym $mod+q kill
+
+#Focus Bindings
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+#Move Bindings
+bindsym $mod+Shift+Up move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move down
+
+#Layout Bindings
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+#bindsym $mod+Shift+space floating toggle
+
+#i3 Bindings
+bindsym Mod1+Shift+c reload
+bindsym Mod1+Shift+r restart
+bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Are you an incompetent idiot or did you do that on purpose?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+#Scratchpad
+bindsym $mod+minus move scratchpad
+bindsym $mod+equal scratchpad show
+
+exec --no-startup-id urxvtd -q -f -o
+exec --no-startup-id xcompmgr -n
+exec --no-startup-id hsetroot -full /home/seed419/img/Wallpapers/arielbed.jpg

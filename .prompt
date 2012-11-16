@@ -1,0 +1,15 @@
+#!/bin/bash
+
+_name='proxa'
+uid_color=""
+_git='$(__git_ps1 " (%s)")]\$ '
+
+if [[ $EUID -eq 0 ]]; then
+    $uid_color='\[\033[32m\]'
+    $format="[${prompt_name}.\h]:\w"
+else
+    $uid_color='\[\033[31m\]'
+    $format="[${prompt_name}.\h]:\w"
+fi
+
+
