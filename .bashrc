@@ -3,7 +3,9 @@
 #
 
 # check for interactive
-[[ $- = *i* ]] || return
+[[ $- == *i* ]] || return
+
+#CONFIG_FILES={'.aliases' '.prompt'}
 
 export TTY=$(tty)
 export GPG_TTY=$TTY
@@ -34,38 +36,15 @@ export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd *"
 export HISTCONTROL="ignoreboth:erasedups"
 export HISTSIZE=1000
 export HISTFILESIZE=2000
-      
-# git prompt
-[[ -f /usr/share/git/git-prompt.sh ]] && . /usr/share/git/git-prompt.sh
 
+# editor
+export EDITOR="vim"
+
+# mail?  no thanks..
+unset MAILCHECK
 
 # parse configuration files
-for config in .aliases .functions .prompt .bashrc."$HOSTNAME"; do
+for config in .prompt .aliases .bashrc."$HOSTNAME";  do
     [[ -r ~/$config ]] && . ~/"$config"
 done
 unset config 
-
-PS1="\[\033[0;33m\]\`
-if [[ \$? = "0" ]]; 
-    then echo "\\[\\033[32m\\]"; 
-    else echo "\\[\\033[31m\\]"; 
-fi
-
-\`[\u.\h: \`
-
-if [[ `pwd|wc -c|tr -d " "` > 18 ]]; 
-    then echo "\\W"; 
-    else echo "\\w"; 
-fi
-\`]\$\[\033[0m\] ";
-PS1='\[\033[0;33m\][\u.\h \W$(__git_ps1 " (%s)")]\$ '
-
-if [[ $EUID -eq 0 ]]; then
-    echo "\\[\\033[32m\\]"
-else
-    echo "\\[\\033[31m\\]"
-fi
-
-
-
-export EDITOR="vim"

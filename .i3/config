@@ -1,23 +1,21 @@
 # Mod key - For the record, Control makes a terrible mod key (for many reasons)
 set $mod Mod1
 
-# Font - default.  fast and easy to read.
+# Font - default. Unicode, fast, and clear
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # General options
 floating_modifier $mod
 focus_follows_mouse no
 workspace_layout tabbed 
-#^This actually doesn't work.  Bug?
 
-# Kill borders that we don't need
+# Border options 
 new_window 1pixel
 hide_edge_borders both
 
 # Launch Bindings
 bindsym $mod+Return exec urxvtc
 bindsym $mod+o exec dmenu_run 
-# ^O for open?  This binding is easier on my laptop.
 
 # Quit Applictions
 bindsym $mod+q kill
@@ -58,8 +56,7 @@ bindsym $mod+equal scratchpad show
 
 # Workspaces - I don't utilize these much, so two is sufficient.
 workspace_auto_back_and_forth yes
-
-# Launch some stuff
-exec --no-startup-id hsetroot -full /home/seed419/img/wallpapers/arielbed.jpg
-exec --no-startup-id urxvtd -q -f -o
-exec --no-startup-id xcompmgr -n
+workspace 1
+workspace 2
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2

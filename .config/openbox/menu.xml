@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Ye olde openbox minimal menu by seed410 -->
+
+<openbox_menu>
+	<menu id="root-menu" label="OpenBox 3">
+    
+    <!-- Terminal quick launch -->
+		<separator/>
+		<item label="urxvt">
+			<action name="Execute">
+				<execute>urxvt</execute>
+			</action>
+		</item>
+		<item label="zsh">
+			<action name="Execute">
+				<execute>urxvt -e zsh</execute>
+			</action>
+		</item>
+		<separator/>
+
+    <!-- Development tools -->
+		<menu id="1" label="dev">
+			<item label="intellij">
+				<action name="Execute">
+					<execute>
+						idea.sh
+					</execute>
+				</action>
+			</item>
+			<item label="netbeans">
+				<action name="Execute">
+					<execute>netbeans</execute>
+				</action>
+			</item>
+			<item label="python3">
+				<action name="Execute">
+					<execute>urxvt -e python3</execute>
+				</action>
+			</item>
+			<item label="retext">
+				<action name="Execute">
+					<execute>retext</execute>
+				</action>
+			</item>
+		</menu>
+
+    <!-- Multimedia -->
+		<menu id="7" label="media">
+			<item label="audacity">
+				<action name="Execute">
+					<execute>audacity</execute>
+				</action>
+			</item>
+			<item label="spotify">
+				<action name="Execute">
+					<execute>spotify</execute>
+				</action>
+			</item>
+			<item label="vlc">
+				<action name="Execute">
+					<execute>vlc</execute>
+				</action>
+			</item>
+		</menu>
+
+    <!-- Network -->
+		<menu id="5" label="net">
+			<item label="chromium">
+				<action name="Execute">
+					<execute>chromium --allow-outdated-plugins</execute>
+				</action>
+			</item>
+			<item label="rtorrent">
+				<action name="Execute">
+					<execute>urxvt -e rtorrent</execute>
+				</action>
+			</item>
+			<item label="weechat">
+				<action name="Execute">
+					<execute>urxvt -e weechat-curses</execute>
+				</action>
+			</item>
+		</menu>
+
+    <!-- Network -->
+		<menu id="3" label="office">
+			<item label="libreoffice">
+				<action name="Execute">
+					<execute>libreoffice</execute>
+				</action>
+			</item>
+		</menu>
+
+	</menu>
+</openbox_menu>
