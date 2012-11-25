@@ -1,0 +1,21 @@
+#================
+# ~/.rtorrent.rc
+#================
+
+# Default directory to save the downloaded torrents.
+directory = /home/seed419/download
+
+# Default session directory.
+session = /home/seed419/download/.session
+
+# Close torrents when diskspace is low.
+schedule = low_diskspace,5,60,close_low_diskspace=100M
+
+# Full encryption or no dice.
+encryption = require_RC4
+
+#//TODO: this!
+#And only argument to rtorrent_mail.sh is completed file's name (d.get_name)
+#system.method.set_key = event.download.finished,notify_me,"execute=~/rtorrent_mail.sh,$d.get_name="
+
+# vim: set ft=cfg :

@@ -138,9 +138,9 @@ get_color
 get_username
 get_hostname
 if [ $EUID -eq 0 ];then
-  PS1="\[$_color\][root] \w \$ \[$Reset\]"
+  PS1="\[$_color\][root] \w \\\$ \[$Reset\]"
 else
-  PS1="\[$_color\][$_name.$_host] \w \$ \[$Reset\]"
+  PS1="\[$_color\][$_name.$_host] \w \\\$ \[$Reset\]"
 fi
 
 #=========================

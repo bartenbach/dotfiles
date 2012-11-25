@@ -17,6 +17,11 @@ WALLPAPER='arielorange.jpg'
 #=============
 source /etc/X11/xinit/xinitrc.d/30-dbus
 
+#=================
+# Begin redshift!
+#=================
+redshift -l 41.25590487876669:-95.93065448105335 &
+
 #=======================
 # Set desktop wallpaper
 #=======================
@@ -31,18 +36,6 @@ xrdb -merge ~/.Xresources
 # Start URxvt server
 #====================
 urxvtd -q -o -f  
-
-#==============================
-# Start my 'Chromium daemon'..
-#==============================
-chromium --allow-oudated-plugins &
-
-
-#===========================
-# Launch a couple terminals
-#===========================
-urxvtc -e weechat-curses &
-urxvtc &
 
 #==========================
 # Start the window manager
