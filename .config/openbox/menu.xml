@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Ye olde openbox minimal menu by seed410 -->
-
 <openbox_menu>
 	<menu id="root-menu" label="OpenBox 3">
-    
-    <!-- Terminal quick launch -->
 		<separator/>
 		<item label="urxvt">
 			<action name="Execute">
@@ -18,9 +13,19 @@
 			</action>
 		</item>
 		<separator/>
-
-    <!-- Development tools -->
 		<menu id="1" label="dev">
+			<item label="aptana">
+				<action name="Execute">
+					<execute>/home/seed419/Applications/Aptana_Studio_3/AptanaStudio3</execute>
+				</action>
+			</item>
+			<item label="codeblocks">
+				<action name="Execute">
+					<execute>
+						codeblocks
+					</execute>
+				</action>
+			</item>
 			<item label="intellij">
 				<action name="Execute">
 					<execute>
@@ -44,8 +49,6 @@
 				</action>
 			</item>
 		</menu>
-
-    <!-- Multimedia -->
 		<menu id="7" label="media">
 			<item label="audacity">
 				<action name="Execute">
@@ -63,17 +66,25 @@
 				</action>
 			</item>
 		</menu>
-
-    <!-- Network -->
 		<menu id="5" label="net">
 			<item label="chromium">
 				<action name="Execute">
 					<execute>chromium --allow-outdated-plugins</execute>
 				</action>
 			</item>
-			<item label="rtorrent">
+			<item label="firefox">
 				<action name="Execute">
-					<execute>urxvt -e rtorrent</execute>
+					<execute>firefox</execute>
+				</action>
+			</item>
+			<item label="firefox-nightly">
+				<action name="Execute">
+					<execute>firefox-nightly</execute>
+				</action>
+			</item>
+			<item label="transmission">
+				<action name="Execute">
+					<execute>transmission-gtk</execute>
 				</action>
 			</item>
 			<item label="weechat">
@@ -82,8 +93,6 @@
 				</action>
 			</item>
 		</menu>
-
-    <!-- Network -->
 		<menu id="3" label="office">
 			<item label="libreoffice">
 				<action name="Execute">
@@ -91,6 +100,22 @@
 				</action>
 			</item>
 		</menu>
-
+		<menu id="37" label="sys">
+			<item label="obmenu">
+				<action name="Execute">
+					<execute>obmenu</execute>
+				</action>
+			</item>
+			<item label="tint2conf">
+				<action name="Execute">
+					<execute>tint2conf</execute>
+				</action>
+			</item>
+			<item label="obconf">
+				<action name="Execute">
+					<execute>obconf</execute>
+				</action>
+			</item>
+		</menu>
 	</menu>
 </openbox_menu>

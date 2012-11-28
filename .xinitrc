@@ -9,7 +9,7 @@ _='
 #============
 # Variables!
 #============
-WINDOW_MANAGER='i3'
+WINDOW_MANAGER='xmonad'
 WALLPAPER='arielorange.jpg'
 
 #=============
