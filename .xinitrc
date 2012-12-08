@@ -1,43 +1,34 @@
 #!/bin/sh -
 
-_='
-# Something cool should go here like some ASCII art!
+#
+# .xinitrc
+#
 
-# Hey, I am an xinitrc file! 
-'
-
-#============
-# Variables!
-#============
 WINDOW_MANAGER='xmonad'
-WALLPAPER='arielorange.jpg'
+WALLPAPER='haskell.png'
 
-#=============
-# Launch dbus
-#=============
-source /etc/X11/xinit/xinitrc.d/30-dbus
+# launch dbus
+dbus-launch --sh-syntax
 
-#=================
-# Begin redshift!
-#=================
-redshift -l 41.25590487876669:-95.93065448105335 &
+# append artwiz and dina to font path
+xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 
-#=======================
-# Set desktop wallpaper
-#=======================
-hsetroot -full /home/seed419/img/wallpapers/$WALLPAPER
+# shift of red
+#redshifter
 
-#=====================
-# Merge ~/.Xresources
-#=====================
-xrdb -merge ~/.Xresources
+# wallpaper
+hsetroot -center /home/seed419/img/wallpapers/$WALLPAPER
 
-#====================
-# Start URxvt server
-#====================
+# merge .Xresources
+xrdb merge ~/.Xresources
+
+# urxvt 'server'
 urxvtd -q -o -f  
 
-#==========================
-# Start the window manager
-#==========================
+# twmn notification daemon
+twmnd &
+
+# start window manager
 exec /usr/bin/$WINDOW_MANAGER
+
+# vim: set ft=sh :

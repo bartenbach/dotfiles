@@ -25,3 +25,5 @@
  rename = copies
 
 # vim: set ft=gitconfig noet:
+[core]
+	quotepath = off

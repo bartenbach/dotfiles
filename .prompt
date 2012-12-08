@@ -1,12 +1,12 @@
 #!/bin/bash --
 
-_=(
+_='
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ 
 \\                                                           \\ 
 \\                                                           \\ 
-\\ File: .prompt [ sourced via .bashrc ]                     \\ 
+\\ file: .prompt [ sourced via .bashrc ]                     \\ 
 \\                                                __         \\ 
-\\ Author: seed419                               /\ \__      \\  
+\\      by seed419                               /\ \__      \\  
 \\         _____   _ __   ___     ___ ___   _____\ \  _\     \\  
 \\        /\ \__ \/\  __\/ __ \ /  __  __ \/\  __ \ \ \/     \\ 
 \\      __\ \ \L\ \ \ \//\ \L\ \/\ \/\ \/\ \ \ \L\ \ \ \_    \\
@@ -16,85 +16,91 @@ _=(
 \\            \/_/                             \/_/          \\
 \\                                                           \\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ 
-)
+'
 
-#==================
-# Color formatting
-#==================
-Reset='\e[0m'
-Red='\e[0;31m'
-Green='\e[0;32m'
+#-----------
+# Variables
+#-----------
+name='proxa'
+host=''
+PS1_DEBUG=0
 
-#=============================
-# Prompt name and prompt host  
-#=============================
-_name='proxa'
-_host=''
+#-----------------
+# Git integration
+#-----------------
+GIT_PS1_SHOWDIRTYSTATE='walrus'
+GIT_PS1_SHOWSTASHEDSTATE='buffalo'
+GIT_PS1_SHOWUNTRACKEDFILES='tiger'
+GIT_PS1_SHOWUPSTREAM='verbose git'
 
-#=================
-# Git integration //TODO  
-#=================
-_git='$(__git_ps1 " (%s)")\$ '
-
-#=================
-# Set user colors 
-#=================
-function get_color {
-  if [ $EUID -eq 0 ];then
-    _color=$Red
-  else
-    _color=$Green
-  fi
-}
-
-#==============================
+#------------------------------
 # Use custom name if it exists
-#==============================
+#------------------------------
 function get_username {
-  if [ -z $_name ];then
-    $_name="\u"
+  [[ -z $name ]] && name="\u"
+}
+
+#------------------------------
+# Use custom host if it exists
+#------------------------------
+function get_hostname {
+  [[ -z $host ]] && host="\h"
+}
+
+#--------------
+# Return value
+#--------------
+function get_ret_val {
+  if [[ "$?" == "0" ]];then
+    RET=$green
+  else
+    RET=$red
+  fi
+  assemble
+}
+
+#--------------
+# Gets the pwd
+#--------------
+function get_pwd {
+  [[ $TERM != "linux" ]] && echo -en "\033]0;$PWD\007"
+}
+
+#-----------
+# Debugging
+#-----------
+function debug {
+  if [[ $PS1_DEBUG == 1 ]];then
+    echo $PS1
   fi
 }
 
-#==============================
-# Use custom host if it exists
-#==============================
-function get_hostname {
-  if [ -z $_host ];then
-    _host="\h"
-  fi  
+#--------------------
+# Set prompt command
+#--------------------
+PROMPT_COMMAND='get_ret_val && debug && get_pwd'
+
+#----------
+# Assemble
+#----------
+function assemble {
+  if [ $EUID -eq 0 ];then
+    PS1="$red[root] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+  else
+    PS1="$green[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+  fi
 }
 
-#==========
-# Assemble
-#==========
-get_color
+#------
+# Main
+#------
 get_username
 get_hostname
-if [ $EUID -eq 0 ];then
-  PS1="\[$_color\][root] \w \\\$ \[$Reset\]"
-else
-  PS1="\[$_color\][$_name.$_host] \w \\\$ \[$Reset\]"
-fi
+assemble >/dev/null 2>&1
 
-#===========
-# Debugging
-#===========
-PS1_DEBUG=0
-if [ $PS1_DEBUG == 1 ];then
-  echo $PS1
-fi
-
-#==============
-# Housekeeping
-#==============
-unset get_color
-unset get_username
-unset get_hostname
-unset _color
-unset _name
-unset _host
-unset _git
-unset PS1_DEBUG
+#-----------------
+# Save the whales
+#-----------------
+unset _
 
 # vim: set ft=sh :

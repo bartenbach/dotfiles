@@ -1,45 +1,69 @@
-!+++++++++++++++++++++++++++
-! .Xresources (seed419)
-!+++++++++++++++++++++++++++
+!+++++++++++++
+! .Xresources 
+!+++++++++++++
 
-! Cursor theme 
+! [Cursor theme] 
 Xcursor*theme: Vanilla-DMZ
+Xcursor*size: 18
 
-! URxvt Configuration - General Settings
-URxvt*saveLines: 1200
-
-! Scrolling
-URxvt*scrollBar: false
-URxvt*scrollstyle: plain
-URxvt*secondaryScroll: true
-!URxvt*scrollTtyOutput: false
-
-! Cursor
-URxvt*cursorBlink:true
-
-! Font
+! [URxvt - General Settings]
 URxvt*font:-misc-proggycleanttszbp-medium-r-normal--0-0-0-0-c-0-iso8859-1
-!URxvt*boldFont:
-
-! Fake Transparency
-URxvt*transparent: true
-URxvt*shading: 20
-
-! Crafty stuff - perl
-URxvt*perl-ext-common: default,matcher,clipboard
-URxvt*urlLauncher: /usr/bin/chromium
-URxvt*matcher.button: 1
-
-! Colors
+URxvt*buffered: false
 URxvt*foreground: Gray
-URxvt*throughColor:     #8080f0
-
-! Dev recommendations
-URxvt*meta:             ignore
-!URxvt*utmpInhibit:      true
-!URxvt*mapAlert:         true
+URxvt*throughColor: #8080f0
+URxvt*saveLines: 1200
+URxvt*visualBell: false
+URxvt*cursorColor:#83C048
+URxvt*cursorBlink:true
 URxvt*internalBorder: 0
 URxvt*externalBorder: 0
 URxvt*borderless: true
-URxvt*meta8: true
+URxvt*meta: ignore
+URxvt*meta8: false
+URxvt*iso14755: false
+URxvt*iso14755_52: false
+URxvt*pointerBlank: true
+URxvt*pointerBlankDelay: 1
+URxvt.cutchars: "()*,<>[]{}|'"
+!URxvt*lineSpace: 1
 
+! [URxvt - Scrolling]
+URxvt*skipScroll: false
+URxvt*scrollBar: false
+!URxvt*scrollStyle: plain
+!URxvt*scrollColor: 
+!URxvt*scrollBar_right: true
+URxvt*secondaryScroll: true
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+URxvt*scrollTtyKeypress: true
+!URxvt*secondaryScroll: false
+
+! [URxvt - Fake Transparency]
+URxvt*transparent: true
+URxvt*shading: 40
+
+! [URxvt - Perl Plugins and URL Matcher]
+URxvt*perl-ext-common: default,matcher,clipboard
+URxvt*urlLauncher: /usr/bin/chromium
+URxvt*matcher.button: 1
+URxvt*keysym.M-Delete: perl:matcher:list
+URxvt*colorUL: #4682B4
+
+! Misc
+URxvt*insecure: false
+URxvt*utmpInhibit:      true
+URxvt*print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+
+! [Color Scheme]
+!#include ".config/xcolors/dwmrob"
+!#include ".config/xcolors/derp"
+!#include ".config/xcolors/digerati"
+!#include ".config/xcolors/gnometerm"
+!#include ".config/xcolors/jasonwryan"
+!#include ".config/xcolors/phrak1"
+!#include ".config/xcolors/rezza"
+!#include ".config/xcolors/rydgel"
+!#include ".config/xcolors/shiva"
+#include ".config/xcolors/tango"
+!#include ".config/xcolors/zenburn"
