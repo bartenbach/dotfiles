@@ -66,6 +66,13 @@ function get_pwd {
   [[ $TERM != "linux" ]] && echo -en "\033]0;$PWD\007"
 }
 
+#--------------
+# Get the time
+#--------------
+function get_time {
+  TIME=$(date | grep -o --regexp='[1-9][:][0-9][^:]')
+}
+
 #-----------
 # Debugging
 #-----------
@@ -78,7 +85,7 @@ function debug {
 #--------------------
 # Set prompt command
 #--------------------
-PROMPT_COMMAND='get_ret_val && debug && get_pwd'
+PROMPT_COMMAND='get_ret_val && debug && get_pwd && get_time'
 
 #----------
 # Assemble

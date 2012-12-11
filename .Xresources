@@ -41,7 +41,7 @@ URxvt*scrollTtyKeypress: true
 
 ! [URxvt - Fake Transparency]
 URxvt*transparent: true
-URxvt*shading: 40
+URxvt*shading: 10
 
 ! [URxvt - Perl Plugins and URL Matcher]
 URxvt*perl-ext-common: default,matcher,clipboard
