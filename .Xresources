@@ -4,11 +4,12 @@
 
 ! [Cursor theme] 
 Xcursor*theme: Vanilla-DMZ
-Xcursor*size: 18
+Xcursor*size: 24
 
 ! [URxvt - General Settings]
-URxvt*font:-misc-proggycleanttszbp-medium-r-normal--0-0-0-0-c-0-iso8859-1
-URxvt*buffered: false
+URxvt*font:-windows-proggycleanszbp-medium-r-normal--13-80-96-96-c-70-iso8859-1
+!URxvt*boldFont:
+URxvt*buffered: true
 URxvt*foreground: Gray
 URxvt*throughColor: #8080f0
 URxvt*saveLines: 1200
@@ -25,7 +26,7 @@ URxvt*iso14755_52: false
 URxvt*pointerBlank: true
 URxvt*pointerBlankDelay: 1
 URxvt.cutchars: "()*,<>[]{}|'"
-!URxvt*lineSpace: 1
+URxvt*lineSpace: 1
 
 ! [URxvt - Scrolling]
 URxvt*skipScroll: false
@@ -41,7 +42,7 @@ URxvt*scrollTtyKeypress: true
 
 ! [URxvt - Fake Transparency]
 URxvt*transparent: true
-URxvt*shading: 40
+URxvt*shading: 20
 
 ! [URxvt - Perl Plugins and URL Matcher]
 URxvt*perl-ext-common: default,matcher,clipboard
@@ -65,5 +66,6 @@ URxvt*print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 !#include ".config/xcolors/rezza"
 !#include ".config/xcolors/rydgel"
 !#include ".config/xcolors/shiva"
-#include ".config/xcolors/tango"
+!#include ".config/xcolors/tango"
 !#include ".config/xcolors/zenburn"
+#include ".config/xcolors/proxa_theme"
