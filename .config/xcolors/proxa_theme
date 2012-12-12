@@ -7,17 +7,17 @@
 ! Red - red (Safe 16 SVG Hex3)
 *color1:        #FF0000
 
-! Light red - mapped to cadmium orange
-*color9:        #FF6103
+! Light red - orange (Safe Hex3)
+*color9:        #FF6600
 
-! Green - green (16 SVG)
-*color2:        #008000
+! Green - true green
+*color2:        #00AF33
 
 ! Light green - lime (Safe 16 SVG Hex3)
 *color10:       #00FF00
 
-! Brown - mapped to indigo (SVG)
-*color3:        #4B0082
+! Brown - gold3
+*color3:        #CDAD00
 
 ! Yellow - yellow (Safe 16 SVG Hex3)
 *color11:       #FFFF00
@@ -25,8 +25,8 @@
 ! Blue - blue (Safe 16 SVG Hex3)
 *color4:        #0000FF
 
-! Light blue - dodgerblue (SVG)
-*color12:       #1E90FF
+! Light blue - deepskyblue (SVG)
+*color12:       #00BFFF
 
 ! Magenta - blueviolet (SVG)
 *color5:        #8A2BE2
@@ -34,14 +34,14 @@
 ! Light Magenta - rose (Safe Hex3)
 *color13:       #FF00CC
 
-! Cyan - diamond blue
-*color6:        #0EBFE9
+! Cyan - cyan3
+*color6:        #00CDCD
 
-! Light cyan - cyan (Safe 16=aqua SVG Hex3)
+! Light cyan (Safe 16=aqua SVG Hex3)
 *color14:       #00FFFF
 
-! Gray - silver (16 SVG)
-*color7:        #C0C0C0
+! Gray - gray (16 SVG)
+*color7:        #808080
 
 ! White - white (Safe 16 SVG Hex3)
 *color15:       #FFFFFF

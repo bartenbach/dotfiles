@@ -5,10 +5,10 @@
 #
 
 WINDOW_MANAGER='xmonad'
-WALLPAPER='haskell.png'
+WALLPAPER='3840s/3840test2.jpg'
 
 # launch dbus
-dbus-launch --sh-syntax
+#dbus-launch --sh-syntax
 
 # append artwiz and dina to font path
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts

@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu>
 	<menu id="root-menu" label="OpenBox 3">
-		<separator/>
-		<item label="urxvt">
-			<action name="Execute">
-				<execute>urxvt</execute>
-			</action>
-		</item>
-		<item label="zsh">
-			<action name="Execute">
-				<execute>urxvt -e zsh</execute>
-			</action>
-		</item>
-		<separator/>
-		<menu id="1" label="dev">
+		<menu id="1" label="Development">
 			<item label="aptana">
 				<action name="Execute">
 					<execute>/home/seed419/Applications/Aptana_Studio_3/AptanaStudio3</execute>
@@ -21,12 +9,15 @@
 			</item>
 			<item label="codeblocks">
 				<action name="Execute">
-					<execute>
-						codeblocks
-					</execute>
+					<execute>codeblocks</execute>
 				</action>
 			</item>
-			<item label="intellij">
+			<item label="eclipse">
+				<action name="Execute">
+					<execute>eclipse</execute>
+				</action>
+			</item>
+			<item label="IntelliJ">
 				<action name="Execute">
 					<execute>
 						idea.sh
@@ -38,9 +29,44 @@
 					<execute>netbeans</execute>
 				</action>
 			</item>
-			<item label="python3">
+			<item label="OpenJDK Monitoring &amp; Management Console">
 				<action name="Execute">
-					<execute>urxvt -e python3</execute>
+					<execute>
+						jconsole
+					</execute>
+				</action>
+			</item>
+			<item label="OpenJDK Policy Tool">
+				<action name="Execute">
+					<execute>
+						policytool
+					</execute>
+				</action>
+			</item>
+			<item label="Python">
+				<action name="Execute">
+					<execute>urxvt -e python</execute>
+				</action>
+			</item>
+			<item label="Qt Assistant">
+				<action name="Execute">
+					<execute>
+						assistant
+					</execute>
+				</action>
+			</item>
+			<item label="Qt Designer">
+				<action name="Execute">
+					<execute>
+						designer
+					</execute>
+				</action>
+			</item>
+			<item label="Qt Linguist">
+				<action name="Execute">
+					<execute>
+						linguist
+					</execute>
 				</action>
 			</item>
 			<item label="retext">
@@ -49,72 +75,343 @@
 				</action>
 			</item>
 		</menu>
-		<menu id="7" label="media">
-			<item label="audacity">
+		<menu id="2" label="Editors">
+			<item label="gedit">
 				<action name="Execute">
-					<execute>audacity</execute>
+					<execute>
+						gedit
+					</execute>
 				</action>
 			</item>
-			<item label="spotify">
+			<item label="leafpad">
 				<action name="Execute">
-					<execute>spotify</execute>
-				</action>
-			</item>
-			<item label="vlc">
-				<action name="Execute">
-					<execute>vlc</execute>
+					<execute>leafpad</execute>
 				</action>
 			</item>
 		</menu>
-		<menu id="5" label="net">
-			<item label="chromium">
+		<menu id="18" label="Games">
+			<item label="Spoutcraft">
+				<action name="Execute">
+					<execute>
+						sh ~/Applications/spout.sh
+					</execute>
+				</action>
+			</item>
+			<item label="Minecraft">
+				<action name="Execute">
+					<execute>
+						sh ~/Applications/minecraft.sh
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="6" label="Graphics">
+			<item label="gimp">
+				<action name="Execute">
+					<execute>gimp</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="7" label="Multimedia">
+			<item label="ALSA mixer">
+				<action name="Execute">
+					<execute>urxvt -e alsamixer</execute>
+				</action>
+			</item>
+			<item label="Audacity">
+				<action name="Execute">
+					<execute>
+						audacity
+					</execute>
+				</action>
+			</item>
+			<item label="K3b">
+				<action name="Execute">
+					<execute>
+						k3b
+					</execute>
+				</action>
+			</item>
+			<item label="Spotify">
+				<action name="Execute">
+					<execute>
+						spotify
+					</execute>
+				</action>
+			</item>
+			<item label="Rhythmbox">
+				<action name="Execute">
+					<execute>rhythmbox</execute>
+				</action>
+			</item>
+			<item label="VLC media player">
+				<action name="Execute">
+					<execute>
+						vlc
+					</execute>
+				</action>
+			</item>
+			<item label="VolWheel">
+				<action name="Execute">
+					<execute>
+						volwheel
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="5" label="Network">
+			<item label="Chromium">
 				<action name="Execute">
 					<execute>chromium --allow-outdated-plugins</execute>
 				</action>
 			</item>
-			<item label="firefox">
+			<item label="FileZilla">
 				<action name="Execute">
-					<execute>firefox</execute>
-				</action>
-			</item>
-			<item label="firefox-nightly">
-				<action name="Execute">
-					<execute>firefox-nightly</execute>
-				</action>
-			</item>
-			<item label="transmission">
-				<action name="Execute">
-					<execute>transmission-gtk</execute>
+					<execute>
+						filezilla
+					</execute>
 				</action>
 			</item>
 			<item label="weechat">
 				<action name="Execute">
-					<execute>urxvt -e weechat-curses</execute>
+					<execute>urxvt -g 152x35 -e weechat-curses</execute>
+				</action>
+			</item>
+			<item label="Transmission">
+				<action name="Execute">
+					<execute>
+						transmission-gtk
+					</execute>
 				</action>
 			</item>
 		</menu>
-		<menu id="3" label="office">
-			<item label="libreoffice">
+		<menu id="3" label="Office">
+			<item label="LibreOffice">
 				<action name="Execute">
 					<execute>libreoffice</execute>
 				</action>
 			</item>
+			<item label="ePDFViewer">
+				<action name="Execute">
+					<execute>
+						epdfview
+					</execute>
+				</action>
+			</item>
 		</menu>
-		<menu id="37" label="sys">
-			<item label="obmenu">
+		<menu id="39" label="Other">
+			<item label="AUR">
 				<action name="Execute">
-					<execute>obmenu</execute>
+					<execute>
+						xdg-open https://aur.archlinux.org
+					</execute>
 				</action>
 			</item>
-			<item label="tint2conf">
+			<item label="Bugs">
 				<action name="Execute">
-					<execute>tint2conf</execute>
+					<execute>
+						xdg-open https://bugs.archlinux.org
+					</execute>
 				</action>
 			</item>
-			<item label="obconf">
+			<item label="CMake">
 				<action name="Execute">
-					<execute>obconf</execute>
+					<execute>
+						cmake-gui
+					</execute>
 				</action>
+			</item>
+			<item label="Developers">
+				<action name="Execute">
+					<execute>
+						xdg-open http://www.archlinux.org/developers/
+					</execute>
+				</action>
+			</item>
+			<item label="Documentation">
+				<action name="Execute">
+					<execute>
+						xdg-open https://wiki.archlinux.org/index.php/Official_Arch_Linux_Install_Guide
+					</execute>
+				</action>
+			</item>
+			<item label="Donate">
+				<action name="Execute">
+					<execute>
+						xdg-open http://www.archlinux.org/donate/
+					</execute>
+				</action>
+			</item>
+			<item label="Forum">
+				<action name="Execute">
+					<execute>
+						xdg-open https://bbs.archlinux.org
+					</execute>
+				</action>
+			</item>
+			<item label="Heimdall">
+				<action name="Execute">
+					<execute>
+						heimdall-frontend
+					</execute>
+				</action>
+			</item>
+			<item label="Help">
+				<action name="Execute">
+					<execute>
+						khelpcenter
+					</execute>
+				</action>
+			</item>
+			<item label="Homepage">
+				<action name="Execute">
+					<execute>
+						xdg-open http://www.archlinux.org
+					</execute>
+				</action>
+			</item>
+			<item label="QT V4L2 test Utility">
+				<action name="Execute">
+					<execute>
+						qv4l2
+					</execute>
+				</action>
+			</item>
+			<item label="Schwag">
+				<action name="Execute">
+					<execute>
+						xdg-open http://www.zazzle.com/archlinux/
+					</execute>
+				</action>
+			</item>
+			<item label="SVN">
+				<action name="Execute">
+					<execute>
+						xdg-open http://projects.archlinux.org/svntogit/
+					</execute>
+				</action>
+			</item>
+			<item label="Wiki">
+				<action name="Execute">
+					<execute>
+						xdg-open https://wiki.archlinux.org
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="19" label="Shells">
+			<item label="Dolphin">
+				<action name="Execute">
+					<execute>
+						dolphin
+					</execute>
+				</action>
+			</item>
+			<item label="urxvt">
+				<action name="Execute">
+					<execute>urxvt -g 112x28</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="37" label="System">
+			<menu id="36" label="Settings">
+				<item label="qrazercfg">
+					<action name="Execute">
+						<execute>qrazercfg</execute>
+					</action>
+				</item>
+				<item label="NVIDIA X Server Settings">
+					<action name="Execute">
+						<execute>
+							nvidia-settings
+						</execute>
+					</action>
+				</item>
+				<item label="obmenu">
+					<action name="Execute">
+						<execute>obmenu</execute>
+					</action>
+				</item>
+				<item label="Openbox Configuration Manager">
+					<action name="Execute">
+						<execute>
+							obconf
+						</execute>
+					</action>
+				</item>
+				<item label="Panel tint2">
+					<action name="Execute">
+						<execute>
+							tint2conf
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<item label="Avahi Zeroconf Browser">
+				<action name="Execute">
+					<execute>
+						avahi-discover
+					</execute>
+				</action>
+			</item>
+			<item label="dconf Editor">
+				<action name="Execute">
+					<execute>
+						dconf-editor
+					</execute>
+				</action>
+			</item>
+			<item label="pstree">
+				<action name="Execute">
+					<execute>urxvt -e pstree.x11</execute>
+				</action>
+			</item>
+			<item label="Top">
+				<action name="Execute">
+					<execute>urxvt -e top</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="38" label="Utilities">
+			<item label="galculator">
+				<action name="Execute">
+					<execute>galculator</execute>
+				</action>
+			</item>
+			<item label="7-Zip FM">
+				<action name="Execute">
+					<execute>
+						7zFM
+					</execute>
+				</action>
+			</item>
+			<item label="Info">
+				<action name="Execute">
+					<execute>urxvt -e info</execute>
+				</action>
+			</item>
+			<item label="Xev">
+				<action name="Execute">
+					<execute>urxvt -e xev</execute>
+				</action>
+			</item>
+			<item label="Xrefresh">
+				<action name="Execute">
+					<execute>
+						xrefresh
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<menu id="40" label="OpenBox">
+			<menu id="client-list-menu"/>
+			<item label="Reconfigure">
+				<action name="Reconfigure"/>
+			</item>
+			<separator/>
+			<item label="Exit">
+				<action name="Exit"/>
 			</item>
 		</menu>
 	</menu>

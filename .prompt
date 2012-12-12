@@ -54,7 +54,7 @@ function get_ret_val {
   if [[ "$?" == "0" ]];then
     RET=$igreen
   else
-    RET=$ired
+    RET=$red
   fi
   assemble
 }
