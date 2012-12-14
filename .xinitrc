@@ -14,7 +14,7 @@ WALLPAPER='3840s/3840test2.jpg'
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 
 # shift of red
-#redshifter
+redshift -l 41.2636:-95.9353 &
 
 # wallpaper
 hsetroot -center /home/seed419/img/wallpapers/$WALLPAPER
