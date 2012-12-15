@@ -14,7 +14,7 @@ killXMask = myMod .|. controlMask
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
-myTheme = robertTheme
+myTheme = deiflTheme
 
 myBorderWidth        = 2
 myNormalBorderColor  = "#000000"
@@ -56,6 +56,7 @@ myKeys =
     , ((myMod, xK_t),               withFocused $ windows . W.sink)
     , ((myMod, xK_comma),           sendMessage (IncMasterN 1)) 
     , ((myMod, xK_ampersand),       sendMessage (IncMasterN (-1)))
+    , ((myMod, xK_F12),             spawn "eject -T /dev/sr0")
     , ((myMod, xK_q),               spawn "xmonad --recompile; xmonad --restart")
     , ((myShiftMod, xK_j),          windows W.swapDown)
     , ((myShiftMod, xK_semicolon),  windows W.swapUp) 
