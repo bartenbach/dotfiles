@@ -4,7 +4,10 @@ import System.Exit (exitWith, ExitCode(ExitSuccess))
 import XMonad.Layout.Tabbed
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid
-import XMonad.Util.Themes
+import XMonad.Util.Themes (deiflTheme, theme)
+import XMonad.Hooks.SetWMName (setWMName)
+import XMonad.Layout.NoBorders (noBorders)
+import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Util.EZConfig (additionalKeys)
 import qualified XMonad.StackSet as W
 
@@ -12,7 +15,7 @@ myMod = mod1Mask
 myShiftMod = myMod .|. shiftMask
 killXMask = myMod .|. controlMask
 
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces = ["1","2","3:media","4","5","6","7","8","9"]
 
 myTheme = deiflTheme
 
@@ -75,18 +78,26 @@ myKeys =
         | (key, sc) <- zip [xK_e, xK_w] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-myLayout = tiled ||| tabbed shrinkText (theme myTheme) ||| Grid ||| Full 
+myLayout = tiled ||| tabbed shrinkText (theme myTheme) ||| Grid ||| Full
   where
      tiled   = Tall nmaster delta ratio
      nmaster = 1
      ratio   = 1/2
      delta   = 3/100
 
+-- Goofy Java workaround, seems fixed..
+-- mediaLayout = noBorders $ Full
+-- myLayout = onWorkspace "3:media" mediaLayout $ mainLayout
+
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore 
+    [ className =? "MPlayer"                     --> doFloat
+    , className =? "Gimp"                        --> doFloat
+--    More goofy Java shit.  Seems fixed.    
+--    , className =? "jetbrains-idea-ce"           --> doFloat
+--    , className =? "net-minecraft-LauncherFrame" --> doFloat
+--    , className =? "sun-awt-X11-XFramePeer"      --> doFloat
+    , resource  =? "desktop_window"              --> doIgnore
+    , resource  =? "kdesktop"                    --> doIgnore 
     ]
 
 main = xmonad defaults
@@ -97,6 +108,7 @@ defaults = defaultConfig {
         focusFollowsMouse = myFocusFollowsMouse,
         borderWidth = myBorderWidth,
         workspaces = myWorkspaces,
+        startupHook = setWMName "LG3D",
         normalBorderColor = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
         layoutHook = myLayout,

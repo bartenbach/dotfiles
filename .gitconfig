@@ -5,11 +5,13 @@
 	default = simple
 
 [color]
- branch = auto
- diff = auto
- interactive = auto
- status = auto
- grep = yes
+ ui = true
+# branch = auto
+# showbranch = auto
+# diff = auto
+# interactive = auto
+# status = auto
+# grep = yes
 
 [merge]
  tool = vimdiff
