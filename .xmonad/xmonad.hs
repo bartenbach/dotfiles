@@ -6,6 +6,7 @@ import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid
 import XMonad.Util.Themes (deiflTheme, theme)
 import XMonad.Hooks.SetWMName (setWMName)
+import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders (noBorders)
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Util.EZConfig (additionalKeys)
@@ -85,19 +86,14 @@ myLayout = tiled ||| tabbed shrinkText (theme myTheme) ||| Grid ||| Full
      ratio   = 1/2
      delta   = 3/100
 
--- Goofy Java workaround, seems fixed..
--- mediaLayout = noBorders $ Full
--- myLayout = onWorkspace "3:media" mediaLayout $ mainLayout
-
 myManageHook = composeAll
-    [ className =? "MPlayer"                     --> doFloat
-    , className =? "Gimp"                        --> doFloat
---    More goofy Java shit.  Seems fixed.    
---    , className =? "jetbrains-idea-ce"           --> doFloat
---    , className =? "net-minecraft-LauncherFrame" --> doFloat
---    , className =? "sun-awt-X11-XFramePeer"      --> doFloat
-    , resource  =? "desktop_window"              --> doIgnore
-    , resource  =? "kdesktop"                    --> doIgnore 
+    [ className =? "MPlayer"         --> doFloat
+    , className =? "Gimp"            --> doFloat
+    , className =? "feh"             --> doFloat
+    , resource  =? "desktop_window"  --> doIgnore
+    , resource  =? "kdesktop"        --> doIgnore 
+    , className =? "Chromium" <&&> stringProperty "WM_WINDOW_ROLE" =? "pop-up" --> doCenterFloat
+    , className =? "Chromium" <&&> stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" --> doCenterFloat
     ]
 
 main = xmonad defaults
