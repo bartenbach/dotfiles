@@ -6,7 +6,7 @@ _='
 \\                                                           \\ 
 \\ file: .prompt [ sourced via .bashrc ]                     \\ 
 \\                                                __         \\ 
-\\      by seed419                               /\ \__      \\  
+\\      by proxa                                 /\ \__      \\  
 \\         _____   _ __   ___     ___ ___   _____\ \  _\     \\  
 \\        /\ \__ \/\  __\/ __ \ /  __  __ \/\  __ \ \ \/     \\ 
 \\      __\ \ \L\ \ \ \//\ \L\ \/\ \/\ \/\ \ \ \L\ \ \ \_    \\
@@ -52,7 +52,7 @@ function get_hostname {
 #--------------
 function get_ret_val {
   if [[ "$?" == "0" ]];then
-    RET=$green
+    RET=$igreen
   else
     RET=$red
   fi
@@ -66,35 +66,26 @@ function get_pwd {
   [[ $TERM != "linux" ]] && echo -en "\033]0;$PWD\007"
 }
 
-#--------------
-# Get the time
-#--------------
-function get_time {
-  TIME=$(date | grep -o --regexp='[1-9][:][0-9][^:]')
-}
-
 #-----------
 # Debugging
 #-----------
 function debug {
-  if [[ $PS1_DEBUG == 1 ]];then
-    echo $PS1
-  fi
+  [[ $PS1_DEBUG == 1 ]] && echo $PS1
 }
 
 #--------------------
 # Set prompt command
 #--------------------
-PROMPT_COMMAND='get_ret_val && debug && get_pwd && get_time'
+PROMPT_COMMAND='get_ret_val && debug && get_pwd'
 
 #----------
 # Assemble
 #----------
 function assemble {
   if [ $EUID -eq 0 ];then
-    PS1="$red[root] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+    PS1="$ired[root] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
   else
-    PS1="$green[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+    PS1="$igreen[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
   fi
 }
 

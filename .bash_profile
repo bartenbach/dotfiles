@@ -1,6 +1,7 @@
-#
-# ~/.bash_profile
-#
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+#!/bin/bash -
 
-export PATH="/usr/lib/colorgcc/bin:$PATH"
+#
+# .profile
+#
+source ~/.bashrc
+export EDITOR="vim"

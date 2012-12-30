@@ -5,7 +5,7 @@
 # return if not interactive
 [[ $- == *i* ]] || return
 
-config_files=( '.aliases .prompt .profile .colors .git-prompt' )
+config_files=( '.aliases .git-prompt .colors .prompt' )
 
 # shell opts
 shopt -s cdspell dirspell extglob histverify no_empty_cmd_completion checkwinsize autocd
