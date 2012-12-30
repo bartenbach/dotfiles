@@ -1,9 +1,7 @@
 #!/bin/sh -
-
 #
-# .xinitrc
+#  ~/.xinitrc
 #
-
 WINDOW_MANAGER='xmonad'
 WALLPAPER='haskell.png'
 
@@ -14,7 +12,7 @@ dbus-launch --sh-syntax
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 
 # shift of red
-#redshifter
+redshifter
 
 # wallpaper
 hsetroot -center /home/seed419/img/wallpapers/$WALLPAPER

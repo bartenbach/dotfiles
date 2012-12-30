@@ -52,7 +52,6 @@ set spoolfile         = imaps://blakebartenbach@imap.gmail.com:993/
 set postponed         = "+Drafts"
 set record            = "+Sent Mail"
 set trash             = "+Trash"
-
 set mail_check        = 300
 unset imap_passive
 #mailboxes            = +Drafts +'Sent Mail' +Spam +Trash
