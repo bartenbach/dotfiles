@@ -20,7 +20,7 @@ myWorkspaces = ["1","2","3:media","4","5","6","7","8","9"]
 
 myTheme = deiflTheme
 
-myBorderWidth        = 2
+myBorderWidth        = 3
 myNormalBorderColor  = "#000000"
 myFocusedBorderColor = "#ff0000"
 

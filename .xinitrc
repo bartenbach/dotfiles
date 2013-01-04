@@ -1,20 +1,16 @@
 #!/bin/sh -
-
 #
-# .xinitrc
+# ~/.xinitrc
 #
 
 WINDOW_MANAGER='xmonad'
 WALLPAPER='3840s/3840test2.jpg'
 
-# launch dbus
-#dbus-launch --sh-syntax
-
 # append artwiz and dina to font path
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 
 # shift of red
-redshift -l 41.2636:-95.9353 &
+redshift &
 
 # wallpaper
 hsetroot -center /home/seed419/img/wallpapers/$WALLPAPER

@@ -6,4 +6,4 @@ set smarttab
 set number
 set smartindent
 let readline_has_bash = 1
-colo xoria256
+colo zoria256
