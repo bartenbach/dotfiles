@@ -3,10 +3,10 @@
 #================
 
 # Default directory to save the downloaded torrents.
-directory = /home/seed419/download
+directory = /home/seed419/download/torrent
 
 # Default session directory.
-session = /home/seed419/download/.session
+session = /home/seed419/.session
 
 # Close torrents when diskspace is low.
 schedule = low_diskspace,5,60,close_low_diskspace=100M
@@ -14,8 +14,13 @@ schedule = low_diskspace,5,60,close_low_diskspace=100M
 # Full encryption or no dice.
 encryption = require_RC4
 
-#//TODO: this!
-#And only argument to rtorrent_mail.sh is completed file's name (d.get_name)
-#system.method.set_key = event.download.finished,notify_me,"execute=~/rtorrent_mail.sh,$d.get_name="
+# This should send me mail
+system.method.set_key = event.download.finished,notify_me,"execute=~/rtorrent_mail.sh,$d.get_name="
+
+# Help a nigga out on dat local network
+peer_exchange = yes
+
+# Stop. Please. No really, stop.
+use_udp_trackers = no
 
 # vim: set ft=cfg :

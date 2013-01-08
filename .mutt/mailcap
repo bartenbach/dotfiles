@@ -1,4 +1,4 @@
-text/html; /usr/local/bin/lynx -nolist -dump %s; nametemplate=%s.html; copiousoutput
+text/html; /usr/bin/lynx -nolist -dump %s; nametemplate=%s.html; copiousoutput
 image/*;                feh %s;
 application/x-gzip;     less %s
 application/x-xz;       less %s

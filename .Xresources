@@ -8,7 +8,6 @@ Xcursor*size: 24
 
 ! [URxvt - General Settings]
 URxvt*font:-windows-proggycleanszbp-medium-r-normal--13-80-96-96-c-70-iso8859-1
-!URxvt*boldFont:
 URxvt*buffered: true
 URxvt*foreground: Gray
 URxvt*throughColor: #8080f0
@@ -38,22 +37,29 @@ URxvt*secondaryScroll: true
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: false
 URxvt*scrollTtyKeypress: true
-!URxvt*secondaryScroll: false
 
 ! [URxvt - Fake Transparency]
 URxvt*transparent: true
 URxvt*shading: 20
 
 ! [URxvt - Perl Plugins and URL Matcher]
-URxvt*perl-ext-common: default,matcher,clipboard
+URxvt*perl-ext-common: default,clipboard,url-select,keyboard-select
 URxvt*urlLauncher: /usr/bin/chromium
-URxvt*matcher.button: 1
-URxvt*keysym.M-Delete: perl:matcher:list
+URxvt*url-select.launcher: /usr/bin/chromium
+URxvt*url-select.underline: true
+URxvt*url-select.button: 2
+!URxvt*matcher.button: 2
+!URxvt*keysym.C-Delete: perl:matcher:last
+!URxvt*keysym.M-Delete: perl:matcher:list
+URxvt*keysym.Mod4-u: perl:url-select:select_next
+URxvt*keysym.Mod4-v: perl:keyboard-select:activate
+URxvt.keysym.Mod4-s: perl:keyboard-select:search
+! C-u selection mode
 URxvt*colorUL: #4682B4
 
 ! Misc
 URxvt*insecure: false
-URxvt*utmpInhibit:      true
+URxvt*utmpInhibit: true
 URxvt*print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 
 ! [Color Scheme]

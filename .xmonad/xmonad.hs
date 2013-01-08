@@ -90,6 +90,7 @@ myManageHook = composeAll
     [ className =? "MPlayer"         --> doFloat
     , className =? "Gimp"            --> doFloat
     , className =? "feh"             --> doFloat
+    , className =? "nvidia-settings" --> doFloat
     , resource  =? "desktop_window"  --> doIgnore
     , resource  =? "kdesktop"        --> doIgnore 
     , className =? "Chromium" <&&> stringProperty "WM_WINDOW_ROLE" =? "pop-up" --> doCenterFloat
