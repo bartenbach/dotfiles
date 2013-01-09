@@ -76,7 +76,7 @@ message_delay_time = "4"
 ## - 9 - end of current color
 ## Note: colors can be nested.
 song_list_format = "{%a - }{%t}|{$8%f$9}$R{$5(%l)$9}"
-song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
+song_status_format = "{{%a - }{%t}}|{%f}"
 song_library_format = "{%n - }{%t}|{%f}"
 tag_editor_album_format = "{(%y) }%b"
 #
@@ -187,7 +187,7 @@ store_lyrics_in_song_dir = "no"
 ##
 ## Note: Language has to be expressed as an ISO 639 alpha-2 code.
 ##
-#lastfm_preferred_language = ""
+lastfm_preferred_language = "en_US"
 #ncmpc_like_songs_adding = "no" (enabled - add/remove, disabled - always add)
 #show_hidden_files_in_local_browser = "no"
 #display_screens_numbers_on_start = "yes"

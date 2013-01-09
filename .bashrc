@@ -48,4 +48,7 @@ for config in $config_files
 # bash completion
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
-unset config 
+unset config
+unset config_files
+
+ponysay --colour-msg '1;35' --colour-bubble '0;35' --colour-link '0;35' --q

@@ -47,6 +47,7 @@ set query_command     = "abook --mutt-query '%s'"
 
 # Account Settings
 set imap_user         = blakebartenbach@gmail.com
+set imap_pass         = `gpg --decrypt ~/.gnupg/.passwords/.bartenbach-gmail.gpg`
 set folder            = imaps://blakebartenbach@imap.gmail.com:993/
 set spoolfile         = imaps://blakebartenbach@imap.gmail.com:993/
 set postponed         = "+Drafts"
