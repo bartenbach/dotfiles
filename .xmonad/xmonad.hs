@@ -14,7 +14,6 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid
 import XMonad.Layout.PerWorkspace (onWorkspace)
---import XMonad.Layout.Decoration
 
 -- Hooks
 import XMonad.Hooks.ManageHelpers
@@ -44,13 +43,12 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 -------------
 {-# Theme #-}
 -------------
-myTheme = defaultTheme 
-  { activeColor = "#000000"
-  , activeBorderColor = "#000000"
-  , activeTextColor   = "#000000"
-  , inactiveBorderColor = "#000000"
-  , decoHeight = 16
-  }
+myTheme = defaultTheme { activeColor         = "#000000"
+                       , activeBorderColor   = "#000000"
+                       , activeTextColor     = "#000000"
+                       , inactiveBorderColor = "#000000"
+                       , decoHeight          = 16
+                       }
 
 ---------------
 {-# Borders #-}
@@ -69,12 +67,12 @@ myFocusFollowsMouse  = False
 --------------------
 {-# Applications #-}
 --------------------
-data ShellCommands   = URxvtc
-                     | Screenshot
-                     | ScreenshotArea
-                     | DMenu
-                     | EjectCdrom
-                     | XMonadRecompile
+data ShellCommands     = URxvtc
+                       | Screenshot
+                       | ScreenshotArea
+                       | DMenu
+                       | EjectCdrom
+                       | XMonadRecompile
 
 instance Show ShellCommands where
   show URxvtc          = "urxvtc"
