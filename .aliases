@@ -1,8 +1,9 @@
-#!/bin/bash
+#
+# ~/.aliases
+#
 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
 alias grep='grep --color'
 alias ls='ls --group-directories-first --color --human-readable -F'
 alias sd='systemctl'
+
+# vim : set ft=sh

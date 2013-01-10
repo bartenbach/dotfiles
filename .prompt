@@ -24,6 +24,13 @@ _='
 name='proxa'
 host=''
 PS1_DEBUG=0
+reset='\e[0m'
+red='\e[0;31m'
+green='\e[0;32m'
+ired='\e[0;91m'
+igreen='\e[0;92m'
+purple='\e[0;35m'
+ipurple='\e[0;95m'
 
 #-----------------
 # Git integration
@@ -51,7 +58,7 @@ function get_hostname {
 # Return value
 #--------------
 function get_ret_val {
-  if [[ "$?" == "0" ]];then
+  if [[ "$?" == 0 ]];then
     RET=$igreen
   else
     RET=$red
@@ -63,7 +70,7 @@ function get_ret_val {
 # Gets the pwd
 #--------------
 function get_pwd {
-  [[ $TERM != "linux" ]] && echo -en "\033]0;$PWD\007"
+  [[ $TERM != linux ]] && echo -ne "\033]0;$PWD\007"
 }
 
 #-----------
@@ -76,7 +83,7 @@ function debug {
 #--------------------
 # Set prompt command
 #--------------------
-PROMPT_COMMAND='get_ret_val && debug && get_pwd'
+PROMPT_COMMAND='get_ret_val && get_pwd'
 
 #----------
 # Assemble
@@ -85,7 +92,7 @@ function assemble {
   if [ $EUID -eq 0 ];then
     PS1="$ired[root] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
   else
-    PS1="$igreen[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+    PS1="$green[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
   fi
 }
 
@@ -94,11 +101,7 @@ function assemble {
 #------
 get_username
 get_hostname
-assemble >/dev/null 2>&1
-
-#-----------------
-# Save the whales
-#-----------------
+assemble
 unset _
 
 # vim: set ft=sh :
