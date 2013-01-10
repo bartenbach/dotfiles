@@ -24,7 +24,10 @@ urxvtd -q -o -f
 # twmn notification daemon
 twmnd &
 
-# start window manager
+# systemd-logind session
+systemd --user &
+
+# window manager
 exec /usr/bin/$WINDOW_MANAGER
 
 # vim: set ft=sh :

@@ -25,12 +25,13 @@ name='proxa'
 host=''
 PS1_DEBUG=0
 reset='\e[0m'
-red='\e[0;31m'
-green='\e[0;32m'
-ired='\e[0;91m'
-igreen='\e[0;92m'
-purple='\e[0;35m'
-ipurple='\e[0;95m'
+red='\e[31m'
+green='\e[32m'
+ired='\e[91m'
+igreen='\e[92m'
+purple='\e[35m'
+ipurple='\e[95m'
+yellow='\e[93m'
 
 #-----------------
 # Git integration
@@ -59,9 +60,9 @@ function get_hostname {
 #--------------
 function get_ret_val {
   if [[ "$?" == 0 ]];then
-    RET=$igreen
-  else
     RET=$red
+  else
+    RET=$iyellow
   fi
   assemble
 }
@@ -90,9 +91,9 @@ PROMPT_COMMAND='get_ret_val && get_pwd'
 #----------
 function assemble {
   if [ $EUID -eq 0 ];then
-    PS1="$ired[root] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+    PS1="$red[root] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
   else
-    PS1="$green[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+    PS1="$red[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
   fi
 }
 

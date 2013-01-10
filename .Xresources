@@ -31,7 +31,7 @@ URxvt*tripleclickwords: true
 
 ! [URxvt - Scrolling]
 URxvt*skipScroll: false
-URxvt*scrollBar: true
+URxvt*scrollBar: false
 URxvt*thickness: .5
 URxvt*scrollstyle: plain
 URxvt*scrollColor: #FF00CC

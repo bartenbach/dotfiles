@@ -6,73 +6,69 @@
 ---------------
 {-# Imports #-}
 ---------------
--- Main
 import XMonad hiding ((|||))
-
--- Layout
 import XMonad.Layout.Tabbed
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid
 import XMonad.Layout.PerWorkspace (onWorkspace)
-
--- Hooks
 import XMonad.Hooks.ManageHelpers
-
--- Util
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Themes
-
--- Exit
 import System.Exit (exitWith, ExitCode(ExitSuccess))
-
--- StackSet
 import qualified XMonad.StackSet as W
 
 -----------------
 {-# Mod keys #-}
 -----------------
-myMod        = mod1Mask
-myShiftMod   = myMod .|. shiftMask
-killXMask    = myMod .|. controlMask
+xMod         = mod1Mask
+xShiftMod    = xMod .|. shiftMask
+xKillMask    = xMod .|. controlMask
 
 ------------------
 {-# Workspaces #-}
 ------------------
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+xWorkspaces =  "2":"1":"4":"3":[]
 
 -------------
 {-# Theme #-}
 -------------
-myTheme = defaultTheme { activeColor         = "#000000"
-                       , activeBorderColor   = "#000000"
-                       , activeTextColor     = "#000000"
-                       , inactiveBorderColor = "#000000"
-                       , decoHeight          = 16
-                       }
+xTheme = defaultTheme { activeColor         = "#000"
+                      , activeBorderColor   = "#FF0000"
+                      , activeTextColor     = "#FF0000"
+                      , inactiveColor       = "#000"
+                      , inactiveTextColor   = "#000"
+                      , inactiveBorderColor = "#000"
+                      , urgentColor         = "#000"
+                      , urgentTextColor     = "#63B8FF"
+                      , urgentBorderColor   = "#63B8FF"
+                      , decoHeight          = 12
+                      , decoWidth           = 500
+                      , fontName            = "-xos4-terminus-*-*-*-*-10-*-*-*-*-*-*-*"
+                      }
 
 ---------------
 {-# Borders #-}
 ---------------
-myBorderWidth        = 3
-myNormalBorderColor  = "#000000"
-myFocusedBorderColor = "#ff0000"
+xBorderWidth = 3
+xBorderColor = "#000000"
+xBorderFocus = "#FF0000"
 
 -------------
 {-# Mouse #-}
 -------------
-myFocusFollowsMouse  :: Bool
-myFocusFollowsMouse  = False
+xMouseFocus :: Bool
+xMouseFocus = False
 
 
 --------------------
 {-# Applications #-}
 --------------------
-data ShellCommands     = URxvtc
-                       | Screenshot
-                       | ScreenshotArea
-                       | DMenu
-                       | EjectCdrom
-                       | XMonadRecompile
+data ShellCommands = URxvtc
+                   | Screenshot
+                   | ScreenshotArea
+                   | DMenu
+                   | EjectCdrom
+                   | XMonadRecompile
 
 instance Show ShellCommands where
   show URxvtc          = "urxvtc"
@@ -87,84 +83,86 @@ launch = spawn . show
 --------------------
 {-# Key Bindings #-}
 --------------------
-myKeys =
-    [ ((myMod,       xK_c),               kill)
-    , ((myMod,       xK_Return),          launch URxvtc)
-    , ((myMod,       xK_p),               launch DMenu)
-    , ((myMod,       xK_F12),             launch EjectCdrom)
-    , ((myMod,       xK_q),               launch XMonadRecompile)
-    , ((myMod,       xK_Print),           launch Screenshot)
-    , ((myShiftMod,  xK_Print),           launch ScreenshotArea)
-    , ((myMod,       xK_space),           sendMessage NextLayout)
-    , ((myMod,       xK_h),               sendMessage Shrink)
-    , ((myMod,       xK_l),               sendMessage Expand)
-    , ((myMod,       xK_comma),           sendMessage (IncMasterN 1)) 
-    , ((myMod,       xK_ampersand),       sendMessage (IncMasterN (-1)))
-    , ((myMod,       xK_Up),              windows W.focusUp)
-    , ((myMod,       xK_Down),            windows W.focusDown)
-    , ((myMod,       xK_Left),            windows W.focusUp)
-    , ((myMod,       xK_Right),           windows W.focusDown)
-    , ((myMod,       xK_j),               windows W.focusUp)
-    , ((myMod,       xK_semicolon),       windows W.focusDown)
-    , ((myMod,       xK_k),               windows W.focusDown)
-    , ((myMod,       xK_dollar),          windows W.swapMaster)
-    , ((myShiftMod,  xK_semicolon),       windows W.swapUp) 
-    , ((myShiftMod,  xK_j),               windows W.swapDown)
-    , ((killXMask,   xK_BackSpace),       io (exitWith ExitSuccess)) 
-    , ((myMod,       xK_t),               withFocused $ windows . W.sink)
-    ]
-    ++
-
-    [((m .|. myMod, k), windows $ f i)
-        | (i, k) <- zip (myWorkspaces) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    ++
-
-    [((m .|. myMod, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_e, xK_w] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+xKeys = [((m .|. xMod, k), windows $ f i) 
+            | (i, k) <- zip (xWorkspaces) [xK_1 .. xK_5]
+            , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+        :
+        [((m .|. xMod, key), screenWorkspace sc >>= flip whenJust (windows . f))
+            | (key, sc) <- zip [xK_e, xK_w] [0..]
+            , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+        : ((xMod,      xK_c),         kill)
+        : ((xMod,      xK_Return),    launch URxvtc)
+        : ((xMod,      xK_p),         launch DMenu)
+        : ((xMod,      xK_F12),       launch EjectCdrom)
+        : ((xMod,      xK_q),         launch XMonadRecompile)
+        : ((xMod,      xK_Print),     launch Screenshot)
+        : ((xShiftMod, xK_Print),     launch ScreenshotArea)
+        : ((xMod,      xK_space),     sendMessage NextLayout)
+        : ((xMod,      xK_h),         sendMessage Shrink)
+        : ((xMod,      xK_l),         sendMessage Expand)
+        : ((xMod,      xK_comma),     sendMessage (IncMasterN 1)) 
+        : ((xMod,      xK_ampersand), sendMessage (IncMasterN (-1)))
+        : ((xMod,      xK_Up),        windows W.focusUp)
+        : ((xMod,      xK_Down),      windows W.focusDown)
+        : ((xMod,      xK_Left),      windows W.focusUp)
+        : ((xMod,      xK_Right),     windows W.focusDown)
+        : ((xMod,      xK_j),         windows W.focusUp)
+        : ((xMod,      xK_semicolon), windows W.focusDown)
+        : ((xMod,      xK_k),         windows W.focusDown)
+        : ((xMod,      xK_dollar),    windows W.swapMaster)
+        : ((xShiftMod, xK_semicolon), windows W.swapUp) 
+        : ((xShiftMod, xK_j),         windows W.swapDown)
+        : ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess)) 
+        : ((xMod,      xK_t),         withFocused $ windows . W.sink)
+        : []
 
 -------------------
 {-# Layout Hook #-}
 -------------------
-myLayout = tile ||| tabbed shrinkText myTheme ||| Grid ||| Full
+xLayout = tile ||| tab ||| Grid ||| Full
   where
-     tile    = Tall nmaster delta ratio
-     nmaster = 1
-     ratio   = 1/2
-     delta   = 3/100
+    tab     = tabbed shrinkText xTheme
+    tile    = Tall nmaster delta ratio
+    nmaster = 1
+    ratio   = 1/2
+    delta   = 3/100
 
 -------------------
 {-# Manage Hook #-}
 -------------------
-role = "WM_WINDOW_ROLE"
+fileDialog = "GtkFileChooserDialog"
+popUp      = "pop-up"
+role       = "WM_WINDOW_ROLE"
 
-x_manageHook = composeAll
-    [ className =? "Gimp"                                                                     --> doFloat
-    , resource  =? "desktop_window"                                                           --> doIgnore
-    , resource  =? "kdesktop"                                                                 --> doIgnore 
-    , className =? "MPlayer"                                                                  --> doCenterFloat
-    , className =? "feh"                                                                      --> doCenterFloat
-    , className =? "nvidia-settings"                                                          --> doCenterFloat
-    , className =? "Chromium" <&&> stringProperty "WM_WINDOW_ROLE" =? "pop-up"                --> doCenterFloat
-    , className =? "Chromium" <&&> stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog"  --> doCenterFloat
-    , isDialog                                                                                --> doCenterFloat
-    , isFullscreen                                                                            --> doFullFloat
+isProp x y = stringProperty x =? y
+isClass x  = className =? x
+
+xManage = composeAll
+    [ isClass "Gimp"                                 --> doFloat
+    , isClass "desktop_window"                       --> doIgnore
+    , isClass "kdesktop"                             --> doIgnore
+    , isClass "xmessage"                             --> doCenterFloat 
+    , isClass "MPlayer"                              --> doCenterFloat
+    , isClass "feh"                                  --> doCenterFloat
+    , isClass "nvidia-settings"                      --> doCenterFloat
+    , isClass "Chromium" <&&> isProp role popUp      --> doCenterFloat
+    , isClass "Chromium" <&&> isProp role fileDialog --> doCenterFloat
+    , isDialog                                       --> doCenterFloat
+    , isFullscreen                                   --> doFullFloat
     , transience'
     ]
 
 ------------
 {-# Main #-}
 ------------
-main = xmonad defaults
-
-defaults = defaultConfig { modMask            = myMod
-                         , terminal           = show URxvtc
-                         , focusFollowsMouse  = myFocusFollowsMouse
-                         , borderWidth        = myBorderWidth
-                         , normalBorderColor  = myNormalBorderColor
-                         , focusedBorderColor = myFocusedBorderColor
-                         , workspaces         = myWorkspaces
-                         , layoutHook         = myLayout
-                         , manageHook         = x_manageHook
-                         } `additionalKeys` myKeys
+main = xmonad $ defaultConfig { modMask            = xMod
+                              , terminal           = show URxvtc
+                              , focusFollowsMouse  = xMouseFocus
+                              , borderWidth        = xBorderWidth
+                              , normalBorderColor  = xBorderColor
+                              , focusedBorderColor = xBorderFocus
+                              , workspaces         = xWorkspaces
+                              , layoutHook         = xLayout
+                              , manageHook         = xManage
+                              } 
+                              `additionalKeys` xKeys
