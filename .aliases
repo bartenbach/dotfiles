@@ -5,5 +5,6 @@
 alias grep='grep --color'
 alias ls='ls --group-directories-first --color --human-readable -F'
 alias sd='systemctl'
+alias feh="feh --cycle-once --draw-tinted --preload -Y -. -B black --info \"echo -e 'Name:%n [%u/%l] Filesize:%S Size:%w/%h Type:%t'\""
 
 # vim : set ft=sh

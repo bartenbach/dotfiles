@@ -27,7 +27,7 @@ xKillMask    = xMod .|. controlMask
 ------------------
 {-# Workspaces #-}
 ------------------
-xWorkspaces =  "2":"1":"4":"3":[]
+xWorkspaces =  "1":"2":"3":"4":[]
 
 -------------
 {-# Theme #-}
@@ -42,8 +42,7 @@ xTheme = defaultTheme { activeColor         = "#000"
                       , urgentTextColor     = "#63B8FF"
                       , urgentBorderColor   = "#63B8FF"
                       , decoHeight          = 12
-                      , decoWidth           = 500
-                      , fontName            = "-xos4-terminus-*-*-*-*-10-*-*-*-*-*-*-*"
+                      , fontName            = "-windows-proggyoptis-medium-r-normal--9-80-96-96-c-60-iso8859-1"
                       }
 
 ---------------
@@ -86,35 +85,35 @@ launch = spawn . show
 xKeys = [((m .|. xMod, k), windows $ f i) 
             | (i, k) <- zip (xWorkspaces) [xK_1 .. xK_5]
             , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-        :
-        [((m .|. xMod, key), screenWorkspace sc >>= flip whenJust (windows . f))
+        ++
+        [((m .|. xMod, key), screenWorkspace sc >>= flip whenJust (windows . f)) 
             | (key, sc) <- zip [xK_e, xK_w] [0..]
             , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-        : ((xMod,      xK_c),         kill)
-        : ((xMod,      xK_Return),    launch URxvtc)
-        : ((xMod,      xK_p),         launch DMenu)
-        : ((xMod,      xK_F12),       launch EjectCdrom)
-        : ((xMod,      xK_q),         launch XMonadRecompile)
-        : ((xMod,      xK_Print),     launch Screenshot)
-        : ((xShiftMod, xK_Print),     launch ScreenshotArea)
-        : ((xMod,      xK_space),     sendMessage NextLayout)
-        : ((xMod,      xK_h),         sendMessage Shrink)
-        : ((xMod,      xK_l),         sendMessage Expand)
-        : ((xMod,      xK_comma),     sendMessage (IncMasterN 1)) 
-        : ((xMod,      xK_ampersand), sendMessage (IncMasterN (-1)))
-        : ((xMod,      xK_Up),        windows W.focusUp)
-        : ((xMod,      xK_Down),      windows W.focusDown)
-        : ((xMod,      xK_Left),      windows W.focusUp)
-        : ((xMod,      xK_Right),     windows W.focusDown)
-        : ((xMod,      xK_j),         windows W.focusUp)
-        : ((xMod,      xK_semicolon), windows W.focusDown)
-        : ((xMod,      xK_k),         windows W.focusDown)
-        : ((xMod,      xK_dollar),    windows W.swapMaster)
-        : ((xShiftMod, xK_semicolon), windows W.swapUp) 
-        : ((xShiftMod, xK_j),         windows W.swapDown)
-        : ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess)) 
-        : ((xMod,      xK_t),         withFocused $ windows . W.sink)
-        : []
+        ++
+        [ ((xMod,      xK_c),         kill)
+        , ((xMod,      xK_Return),    launch URxvtc)
+        , ((xMod,      xK_p),         launch DMenu)
+        , ((xMod,      xK_F12),       launch EjectCdrom)
+        , ((xMod,      xK_q),         launch XMonadRecompile)
+        , ((xMod,      xK_Print),     launch Screenshot)
+        , ((xShiftMod, xK_Print),     launch ScreenshotArea)
+        , ((xMod,      xK_space),     sendMessage NextLayout)
+        , ((xMod,      xK_h),         sendMessage Shrink)
+        , ((xMod,      xK_l),         sendMessage Expand)
+        , ((xMod,      xK_comma),     sendMessage (IncMasterN 1))
+        , ((xMod,      xK_ampersand), sendMessage (IncMasterN (-1)))
+        , ((xMod,      xK_Up),        windows W.focusUp)
+        , ((xMod,      xK_Down),      windows W.focusDown)
+        , ((xMod,      xK_Left),      windows W.focusUp)
+        , ((xMod,      xK_Right),     windows W.focusDown)
+        , ((xMod,      xK_j),         windows W.focusUp)
+        , ((xMod,      xK_semicolon), windows W.focusDown)
+        , ((xMod,      xK_k),         windows W.focusDown)
+        , ((xMod,      xK_dollar),    windows W.swapMaster)
+        , ((xShiftMod, xK_semicolon), windows W.swapUp)
+        , ((xShiftMod, xK_j),         windows W.swapDown)
+        , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))
+        , ((xMod,      xK_t),         withFocused $ windows . W.sink)]
 
 -------------------
 {-# Layout Hook #-}
@@ -143,7 +142,7 @@ xManage = composeAll
     , isClass "kdesktop"                             --> doIgnore
     , isClass "xmessage"                             --> doCenterFloat 
     , isClass "MPlayer"                              --> doCenterFloat
-    , isClass "feh"                                  --> doCenterFloat
+  --  , isClass "feh"                                  --> doFloat
     , isClass "nvidia-settings"                      --> doCenterFloat
     , isClass "Chromium" <&&> isProp role popUp      --> doCenterFloat
     , isClass "Chromium" <&&> isProp role fileDialog --> doCenterFloat

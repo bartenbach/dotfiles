@@ -7,7 +7,8 @@ Xcursor*theme: Vanilla-DMZ
 Xcursor*size: 24
 
 ! [URxvt - General Settings]
-URxvt*font:-windows-proggycleanszbp-medium-r-normal--13-80-96-96-c-70-iso8859-1
+!URxvt*font:-windows-proggycleanszbp-medium-r-normal--13-80-96-96-c-70-iso8859-1
+URxvt*font: -windows-proggyopti-medium-r-normal--11-80-96-96-c-70-iso8859-1
 URxvt*buffered: true
 URxvt*foreground: Gray
 URxvt*throughColor: #8080f0

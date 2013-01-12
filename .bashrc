@@ -17,7 +17,6 @@ sourced=( '.aliases .git-prompt .prompt' )
 #----------------
 shopt -s autocd cdspell cmdhist dirspell extglob histverify \
 no_empty_cmd_completion checkwinsize expand_aliases
-unset direxpand
 set -o notify 
 stty -ctlecho -icanon
 
