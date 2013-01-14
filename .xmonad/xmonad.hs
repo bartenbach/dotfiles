@@ -136,20 +136,18 @@ role       = "WM_WINDOW_ROLE"
 isProp x y = stringProperty x =? y
 isClass x  = className =? x
 
-xManage = composeAll
-    [ isClass "Gimp"                                 --> doFloat
-    , isClass "desktop_window"                       --> doIgnore
-    , isClass "kdesktop"                             --> doIgnore
-    , isClass "xmessage"                             --> doCenterFloat 
-    , isClass "MPlayer"                              --> doCenterFloat
-  --  , isClass "feh"                                  --> doFloat
-    , isClass "nvidia-settings"                      --> doCenterFloat
-    , isClass "Chromium" <&&> isProp role popUp      --> doCenterFloat
-    , isClass "Chromium" <&&> isProp role fileDialog --> doCenterFloat
-    , isDialog                                       --> doCenterFloat
-    , isFullscreen                                   --> doFullFloat
-    , transience'
-    ]
+xManage = composeAll [ isClass "Gimp"            --> doFloat
+                     , isClass "desktop_window"  --> doIgnore
+                     , isClass "kdesktop"        --> doIgnore
+                     , isClass "xmessage"        --> doCenterFloat 
+                     , isClass "MPlayer"         --> doCenterFloat
+                     , isClass "nvidia-settings" --> doCenterFloat
+                     , isProp role popUp         --> doCenterFloat
+                     , isProp role fileDialog    --> doCenterFloat
+                     , isDialog                  --> doCenterFloat
+                     , isFullscreen              --> doFullFloat
+                     , transience'
+                     ]
 
 ------------
 {-# Main #-}

@@ -18,14 +18,14 @@ sourced=( '.aliases .git-prompt .prompt' )
 shopt -s autocd cdspell cmdhist dirspell extglob histverify \
 no_empty_cmd_completion checkwinsize expand_aliases
 set -o notify 
-stty -ctlecho -icanon
+stty -ctlecho
 
 #---------------
 # Less settings
 #---------------
 _r=$'\e[0m'
 export LESS="-R -b-1 -J -i -M -W -#.01"
-export LESSHISTFILE=~"/.hist/less_history"
+export LESSHISTFILE=~/".hist/less_history"
 export LESSHISTSIZE=100
 export LESS_TERMCAP_mb=$'\e[0;31m'     # Begin blinking
 export LESS_TERMCAP_md=$'\e[0;35m'     # Begin bold
