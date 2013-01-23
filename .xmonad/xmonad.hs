@@ -7,50 +7,28 @@
 {-# Imports #-}
 ---------------
 import XMonad hiding ((|||))
-import XMonad.Layout.Tabbed
+import XMonad.Layout.Tabbed (tabbed, Theme(..), defaultTheme, shrinkText)
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
-import XMonad.Layout.Grid
+import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.PerWorkspace (onWorkspace)
-import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat, 
+                                          doCenterFloat, transience')
 import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Util.Themes
 import System.Exit (exitWith, ExitCode(ExitSuccess))
 import qualified XMonad.StackSet as W
 
 -----------------
-{-# Mod keys #-}
+{-# Mod Keys #-}
 -----------------
-xMod         = mod1Mask
-xShiftMod    = xMod .|. shiftMask
-xKillMask    = xMod .|. controlMask
-
-------------------
-{-# Workspaces #-}
-------------------
-xWorkspaces =  "1":"2":"3":"4":[]
-
--------------
-{-# Theme #-}
--------------
-xTheme = defaultTheme { activeColor         = "#000"
-                      , activeBorderColor   = "#FF0000"
-                      , activeTextColor     = "#FF0000"
-                      , inactiveColor       = "#000"
-                      , inactiveTextColor   = "#000"
-                      , inactiveBorderColor = "#000"
-                      , urgentColor         = "#000"
-                      , urgentTextColor     = "#63B8FF"
-                      , urgentBorderColor   = "#63B8FF"
-                      , decoHeight          = 12
-                      , fontName            = "-windows-proggyoptis-medium-r-normal--9-80-96-96-c-60-iso8859-1"
-                      }
-
+xMod      = mod1Mask
+xShiftMod = xMod .|. shiftMask
+xKillMask = xMod .|. controlMask
 ---------------
 {-# Borders #-}
 ---------------
-xBorderWidth = 3
-xBorderColor = "#000000"
-xBorderFocus = "#FF0000"
+xBorderWidth = 10
+xBorderColor = show Black
+xBorderFocus = show Red
 
 -------------
 {-# Mouse #-}
@@ -58,6 +36,22 @@ xBorderFocus = "#FF0000"
 xMouseFocus :: Bool
 xMouseFocus = False
 
+------------------
+{-# Workspaces #-}
+------------------
+xWorkspaces = "1":"2":"3":"4":[]
+
+-------------------------
+{-# Color Definitions #-}
+-------------------------
+data XColor = Red
+            | Black
+            | Yellow
+
+instance Show XColor where
+    show Red    = "#FF0000"
+    show Yellow = "#FFFF00"
+    show Black  = "#000"
 
 --------------------
 {-# Applications #-}
@@ -78,6 +72,24 @@ instance Show ShellCommands where
   show XMonadRecompile = "xmonad --recompile;xmonad --restart"
 
 launch = spawn . show
+
+-------------
+{-# Theme #-}
+-------------
+xFont  = "-windows-proggytinysz-medium-r-normal--8-80-96-96-c-60-iso8859-1"
+
+xTheme = defaultTheme { activeColor         = show Black
+                      , activeBorderColor   = show Red
+                      , activeTextColor     = show Red
+                      , inactiveColor       = show Black
+                      , inactiveTextColor   = show Black
+                      , inactiveBorderColor = show Black
+                      , urgentColor         = show Black
+                      , urgentTextColor     = show Yellow
+                      , urgentBorderColor   = show Yellow
+                      , fontName            = xFont
+                      , decoHeight          = 12
+                      }
 
 --------------------
 {-# Key Bindings #-}
@@ -123,8 +135,8 @@ xLayout = tile ||| tab ||| Grid ||| Full
     tab     = tabbed shrinkText xTheme
     tile    = Tall nmaster delta ratio
     nmaster = 1
-    ratio   = 1/2
     delta   = 3/100
+    ratio   = 1/2
 
 -------------------
 {-# Manage Hook #-}
@@ -134,9 +146,10 @@ popUp      = "pop-up"
 role       = "WM_WINDOW_ROLE"
 
 isProp x y = stringProperty x =? y
-isClass x  = className =? x
+isClass x  = className        =? x
 
 xManage = composeAll [ isClass "Gimp"            --> doFloat
+                     , isClass "feh"             --> doFloat
                      , isClass "desktop_window"  --> doIgnore
                      , isClass "kdesktop"        --> doIgnore
                      , isClass "xmessage"        --> doCenterFloat 

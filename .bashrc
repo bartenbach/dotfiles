@@ -11,7 +11,6 @@
 # Personal configurations
 #-------------------------
 sourced=( '.aliases .git-prompt .prompt' )
-
 #----------------
 # Shell settings
 #----------------

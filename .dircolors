@@ -54,9 +54,9 @@ TERM xterm-color
 TERM xterm-debian
 
 # defaults
-NORMAL 00
-FILE 00
-DIR 00;35
+NORMAL 00;97
+FILE   00;97
+DIR    00;33
 LINK   00;36
 FIFO   40;33
 SOCK   00;35

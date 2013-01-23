@@ -8,7 +8,9 @@ Xcursor*size: 24
 
 ! [URxvt - General Settings]
 !URxvt*font:-windows-proggycleanszbp-medium-r-normal--13-80-96-96-c-70-iso8859-1
-URxvt*font: -windows-proggyopti-medium-r-normal--11-80-96-96-c-70-iso8859-1
+!URxvt*font: -windows-proggyopti-medium-r-normal--11-80-96-96-c-70-iso8859-1
+URxvt*font: xft:terminus:pixelsize=14
+!URxvt*font: -windows-proggytinysz-medium-r-normal--10-80-96-96-c-60-iso8859-1
 URxvt*buffered: true
 URxvt*foreground: Gray
 URxvt*throughColor: #8080f0
@@ -44,7 +46,7 @@ URxvt*scrollTtyKeypress: true
 
 ! [URxvt - Fast Transparency]
 URxvt*transparent: true
-URxvt*shading: 20
+URxvt*shading: 60
 
 ! [URxvt - Perl Plugins]
 URxvt*perl-ext-common: default,clipboard,url-select,keyboard-select
