@@ -2,7 +2,6 @@
 
 # Main Configuration
 set mbox_type         = Maildir
-set mbox              = ~/.mutt/mail/
 set tmpdir            = ~/.mutt/tmp
 set alias_file        = ~/.mutt/aliases
 set certificate_file  = ~/.mutt/certificates
@@ -13,9 +12,9 @@ set message_cachedir  = ~/.cache/mutt/msg_cache
 set header_cache      = ~/.cache/mutt/header_cache
 set editor            = vim
 set realname          = "Blake Bartenbach"
+set from              = "BlakeBartenbach@gmail.com"
 set ispell            = "aspell -e -c"
 set pager_context     = 5
-set mail_check        = 0
 set pager_index_lines = 15
 set sleep_time        = 0
 set wrap              = 0
@@ -52,39 +51,36 @@ set imap_pass         = `gpg --decrypt ~/.gnupg/.passwords/.bartenbach-gmail.gpg
 set folder            = imaps://blakebartenbach@imap.gmail.com:993/
 set spoolfile         = imaps://blakebartenbach@imap.gmail.com:993/
 set smtp_url          = smtps://$imap_user:$imap_pass@smtp.gmail.com
-set postponed         = "+Drafts"
-set record            = "+Sent Mail"
-set trash             = "+Trash"
 set mail_check        = 300
 unset imap_passive
 set imap_check_subscribed
-#unmailboxes           = '+[Gmail]/Sent Mail' +[Gmail]/Drafts
-#mailboxes             = +Important +'All Mail' +Spam +Starred
 
 # Sidebar
 set sidebar_visible
-set sidebar_width     = 26
+set sidebar_width     = 27
 set sidebar_delim     = "┃"
 
 # Bindings
 bind pager q          exit
-bind pager /          search
-bind pager <up>       previous-line
-bind pager <down>     next-line
+bind pager,index /    search
 bind pager k          previous-line
 bind pager j          next-line
-bind index R          imap-fetch-mail
-bind index S          save-message
-bind index s          sidebar-next
-bind index w          sidebar-prev
-bind index <space>    sidebar-open
-bind index d          sidebar-open
-bind index D          delete-message
+bind pager,index \Cf  next-page
+bind pager,index \Cb  previous-page
+bind index g          first-entry
+bind index G          last-entry
+bind pager g          top
+bind pager G          bottom
+bind pager,index S    save-message
+bind pager,index s    sidebar-next
+bind pager,index w    sidebar-prev
+bind pager,index d    sidebar-open
+bind pager,index D    delete-message
 
 # Appearance
 set sort_aux = reverse-last-date-received
 set sort     = threads
-set tilde
+unset tilde
 set text_flowed
 set smart_wrap
 unset sort_re
@@ -102,12 +98,12 @@ set attribution       = "On %d, %n wrote:"
 # Falconindy's cleaner headers
 ignore * 
 unignore from: to: cc: date: subject:
-hdr_order from: to: cc: date: subject: # this option is broken or sketchy
+hdr_order from: to: cc: date: subject:
 
 # Colors
 source  ~/.mutt/themes/proxa.muttrc
 
 # Source command files
-#source ~/.mutt/aliases
+source ~/.mutt/aliases
 #source ~/.mutt/alternates
 source /etc/Muttrc.gpg.dist

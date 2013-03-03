@@ -11,6 +11,7 @@
 # Personal configurations
 #-------------------------
 sourced=( '.aliases .git-prompt .prompt' )
+
 #----------------
 # Shell settings
 #----------------
@@ -24,7 +25,7 @@ stty -ctlecho
 #---------------
 _r=$'\e[0m'
 export LESS="-R -b-1 -J -i -M -W -#.01"
-export LESSHISTFILE=~/".hist/less_history"
+export LESSHISTFILE="~/.hist/less_history"
 export LESSHISTSIZE=100
 export LESS_TERMCAP_mb=$'\e[0;31m'     # Begin blinking
 export LESS_TERMCAP_md=$'\e[0;35m'     # Begin bold
@@ -38,7 +39,7 @@ export LESS_TERMCAP_so=$'\e[0;44;37m'  # Begin standout-mode (info box)
 # Bash history
 #--------------
 export IGNOREEOF=2
-export HISTFILE=~/".hist/bash_history"
+export HISTFILE="~/.hist/bash_history"
 export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd *"
 export HISTCONTROL="ignoreboth:erasedups"
 export HISTSIZE=50
@@ -48,7 +49,6 @@ export HISTFILESIZE=250
 # Bash variables
 #----------------
 FIGNORE=""
-unset MAILCHECK # I don't have a maildir
 PS3="+"
 PS4="  "
 
@@ -78,4 +78,4 @@ bash_completion='/usr/share/bash-completion/bash_completion'
 #---------------------------
 # Yep, I really went there.
 #---------------------------
-ponysay --colour-msg '1;35' --colour-bubble '0;35' --colour-link '0;35' --q
+#ponysay --colour-msg '1;35' --colour-bubble '0;35' --colour-link '0;35' --q

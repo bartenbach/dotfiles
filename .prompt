@@ -21,7 +21,7 @@ _='
 #-----------
 # Variables
 #-----------
-name='proxa'
+name=''
 host=''
 PS1_DEBUG=0
 reset='\e[0m'

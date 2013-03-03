@@ -4,16 +4,15 @@
 #
 
 WINDOW_MANAGER='xmonad'
-WALLPAPER='3840s/3840test2.jpg'
 
-# append artwiz and dina to font path
+# append artwiz and dina to font path and set dpms
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
+
+# set keymap
+setxkbmap -layout dvorak
 
 # shift of red
 redshift &
-
-# wallpaper
-hsetroot -center /home/seed419/img/wallpapers/$WALLPAPER
 
 # merge .Xresources
 xrdb merge ~/.Xresources

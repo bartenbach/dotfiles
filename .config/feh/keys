@@ -1,0 +1,107 @@
+#
+# File: ~/.config/feh/keys
+# Description: Vim-like bindings for feh
+# Author: proxa
+#
+
+# Unbind defaults
+action_0
+action_1
+action_2
+action_3
+action_4
+action_5
+action_6
+action_7
+action_8
+action_9
+close
+delete
+flip
+jump_back
+jump_first
+jump_fwd
+jump_last
+jump_random
+mirror
+next_img
+menu_child
+menu_close
+menu_down
+menu_parent
+menu_select
+menu_up
+orient_1
+orient_3
+prev_img
+quit
+reload_image
+reload_minus
+reload_plus
+remove
+render
+save_image
+scroll_down
+scroll_down_page
+scroll_left
+scroll_left_page
+scroll_right
+scroll_right_page
+scroll_up
+scroll_up_page
+size_to_image
+toggle_actions
+toggle_aliasing
+toggle_caption
+toggle_exif
+toggle_fullscreen
+toggle_filenames
+toggle_info
+toggle_keep_vp
+toggle_menu
+toggle_pause
+toggle_pointer
+zoom_default
+zoom_fit
+zoom_in
+zoom_out
+
+#======================
+# Action           Key
+#======================
+# Keys
+#------
+prev_img            h
+next_img            l
+
+scroll_left         H
+scroll_right        L
+
+zoom_default        A
+zoom_in             k
+zoom_out            j
+
+jump_first          g
+jump_last           G
+
+# This isn't binding for some reason
+#orient_1            >
+#orient_3            <
+
+reload_image        r
+
+toggle_fullscreen   f
+toggle_info         i
+toggle_caption      c
+
+save_image          s
+delete              D
+
+quit                q
+
+#------
+# Menu
+#------
+# TODO
+
+# vim: set ft=cfg

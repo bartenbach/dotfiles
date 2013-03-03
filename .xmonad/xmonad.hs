@@ -120,10 +120,10 @@ xKeys = [((m .|. xMod, k), windows $ f i)
         , ((xMod,      xK_Right),     windows W.focusDown)
         , ((xMod,      xK_j),         windows W.focusUp)
         , ((xMod,      xK_semicolon), windows W.focusDown)
-        , ((xMod,      xK_k),         windows W.focusDown)
+        , ((xMod,      xK_t),         windows W.focusDown)
         , ((xMod,      xK_dollar),    windows W.swapMaster)
         , ((xShiftMod, xK_semicolon), windows W.swapUp)
-        , ((xShiftMod, xK_j),         windows W.swapDown)
+        , ((xShiftMod, xK_k),         windows W.swapDown)
         , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))
         , ((xMod,      xK_t),         withFocused $ windows . W.sink)]
 

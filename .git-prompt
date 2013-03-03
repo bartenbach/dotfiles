@@ -3,8 +3,6 @@
 # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>
 # Distributed under the GNU General Public License, version 2.0.
 #
-# This script allows you to see the current branch in your prompt.
-#
 # To enable:
 #
 #    1) Copy this file to somewhere (e.g. ~/.git-prompt.sh).
@@ -275,7 +273,7 @@ __git_ps1 ()
 
 			if [ -n "${GIT_PS1_SHOWUNTRACKEDFILES-}" ]; then
 				if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-					u="$icyan✕"
+					u="$icyan+"
 				fi
 			fi
 

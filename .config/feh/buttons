@@ -1,0 +1,18 @@
+#
+# File: ~/.config/feh/buttons
+# Description: Removes mouse bindings from feh
+# Author: proxa
+#
+
+reload
+pan
+zoom
+menu
+prev
+next
+blur
+rotate
+zoom_in
+zoom_out
+
+# vim: set ft=cfg

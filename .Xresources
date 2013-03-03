@@ -46,7 +46,7 @@ URxvt*scrollTtyKeypress: true
 
 ! [URxvt - Fast Transparency]
 URxvt*transparent: true
-URxvt*shading: 60
+URxvt*shading: 20
 
 ! [URxvt - Perl Plugins]
 URxvt*perl-ext-common: default,clipboard,url-select,keyboard-select

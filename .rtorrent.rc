@@ -6,7 +6,7 @@
 directory = /home/seed419/download/torrent
 
 # Default session directory.
-session = /home/seed419/.session
+session = /home/seed419/.torrent
 
 # Close torrents when diskspace is low.
 schedule = low_diskspace,5,60,close_low_diskspace=100M
@@ -20,7 +20,7 @@ system.method.set_key = event.download.finished,notify_me,"execute=~/rtorrent_ma
 # Help a nigga out on dat local network
 peer_exchange = yes
 
-# Stop. Please. No really, stop.
-use_udp_trackers = no
+# Most trackers are UDP
+use_udp_trackers = yes
 
 # vim: set ft=cfg :
