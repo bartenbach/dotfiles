@@ -1,0 +1,9 @@
+# vim: ft=zsh
+#
+# File: ~/.zprompt
+# Description: Prompt for zsh shell
+# Author: proxa
+#
+
+PS1=""
+

@@ -1,3 +1,4 @@
+# vim: set ft=sh ts=2 sw=2 et:
 #
 # ~/.aliases
 #
@@ -8,4 +9,3 @@ alias sd='systemctl'
 alias mv='mv -i'
 alias feh="feh --geometry 1900x1060 --cycle-once --draw-tinted --preload -Y -. -B black --info \"echo -e 'Name:%n [%u/%l] Filesize:%S Size:%w/%h Type:%t'\""
 
-# vim: set ft=sh ts=2 sw=2 et:

@@ -1,4 +1,6 @@
+#
 # -*-muttrc-*-
+#
 
 # Main Configuration
 set mbox_type         = Maildir
