@@ -8,7 +8,7 @@ WINDOW_MANAGER='xmonad'
 # append artwiz and dina to font path and set dpms
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 
-# set keymap
+# dvorak!
 setxkbmap -layout dvorak
 
 # shift of red
@@ -21,10 +21,10 @@ xrdb merge ~/.Xresources
 urxvtd -q -o -f  
 
 # twmn notification daemon
-twmnd &
+#twmnd &
 
 # systemd-logind session
-systemd --user &
+#systemd --user &
 
 # window manager
 exec /usr/bin/$WINDOW_MANAGER

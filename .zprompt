@@ -5,5 +5,4 @@
 # Author: proxa
 #
 
-PS1=""
-
+PS1="$fg_no_bold[green][%n.%m] %~ %# $fg[white]"

@@ -10,15 +10,13 @@
 #-------------------------
 # Personal configurations
 #-------------------------
-sourced=( '.aliases .git-prompt .prompt' )
-
+local sourced=( '.aliases .git-prompt .prompt' )
 local file
+
 for file in $sourced
   do
     [[ -r ~/$file ]] && . ~/"$file"
   done
-unset file
-unset sourced
 
 #----------------
 # Shell settings
