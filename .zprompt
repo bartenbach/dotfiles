@@ -1,0 +1,19 @@
+# vim: ft=zsh
+#
+# File: ~/.zprompt
+# Description: Prompt for zsh shell
+# Author: proxa
+#
+
+if [[ $EUID -eq 0 ]] {
+  COLOR="red"
+} else {
+  COLOR="green"
+}
+
+EXIT="green"
+#precmd(){
+#  %(?.EXIT_COLOR="green".EXIT_COLOR="red")
+#}
+
+PS1="$fg[cyan](%D{%-l:%M%P}) $fg_no_bold[$COLOR][%n] $fg[blue]%~ $fg[$EXIT]%# $fg[white]"

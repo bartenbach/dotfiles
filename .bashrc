@@ -1,51 +1,82 @@
 #
-# .bashrc
+# ~/.bashrc
 #
 
-# return if not interactive
+#---------------------------
+# Return if not interactive
+#---------------------------
 [[ $- == *i* ]] || return
 
-config_files=( '.aliases .git-prompt .colors .prompt' )
+#-------------------------
+# Personal configurations
+#-------------------------
+sourced=( '.aliases .git-prompt .prompt' )
 
-# shell opts
-shopt -s cdspell dirspell extglob histverify no_empty_cmd_completion checkwinsize autocd
+#----------------
+# Shell settings
+#----------------
+shopt -s autocd cdspell cmdhist dirspell extglob histverify \
+no_empty_cmd_completion checkwinsize expand_aliases
+set -o notify 
+stty -ctlecho
 
-set -o notify           # notify of completed background jobs immediately
-ulimit -S -c 0 -n 4096  # disable core dumps
-stty -ctlecho           # turn off control character echoing
+#---------------
+# Less settings
+#---------------
+_r=$'\e[0m'
+export LESS="-R -b-1 -J -i -M -W -#.01"
+export LESSHISTFILE=~/".hist/less_history"
+export LESSHISTSIZE=100
+export LESS_TERMCAP_mb=$'\e[0;31m'     # Begin blinking
+export LESS_TERMCAP_md=$'\e[0;35m'     # Begin bold
+export LESS_TERMCAP_us=$'\e[0;94m'     # Begin underline
+export LESS_TERMCAP_me=$_r             # End mode
+export LESS_TERMCAP_se=$_r             # End standout-mode
+export LESS_TERMCAP_ue=$_r             # End underline
+export LESS_TERMCAP_so=$'\e[0;44;37m'  # Begin standout-mode (info box)
 
-# better less
-export LESS=-R # use -X to avoid sending terminal initialization
-export LESS_TERMCAP_mb=$'\e[00;31m' # red somewhere?
-export LESS_TERMCAP_md=$'\e[1;35m'
-#export LESS_TERMCAP_me=$'\e[0m' # horrible
-export LESS_TERMCAP_se=$'\e[0m' #Page up/down place reminder
-#export LESS_TERMCAP_ue=$'\e[0m' # horrible
-export LESS_TERMCAP_so=$'\e[10;95m' # bottom left man page indicator
-export LESS_TERMCAP_so=$'\e[00;44;37m' # what is this?
-export LESS_TERMCAP_us=$'\e[00;96m'
-      
-# history
+#--------------   
+# Bash history
+#--------------
+export IGNOREEOF=2
+export HISTFILE=~/".hist/bash_history"
 export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd *"
 export HISTCONTROL="ignoreboth:erasedups"
-export HISTSIZE=100
-export HISTFILESIZE=500
+export HISTSIZE=50
+export HISTFILESIZE=250
 
-# dircolors
+#----------------
+# Bash variables
+#----------------
+FIGNORE=""
+unset MAILCHECK # I don't have a maildir
+PS3="+"
+PS4="  "
+
+#----------------------
+# Add custom dircolors
+#----------------------
 if [[ -r ~/.dircolors ]] && type -p dircolors >/dev/null; then
     eval $(dircolors -b "$HOME/.dircolors")
 fi
 
-# TODO setup sendmail...
-unset MAILCHECK
-
-# parse configuration files
-for config in $config_files
+#--------------------------
+# Source relevant dotfiles
+#--------------------------
+for file in $sourced
   do
-    [[ -r ~/$config ]] && . ~/"$config"
+    [[ -r ~/$file ]] && . ~/"$file"
   done
+unset file
+unset sourced
 
-# bash completion
-[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+#-----------------
+# Bash completion
+#-----------------
+bash_completion='/usr/share/bash-completion/bash_completion'
+[ -r $bash_completion ] && . $bash_completion
 
-unset config 
+#---------------------------
+# Yep, I really went there.
+#---------------------------
+ponysay --colour-msg '1;35' --colour-bubble '0;35' --colour-link '0;35' --q

@@ -2,31 +2,29 @@
 #
 #  ~/.xinitrc
 #
-WINDOW_MANAGER='xmonad'
-WALLPAPER='haskell.png'
 
-# launch dbus
-dbus-launch --sh-syntax
+# append artwiz and dina to font path and set dpms
+xset +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts &
 
-# append artwiz and dina to font path
-xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
+# set keymap
+setxkbmap dvorak &
 
 # shift of red
-redshifter
+#redshifter &
 
-# wallpaper
-hsetroot -center /home/seed419/img/wallpapers/$WALLPAPER
-
-# merge .Xresources
-xrdb merge ~/.Xresources
+# .Xresources
+xrdb -nocpp ~/.Xresources
 
 # urxvt 'server'
-urxvtd -q -o -f  
+urxvtd -q -o -f &
 
 # twmn notification daemon
-twmnd &
+#twmnd &
+
+# try ze xmobar
+#xmobar &
 
 # start window manager
-exec /usr/bin/$WINDOW_MANAGER
+exec /usr/bin/xmonad
 
 # vim: set ft=sh :

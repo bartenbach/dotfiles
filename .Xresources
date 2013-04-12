@@ -1,22 +1,22 @@
-!+++++++++++++
-! .Xresources 
-!+++++++++++++
+!
+! File: ~/.Xresources
+! Description: Terminal and X settings
+! Author: proxa
+!
 
 ! [Cursor theme] 
 Xcursor*theme: Vanilla-DMZ
-Xcursor*size: 24
 
 ! [URxvt - General Settings]
-URxvt*font:-windows-proggycleanszbp-medium-r-normal--13-80-96-96-c-70-iso8859-1
-!URxvt*boldFont:
+URxvt*font: xft:terminus:pixelsize=15:antialias=false
+URxvt*boldFont:
+URxvt*italicFont:
+URxvt*boldItalicFont:
 URxvt*buffered: true
-URxvt*foreground: Gray
-URxvt*throughColor: #8080f0
-URxvt*saveLines: 1200
+URxvt*saveLines: 512
 URxvt*visualBell: false
-URxvt*cursorColor:#83C048
 URxvt*cursorBlink:true
-URxvt*internalBorder: 0
+URxvt*internalBorder: 1
 URxvt*externalBorder: 0
 URxvt*borderless: true
 URxvt*meta: ignore
@@ -25,54 +25,37 @@ URxvt*iso14755: false
 URxvt*iso14755_52: false
 URxvt*pointerBlank: true
 URxvt*pointerBlankDelay: 1
-URxvt.cutchars: "()*,<>[]{}|'"
-URxvt*lineSpace: 1
+URxvt*cutchars: "()*,<>[]{}|'"
+URxvt*lineSpace: 2
+URxvt*tripleclickwords: true
+URxvt*urgentOnBell: true
 
 ! [URxvt - Scrolling]
 URxvt*skipScroll: false
 URxvt*scrollBar: false
-!URxvt*scrollStyle: plain
-!URxvt*scrollColor: 
-!URxvt*scrollBar_right: true
-URxvt*secondaryScroll: true
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: false
 URxvt*scrollTtyKeypress: true
-!URxvt*secondaryScroll: false
+URxvt*mouseWheelScrollPage: false
 
-! [URxvt - Fake Transparency]
-URxvt*transparent: true
-URxvt*shading: 20
-
-! [URxvt - Perl Plugins and URL Matcher]
-URxvt*perl-ext-common: default,matcher,clipboard
+! [URxvt - Perl Plugins]
+URxvt*perl-ext-common: default,clipboard,url-select,keyboard-select
 URxvt*urlLauncher: /usr/bin/chromium
-URxvt*matcher.button: 1
-URxvt*keysym.M-Delete: perl:matcher:list
-URxvt*colorUL: #4682B4
+URxvt*url-select.launcher: /usr/bin/chromium
+URxvt*url-select.underline: true
+URxvt*url-select.button: 2
+URxvt*keysym.C-u: perl:url-select:select_next
+URxvt*keysym.Mod4-v: perl:keyboard-select:activate
+URxvt*keysym.Mod4-s: perl:keyboard-select:search
 
-! Misc
+! [Misc]
 URxvt*insecure: false
-URxvt*utmpInhibit:      true
-URxvt*print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+URxvt*utmpInhibit: true
+!URxvt*print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 
 ! [Color Scheme]
-!#include ".config/xcolors/dwmrob"
-!#include ".config/xcolors/derp"
-!#include ".config/xcolors/digerati"
-!#include ".config/xcolors/gnometerm"
-!#include ".config/xcolors/jasonwryan"
-!#include ".config/xcolors/phrak1"
-!#include ".config/xcolors/rezza"
-!#include ".config/xcolors/rydgel"
-!#include ".config/xcolors/shiva"
-!#include ".config/xcolors/tango"
-!#include ".config/xcolors/zenburn"
+URxvt*background: #000
+URxvt*foreground: #fff
+URxvt*cursorColor: #bbb
+URxvt*colorUL: #4682B4
 #include ".config/xcolors/proxa_theme"
-
-! Xft settings ---------------------------------------------------------------
-Xft.dpi:        96
-Xft.antialias:  true
-Xft.rgba:       rgb
-Xft.hinting:    true
-Xft.hintstyle:  hintslight

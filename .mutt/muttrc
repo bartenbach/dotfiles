@@ -11,7 +11,7 @@ set history_file      = ~/.mutt/.history
 set mailcap_path      = ~/.mutt/mailcap
 set message_cachedir  = ~/.cache/mutt/msg_cache
 set header_cache      = ~/.cache/mutt/header_cache
-set editor            = emacs
+set editor            = vim
 set realname          = "Blake Bartenbach"
 set ispell            = "aspell -e -c"
 set pager_context     = 5
@@ -38,6 +38,7 @@ set forward_edit
 set pipe_decode
 set message_cache_clean
 set narrow_tree
+unset save_name
 auto_view text/html
 
 # Falconindy's abook macros
@@ -47,15 +48,19 @@ set query_command     = "abook --mutt-query '%s'"
 
 # Account Settings
 set imap_user         = blakebartenbach@gmail.com
+# Need to set up global GPG key
+#set imap_pass         = `gpg --decrypt ~/.gnupg/.passwords/.bartenbach-gmail.gpg`
 set folder            = imaps://blakebartenbach@imap.gmail.com:993/
 set spoolfile         = imaps://blakebartenbach@imap.gmail.com:993/
+set smtp_url          = smtps://$imap_user:$imap_pass@smtp.gmail.com
 set postponed         = "+Drafts"
 set record            = "+Sent Mail"
 set trash             = "+Trash"
 set mail_check        = 300
 unset imap_passive
-#mailboxes            = +Drafts +'Sent Mail' +Spam +Trash
 set imap_check_subscribed
+#unmailboxes           = '+[Gmail]/Sent Mail' +[Gmail]/Drafts
+#mailboxes             = +Important +'All Mail' +Spam +Starred
 
 # Sidebar
 set sidebar_visible
@@ -70,9 +75,12 @@ bind pager <down>     next-line
 bind pager k          previous-line
 bind pager j          next-line
 bind index R          imap-fetch-mail
+bind index S          save-message
 bind index s          sidebar-next
 bind index w          sidebar-prev
+bind index <space>    sidebar-open
 bind index d          sidebar-open
+bind index D          delete-message
 
 # Appearance
 set sort_aux = reverse-last-date-received
@@ -103,3 +111,4 @@ source  ~/.mutt/themes/proxa.muttrc
 # Source command files
 source ~/.mutt/aliases
 source ~/.mutt/alternates
+source /etc/Muttrc.gpg.dist

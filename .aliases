@@ -1,9 +1,16 @@
-#!/bin/bash
+#
+# ~/.aliases
+#
 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
 alias grep='grep --color'
-alias ls='ls --group-directories-first --color --human-readable -F'
+alias ls='ls --group-directories-first --color=auto --human-readable -F -b'
+alias mv='mv -i'
+alias df='df -h'
+alias du='du -h'
+alias lsblk='lsblk -a'
 alias sd='systemctl'
-alias pacman='pacman-color'
+alias feh="feh --cycle-once --draw-tinted --preload -Y -. -B black --info \"echo -e 'Name:%n [%u/%l] Filesize:%S Size:%w/%h Type:%t'\""
+alias vlc="vlc -I ncurses"
+alias mplayer="mplayer --no-joystick"
+
+# vim: set ft=sh ts=2 sw=2 et:
