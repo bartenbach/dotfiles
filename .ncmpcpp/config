@@ -2,12 +2,11 @@
 
 # directories
 ncmpcpp_directory = "~/.ncmpcpp"
-lyrics_directory = "~/.lyrics"
+#lyrics_directory = "~/.lyrics"
 
 # mpd
-mpd_host = "127.0.0.1"
-mpd_port = "6600"
-mpd_music_dir = "/home/seed419/music"
+mpd_host = "/home/proxa/.mpd/mpd-socket"
+mpd_music_dir = "/home/proxa/music"
 mpd_connection_timeout = "5"
 mpd_crossfade_time = "5"
 mpd_communication_mode = "notifications"
@@ -89,7 +88,7 @@ song_window_title_format = "{%a - }{%t}|{%f}" # color not supported here
 song_columns_list_format = "(7)[]{l} (25)[]{a} (40)[]{t|f} (30)[]{b}"
 
 # misc
-execute_on_song_change = "twmnc \"-t $(ncmpcpp --now-playing '{%a}|{%f}')\" \"-c $(ncmpcpp --now-playing '{%t}')\""
+#execute_on_song_change = "twmnc \"-t $(ncmpcpp --now-playing '{%a}|{%f}')\" \"-c $(ncmpcpp --now-playing '{%t}')\""
 playlist_show_remaining_time = "yes"
 playlist_shorten_total_times = "yes"
 playlist_separate_albums = "no"

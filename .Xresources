@@ -8,15 +8,15 @@
 Xcursor*theme: Vanilla-DMZ
 
 ! [URxvt - General Settings]
-URxvt*font: xft:terminus:pixelsize=15:antialias=false
-URxvt*boldFont:
-URxvt*italicFont:
-URxvt*boldItalicFont:
+URxvt*font: xft:terminus:pixelsize=13:antialias=true
+!URxvt*boldFont:
+!URxvt*italicFont:
+!URxvt*boldItalicFont:
 URxvt*buffered: true
 URxvt*saveLines: 512
 URxvt*visualBell: false
 URxvt*cursorBlink:true
-URxvt*internalBorder: 1
+URxvt*internalBorder: 0
 URxvt*externalBorder: 0
 URxvt*borderless: true
 URxvt*meta: ignore
@@ -28,7 +28,13 @@ URxvt*pointerBlankDelay: 1
 URxvt*cutchars: "()*,<>[]{}|'"
 URxvt*lineSpace: 2
 URxvt*tripleclickwords: true
-URxvt*urgentOnBell: true
+URxvt*urgentOnBell: false
+
+!URxvt*background: #000
+URxvt*foreground: #fff
+! [URxvt - Transparency]
+URxvt*transparent: true
+URxvt*shading: 30
 
 ! [URxvt - Scrolling]
 URxvt*skipScroll: false
@@ -51,11 +57,8 @@ URxvt*keysym.Mod4-s: perl:keyboard-select:search
 ! [Misc]
 URxvt*insecure: false
 URxvt*utmpInhibit: true
-!URxvt*print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
 
 ! [Color Scheme]
-URxvt*background: #000
-URxvt*foreground: #fff
 URxvt*cursorColor: #bbb
 URxvt*colorUL: #4682B4
 #include ".config/xcolors/proxa_theme"

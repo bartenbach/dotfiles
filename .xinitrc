@@ -1,30 +1,24 @@
 #!/bin/sh -
 #
-#  ~/.xinitrc
+# ~/.xinitrc
 #
 
-# append artwiz and dina to font path and set dpms
-xset +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts &
-
-# set keymap
-setxkbmap dvorak &
-
-# shift of red
-#redshifter &
-
-# .Xresources
-xrdb -nocpp ~/.Xresources
+# set bg to midnight blue
+hsetroot -solid '#171790' &
 
 # urxvt 'server'
-urxvtd -q -o -f &
+urxvtd -q -o -f  
 
-# twmn notification daemon
-#twmnd &
+#append artwiz and dina to font path and set dpms
+xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 
-# try ze xmobar
-#xmobar &
+# merge .Xresources
+xrdb merge ~/.Xresources
 
-# start window manager
+# pulseaudio sound server
+start-pulseaudio-x11
+
+# window manager
 exec /usr/bin/xmonad
 
 # vim: set ft=sh :

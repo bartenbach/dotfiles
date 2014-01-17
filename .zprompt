@@ -14,6 +14,6 @@ if [[ $EUID -eq 0 ]] {
 EXIT="green"
 #precmd(){
 #  %(?.EXIT_COLOR="green".EXIT_COLOR="red")
-#}
+#}$fg[white]%D{%-l:%M%P} 
 
-PS1="$fg[cyan](%D{%-l:%M%P}) $fg_no_bold[$COLOR][%n] $fg[blue]%~ $fg[$EXIT]%# $fg[white]"
+PS1="$fg[$COLOR][%n] $fg_no_bold[white]%~ $fg[$EXIT]%# $fg_bold[white]"
