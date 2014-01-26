@@ -7,16 +7,12 @@ Xcursor*theme: Vanilla-DMZ
 Xcursor*size: 24
 
 ! [URxvt - General Settings]
-!URxvt*font:-windows-proggycleanszbp-medium-r-normal--13-80-96-96-c-70-iso8859-1
-!URxvt*font: -windows-proggyopti-medium-r-normal--11-80-96-96-c-70-iso8859-1
 URxvt*font: xft:terminus:pixelsize=15
-!URxvt*font: -windows-proggytinysz-medium-r-normal--10-80-96-96-c-60-iso8859-1
 URxvt*buffered: true
 URxvt*foreground: Gray
 URxvt*throughColor: #8080f0
 URxvt*saveLines: 1200
 URxvt*visualBell: false
-!URxvt*cursorColor:#83C048
 URxvt*cursorColor: gray
 URxvt*cursorBlink:true
 URxvt*internalBorder: 1
@@ -28,7 +24,7 @@ URxvt*iso14755: true
 URxvt*iso14755_52: true
 URxvt*pointerBlank: true
 URxvt*pointerBlankDelay: 1
-URxvt.cutchars: "()*,<>[]{}|'"
+URxvt*cutchars: "()*,<>[]{}|'"
 URxvt*lineSpace: 1
 URxvt*tripleclickwords: true
 

@@ -1,0 +1,60 @@
+# Mod key - For the record, Control makes a terrible mod key (for many reasons)
+set $mod Mod1
+
+# Font - default. Unicode, fast, and clear
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+# General options
+floating_modifier $mod
+focus_follows_mouse no
+workspace_layout tabbed 
+
+# Border options 
+new_window 1pixel
+hide_edge_borders both
+
+# Launch Bindings
+bindsym $mod+Return exec urxvtc
+bindsym $mod+o exec dmenu_run 
+
+# Quit Applictions
+bindsym $mod+q kill
+
+# Focus Bindings
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move Window Bindings
+bindsym $mod+Shift+Up move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move down
+
+# Layout Bindings
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+
+# i3 Bindings
+bindsym Mod1+Shift+c exec "i3-nagbar -t warning -m 'i3 configuration file reloaded.'"
+bindsym Mod1+Shift+r exec "i3-nagbar -t warning -m 'You want to restart i3?' -b 'Yes' 'i3-msg restart'"
+bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Are you an incompetent idiot or did you do that on purpose?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Scratchpad - Good for hiding an application until you need it.
+bindsym $mod+minus move scratchpad
+bindsym $mod+equal scratchpad show
+
+# Workspaces - I don't utilize these much, so two is sufficient.
+workspace_auto_back_and_forth yes
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2

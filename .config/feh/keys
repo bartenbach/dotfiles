@@ -85,8 +85,8 @@ jump_first          g
 jump_last           G
 
 # This isn't binding for some reason
-#orient_1            >
-#orient_3            <
+orient_1            greater
+orient_3            less
 
 reload_image        r
 

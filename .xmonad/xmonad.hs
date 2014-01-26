@@ -8,25 +8,25 @@
 ---------------
 import XMonad hiding ((|||))
 import XMonad.Layout.Tabbed (tabbed, Theme(..), defaultTheme, shrinkText)
+import XMonad.Layout.MagicFocus
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.PerWorkspace (onWorkspace)
+import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat, 
                                           doCenterFloat, transience')
-import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Util.EZConfig (additionalKeys,removeKeys)
 import System.Exit (exitWith, ExitCode(ExitSuccess))
 import qualified XMonad.StackSet as W
 
 -----------------
 {-# Mod Keys #-}
 -----------------
-xMod      = mod1Mask
-xShiftMod = xMod .|. shiftMask
-xKillMask = xMod .|. controlMask
+
 ---------------
 {-# Borders #-}
 ---------------
-xBorderWidth = 10
+xBorderWidth = 3
 xBorderColor = show Black
 xBorderFocus = show Red
 
@@ -34,7 +34,7 @@ xBorderFocus = show Red
 {-# Mouse #-}
 -------------
 xMouseFocus :: Bool
-xMouseFocus = False
+xMouseFocus =  False
 
 ------------------
 {-# Workspaces #-}
@@ -57,18 +57,13 @@ instance Show XColor where
 {-# Applications #-}
 --------------------
 data ShellCommands = URxvtc
-                   | Screenshot
-                   | ScreenshotArea
                    | DMenu
-                   | EjectCdrom
                    | XMonadRecompile
 
 instance Show ShellCommands where
   show URxvtc          = "urxvtc"
-  show Screenshot      = "scrot -q100 '%m-%d-%Y.png' -e 'mv $f ~/img/scrots'"
-  show ScreenshotArea  = "scrot -q100 -s '%m-%d-%Y.png' -e 'mv $f ~/img/scrots'"
-  show DMenu           = "dmenu_run"
-  show EjectCdrom      = "eject -T /dev/sr0"
+  -- doesn't look like I have this font anymore...need to fix this.
+  show DMenu           = "dmenu_run -p dmenu -fn xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-1 -nb black -nf gray -sb white -sf black -i"
   show XMonadRecompile = "xmonad --recompile;xmonad --restart"
 
 launch = spawn . show
@@ -94,38 +89,36 @@ xTheme = defaultTheme { activeColor         = show Black
 --------------------
 {-# Key Bindings #-}
 --------------------
-xKeys = [((m .|. xMod, k), windows $ f i) 
-            | (i, k) <- zip (xWorkspaces) [xK_1 .. xK_5]
-            , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-        ++
-        [((m .|. xMod, key), screenWorkspace sc >>= flip whenJust (windows . f)) 
-            | (key, sc) <- zip [xK_e, xK_w] [0..]
-            , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-        ++
-        [ ((xMod,      xK_c),         kill)
+xMod      = mod1Mask
+xShiftMod = xMod .|. shiftMask
+xKillMask = xMod .|. controlMask
+
+xWorkspaceKeys = [((m .|. xMod, k), windows $ f i) 
+                 | (i, k) <- zip (xWorkspaces) [xK_1 .. xK_5]
+                 , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+                 ++
+                 [((m .|. xMod, key), screenWorkspace sc >>= flip whenJust (windows . f))
+                 | (key, sc) <- zip [xK_e, xK_w] [0..]
+                 , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+
+xKeys = [ ((xMod,      xK_q),         kill)
         , ((xMod,      xK_Return),    launch URxvtc)
-        , ((xMod,      xK_p),         launch DMenu)
-        , ((xMod,      xK_F12),       launch EjectCdrom)
-        , ((xMod,      xK_q),         launch XMonadRecompile)
-        , ((xMod,      xK_Print),     launch Screenshot)
-        , ((xShiftMod, xK_Print),     launch ScreenshotArea)
+        , ((xMod,      xK_r),         launch DMenu)
+        , ((xMod,      xK_c),         launch XMonadRecompile)
         , ((xMod,      xK_space),     sendMessage NextLayout)
-        , ((xMod,      xK_h),         sendMessage Shrink)
-        , ((xMod,      xK_l),         sendMessage Expand)
-        , ((xMod,      xK_comma),     sendMessage (IncMasterN 1))
-        , ((xMod,      xK_ampersand), sendMessage (IncMasterN (-1)))
-        , ((xMod,      xK_Up),        windows W.focusUp)
-        , ((xMod,      xK_Down),      windows W.focusDown)
-        , ((xMod,      xK_Left),      windows W.focusUp)
-        , ((xMod,      xK_Right),     windows W.focusDown)
-        , ((xMod,      xK_j),         windows W.focusUp)
-        , ((xMod,      xK_semicolon), windows W.focusDown)
-        , ((xMod,      xK_t),         windows W.focusDown)
-        , ((xMod,      xK_dollar),    windows W.swapMaster)
-        , ((xShiftMod, xK_semicolon), windows W.swapUp)
+        , ((xMod,      xK_j),         sendMessage Shrink)
+        , ((xMod,      xK_k),         sendMessage Expand)
+        , ((xMod,      xK_h),         windows W.focusUp)
+        , ((xMod,      xK_l),         windows W.focusDown)
+        , ((xShiftMod, xK_j),         windows W.swapUp)
         , ((xShiftMod, xK_k),         windows W.swapDown)
-        , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))
-        , ((xMod,      xK_t),         withFocused $ windows . W.sink)]
+--        , ((xShiftMod, xK_space),    fixme: setLayout $ XMonad.layoutHook) -- How to run this without conf@()
+        , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))]
+
+xNoKeys = [ (xMod, xK_comma)
+          , (xMod, xK_ampersand)
+          , (xMod, xK_dollar)
+          , (xMod, xK_t)]
 
 -------------------
 {-# Layout Hook #-}
@@ -137,6 +130,11 @@ xLayout = tile ||| tab ||| Grid ||| Full
     nmaster = 1
     delta   = 3/100
     ratio   = 1/2
+
+-------------------
+{-# Startup Hook #-}
+-------------------
+xStartupHook = setWMName "LG3D"  -- for minecraft
 
 -------------------
 {-# Manage Hook #-}
@@ -174,5 +172,7 @@ main = xmonad $ defaultConfig { modMask            = xMod
                               , workspaces         = xWorkspaces
                               , layoutHook         = xLayout
                               , manageHook         = xManage
+                              , startupHook        = xStartupHook
                               } 
                               `additionalKeys` xKeys
+                              `removeKeys` xNoKeys
