@@ -39,7 +39,7 @@ xMouseFocus =  False
 ------------------
 {-# Workspaces #-}
 ------------------
-xWorkspaces = "1":"2":"3":"4":[]
+xWorkspaces = "one":"irc":"dev":"web":"mc":"misc":[]
 
 -------------------------
 {-# Color Definitions #-}
@@ -98,13 +98,13 @@ xWorkspaceKeys = [((m .|. xMod, k), windows $ f i)
                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
                  ++
                  [((m .|. xMod, key), screenWorkspace sc >>= flip whenJust (windows . f))
-                 | (key, sc) <- zip [xK_e, xK_w] [0..]
+                 | (key, sc) <- zip [xK_w, xK_e] [0..]
                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-xKeys = [ ((xMod,      xK_q),         kill)
+xKeys = [ ((xMod,      xK_c),         kill)
         , ((xMod,      xK_Return),    launch URxvtc)
         , ((xMod,      xK_r),         launch DMenu)
-        , ((xMod,      xK_c),         launch XMonadRecompile)
+        , ((xMod,      xK_x),         launch XMonadRecompile)
         , ((xMod,      xK_space),     sendMessage NextLayout)
         , ((xMod,      xK_j),         sendMessage Shrink)
         , ((xMod,      xK_k),         sendMessage Expand)

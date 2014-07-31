@@ -84,7 +84,6 @@ zoom_out            j
 jump_first          g
 jump_last           G
 
-# This isn't binding for some reason
 orient_1            greater
 orient_3            less
 
@@ -100,8 +99,14 @@ delete              D
 quit                q
 
 #------
-# Menu
+# Menu - places menu on wrong monitor.  Xinerama fail?
 #------
-# TODO
+#toggle_menu         m
+#menu_close          Escape
+#menu_up             Up
+#menu_down           Down
+#menu_parent         Left
+#menu_child          Right
+#menu_select         Return
 
 # vim: set ft=cfg

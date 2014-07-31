@@ -17,29 +17,29 @@ mpd_communication_mode = "notifications"
 ##### music visualizer #####
 visualizer_in_stereo = "yes"
 visualizer_fifo_path = "/tmp/mpd.fifo"
-visualizer_output_name = "fifo output"
+visualizer_output_name = "fifo"
 visualizer_sync_interval = "15"
 visualizer_type = "spectrum"
 visualizer_look = "◆│"
 
 ##### color definitions #####
 colors_enabled = "yes"
-empty_tag_color = "magenta"
-header_window_color = "red"
-volume_color = "red"
-state_line_color = "red"
-state_flags_color = "red"
-main_window_color = "red"
-color1 = "default"
-color2 = "default"
+empty_tag_color = "blue"
+header_window_color = "blue"
+volume_color = "blue"
+state_line_color = "blue"
+state_flags_color = "blue"
+main_window_color = "blue"
+color1 = "blue"
+color2 = "blue"
 main_window_highlight_color = "blue"
-progressbar_color = "red"
-statusbar_color = "default"
-alternative_ui_separator_color = "red"
-active_column_color = "red"
-visualizer_color = "red"
-window_border_color = "magenta"
-active_window_border = "magenta"
+progressbar_color = "blue"
+statusbar_color = "blue"
+alternative_ui_separator_color = "blue"
+active_column_color = "blue"
+visualizer_color = "blue"
+window_border_color = "blue"
+active_window_border = "blue"
 
 ##### system encoding #####
 system_encoding = "utf-8"
@@ -66,7 +66,7 @@ song_window_title_format = "{%a - }{%t}|{%f}"
 song_columns_list_format = "(7f)[]{l} (25)[]{a} (40)[]{t|f} (30)[]{b}"
 
 ##### various settings #####
-execute_on_song_change = "twmnc \"-t $(ncmpcpp --now-playing '{%a}|{%f}')\" \"-c $(ncmpcpp --now-playing '{%t}')\""
+#execute_on_song_change = "twmnc \"-t $(ncmpcpp --now-playing '{%a}|{%f}')\" \"-c $(ncmpcpp --now-playing '{%t}')\""
 playlist_show_remaining_time = "no"
 playlist_shorten_total_times = "no"
 playlist_separate_albums = "no"
@@ -79,9 +79,9 @@ incremental_seeking = "yes"
 seek_time = "10"
 autocenter_mode = "no"
 centered_cursor = "no"
-progressbar_look = "=>"
+progressbar_look = "=|"
 #default_place_to_search_in = "database" (database/playlist)
-user_interface = "alternative" # classic/alternative
+user_interface = "classic" # classic/alternative
 #media_library_left_column = "a" (possible values: a,y,g,c,p, legend above)
 default_find_mode = "wrapped"  # (wrapped/normal)
 #default_space_mode = "add" (add/select)

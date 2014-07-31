@@ -7,5 +7,4 @@ alias grep='grep --color'
 alias ls='ls --group-directories-first --color --human-readable -F'
 alias sd='systemctl'
 alias mv='mv -i'
-alias feh="feh --geometry 1900x1060 --cycle-once --draw-tinted --preload -Y -. -B black --info \"echo -e 'Name:%n [%u/%l] Filesize:%S Size:%w/%h Type:%t'\""
-
+alias feh='feh -Tproxa'

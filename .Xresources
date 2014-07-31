@@ -9,6 +9,7 @@ Xcursor*size: 24
 ! [URxvt - General Settings]
 URxvt*font: xft:terminus:pixelsize=15
 URxvt*buffered: true
+URxvt*background: #000000
 URxvt*foreground: Gray
 URxvt*throughColor: #8080f0
 URxvt*saveLines: 1200
@@ -41,13 +42,13 @@ URxvt*scrollWithBuffer: false
 URxvt*scrollTtyKeypress: true
 
 ! [URxvt - Fast Transparency]
-URxvt*transparent: true
-URxvt*shading: 20
+URxvt*transparent: false
+URxvt*shading: 100
 
 ! [URxvt - Perl Plugins]
 URxvt*perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt*urlLauncher: /usr/bin/chromium
-URxvt*url-select.launcher: /usr/bin/chromium
+URxvt*urlLauncher: /usr/bin/firefox
+URxvt*url-select.launcher: /usr/bin/firefox
 URxvt*url-select.underline: true
 URxvt*url-select.button: 2
 URxvt*keysym.Mod4-u: perl:url-select:select_next
@@ -59,6 +60,11 @@ URxvt*colorUL: #4682B4
 URxvt*insecure: false
 URxvt*utmpInhibit: true
 URxvt*print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+
+! [Font Settings]
+Xft.autohint: 0
+Xft.lcdfilter: lcdlight
+Xft.rgba: rgb
 
 ! [Color Scheme]
 #include ".config/xcolors/proxa_theme"

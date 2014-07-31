@@ -3,10 +3,10 @@
 #================
 
 # Default directory to save the downloaded torrents.
-directory = /home/seed419/download/torrent
+directory = /home/proxa/download/torrent
 
 # Default session directory.
-session = /home/seed419/.torrent
+session = /home/proxa/.torrent
 
 # Close torrents when diskspace is low.
 schedule = low_diskspace,5,60,close_low_diskspace=100M
@@ -15,9 +15,9 @@ schedule = low_diskspace,5,60,close_low_diskspace=100M
 encryption = require_RC4
 
 # This should send me mail
-system.method.set_key = event.download.finished,notify_me,"execute=~/rtorrent_mail.sh,$d.get_name="
+#system.method.set_key = event.download.finished,notify_me,"execute=~/rtorrent_mail.sh,$d.get_name="
 
-# Help a nigga out on dat local network
+# Exchange on local network
 peer_exchange = yes
 
 # Most trackers are UDP

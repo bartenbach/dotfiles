@@ -12,9 +12,10 @@ set history_file      = ~/.mutt/.history
 set mailcap_path      = ~/.mutt/mailcap
 set message_cachedir  = ~/.cache/mutt/msg_cache
 set header_cache      = ~/.cache/mutt/header_cache
+set envelope_from     = yes
 set editor            = vim
 set realname          = "Blake Bartenbach"
-set from              = "BlakeBartenbach@gmail.com"
+set from              = "blakebartenbach@gmail.com"
 set ispell            = "aspell -e -c"
 set pager_context     = 5
 set pager_index_lines = 15
@@ -49,18 +50,13 @@ set query_command     = "abook --mutt-query '%s'"
 
 # Account Settings
 set imap_user         = blakebartenbach@gmail.com
-set imap_pass         = `gpg --decrypt ~/.gnupg/.passwords/.bartenbach-gmail.gpg`
+set imap_pass         = `gpg --decrypt ~/.gnupg/.passwd/.gmail.gpg`
 set folder            = imaps://blakebartenbach@imap.gmail.com:993/
 set spoolfile         = imaps://blakebartenbach@imap.gmail.com:993/
 set smtp_url          = smtps://$imap_user:$imap_pass@smtp.gmail.com
 set mail_check        = 300
 unset imap_passive
 set imap_check_subscribed
-
-# Sidebar
-set sidebar_visible
-set sidebar_width     = 27
-set sidebar_delim     = "┃"
 
 # Bindings
 bind pager q          exit
@@ -74,9 +70,6 @@ bind index G          last-entry
 bind pager g          top
 bind pager G          bottom
 bind pager,index S    save-message
-bind pager,index s    sidebar-next
-bind pager,index w    sidebar-prev
-bind pager,index d    sidebar-open
 bind pager,index D    delete-message
 
 # Appearance
