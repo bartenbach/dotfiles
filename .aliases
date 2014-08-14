@@ -8,3 +8,9 @@ alias ls='ls --group-directories-first --color --human-readable -F'
 alias sd='systemctl'
 alias mv='mv -i'
 alias feh='feh -Tproxa'
+
+# typo trains
+alias sl='sl -l'
+alias vmi='sl -l'
+alias claer='sl -l'
+alias aslamixer='sl -l'

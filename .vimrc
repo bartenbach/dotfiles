@@ -27,6 +27,7 @@ set title " set windows title to filename, path, and - VIM
 set showmode " show at bottom INSERT/VISUAL/REPLACE
 set ruler " show line and column number of the cursor
 set noerrorbells " do not ring an error bell on errors
+set visualbell " so escape doesn't beep at me :(
 set undolevels=100 "steps to remember when using undo / this is default
 set shiftwidth=2 " spaces to use per tab
 set smarttab

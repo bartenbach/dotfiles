@@ -12,6 +12,7 @@ import XMonad.Layout.MagicFocus
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.PerWorkspace (onWorkspace)
+import XMonad.Layout.NoBorders
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat, 
                                           doCenterFloat, transience')
@@ -123,7 +124,7 @@ xNoKeys = [ (xMod, xK_comma)
 -------------------
 {-# Layout Hook #-}
 -------------------
-xLayout = tile ||| tab ||| Grid ||| Full
+xLayout = tile ||| tab ||| Grid ||| smartBorders Full
   where
     tab     = tabbed shrinkText xTheme
     tile    = Tall nmaster delta ratio
