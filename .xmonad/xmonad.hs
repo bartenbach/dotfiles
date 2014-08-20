@@ -113,13 +113,16 @@ xKeys = [ ((xMod,      xK_c),         kill)
         , ((xMod,      xK_l),         windows W.focusDown)
         , ((xShiftMod, xK_j),         windows W.swapUp)
         , ((xShiftMod, xK_k),         windows W.swapDown)
+        , ((xShiftMod, xK_Return),    windows W.swapMaster) -- swap master with focused window
+--        , ((xMod,      xK_f),         )
+        , ((xMod,      xK_t),         withFocused $ windows . W.sink) -- flatten focused window back into tiling
 --        , ((xShiftMod, xK_space),    fixme: setLayout $ XMonad.layoutHook) -- How to run this without conf@()
+--            Note: this binds automaticaly anyway, but I'd like to know how it does it.
         , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))]
 
 xNoKeys = [ (xMod, xK_comma)
           , (xMod, xK_ampersand)
-          , (xMod, xK_dollar)
-          , (xMod, xK_t)]
+          , (xMod, xK_dollar)]
 
 -------------------
 {-# Layout Hook #-}
