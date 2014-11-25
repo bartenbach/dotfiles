@@ -3,11 +3,18 @@
 # ~/.aliases
 #
 
+# main
 alias grep='grep --color'
 alias ls='ls --group-directories-first --color --human-readable -F'
 alias sd='systemctl'
 alias mv='mv -i'
 alias feh='feh -Tproxa'
+alias cls='clear'
+
+# tmux commands are too long
+alias tl='tmux list-sessions'
+alias ta='tmux attach-session -t'
+alias tn='tmux new-session -s'
 
 # typo trains
 alias sl='sl -l'

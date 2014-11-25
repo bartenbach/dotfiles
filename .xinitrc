@@ -8,9 +8,6 @@ WINDOW_MANAGER='xmonad'
 xset +dpms +fp /usr/share/fonts/local
 xset fp rehash
 
-# shift of red
-#redshift -l 41.2636:-95.9353 &
-
 # background
 xsetroot -bg darkred -mod 15 15
 
@@ -20,10 +17,12 @@ xrdb -merge ~/.Xresources
 # urxvt 'server'
 urxvtd -q -o -f  
 
-# fix corsair keyboard LEDs (required sudoer file hack)
-#sudo kbd_mode -u
+# sync copy/paste buffers
+#autocutsel -fork &
+#autocutsel -selection PRIMARY -fork &
 
 # window manager
 exec /usr/bin/$WINDOW_MANAGER
 
 # vim: set ft=sh :
+

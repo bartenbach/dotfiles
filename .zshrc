@@ -1,7 +1,7 @@
 # vim: ft=zsh
 #
 # ~/.zshrc
-#  Author: proxa
+#  Blake Bartenbach
 #
 
 #-------------------
@@ -48,7 +48,7 @@ export LESS_TERMCAP_ue=$'\e[0m'       # end underline
 #------------------------------
 local files
 local file
-files=( .aliases .zprompt )
+files=( .aliases .zprompt .zshenv )
 
 foreach file ($files) { 
   if [[ -r $file ]] {
@@ -75,7 +75,7 @@ setopt HIST_FCNTL_LOCK HIST_IGNORE_DUPS HIST_SAVE_NO_DUPS BANG_HIST
 # Zsh Options
 #-------------
 unsetopt GLOBAL_RCS BEEP
-setopt DVORAK PRINT_EXIT_VALUE BG_NICE NOTIFY APPEND_HISTORY EXTENDED_GLOB \
+setopt BG_NICE NOTIFY APPEND_HISTORY EXTENDED_GLOB \
          LIST_TYPES IGNORE_EOF
 
 #---------------------

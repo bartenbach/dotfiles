@@ -20,12 +20,8 @@ import XMonad.Util.EZConfig (additionalKeys,removeKeys)
 import System.Exit (exitWith, ExitCode(ExitSuccess))
 import qualified XMonad.StackSet as W
 
------------------
-{-# Mod Keys #-}
------------------
-
 ---------------
-{-# Borders #-}
+--- Borders ---
 ---------------
 xBorderWidth = 3
 xBorderColor = show Black
@@ -90,7 +86,7 @@ xTheme = defaultTheme { activeColor         = show Black
 --------------------
 {-# Key Bindings #-}
 --------------------
-xMod      = mod1Mask
+xMod      = mod4Mask
 xShiftMod = xMod .|. shiftMask
 xKillMask = xMod .|. controlMask
 

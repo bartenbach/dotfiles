@@ -3,6 +3,7 @@
 "  Name: ~/.vimrc 
 "  Author: Blake Bartenbach
 "
+"
 set noloadplugins " i'm not using any vim plugins
 set tabstop=2 " number of spaces that pressing the tab key inserts
 set showmatch " show matching brackets
@@ -55,3 +56,8 @@ set errorfile=$HOME/.vim/error.log " where to write encountered errors to
 set encoding=utf-8 "set the file encoding
 syntax on " turn on syntax highlighting
 colo proxa256 " use my custom color file :)
+
+" fix 256-color scheme problems in tmux
+if &term =~ '256color'
+  set t_ut=
+endif

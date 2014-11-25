@@ -51,9 +51,9 @@ URxvt*urlLauncher: /usr/bin/firefox
 URxvt*url-select.launcher: /usr/bin/firefox
 URxvt*url-select.underline: true
 URxvt*url-select.button: 2
-URxvt*keysym.Mod4-u: perl:url-select:select_next
-URxvt*keysym.Mod4-v: perl:keyboard-select:activate
-URxvt.keysym.Mod4-s: perl:keyboard-select:search
+URxvt*keysym.Mod1-u: perl:url-select:select_next
+URxvt*keysym.Mod1-v: perl:keyboard-select:activate
+URxvt.keysym.Mod1-s: perl:keyboard-select:search
 URxvt*colorUL: #4682B4
 
 ! [Misc]
