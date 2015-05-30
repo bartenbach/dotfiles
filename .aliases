@@ -10,6 +10,7 @@ alias sd='systemctl'
 alias mv='mv -i'
 alias feh='feh -Tproxa'
 alias cls='clear'
+alias seh='sxiv'
 
 # tmux commands are too long
 alias tl='tmux list-sessions'

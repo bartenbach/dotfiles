@@ -153,7 +153,7 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "xmessage"        --> doCenterFloat 
                      , isClass "MPlayer"         --> doCenterFloat
                      , isClass "nvidia-settings" --> doCenterFloat
-                     , isProp role popUp         --> doCenterFloat
+                     , isProp role popUp         --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat
                      , isFullscreen              --> doFullFloat

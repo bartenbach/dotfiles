@@ -49,11 +49,18 @@ macro index,pager         A   "<pipe-message>abook --add-email<return>" "add sen
 set query_command     = "abook --mutt-query '%s'"
 
 # Account Settings
-set imap_user         = blakebartenbach@gmail.com
-set imap_pass         = `gpg --decrypt ~/.gnupg/.passwd/.gmail.gpg`
-set folder            = imaps://blakebartenbach@imap.gmail.com:993/
-set spoolfile         = imaps://blakebartenbach@imap.gmail.com:993/
-set smtp_url          = smtps://$imap_user:$imap_pass@smtp.gmail.com
+# Gmail
+#set imap_user         = blakebartenbach@gmail.com
+#set imap_pass         = `gpg --decrypt ~/.gnupg/.passwd/.gmail.gpg`
+#set folder            = imaps://blakebartenbach@imap.gmail.com:993/
+#set spoolfile         = imaps://blakebartenbach@imap.gmail.com:993/
+#set smtp_url          = smtps://$imap_user:$imap_pass@smtp.gmail.com
+# School
+set imap_user         = bmbartenbach@mail.mccneb.edu
+set imap_pass         = `gpg --decrypt ~/.gnupg/.passwd/.metro-email.gpg`
+set folder            = imaps://outlook.office365.com:993/
+set spoolfile         = imaps://outlook.office365.com:993/
+set smtp_url          = smtps://smtp.office365.com:587/
 set mail_check        = 300
 unset imap_passive
 set imap_check_subscribed
