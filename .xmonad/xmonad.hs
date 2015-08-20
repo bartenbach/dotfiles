@@ -3,47 +3,51 @@
 --                                  by proxa                                  --
 --------------------------------------------------------------------------------
 
----------------
-{-# Imports #-}
----------------
+------------------
+-- {-# Imports #-}
+------------------
 import XMonad hiding ((|||))
+import XMonad.Actions.NoBorders
 import XMonad.Layout.Tabbed (tabbed, Theme(..), defaultTheme, shrinkText)
 import XMonad.Layout.MagicFocus
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.PerWorkspace (onWorkspace)
+import XMonad.Layout.Fullscreen
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat, 
                                           doCenterFloat, transience')
 import XMonad.Util.EZConfig (additionalKeys,removeKeys)
 import System.Exit (exitWith, ExitCode(ExitSuccess))
 import qualified XMonad.StackSet as W
 
------------------
-{-# Mod Keys #-}
------------------
+-------------------
+-- {-# Mod Keys #-}
+-------------------
 
----------------
-{-# Borders #-}
----------------
+-----------------
+--{-# Borders #-}
+-----------------
 xBorderWidth = 3
 xBorderColor = show Black
 xBorderFocus = show Red
 
--------------
-{-# Mouse #-}
--------------
+---------------
+--{-# Mouse #-}
+---------------
 xMouseFocus :: Bool
 xMouseFocus =  False
 
-------------------
-{-# Workspaces #-}
-------------------
-xWorkspaces = "one":"irc":"dev":"web":"mc":"misc":[]
+--------------------
+--{-# Workspaces #-}
+--------------------
+xWorkspaces = "1":"2":"3":"4":"5":"6":[]
 
--------------------------
-{-# Color Definitions #-}
--------------------------
+---------------------------
+--{-# Color Definitions #-}
+---------------------------
 data XColor = Red
             | Black
             | Yellow
@@ -53,9 +57,9 @@ instance Show XColor where
     show Yellow = "#FFFF00"
     show Black  = "#000"
 
---------------------
-{-# Applications #-}
---------------------
+----------------------
+--{-# Applications #-}
+----------------------
 data ShellCommands = URxvtc
                    | DMenu
                    | XMonadRecompile
@@ -68,9 +72,9 @@ instance Show ShellCommands where
 
 launch = spawn . show
 
--------------
-{-# Theme #-}
--------------
+---------------
+--{-# Theme #-}
+---------------
 xFont  = "-windows-proggytinysz-medium-r-normal--8-80-96-96-c-60-iso8859-1"
 
 xTheme = defaultTheme { activeColor         = show Black
@@ -86,10 +90,10 @@ xTheme = defaultTheme { activeColor         = show Black
                       , decoHeight          = 12
                       }
 
---------------------
-{-# Key Bindings #-}
---------------------
-xMod      = mod1Mask
+----------------------
+--{-# Key Bindings #-}
+----------------------
+xMod      = mod4Mask
 xShiftMod = xMod .|. shiftMask
 xKillMask = xMod .|. controlMask
 
@@ -101,29 +105,30 @@ xWorkspaceKeys = [((m .|. xMod, k), windows $ f i)
                  | (key, sc) <- zip [xK_w, xK_e] [0..]
                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-xKeys = [ ((xMod,      xK_c),         kill)
+xKeys = [ ((xMod,      xK_Escape),    kill)
         , ((xMod,      xK_Return),    launch URxvtc)
         , ((xMod,      xK_r),         launch DMenu)
         , ((xMod,      xK_x),         launch XMonadRecompile)
+        , ((xMod,      xK_b),         withFocused toggleBorder)
         , ((xMod,      xK_space),     sendMessage NextLayout)
         , ((xMod,      xK_j),         sendMessage Shrink)
         , ((xMod,      xK_k),         sendMessage Expand)
         , ((xMod,      xK_h),         windows W.focusUp)
         , ((xMod,      xK_l),         windows W.focusDown)
+        , ((xMod,      xK_t),         sendMessage ToggleStruts)
+        , ((xMod,      xK_s),         withFocused $ windows . W.sink)
         , ((xShiftMod, xK_j),         windows W.swapUp)
         , ((xShiftMod, xK_k),         windows W.swapDown)
---        , ((xShiftMod, xK_space),    fixme: setLayout $ XMonad.layoutHook) -- How to run this without conf@()
         , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))]
 
 xNoKeys = [ (xMod, xK_comma)
           , (xMod, xK_ampersand)
-          , (xMod, xK_dollar)
-          , (xMod, xK_t)]
+          , (xMod, xK_dollar)  ]
 
--------------------
-{-# Layout Hook #-}
--------------------
-xLayout = tile ||| tab ||| Grid ||| Full
+---------------------
+--{-# Layout Hook #-}
+----------------------
+xLayout = avoidStruts(tile ||| tab ||| Grid ||| fullscreenFull Full)
   where
     tab     = tabbed shrinkText xTheme
     tile    = Tall nmaster delta ratio
@@ -131,14 +136,14 @@ xLayout = tile ||| tab ||| Grid ||| Full
     delta   = 3/100
     ratio   = 1/2
 
--------------------
-{-# Startup Hook #-}
--------------------
-xStartupHook = setWMName "LG3D"  -- for minecraft
+---------------------
+--{-# Startup Hook #-}
+---------------------
+xStartupHook = setWMName "LG3D"  -- because Java...
 
--------------------
-{-# Manage Hook #-}
--------------------
+---------------------
+--{-# Manage Hook #-}
+---------------------
 fileDialog = "GtkFileChooserDialog"
 popUp      = "pop-up"
 role       = "WM_WINDOW_ROLE"
@@ -153,17 +158,17 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "xmessage"        --> doCenterFloat 
                      , isClass "MPlayer"         --> doCenterFloat
                      , isClass "nvidia-settings" --> doCenterFloat
-                     , isProp role popUp         --> doCenterFloat
+                     , isProp role popUp         --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat
-                     , isFullscreen              --> doFullFloat
+                     , isFullscreen              --> (doF W.focusDown <+> doFullFloat)
                      , transience'
                      ]
 
-------------
-{-# Main #-}
-------------
-main = xmonad $ defaultConfig { modMask            = xMod
+--------------
+--{-# Main #-}
+--------------
+myConfig = defaultConfig { modMask            = xMod
                               , terminal           = show URxvtc
                               , focusFollowsMouse  = xMouseFocus
                               , borderWidth        = xBorderWidth
@@ -171,8 +176,14 @@ main = xmonad $ defaultConfig { modMask            = xMod
                               , focusedBorderColor = xBorderFocus
                               , workspaces         = xWorkspaces
                               , layoutHook         = xLayout
-                              , manageHook         = xManage
+                              , manageHook         = xManage <+> manageDocks <+> fullscreenManageHook
                               , startupHook        = xStartupHook
+                              , handleEventHook    = fullscreenEventHook
                               } 
                               `additionalKeys` xKeys
                               `removeKeys` xNoKeys
+
+----------
+-- Main
+----------
+main = xmonad myConfig

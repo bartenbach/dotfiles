@@ -1,17 +1,18 @@
 [user]
 	name = Blake Bartenbach
-	email = SeeD419@gmail.com
+	email = blakebartenbach@gmail.com
+
 [push]
 	default = simple
 
 [color]
  ui = true
-# branch = auto
-# showbranch = auto
-# diff = auto
-# interactive = auto
-# status = auto
-# grep = yes
+ branch = auto
+ showbranch = auto
+ diff = auto
+ interactive = auto
+ status = auto
+ grep = yes
 
 [merge]
  tool = vimdiff
@@ -26,6 +27,7 @@
 [diff]
  rename = copies
 
-# vim: set ft=gitconfig noet:
 [core]
 	quotepath = off
+
+# vim: set ft=gitconfig noet:

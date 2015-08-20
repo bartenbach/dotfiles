@@ -8,3 +8,15 @@ alias ls='ls --group-directories-first --color --human-readable -F'
 alias sd='systemctl'
 alias mv='mv -i'
 alias feh='feh -Tproxa'
+alias cls='clear'
+alias dmesg='dmesg --color=always'
+#alias less='less -R -b-1 -J -j2 -M -W "-#.01"' # -N for line numbers, -i ignore case
+alias mpv='mpv --no-sub'
+export LESS='Rb-1Jj2MW#.01'
+alias pkgfile='pkgfile -v'
+
+# typo troll trains
+sl='sl -l'
+alias sl=$sl
+alias vmi=$sl
+alias claer=$sl

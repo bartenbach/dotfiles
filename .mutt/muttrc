@@ -7,15 +7,18 @@ set mbox_type         = Maildir
 set tmpdir            = ~/.mutt/tmp
 set alias_file        = ~/.mutt/aliases
 set certificate_file  = ~/.mutt/certificates
-set signature         = ~/.mutt/signature
-set history_file      = ~/.mutt/.history
+set postponed         = ~/.mutt/postponed
+set record            = ~/.mutt/sent
+#set signature         = ~/.mutt/signature
+#set history_file      = ~/.mutt/.history
 set mailcap_path      = ~/.mutt/mailcap
 set message_cachedir  = ~/.cache/mutt/msg_cache
 set header_cache      = ~/.cache/mutt/header_cache
 set envelope_from     = yes
 set editor            = vim
 set realname          = "Blake Bartenbach"
-set from              = "blakebartenbach@gmail.com"
+set from              = bmbartenbach@mail.mccneb.edu
+#set use_from          = yes
 set ispell            = "aspell -e -c"
 set pager_context     = 5
 set pager_index_lines = 15
@@ -26,6 +29,7 @@ set reverse_alias     = yes
 set include           = yes
 set abort_nosubject   = no
 set recall            = no
+set imap_servernoise  = yes
 set beep_new
 set edit_headers
 set check_mbox_size
@@ -49,11 +53,14 @@ macro index,pager         A   "<pipe-message>abook --add-email<return>" "add sen
 set query_command     = "abook --mutt-query '%s'"
 
 # Account Settings
-set imap_user         = blakebartenbach@gmail.com
-set imap_pass         = `gpg --decrypt ~/.gnupg/.passwd/.gmail.gpg`
-set folder            = imaps://blakebartenbach@imap.gmail.com:993/
-set spoolfile         = imaps://blakebartenbach@imap.gmail.com:993/
-set smtp_url          = smtps://$imap_user:$imap_pass@smtp.gmail.com
+set imap_user         = bmbartenbach@mail.mccneb.edu
+#set imap_pass         = `gpg --decrypt ~/.gnupg/.passwd/.mccneb.gpg`
+set folder            = imaps://outlook.office365.com:993/
+#set spoolfile         = imaps://outlook.office365.com:993/
+set spoolfile         = "=INBOX"
+set smtp_url          = smtp://smtp.office365.com:587
+set ssl_starttls      = yes
+set ssl_force_tls     = yes
 set mail_check        = 300
 unset imap_passive
 set imap_check_subscribed

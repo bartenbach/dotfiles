@@ -1,7 +1,7 @@
 # Proxa theme - (a fork of solarized-light-256, modified quite heavily)
 
 # Highlight my name :)
-color body          brightyellow    default        "(blake|bartenbach|proxa|seed419)"
+color body          brightyellow    default        "(blake|bartenbach)"
 
 # basics            foreground      background
 color normal        color226        default

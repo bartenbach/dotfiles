@@ -26,6 +26,7 @@ set helpheight=50 " minimum number of lines for help to use
 set title " set windows title to filename, path, and - VIM
 set showmode " show at bottom INSERT/VISUAL/REPLACE
 set ruler " show line and column number of the cursor
+set vb  " set the god forsaken visual bell to stop the beeping
 set noerrorbells " do not ring an error bell on errors
 set undolevels=100 "steps to remember when using undo / this is default
 set shiftwidth=2 " spaces to use per tab

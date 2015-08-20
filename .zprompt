@@ -2,7 +2,7 @@
 #
 # File: ~/.zprompt
 # Description: Prompt for zsh shell
-# Author: proxa
+# Author: Blake Bartenbach
 #
 
 PS1="$fg_no_bold[green][%n.%m] %~ %# $fg[white]"

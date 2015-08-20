@@ -3,10 +3,10 @@
 #================
 
 # Default directory to save the downloaded torrents.
-directory = /home/proxa/download/torrent
+directory = ~/download/torrent
 
 # Default session directory.
-session = /home/proxa/.torrent
+session = ~/.torrent
 
 # Close torrents when diskspace is low.
 schedule = low_diskspace,5,60,close_low_diskspace=100M
