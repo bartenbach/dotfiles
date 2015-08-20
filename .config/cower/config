@@ -1,0 +1,27 @@
+#
+# $XDG_CONFIG_HOME/cower/config
+#
+
+# Use color in the output. This takes an optional arg of auto/never/always.
+Color = always
+
+# Connection timeout to be passed to curl. Setting this to 0 will disable timeouts.
+#ConnectTimeout =
+
+# Always ignore out of date packages.
+#IgnoreOOD
+
+# Ignore the specified packages when checking for updates. Space delimited.
+#IgnorePkg =
+
+# Ignore the specified binary repos when checking for updates. Space delimited.
+#IgnoreRepo =
+
+# Absolute path to download and extract to. Parameter and tilde expansions honored.
+TargetDir = ~/download/pkg
+
+# Max number of threads cower will use. This is synonymous with the max number
+# of concurrent connections that will be opened to the AUR.
+#MaxThreads =
+
+# vim: set noet syn=conf

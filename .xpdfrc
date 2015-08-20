@@ -1,1 +1,0 @@
-urlCommand "chromium --allow-outdated-plugins %s"
