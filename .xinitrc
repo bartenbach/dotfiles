@@ -25,7 +25,7 @@ urxvtd -q -o -f
 xbindkeys
 
 # start xmobar
-xmobar
+xmobar &
 
 # window manager
 exec /usr/bin/$WINDOW_MANAGER

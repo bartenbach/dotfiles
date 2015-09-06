@@ -30,7 +30,7 @@ import qualified XMonad.StackSet as W
 -----------------
 --{-# Borders #-}
 -----------------
-xBorderWidth = 3
+xBorderWidth = 0
 xBorderColor = show Black
 xBorderFocus = show Red
 
@@ -108,7 +108,7 @@ xWorkspaceKeys = [((m .|. xMod, k), windows $ f i)
 xKeys = [ ((xMod,      xK_Escape),    kill)
         , ((xMod,      xK_Return),    launch URxvtc)
         , ((xMod,      xK_r),         launch DMenu)
-        , ((xMod,      xK_x),         launch XMonadRecompile)
+        , ((xMod,      xK_c),         launch XMonadRecompile)
         , ((xMod,      xK_b),         withFocused toggleBorder)
         , ((xMod,      xK_space),     sendMessage NextLayout)
         , ((xMod,      xK_j),         sendMessage Shrink)
@@ -158,6 +158,7 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "xmessage"        --> doCenterFloat 
                      , isClass "MPlayer"         --> doCenterFloat
                      , isClass "nvidia-settings" --> doCenterFloat
+                     , isClass "PCSXR"           --> doFullFloat
                      , isProp role popUp         --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat

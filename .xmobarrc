@@ -1,0 +1,97 @@
+-- vim: ft=haskell
+-- ~/.xmobarrc
+-- 
+
+Config { 
+
+    font               = "xft:terminus:pixelsize=12"
+    , bgColor          = "black"
+    , fgColor          = "#646464"
+    , position         = Top
+    , border           = BottomBM 1
+    , borderColor      = "#646464"
+    , sepChar          =  "%"
+    , alignSep         = "}{"
+
+    , lowerOnStart     = True
+    , hideOnStart      = False
+    , allDesktops      = True
+    , overrideRedirect = False
+    , pickBroadest     = False
+    , persistent       = True
+
+ --  original template
+  --, template    = " %battery%   [  %multicpu%  ]   [ %coretemp% ]   %memory%    wlp3s0: %wlp3s0wi%    [ %dynnetwork% ] }{ %KOMA%    %date% "
+    , template    = " %battery%   [  %multicpu%  ]   [ %coretemp% ]   %memory%    wlp3s0: %wlp3s0wi%    [ %dynnetwork% ] }{ %date% "
+
+    , commands = [ 
+    
+--      Not essential
+--        Run Weather "KOMA" [ "-t", "<fc=#4682B4><tempC></fc>°C  <skyCondition>  <fc=#4682B4><rh></fc>% humidity"
+--        ] 36000
+        
+        Run DynNetwork     [ "-t", "<tx>kB/s <rx>kB/s"
+        , "--Low"      , "1000"
+        , "--High"     , "8000"
+        , "-n"         , "darkgreen"
+        , "-h"         , "yellow"
+        ] 20
+
+--      This is either poorly documented or broken upstream.
+--        , Run Volume "default" "Master" [ "-t", "<volumebar>" ] 10
+
+--      Pointless when DynNetwork does it
+--        , Run Network "enp2s0" [ "-t" , "<rx>KB/<tx>KB" ] 20
+
+        , Run Wireless "wlp3s0" [ "-t" , "<essid> [<qualitybar>]"
+        , "--Low"      , "25"
+        , "--High"     , "75"
+        , "-l"         , "darkred"
+        , "-n"         , "darkgreen"
+        , "-h"         , "darkgreen"
+        ] 20
+        
+        , Run MultiCpu [ "-t" , "<total0>% <total1>%"
+        , "--Low"      , "50"
+        , "--High"     , "85"
+        , "-l"         , "darkgreen"
+        , "-n"         , "darkgreen"
+        , "-h"         , "yellow"
+        ] 20
+
+--      Requires acpi_cpufreq module - won't load.  We use cpupower now not cpufreq-utils
+--        , Run CpuFreq [ "-t" , "<cpu0>GHz"  
+--        ] 20
+
+        , Run CoreTemp [ "-t" , "<core0>°C <core1>°C"
+        , "--Low"      , "60"
+        , "--High"     , "70"
+        , "-l"         , "darkgreen"
+        , "-n"         , "yellow"
+        , "-h"         , "red"
+        ] 100
+
+        , Run Memory [ "-t" ,"[<usedbar>]"
+        , "--Low"      , "20"
+        , "--High"     , "90"
+        , "-l"         , "darkgreen"
+        , "-n"         , "darkgreen"
+        , "-h"         , "yellow"
+        ] 20
+
+        , Run Battery [ "-t" , "<acstatus>"
+        , "--Low"      , "15"
+        , "--High"     , "80"
+        , "-l"         , "yellow"
+        , "-n"         , "darkgreen"
+        , "-h"         , "#4682B4"
+        , "--"
+        , "-o"  , "<left>%"
+        , "-O"  , "<fc=#dAA520>Charging</fc>"
+        , "-i"  , "<fc=#006000>Charged</fc>"
+        ] 3600
+
+        , Run Date "<fc=#ABABAB>%A, %B %e    </fc> <fc=#dAA520>%l:%M %P </fc>" "date" 3600
+        ]
+    ]
+}
