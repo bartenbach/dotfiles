@@ -14,9 +14,11 @@ alias dmesg='dmesg --color=always'
 alias mpv='mpv --no-sub'
 export LESS='Rb-1Jj2MW#.01'
 alias pkgfile='pkgfile -v'
+alias lsblk='lsblk -Spo +size'
 
 # typo troll trains
 sl='sl -l'
 alias sl=$sl
 alias vmi=$sl
 alias claer=$sl
+alias wakeup='wol 30:5A:3A:56:3A:1B'

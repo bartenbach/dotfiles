@@ -20,19 +20,17 @@ Config {
     , pickBroadest     = False
     , persistent       = True
 
- --  original template
-  --, template    = " %battery%   [  %multicpu%  ]   [ %coretemp% ]   %memory%    wlp3s0: %wlp3s0wi%    [ %dynnetwork% ] }{ %KOMA%    %date% "
-    , template    = " %battery%   [  %multicpu%  ]   [ %coretemp% ]   %memory%    wlp3s0: %wlp3s0wi%    [ %dynnetwork% ] }{ %date% "
+    , template    = " %battery%   [  %multicpu%  ]   [ %coretemp% ]   %memory%    wlp3s0: %wlp3s0wi% }{ %date% "
 
     , commands = [ 
     
 --      Not essential
---        Run Weather "KOMA" [ "-t", "<fc=#4682B4><tempC></fc>°C  <skyCondition>  <fc=#4682B4><rh></fc>% humidity"
+--        Run Weather "KOMA" [ "-t", "<fc=#4682B4><tempC></fc>°C  <skyCondition>"
 --        ] 36000
         
         Run DynNetwork     [ "-t", "<tx>kB/s <rx>kB/s"
-        , "--Low"      , "1000"
-        , "--High"     , "8000"
+        , "--Low"      , "5000"
+        , "--High"     , "10000"
         , "-n"         , "darkgreen"
         , "-h"         , "yellow"
         ] 20
@@ -49,7 +47,7 @@ Config {
         , "-l"         , "darkred"
         , "-n"         , "darkgreen"
         , "-h"         , "darkgreen"
-        ] 20
+        ] 60
         
         , Run MultiCpu [ "-t" , "<total0>% <total1>%"
         , "--Low"      , "50"
@@ -77,21 +75,21 @@ Config {
         , "-l"         , "darkgreen"
         , "-n"         , "darkgreen"
         , "-h"         , "yellow"
-        ] 20
+        ] 100
 
-        , Run Battery [ "-t" , "<acstatus>"
-        , "--Low"      , "15"
-        , "--High"     , "80"
+        , Run Battery [ "-t" , "<left>%"
+        , "--Low"      , "20"
+        , "--High"     , "99"
         , "-l"         , "yellow"
         , "-n"         , "darkgreen"
         , "-h"         , "#4682B4"
         , "--"
-        , "-o"  , "<left>%"
-        , "-O"  , "<fc=#dAA520>Charging</fc>"
-        , "-i"  , "<fc=#006000>Charged</fc>"
-        ] 3600
+        , "-o"  , "" -- this stuff isn't working as expected
+        , "-O"  , ""
+        , "-i"  , ""
+        ] 600
 
-        , Run Date "<fc=#ABABAB>%A, %B %e    </fc> <fc=#dAA520>%l:%M %P </fc>" "date" 3600
+        , Run Date "<fc=#ABABAB>%A, %B %e    </fc> <fc=#dAA520>%l:%M %P </fc>" "date" 600
         ]
     ]
 }

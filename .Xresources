@@ -47,8 +47,8 @@ URxvt*shading: 100
 
 ! [URxvt - Perl Plugins]
 URxvt*perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt*urlLauncher: /usr/bin/chromium
-URxvt*url-select.launcher: /usr/bin/chromium
+URxvt*urlLauncher: /usr/bin/google-chrome-stable
+URxvt*url-select.launcher: /usr/bin/google-chrome-stable
 URxvt*url-select.underline: true
 URxvt*url-select.button: 2
 URxvt*keysym.Mod4-u: perl:url-select:select_next

@@ -139,7 +139,7 @@ xLayout = avoidStruts(tile ||| tab ||| Grid ||| fullscreenFull Full)
 ---------------------
 --{-# Startup Hook #-}
 ---------------------
-xStartupHook = setWMName "LG3D"  -- because Java...
+--xStartupHook = setWMName "LG3D"  -- because Java...
 
 ---------------------
 --{-# Manage Hook #-}
@@ -178,7 +178,7 @@ myConfig = defaultConfig { modMask            = xMod
                               , workspaces         = xWorkspaces
                               , layoutHook         = xLayout
                               , manageHook         = xManage <+> manageDocks <+> fullscreenManageHook
-                              , startupHook        = xStartupHook
+                     --         , startupHook        = xStartupHook
                               , handleEventHook    = fullscreenEventHook
                               } 
                               `additionalKeys` xKeys
