@@ -18,6 +18,9 @@ xsetroot -bg darkred -mod 15 15
 # merge .Xresources
 xrdb -merge ~/.Xresources
 
+# redshift - what happened to the systemd service?
+redshift &
+
 # urxvt daemon
 urxvtd -q -o -f  
 
