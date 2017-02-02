@@ -4,7 +4,7 @@
 
 Config { 
 
-    font               = "xft:terminus:pixelsize=12"
+    font               = "terminus" 
     , bgColor          = "black"
     , fgColor          = "#646464"
     , position         = Top

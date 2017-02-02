@@ -67,6 +67,7 @@ data ShellCommands = URxvtc
 instance Show ShellCommands where
   show URxvtc          = "urxvtc"
   -- doesn't look like I have this font anymore...need to fix this.
+  -- why is terminus broken
   show DMenu           = "dmenu_run -p dmenu -fn xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-1 -nb black -nf gray -sb white -sf black -i"
   show XMonadRecompile = "xmonad --recompile;xmonad --restart"
 
@@ -75,6 +76,7 @@ launch = spawn . show
 ---------------
 --{-# Theme #-}
 ---------------
+-- I didn't even have this font...what does it do?  where is this font rendered?
 xFont  = "-windows-proggytinysz-medium-r-normal--8-80-96-96-c-60-iso8859-1"
 
 xTheme = defaultTheme { activeColor         = show Black

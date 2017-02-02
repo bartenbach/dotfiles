@@ -7,7 +7,9 @@ Xcursor*theme: Vanilla-DMZ
 Xcursor*size: 24
 
 ! [URxvt - General Settings]
+! why is terminus broken?
 URxvt*font: xft:terminus:pixelsize=15
+!URxvt*font: xft:Inconsolata
 URxvt*buffered: true
 URxvt*background: #000000
 URxvt*foreground: Gray
