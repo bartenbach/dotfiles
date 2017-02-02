@@ -8,7 +8,8 @@ Xcursor*size: 24
 
 ! [URxvt - General Settings]
 ! why is terminus broken?
-URxvt*font: xft:terminus:pixelsize=15
+!URxvt*font: xft:terminus:pixelsize=15
+URxvt*font: xft:xos4 Terminus
 !URxvt*font: xft:Inconsolata
 URxvt*buffered: true
 URxvt*background: #000000

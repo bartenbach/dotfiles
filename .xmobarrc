@@ -4,7 +4,7 @@
 
 Config { 
 
-    font               = "terminus" 
+    font               = "xos4 terminus"
     , bgColor          = "black"
     , fgColor          = "#646464"
     , position         = Top
