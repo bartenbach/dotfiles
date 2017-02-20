@@ -10,8 +10,7 @@
 #-------------------------
 # Personal configurations
 #-------------------------
-local sourced=( '.aliases .git-prompt .prompt' )
-local file
+sourced=( '.aliases .git-prompt .prompt' )
 
 for file in $sourced
   do

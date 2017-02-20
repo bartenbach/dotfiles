@@ -63,7 +63,7 @@ function get_hostname {
 #--------------
 function get_ret_val {
   if [[ "$?" == 0 ]];then
-    RET=$red
+    RET=$green
   else
     RET=$iyellow
   fi
@@ -96,7 +96,7 @@ function assemble {
   if [ $EUID -eq 0 ];then
     PS1="$red[root] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
   else
-    PS1="$red[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+    PS1="$green[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
   fi
 }
 
