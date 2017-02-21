@@ -1,17 +1,20 @@
+# vim: set ft=gitconfig noet:
+
 [user]
 	name = proxa
 	email = blakebartenbach@gmail.com
+
 [push]
 	default = simple
 
 [color]
  ui = true
-# branch = auto
-# showbranch = auto
-# diff = auto
-# interactive = auto
-# status = auto
-# grep = yes
+ branch = true
+ showbranch = true
+ diff = true
+ interactive = true
+ status = true
+ grep = yes
 
 [merge]
  tool = vimdiff
@@ -26,6 +29,6 @@
 [diff]
  rename = copies
 
-# vim: set ft=gitconfig noet:
 [core]
 	quotepath = off
+	editor = vim
