@@ -27,14 +27,14 @@ PS1_DEBUG=0
 PS2="> "
 PS3="+ "
 PS4=""
-reset='\e[0m'
-red='\e[31m'
-green='\e[32m'
-ired='\e[91m'
-igreen='\e[92m'
-purple='\e[35m'
-ipurple='\e[95m'
-yellow='\e[93m'
+reset='\[\e[0m\]'
+red='\[\e[31m\]'
+green='\[\e[32m\]'
+ired='\[\e[91m\]'
+igreen='\[\e[92m\]'
+purple='\[\e[35m\]'
+ipurple='\[\e[95m\]'
+yellow='\[\e[93m\]'
 
 #-----------------
 # Git integration
@@ -81,7 +81,7 @@ function get_pwd {
 # Debugging
 #-----------
 function debug {
-  [[ $PS1_DEBUG == 1 ]] && echo $PS1
+  [[ $PS1_DEBUG -eq 1 ]] && echo $PS1
 }
 
 #--------------------
