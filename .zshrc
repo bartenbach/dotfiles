@@ -97,6 +97,7 @@ setopt PRINT_EXIT_VALUE BG_NICE NOTIFY APPEND_HISTORY EXTENDED_GLOB \
 # Vim Shell Emulation
 #---------------------
 bindkey -v
+bindkey ' ' magic-space
 
 #-------------------------
 # keep things interesting

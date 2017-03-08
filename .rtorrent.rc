@@ -23,4 +23,10 @@ peer_exchange = yes
 # Most trackers are UDP
 use_udp_trackers = yes
 
+# colors for rtorrent-vi-color 
+color_active_fg = 4
+color_inactive_fg = 3
+color_dead_fg = 1
+color_finished_fg = 7
+
 # vim: set ft=cfg :

@@ -106,9 +106,9 @@ xWorkspaceKeys = [((m .|. xMod, k), windows $ f i)
                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 xKeys = [ ((xMod,      xK_Escape),    kill)
-        , ((xMod,      xK_Return),    launch URxvtc)
-        , ((xMod,      xK_r),         launch DMenu)
-        , ((xMod,      xK_c),         launch XMonadRecompile)
+        , ((xMod,      xK_Return),    Main.launch URxvtc)
+        , ((xMod,      xK_r),         Main.launch DMenu)
+        , ((xMod,      xK_c),         Main.launch XMonadRecompile)
         , ((xMod,      xK_b),         withFocused toggleBorder)
         , ((xMod,      xK_space),     sendMessage NextLayout)
         , ((xMod,      xK_j),         sendMessage Shrink)
