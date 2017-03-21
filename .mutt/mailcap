@@ -1,7 +1,0 @@
-#text/html; /usr/bin/lynx --assume_charset=%{charset} -force_html %s; nametemplate=%s.html; copiousoutput;
-text/html; w3m -I %{charset} -T text/html %s; nametemplate=%s.html; copiousoutput;
-image/*;                feh %s;
-application/pdf;        zathura %s;
-application/x-gzip;     less %s
-application/x-xz;       less %s
-application/x-bzip2;    less %s
