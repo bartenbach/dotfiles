@@ -1,0 +1,121 @@
+#####################
+## ~/.ncmpcpp/config 
+#####################
+
+##### directories ######
+ncmpcpp_directory = "~/.ncmpcpp"
+lyrics_directory = "~/.ncmpcpp/lyrics"
+
+##### connection settings #####
+mpd_host = "127.0.0.1"
+mpd_port = "6600"
+mpd_music_dir = "~/music"
+mpd_connection_timeout = "5"
+mpd_crossfade_time = "5"
+
+##### music visualizer #####
+visualizer_in_stereo = "yes"
+visualizer_fifo_path = "/tmp/mpd.fifo"
+visualizer_output_name = "fifo"
+visualizer_sample_multiplier = 1
+visualizer_sync_interval = "30"
+visualizer_type = "spectrum"
+visualizer_look = "◆│"
+
+##### color definitions #####
+colors_enabled = "yes"
+empty_tag_color = "blue"
+header_window_color = "blue"
+volume_color = "blue"
+state_line_color = "blue"
+state_flags_color = "blue"
+main_window_color = "blue"
+color1 = "blue"
+color2 = "blue"
+main_window_highlight_color = "blue"
+progressbar_color = "blue"
+statusbar_color = "blue"
+alternative_ui_separator_color = "blue"
+active_column_color = "blue"
+visualizer_color = "blue"
+window_border_color = "blue"
+active_window_border = "blue"
+
+##### system encoding #####
+system_encoding = "utf-8"
+
+##### delays #####
+playlist_disable_highlight_delay = "0"
+message_delay_time = "10"
+
+##### song format #####
+song_list_format = "{%a - }{%t}|{$8%f$9}$R{$5(%l)$9}"
+song_status_format = "{{%a - }{%t}}|{%f}"
+song_library_format = "{%n - }{%t}|{%f}"
+tag_editor_album_format = "{(%y) }%b"
+alternative_header_first_line_format = "$b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b"
+alternative_header_second_line_format = "{{$2$b%a$/b$9}{ - $7%b$9}{ ($2%y$9)}}|{%D}"
+now_playing_prefix = ""
+now_playing_suffix = ""
+browser_playlist_prefix = "$2playlist$9 "
+selected_item_prefix = "$6"
+selected_item_suffix = "$9"
+song_window_title_format = "{%a - }{%t}|{%f}"
+
+##### columns settings #####
+song_columns_list_format = "(7f)[]{l} (25)[]{a} (40)[]{t|f} (30)[]{b}"
+
+##### various settings #####
+#execute_on_song_change = "twmnc \"-t $(ncmpcpp --now-playing '{%a}|{%f}')\" \"-c $(ncmpcpp --now-playing '{%t}')\""
+playlist_show_remaining_time = "no"
+playlist_shorten_total_times = "no"
+playlist_separate_albums = "no"
+playlist_display_mode = "columns" # classic/columns
+browser_display_mode = "columns"
+search_engine_display_mode = "columns"
+playlist_editor_display_mode = "columns"
+discard_colors_if_item_is_selected = "no"
+incremental_seeking = "yes"
+seek_time = "10"
+autocenter_mode = "no"
+centered_cursor = "no"
+progressbar_look = "=|"
+allow_for_physical_item_deletion = "yes"
+#startup_screen = 
+#default_place_to_search_in = "database" (database/playlist)
+user_interface = "classic" # classic/alternative
+#media_library_left_column = "a" (possible values: a,y,g,c,p, legend above)
+default_find_mode = "wrapped"  # (wrapped/normal)
+#default_space_mode = "add" (add/select)
+#default_tag_editor_left_col = "albums" (albums/dirs)
+default_tag_editor_pattern = "%n - %t"
+header_visibility = "yes"
+statusbar_visibility = "yes"
+titles_visibility = "yes"
+header_text_scrolling = "yes"
+cyclic_scrolling = "no"
+lines_scrolled = "2"
+follow_now_playing_lyrics = "no"
+fetch_lyrics_for_current_song_in_background = "no"
+store_lyrics_in_song_dir = "no"
+lastfm_preferred_language = "en_US"
+show_hidden_files_in_local_browser = "no"
+#locked_screen_width_part = "50"
+#ask_for_locked_screen_width_part = "yes"
+#jump_to_now_playing_song_at_start = "yes"
+clock_display_seconds = "no"
+display_volume_level = "yes"
+display_bitrate = "yes"
+#display_remaining_time = "no"
+#regular_expressions = "basic" (basic/extended)
+#ignore_leading_the = "no"
+#block_search_constraints_change_if_items_found = "yes"
+mouse_support = "no"
+mouse_list_scroll_whole_page = "no"
+empty_tag_marker = "-"
+#tag_editor_extended_numeration = "no"
+#media_library_disable_two_column_mode = "no"
+enable_window_title = "yes"
+#search_engine_default_search_mode = "1"
+external_editor = "vim"
+use_console_editor = "yes"
