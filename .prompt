@@ -27,22 +27,14 @@ PS1_DEBUG=0
 PS2="> "
 PS3="+ "
 PS4=""
-reset='\e[0m'
-red='\e[31m'
-green='\e[32m'
-ired='\e[91m'
-igreen='\e[92m'
-purple='\e[35m'
-ipurple='\e[95m'
-yellow='\e[93m'
-
-#-----------------
-# Git integration
-#-----------------
-GIT_PS1_SHOWDIRTYSTATE='walrus'
-GIT_PS1_SHOWSTASHEDSTATE='buffalo'
-GIT_PS1_SHOWUNTRACKEDFILES='tiger'
-GIT_PS1_SHOWUPSTREAM='verbose git'
+reset='\[\e[0m\]'
+red='\[\e[31m\]'
+green='\[\e[32m\]'
+ired='\[\e[91m\]'
+igreen='\[\e[92m\]'
+purple='\[\e[35m\]'
+ipurple='\[\e[95m\]'
+yellow='\[\e[93m\]'
 
 #------------------------------
 # Use custom name if it exists
@@ -70,13 +62,6 @@ function get_ret_val {
   assemble
 }
 
-#--------------
-# Gets the pwd
-#--------------
-function get_pwd {
-  [[ $TERM != linux ]] && echo -ne "\033]0;$PWD\007"
-}
-
 #-----------
 # Debugging
 #-----------
@@ -87,16 +72,16 @@ function debug {
 #--------------------
 # Set prompt command
 #--------------------
-PROMPT_COMMAND='get_ret_val && get_pwd'
+PROMPT_COMMAND='get_ret_val'
 
 #----------
 # Assemble
 #----------
 function assemble {
   if [ $EUID -eq 0 ];then
-    PS1="$red[root] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+    PS1="$red[root] \w${yellow} ${RET}\\\$ $reset"
   else
-    PS1="$green[$name.$host] \w${yellow}$(__git_ps1) ${RET}\\\$ $reset"
+    PS1="$green[$name.$host] \w${yellow} ${RET}\\\$ $reset"
   fi
 }
 
