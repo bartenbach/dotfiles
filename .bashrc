@@ -10,7 +10,7 @@
 #-------------------------
 # Personal configurations
 #-------------------------
-sourced=( '.aliases .git-prompt .prompt' )
+sourced=( '.aliases .prompt' )
 
 for file in $sourced
   do
@@ -69,3 +69,10 @@ fi
 #-----------------
 bash_completion='/usr/share/bash-completion/bash_completion'
 [ -r $bash_completion ] && . $bash_completion
+
+#
+# These should probably go in my profile but whatever
+#
+export EDITOR="vim"
+export VISUAL="vim"
+export PAGER="less"

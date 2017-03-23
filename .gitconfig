@@ -4,9 +4,6 @@
 	name = proxa
 	email = blakebartenbach@gmail.com
 
-[push]
-	default = simple
-
 [color]
  ui = true
  branch = true

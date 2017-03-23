@@ -10,7 +10,9 @@ alias sd='systemctl'
 alias mv='mv -i'
 alias feh='feh -Tproxa'
 alias cls='clear'
-alias seh='sxiv'
+
+# centos
+alias yum='yum --color=always'
 
 # tmux commands are too long
 alias tl='tmux list-sessions'
@@ -19,6 +21,6 @@ alias tn='tmux new-session -s'
 
 # typo trains
 alias sl='sl -l'
-alias vmi='sl -l'
+alias vmi='sl -F'
 alias claer='sl -l'
 alias aslamixer='sl -l'
