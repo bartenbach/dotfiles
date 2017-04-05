@@ -49,8 +49,7 @@ export LESS_TERMCAP_ue=$(printf '\e[0m')       # end underline
 #------------------------------
 local files
 local file
-files=( .aliases .zprompt .zprofile )
-
+local files=( .aliases .zprompt .zprofile )
 foreach file ($files) { 
   if [[ -r $file ]] {
     source ~/$file
@@ -75,9 +74,9 @@ setopt HIST_IGNORE_DUPS
 setopt BANG_HIST 
 setopt HIST_FIND_NO_DUPS
 setopt HIST_VERIFY
-# testing
 setopt HIST_LEX_WORDS # better whitespace handling / maybe slower
 setopt HIST_REDUCE_BLANKS # remove extra whitespace from commands in history
+setopt COMPLETE_ALIASES 
 
 #----------------
 # Zsh Completion
@@ -97,9 +96,13 @@ setopt PRINT_EXIT_VALUE BG_NICE NOTIFY APPEND_HISTORY EXTENDED_GLOB \
 # Vim Shell Emulation
 #---------------------
 bindkey -v
-bindkey ' ' magic-space
 
 #-------------------------
-# keep things interesting
+# NPM & Ruby to path
 #-------------------------
-#fortune -o  # actually it's just annoying
+export PATH="$HOME/node_modules/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
+
+#-----------------------
+# Travis gem
+#-----------------------
+[ -f /home/alureon/.travis/travis.sh ] && source /home/alureon/.travis/travis.sh

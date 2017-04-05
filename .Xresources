@@ -7,10 +7,7 @@ Xcursor*theme: Vanilla-DMZ
 Xcursor*size: 24
 
 ! [URxvt - General Settings]
-! why is terminus broken?
-!URxvt*font: xft:terminus:pixelsize=15
-URxvt*font: xft:xos4 Terminus
-!URxvt*font: xft:Inconsolata
+URxvt*font: xft:xos4 terminus:pixelsize=17
 URxvt*buffered: true
 URxvt*background: #000000
 URxvt*foreground: Gray
@@ -71,3 +68,4 @@ Xft.rgba: rgb
 
 ! [Color Scheme]
 #include ".config/xcolors/proxa_theme"
+!#include ".config/xcolors/solarized"

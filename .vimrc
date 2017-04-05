@@ -53,4 +53,7 @@ set shell=/bin/zsh " what shell are we using
 set errorfile=$HOME/.vim/error.log " where to write encountered errors to
 set encoding=utf-8 "set the file encoding
 syntax on " turn on syntax highlighting
-colo proxa256 " use my custom color file :)
+"colo proxa256 " use my custom color file :)
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized

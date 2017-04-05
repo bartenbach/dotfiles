@@ -8,7 +8,7 @@
 ------------------
 import XMonad hiding ((|||))
 import XMonad.Actions.NoBorders
-import XMonad.Layout.Tabbed (tabbed, Theme(..), defaultTheme, shrinkText)
+import XMonad.Layout.Tabbed (tabbed, Theme(..), shrinkText)
 import XMonad.Layout.MagicFocus
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid (Grid(..))
@@ -23,14 +23,10 @@ import XMonad.Util.EZConfig (additionalKeys,removeKeys)
 import System.Exit (exitWith, ExitCode(ExitSuccess))
 import qualified XMonad.StackSet as W
 
--------------------
--- {-# Mod Keys #-}
--------------------
-
 -----------------
 --{-# Borders #-}
 -----------------
-xBorderWidth = 0
+xBorderWidth = 1
 xBorderColor = show Black
 xBorderFocus = show Red
 
@@ -74,21 +70,20 @@ launch = spawn . show
 ---------------
 --{-# Theme #-}
 ---------------
--- I didn't even have this font...what does it do?  where is this font rendered?
-xFont  = "-windows-proggytinysz-medium-r-normal--8-80-96-96-c-60-iso8859-1"
+xFont  = "xos4 Terminus"
 
-xTheme = defaultTheme { activeColor         = show Black
-                      , activeBorderColor   = show Red
-                      , activeTextColor     = show Red
-                      , inactiveColor       = show Black
-                      , inactiveTextColor   = show Black
-                      , inactiveBorderColor = show Black
-                      , urgentColor         = show Black
-                      , urgentTextColor     = show Yellow
-                      , urgentBorderColor   = show Yellow
-                      , fontName            = xFont
-                      , decoHeight          = 12
-                      }
+xTheme = def { activeColor         = show Black
+             , activeBorderColor   = show Red
+             , activeTextColor     = show Red
+             , inactiveColor       = show Black
+             , inactiveTextColor   = show Black
+             , inactiveBorderColor = show Black
+             , urgentColor         = show Black
+             , urgentTextColor     = show Yellow
+             , urgentBorderColor   = show Yellow
+             , fontName            = xFont
+             , decoHeight          = 12
+             }
 
 ----------------------
 --{-# Key Bindings #-}
@@ -128,7 +123,7 @@ xNoKeys = [ (xMod, xK_comma)
 ---------------------
 --{-# Layout Hook #-}
 ----------------------
-xLayout = avoidStruts(tile ||| tab ||| Grid ||| fullscreenFull Full)
+xLayout = avoidStruts (tile ||| tab ||| Grid ||| fullscreenFull Full)
   where
     tab     = tabbed shrinkText xTheme
     tile    = Tall nmaster delta ratio
@@ -139,7 +134,7 @@ xLayout = avoidStruts(tile ||| tab ||| Grid ||| fullscreenFull Full)
 ---------------------
 --{-# Startup Hook #-}
 ---------------------
---xStartupHook = setWMName "LG3D"  -- because Java...
+xStartupHook = setWMName "LG3D"  -- because Java...
 
 ---------------------
 --{-# Manage Hook #-}
@@ -169,22 +164,22 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
 --------------
 --{-# Main #-}
 --------------
-myConfig = defaultConfig { modMask            = xMod
-                              , terminal           = show URxvtc
-                              , focusFollowsMouse  = xMouseFocus
-                              , borderWidth        = xBorderWidth
-                              , normalBorderColor  = xBorderColor
-                              , focusedBorderColor = xBorderFocus
-                              , workspaces         = xWorkspaces
-                              , layoutHook         = xLayout
-                              , manageHook         = xManage <+> manageDocks <+> fullscreenManageHook
-                     --         , startupHook        = xStartupHook
-                              , handleEventHook    = fullscreenEventHook
-                              } 
-                              `additionalKeys` xKeys
-                              `removeKeys` xNoKeys
+myConfig = def { modMask            = xMod
+               , terminal           = show URxvtc
+               , focusFollowsMouse  = xMouseFocus
+               , borderWidth        = xBorderWidth
+               , normalBorderColor  = xBorderColor
+               , focusedBorderColor = xBorderFocus
+               , workspaces         = xWorkspaces
+               , layoutHook         = xLayout
+               , manageHook         = xManage <+> manageDocks <+> fullscreenManageHook
+               , startupHook        = xStartupHook
+               , handleEventHook    = fullscreenEventHook
+               } 
+               `additionalKeys` xKeys
+               `removeKeys` xNoKeys
 
 ----------
 -- Main
 ----------
-main = xmonad myConfig
+main = xmonad $docks myConfig
