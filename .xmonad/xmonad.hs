@@ -40,7 +40,7 @@ xMouseFocus =  False
 --------------------
 --{-# Workspaces #-}
 --------------------
-xWorkspaces = "1":"2":"3":"4":"5":"6":[]
+xWorkspaces = "1:irc":"2":"3":"4:web":"5":"6":[]
 
 ---------------------------
 --{-# Color Definitions #-}
@@ -153,6 +153,7 @@ xManage = composeAll [ isClass "feh"             --> doFloat
                      , isClass "nvidia-settings" --> doCenterFloat
                      , isProp role popUp         --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
+                     , isClass "Google-chrome"   --> doShift "4:web"
                      , isDialog                  --> doCenterFloat
                      , isFullscreen              --> (doF W.focusDown <+> doFullFloat)
                      , transience'
