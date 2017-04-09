@@ -10,6 +10,7 @@ import XMonad hiding ((|||))
 import XMonad.Actions.NoBorders
 import XMonad.Layout.Tabbed (tabbed, Theme(..), shrinkText)
 import XMonad.Layout.MagicFocus
+import XMonad.Layout.NoBorders
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.PerWorkspace (onWorkspace)
@@ -123,8 +124,9 @@ xNoKeys = [ (xMod, xK_comma)
 ---------------------
 --{-# Layout Hook #-}
 ----------------------
-xLayout = avoidStruts (tile ||| tab ||| Grid ||| fullscreenFull Full)
+xLayout = avoidStruts (tile ||| tab ||| Grid) ||| layoutFull
   where
+    layoutFull = noBorders $ fullscreenFull Full
     tab     = tabbed shrinkText xTheme
     tile    = Tall nmaster delta ratio
     nmaster = 1
@@ -146,14 +148,9 @@ role       = "WM_WINDOW_ROLE"
 isProp x y = stringProperty x =? y
 isClass x  = className        =? x
 
-xManage = composeAll [ isClass "Gimp"            --> doFloat
-                     , isClass "feh"             --> doFloat
-                     , isClass "desktop_window"  --> doIgnore
-                     , isClass "kdesktop"        --> doIgnore
-                     , isClass "xmessage"        --> doCenterFloat 
-                     , isClass "MPlayer"         --> doCenterFloat
+xManage = composeAll [ isClass "feh"             --> doFloat
+                     , isClass "Xmessage"        --> doCenterFloat 
                      , isClass "nvidia-settings" --> doCenterFloat
-                     , isClass "PCSXR"           --> doFullFloat
                      , isProp role popUp         --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat
