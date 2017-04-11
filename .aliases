@@ -10,15 +10,18 @@ alias mv='mv -i'
 alias feh='feh -Tproxa'
 alias cls='clear'
 alias dmesg='dmesg --color=always'
+# this is being defined in .zshrc instead
 #alias less='less -R -b-1 -J -j2 -M -W "-#.01"' # -N for line numbers, -i ignore case
 alias mpv='mpv --no-sub'
 export LESS='Rb-1Jj2MW#.01'
 alias pkgfile='pkgfile -v'
 alias lsblk='lsblk -Spo +size'
+alias wakeup='wol 30:5A:3A:56:3A:1B'
 
 # typo troll trains
 sl='sl -l'
 alias sl=$sl
 alias vmi=$sl
 alias claer=$sl
-alias wakeup='wol 30:5A:3A:56:3A:1B'
+alias sdl=$sl
+alias pamcan=$sl

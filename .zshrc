@@ -106,3 +106,10 @@ export PATH="$HOME/node_modules/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
 # Travis gem
 #-----------------------
 [ -f /home/alureon/.travis/travis.sh ] && source /home/alureon/.travis/travis.sh
+
+#--------------------------
+# Go environment variables
+#--------------------------
+export GOPATH=~/code/go
+export GOBIN=~/code/go/bin
+export PATH="$HOME/code/go/bin":$PATH
