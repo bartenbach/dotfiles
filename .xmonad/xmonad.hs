@@ -30,7 +30,7 @@ import qualified XMonad.StackSet as W
 -----------------
 --{-# Borders #-}
 -----------------
-xBorderWidth = 3
+xBorderWidth = 1
 xBorderColor = show Black
 xBorderFocus = show Red
 
@@ -65,7 +65,7 @@ data ShellCommands = URxvtc
                    | XMonadRecompile
 
 instance Show ShellCommands where
-  show URxvtc          = "urxvtc"
+  show URxvtc          = "urxvt256c" -- apparently this needs to be 256c on CentOS :|
   show DMenu           = "dmenu_run -p dmenu -fn \"xos4 terminus\" -nb black -nf gray -sb white -sf black -i"
   show XMonadRecompile = "xmonad --recompile;xmonad --restart"
 
@@ -75,7 +75,7 @@ launch = spawn . show
 --{-# Theme #-}
 ---------------
 -- I didn't even have this font...what does it do?  where is this font rendered?
-xFont  = "-windows-proggytinysz-medium-r-normal--8-80-96-96-c-60-iso8859-1"
+xFont  = "-*-terminus-*-*-*--*-*-*-*-*-*-*-*"
 
 xTheme = defaultTheme { activeColor         = show Black
                       , activeBorderColor   = show Red
@@ -128,7 +128,7 @@ xNoKeys = [ (xMod, xK_comma)
 ---------------------
 --{-# Layout Hook #-}
 ----------------------
-xLayout = avoidStruts(tile ||| tab ||| Grid ||| fullscreenFull Full)
+xLayout = avoidStruts(tile ||| tab ||| Grid) ||| fullscreenFull Full
   where
     tab     = tabbed shrinkText xTheme
     tile    = Tall nmaster delta ratio
@@ -139,7 +139,7 @@ xLayout = avoidStruts(tile ||| tab ||| Grid ||| fullscreenFull Full)
 ---------------------
 --{-# Startup Hook #-}
 ---------------------
---xStartupHook = setWMName "LG3D"  -- because Java...
+xStartupHook = setWMName "LG3D"  -- because Java...
 
 ---------------------
 --{-# Manage Hook #-}
@@ -153,12 +153,8 @@ isClass x  = className        =? x
 
 xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "feh"             --> doFloat
-                     , isClass "desktop_window"  --> doIgnore
-                     , isClass "kdesktop"        --> doIgnore
-                     , isClass "xmessage"        --> doCenterFloat 
-                     , isClass "MPlayer"         --> doCenterFloat
+                     , isClass "Xmessage"        --> doCenterFloat 
                      , isClass "nvidia-settings" --> doCenterFloat
-                     , isClass "PCSXR"           --> doFullFloat
                      , isProp role popUp         --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat
@@ -178,7 +174,7 @@ myConfig = defaultConfig { modMask            = xMod
                               , workspaces         = xWorkspaces
                               , layoutHook         = xLayout
                               , manageHook         = xManage <+> manageDocks <+> fullscreenManageHook
-                     --         , startupHook        = xStartupHook
+                              , startupHook        = xStartupHook
                               , handleEventHook    = fullscreenEventHook
                               } 
                               `additionalKeys` xKeys

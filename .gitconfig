@@ -1,30 +1,35 @@
 # vim: set ft=gitconfig noet:
 
 [user]
-	name = proxa
+	name = Blake Bartenbach
 	email = blakebartenbach@gmail.com
 
 [color]
- ui = true
- branch = true
- showbranch = true
- diff = true
- interactive = true
- status = true
- grep = yes
+  ui = true
+  branch = true
+  showbranch = true
+  diff = true
+  interactive = true
+  status = true
+  grep = yes
+
+[color "status"]
+  added = green
+  changed = red
+  untracked = yellow
 
 [merge]
- tool = vimdiff
- log = true
+  tool = vimdiff
+  log = true
 
 [help]
- autocorrect = 1
+  autocorrect = 1
 
 [log]
- decorate = full
+  decorate = full
 
 [diff]
- rename = copies
+  rename = copies
 
 [core]
 	quotepath = off

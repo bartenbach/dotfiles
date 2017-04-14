@@ -71,10 +71,15 @@ bash_completion='/usr/share/bash-completion/bash_completion'
 [ -r $bash_completion ] && . $bash_completion
 
 #
-# These should probably go in my profile but whatever
+# rvm
 #
-export EDITOR="vim"
-export VISUAL="vim"
-export PAGER="less"
+source ~/.rvm/scripts/rvm
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
-#source /home/alureon/.oh-my-git/prompt.sh
+#
+# go envirnoment variables
+#
+export GOPATH=~/code/go
+export GOBIN="$GOPATH/bin"
+export PATH="$PATH:$GOBIN"

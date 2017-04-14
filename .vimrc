@@ -12,7 +12,6 @@ set wrapscan " when searching for text, search entire file
 set mousehide " hide mouse cursor when typing
 "set ignorecase  " can be set to ignore case when doing searches
 set number " show line numbers
-set bg=dark
 "set hlsearch " highlight the previous search pattern
 set cursorcolumn " highlight the screen column of the cursor - easier to spot
 set cursorline " highlight the screen line of the cursor - easier to spot
@@ -55,9 +54,13 @@ set shell=/bin/zsh " what shell are we using
 set errorfile=$HOME/.vim/error.log " where to write encountered errors to
 set encoding=utf-8 "set the file encoding
 syntax on " turn on syntax highlighting
-colo proxa256 " use my custom color file :)
+colo solarized " use my custom color file :)
 
 " fix 256-color scheme problems in tmux
 if &term =~ '256color'
   set t_ut=
 endif
+
+" solarized
+let g:solarized_termcolors=256
+set background=dark

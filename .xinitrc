@@ -20,6 +20,7 @@ urxvtd -q -o -f
 # sync copy/paste buffers
 #autocutsel -fork &
 #autocutsel -selection PRIMARY -fork &
+/usr/local/bin/monitors.sh
 
 # window manager
 exec /usr/bin/$WINDOW_MANAGER
