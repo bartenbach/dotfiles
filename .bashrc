@@ -76,3 +76,5 @@ bash_completion='/usr/share/bash-completion/bash_completion'
 export EDITOR="vim"
 export VISUAL="vim"
 export PAGER="less"
+
+#source /home/alureon/.oh-my-git/prompt.sh
