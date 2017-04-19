@@ -5,6 +5,13 @@
 [push]
 	default = simple
 
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+	pu = push
+  br = branch
+
 [color]
  ui = true
  branch = auto
