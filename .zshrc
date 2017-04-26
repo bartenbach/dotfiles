@@ -49,7 +49,7 @@ export LESS_TERMCAP_ue=$(printf '\e[0m')       # end underline
 #------------------------------
 local files
 local file
-local files=( .aliases .zprompt .zprofile )
+files=( .aliases .zprompt .zprofile )
 foreach file ($files) { 
   if [[ -r $file ]] {
     source ~/$file
