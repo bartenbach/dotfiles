@@ -16,6 +16,9 @@ fi
 xset +dpms
 xset s 1800 1800
 
+# locking screensaver
+xscreensaver &
+
 # background
 xsetroot -bg darkred -mod 15 15
 
