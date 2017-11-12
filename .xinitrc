@@ -12,12 +12,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
   unset f
 fi
 
-# dpms settings
-xset +dpms
-xset s 1800 1800
+# dpms settings (overridden by xscreensaver currently)
+#xset +dpms
+#xset s 1800 1800
 
 # locking screensaver
-xscreensaver &
+xscreensaver -nosplash &
 
 # background
 xsetroot -bg darkred -mod 15 15
@@ -31,8 +31,11 @@ redshift &
 # urxvt daemon
 urxvtd -q -o -f  
 
-# bind special keys
+# bind special keys (volume ctrl, brightness)
 xbindkeys
+
+# disable hardware button for ejecting optical drive
+eject -i on
 
 # start xmobar
 xmobar &

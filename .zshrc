@@ -88,7 +88,7 @@ setopt NOMATCH
 #-------------
 # Zsh Options
 #-------------
-unsetopt GLOBAL_RCS BEEP
+unsetopt GLOBAL_RCS
 setopt PRINT_EXIT_VALUE BG_NICE NOTIFY APPEND_HISTORY EXTENDED_GLOB \
          LIST_TYPES IGNORE_EOF AUTO_CD
 
@@ -113,3 +113,8 @@ export PATH="$HOME/node_modules/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
 export GOPATH=~/code/go
 export GOBIN=~/code/go/bin
 export PATH="$HOME/code/go/bin":$PATH
+
+#
+# Cross-compiler
+#
+export PATH="$HOME/code/cross/bin:$PATH"

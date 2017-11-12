@@ -2,23 +2,25 @@
 #  ~/.xbindkeysrc
 #
 # brightness down
+# XF86MonBrightnessDown these keys will not work anymore. no idea why.
 "sudo backlight.rb -d 500"
-    F6
-#    XF86MonBrightnessDown these keys will not work anymore. no idea why.
+    F7
     
 # brightness up
+# XF86MonBrightnessUp
 "sudo backlight.rb -i 500"
-    F7
-#    XF86MonBrightnessUp
+    F8
 
 # master volume down 1%
+# XF86AudioLowerVolume These stopped working now too. Thanks Linux!
 "amixer set Master 5%-"
-#    XF86AudioLowerVolume These stopped working now too. Thanks Linux!
-    F11
+    KP_Subtract
+
 # master volume up 1%
+# XF86AudioRaiseVolume
 "amixer set Master 5%+"
-#    XF86AudioRaiseVolume
-    F12
+    KP_Add
 
 "amixer set Master toggle"
+    KP_Multiply
 #    XF86AudioMute   none of these special keys work
