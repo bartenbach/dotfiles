@@ -43,7 +43,7 @@ xMouseFocus =  False
 --------------------
 --{-# Workspaces #-}
 --------------------
-xWorkspaces = "1":"2":"3":"4":"5":"6":[]
+xWorkspaces = ["1","2","3","4","5","6","7"]
 
 ---------------------------
 --{-# Color Definitions #-}
@@ -65,7 +65,7 @@ data ShellCommands = URxvtc
                    | XMonadRecompile
 
 instance Show ShellCommands where
-  show URxvtc          = "urxvt256c" -- apparently this needs to be 256c on CentOS :|
+  show URxvtc          = "urxvtc"
   show DMenu           = "dmenu_run -p dmenu -fn \"xos4 terminus\" -nb black -nf gray -sb white -sf black -i"
   show XMonadRecompile = "xmonad --recompile;xmonad --restart"
 
@@ -74,19 +74,18 @@ launch = spawn . show
 ---------------
 --{-# Theme #-}
 ---------------
--- I didn't even have this font...what does it do?  where is this font rendered?
-xFont  = "-*-terminus-*-*-*--*-*-*-*-*-*-*-*"
+xFont  = "xos4 terminus"
 
 xTheme = defaultTheme { activeColor         = show Black
                       , activeBorderColor   = show Red
                       , activeTextColor     = show Red
+                      , fontName            = show xFont
                       , inactiveColor       = show Black
                       , inactiveTextColor   = show Black
                       , inactiveBorderColor = show Black
                       , urgentColor         = show Black
                       , urgentTextColor     = show Yellow
                       , urgentBorderColor   = show Yellow
-                      , fontName            = xFont
                       , decoHeight          = 12
                       }
 
@@ -98,7 +97,7 @@ xShiftMod = xMod .|. shiftMask
 xKillMask = xMod .|. controlMask
 
 xWorkspaceKeys = [((m .|. xMod, k), windows $ f i) 
-                 | (i, k) <- zip (xWorkspaces) [xK_1 .. xK_5]
+                 | (i, k) <- zip xWorkspaces [xK_1 .. xK_5]
                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
                  ++
                  [((m .|. xMod, key), screenWorkspace sc >>= flip whenJust (windows . f))
@@ -155,6 +154,8 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "feh"             --> doFloat
                      , isClass "Xmessage"        --> doCenterFloat 
                      , isClass "nvidia-settings" --> doCenterFloat
+                     , isClass "Google-chrome"   --> doShift "4"
+                     , isClass "jetbrains-idea"  --> doShift "5"
                      , isProp role popUp         --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat

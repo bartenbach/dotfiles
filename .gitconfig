@@ -1,36 +1,42 @@
-# vim: set ft=gitconfig noet:
-
 [user]
 	name = Blake Bartenbach
 	email = blakebartenbach@gmail.com
 
-[color]
-  ui = true
-  branch = true
-  showbranch = true
-  diff = true
-  interactive = true
-  status = true
-  grep = yes
+[push]
+	default = simple
 
-[color "status"]
-  added = green
-  changed = red
-  untracked = yellow
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+	pu = push
+  br = branch
+
+[color]
+ ui = true
+ branch = auto
+ showbranch = auto
+ diff = auto
+ interactive = auto
+ status = auto
+ grep = yes
 
 [merge]
-  tool = vimdiff
-  log = true
+ tool = vimdiff
+ log = true
 
 [help]
-  autocorrect = 1
+ autocorrect = 1
 
 [log]
-  decorate = full
+ decorate = full
 
 [diff]
-  rename = copies
+ rename = copies
 
 [core]
 	quotepath = off
-	editor = vim
+
+# vim: set ft=gitconfig noet:
+[commit]
+	gpgsign = true

@@ -1,0 +1,8 @@
+# vim: ft=zsh
+#
+# File: ~/.zprompt
+# Description: Prompt for zsh shell
+# Author: Blake Bartenbach
+#
+
+PS1="$fg_no_bold[green][%n.%m] %~ "$'\n'"%# $fg[white]"

@@ -7,7 +7,7 @@ Xcursor*theme: Vanilla-DMZ
 Xcursor*size: 24
 
 ! [URxvt - General Settings]
-URxvt*font: xft:terminus:pixelsize=15
+URxvt*font: xft:xos4terminus:pixelsize=18
 URxvt*buffered: true
 URxvt*background: #000000
 URxvt*foreground: Gray
@@ -47,13 +47,13 @@ URxvt*shading: 100
 
 ! [URxvt - Perl Plugins]
 URxvt*perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt*urlLauncher: /usr/bin/chromium
-URxvt*url-select.launcher: /usr/bin/chromium
+URxvt*urlLauncher: /usr/bin/google-chrome-stable
+URxvt*url-select.launcher: /usr/bin/google-chrome-stable
 URxvt*url-select.underline: true
 URxvt*url-select.button: 2
-URxvt*keysym.Mod1-u: perl:url-select:select_next
-URxvt*keysym.Mod1-v: perl:keyboard-select:activate
-URxvt.keysym.Mod1-s: perl:keyboard-select:search
+URxvt*keysym.Mod4-u: perl:url-select:select_next
+URxvt*keysym.Mod4-v: perl:keyboard-select:activate
+URxvt.keysym.Mod4-s: perl:keyboard-select:search
 URxvt*colorUL: #4682B4
 
 ! [Misc]

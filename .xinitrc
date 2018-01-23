@@ -4,26 +4,19 @@
 #
 WINDOW_MANAGER='xmonad'
 
-# set dpms and add local to font path 
-xset +dpms +fp /usr/share/fonts/local
-xset fp rehash
-
 # background
-xsetroot -bg darkred -mod 15 15
+xsetroot -bg darkblue -mod 15 15
 
 # merge .Xresources
 xrdb -merge ~/.Xresources
 
-# urxvt 'server'
+# urxvt server
 urxvtd -q -o -f  
 
-# sync copy/paste buffers
-#autocutsel -fork &
-#autocutsel -selection PRIMARY -fork &
-/usr/local/bin/monitors.sh
+# locking screensaver for security
+xscreensaver -no-splash &
 
 # window manager
 exec /usr/bin/$WINDOW_MANAGER
 
 # vim: set ft=sh :
-
