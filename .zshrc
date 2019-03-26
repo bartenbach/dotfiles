@@ -111,10 +111,5 @@ export PATH="$HOME/node_modules/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
 # Go environment variables
 #--------------------------
 export GOPATH=~/code/go
-export GOBIN=~/code/go/bin
-export PATH="$HOME/code/go/bin":$PATH
-
-#
-# Cross-compiler
-#
-export PATH="$HOME/code/cross/bin:$PATH"
+export GOBIN=$(go env GOPATH)/bin
+export PATH=$GOBIN:$PATH

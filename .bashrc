@@ -10,8 +10,7 @@
 #-------------------------
 # Personal configurations
 #-------------------------
-sourced=( '.aliases .git-prompt .prompt' )
-local file
+sourced=( '.aliases .prompt' )
 
 for file in $sourced
   do
@@ -21,7 +20,7 @@ for file in $sourced
 #----------------
 # Shell settings
 #----------------
-shopt -s autocd cdspell cmdhist dirspell extglob histverify \
+shopt -s cdspell cmdhist extglob histverify \
 no_empty_cmd_completion checkwinsize expand_aliases
 set -o notify 
 stty -ctlecho

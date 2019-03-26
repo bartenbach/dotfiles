@@ -5,7 +5,7 @@
 export LESS='Rb-1Jj2MW#.01'
 
 alias grep='grep --color'
-alias ls='ls --group-directories-first --color --human-readable -F'
+alias ls='ls -G'
 alias sd='systemctl'
 alias mv='mv -i'
 alias feh="feh -Tproxa --geometry 1580x880 --cycle-once --draw-tinted -Y -. -B black --info \"echo -e 'Name:%n [%u/%l] Filesize:%S Size:%w/%h Type:%t'\""
