@@ -17,6 +17,7 @@ alias pkgfile='pkgfile -v'
 #alias lsblk='lsblk -Spo +size' this doesn't print devices sometimes
 alias wakeup='wol 30:5A:3A:56:3A:1B'
 #alias xlock='xscreensaver-command -lock'
+alias cloudtunnel='ssh -i ~/.ssh/AF-WEBS-Sandbox.pem maintuser@52.222.42.220 -L 8022:gp1:22 -L 8122:vw1:22 -L 8080:localhost:8080'
 
 # typo troll trains
 sl='sl -l'

@@ -101,6 +101,7 @@ bindkey -v
 # NPM & Ruby to path
 #-------------------------
 export PATH="$HOME/node_modules/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 #-----------------------
 # Travis gem
@@ -113,3 +114,8 @@ export PATH="$HOME/node_modules/bin:$HOME/.gem/ruby/2.4.0/bin:$PATH"
 export GOPATH=~/code/go
 export GOBIN=$(go env GOPATH)/bin
 export PATH=$GOBIN:$PATH
+#export GO111MODULE=on
+
+# Jenv stuff because Java
+eval "$(jenv init -)"
+export PATH="/usr/local/sbin:$PATH"
