@@ -1,0 +1,20 @@
+[credential]
+	helper = store
+[pager]
+	branch = false
+[user]
+	email = blake.bartenbach@ngc.com
+	name = Blake Bartenbach
+[ssl]
+	Verify = false
+[http]
+	sslVerify = false
+[pull]
+	rebase = false
+[diff "ansible-vault"]
+	textconv = ansible-vault view
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
