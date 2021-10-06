@@ -12,8 +12,8 @@
 #------------------
 # Load Zsh Modules
 #------------------
-fpath=(~/.functions $fpath);
-autoload -Uz compinit colors ~/.functions/proxy ; compinit ; colors
+fpath=(~/.config/functions $fpath);
+autoload -Uz compinit colors ~/.config/functions/proxy ; compinit ; colors
 
 #-----------------
 # General Options
@@ -41,7 +41,7 @@ bindkey -M menuselect '^M' .accept-line
 #---------------
 # less arguments moved to .aliases
 export LESS='-#0.1 -R'
-export LESSHISTFILE=~/.hist/less_history
+export LESSHISTFILE=~/.config/less_history
 export LESSHISTSIZE=100
 export LESS_TERMCAP_mb=$(printf '\e[0;31m')    # blink
 export LESS_TERMCAP_md=$(printf '\e[0;35m')    # bold
@@ -58,22 +58,22 @@ local files
 local file
 files=(.aliases .zprompt .zprofile)
 foreach file ($files) { 
-  if [[ -r ~/$file ]] {
-    source ~/$file
+  if [[ -r ~/${XDG_CONFIG_HOME}/$file ]] {
+    source ~/${XDG_CONFIG_HOME}/$file
   }
 }
 
 #-----------
 # Dircolors
 #-----------
-if [[ -r ~/.dircolors ]] && type -p dircolors >/dev/null;then
-  eval $(dircolors -b ~/.dircolors)
+if [[ -r ~/.config/.dircolors ]] && type -p dircolors >/dev/null;then
+  eval $(dircolors -b ~/.config/.dircolors)
 fi
 
 #-------------
 # Zsh History
 #-------------
-HISTFILE=~/.hist/zsh_history
+HISTFILE=~/.config/zsh_history
 HISTSIZE=1000
 SAVEHIST=10000
 setopt SHARE_HISTORY # otherwise you get only the terminal you're on
@@ -112,9 +112,9 @@ export GOPATH=~/code/go
 export GOBIN=~/code/go/bin
 export PATH="$HOME/code/go/bin":$PATH
 
-#--------------------------------------------------
-# Just little GHC things...and python things....
-#--------------------------------------------------
+#------------------------
+# Path Modifications
+#------------------------
 export PATH=${PATH}:~/.xmonad
 export PATH=${PATH}:~/.local/bin
 export PATH=${PATH}:~/.cabal/bin

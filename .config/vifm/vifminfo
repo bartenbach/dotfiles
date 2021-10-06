@@ -1,0 +1,231 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/home/4m33979/
+	..
+1633356899
+'b
+	/home/4m33979/bin/
+	..
+1633356900
+'h
+	/home/4m33979/
+	..
+1633356900
+'z
+	/home/4m33979/.config/vifm
+	..
+1633356899
+
+# Bookmarks:
+
+# TUI:
+al
+q1
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/4m33979
+	downloads
+4
+d/home/4m33979/downloads
+	Northrop Grumman Corporate Root CA-G2
+2
+d/home/4m33979
+	code
+1
+d/home/4m33979/code
+	ansible
+1
+d/home/4m33979/code/ansible
+	roles
+2
+d/home/4m33979/code/ansible/roles
+	..
+0
+d/home/4m33979/code/ansible
+	roles
+2
+d/home/4m33979/code/ansible/roles
+	..
+0
+d/home/4m33979/code/ansible
+	roles
+2
+d/home/4m33979/code/ansible/roles
+	linux_git_config
+5
+d/home/4m33979/code/ansible/roles/linux_git_config
+	defaults
+1
+d/home/4m33979/code/ansible/roles
+	linux_git_config
+5
+d/home/4m33979/code/ansible
+	..
+0
+d/home/4m33979/code
+	ansible
+1
+d/home/4m33979
+	code
+1
+d/home
+	4m33979
+1
+d/home/4m33979
+	.cache
+3
+d/home/4m33979/.cache
+	..
+0
+d/home/4m33979
+	.functions
+7
+d/home
+	4m33979
+1
+d/home/4m33979
+	.xmonad
+22
+d/home/4m33979/.xmonad
+	xmonad.hi
+3
+d/home/4m33979
+	.proxy
+15
+d/home/4m33979/.proxy
+	..
+0
+d/home/4m33979
+	code
+22
+d/home/4m33979/code
+	ansible
+1
+d/home/4m33979/code/ansible
+	roles
+3
+d/home/4m33979/code/ansible/roles
+	win_package
+21
+d/home/4m33979/code/ansible/roles/win_package
+	tasks
+2
+d/home/4m33979/code/ansible/roles/win_package/tasks
+	..
+0
+d/home/4m33979/code/ansible/roles/win_package
+	tasks
+2
+d/home/4m33979/code/ansible/roles
+	win_package
+21
+d/home/4m33979/code/ansible
+	inventory
+2
+d/home/4m33979/code/ansible/inventory
+	group_vars
+1
+d/home/4m33979/code/ansible/inventory/group_vars
+	pt.yml
+7
+d
+
+# Right window history (oldest to newest):
+D/home/4m33979
+	points.md
+8
+D
+
+# Command line history (oldest to newest):
+:echo TERM
+:echo TERM?
+:TERM?
+:echo $TERM
+:set TERM=xterm-256color
+:TERM=xterm-256color
+:colorscheme papercolor
+:zo
+:qw
+:t_Co
+:colorscheme?
+:tCo?
+:t_Co?
+:colors?
+:colorscheme astrell
+:colorscheme ansa
+:colorscheme darkdesert
+:colorscheme iceberg
+:colorscheme desert
+:colorscheme dracula
+:colorscheme dwmlight
+:colorscheme g80
+:color iceberg
+:colorscheme gruvbox
+:colorscheme lucius
+:colorscheme matrix
+:colorscheme mc-like
+:colorscheme molokai
+:colorscheme monochrome
+:colorscheme near-default
+:colorscheme onedark
+:colorscheme palenight
+:colorscheme papercolor-dark
+:colorscheme papercolor-light
+:colorscheme ph
+:colorscheme reicheltd-light
+:colorscheme sandy
+:colorscheme semidarkdesert
+:colorscheme snowwhite
+:colorscheme solarized-dark
+:colorscheme solarized-light
+:colorscheme zenburn
+:colorscheme zenburn_1
+:colorscheme Default
+:help
+:q
+
+# Search history (oldest to newest):
+/xmonad
+/code
+/roles
+/package
+
+# Prompt history (oldest to newest):
+papps.yml
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/home/4m33979/.local/share/vifm/Trash/000_.vault_pass
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/4m33979/.local/share/vifm/Trash/000_.xsession-errors
+	/home/4m33979/.xsession-errors
+t/home/4m33979/.local/share/vifm/Trash/000_.xorgxrdp.10.log
+	/home/4m33979/.xorgxrdp.10.log
+t/home/4m33979/.local/share/vifm/Trash/000_.wget-hsts
+	/home/4m33979/.wget-hsts
+t/home/4m33979/.local/share/vifm/Trash/000_.vimrc.tmp
+	/home/4m33979/.vimrc.tmp
+t/home/4m33979/.local/share/vifm/Trash/000_.vault_pass
+	/home/4m33979/.vault_pass
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].1
+]F
+s0
