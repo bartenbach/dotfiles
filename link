@@ -2,12 +2,9 @@
 
 GLOBIGNORE=".:.."
 
-(
-  for file in .*; do
-    if [[ -f "$file" ]]; then
-      echo "Linking $file"
-      /bin/ln -s "$(pwd)/$file" ~"/$file"
-    fi
-  done
-  
-)
+for file in .*; do
+  if [[ -f "$file" ]]; then
+    echo "Linking $file"
+    /bin/ln -s "$(pwd)/$file" ~/"${file}"
+  fi
+done
