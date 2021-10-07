@@ -1,0 +1,16 @@
+PROXY_DIR=~/.config/proxies
+
+__proxy() {
+  if [[ -z $1 ]]; then
+    if [[ -z ${CURRENT_PROXY} ]]; then
+      CURRENT_PROXY=none
+    fi
+    echo "Current proxy: ${CURRENT_PROXY}"
+    echo "Available proxies in ${PROXY_DIR}:"
+    ls -1 $PROXY_DIR
+  else
+    . "${PROXY_DIR}/$1"
+  fi
+}
+
+__proxy "$@"
