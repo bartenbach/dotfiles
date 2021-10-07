@@ -1,5 +1,6 @@
 " basic configuration settings
 set encoding=utf-8
+set backspace=indent,eol,start
 set number
 set cursorcolumn
 set expandtab
@@ -9,14 +10,8 @@ if has('unnamedplus')
 endif
 set relativenumber
 
-:let mapleader = ";"
-
-" stupid netrw banner
+let mapleader = ";"
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
 
 " vim-plug
 call plug#begin()
