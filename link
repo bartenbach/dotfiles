@@ -3,6 +3,9 @@
 GLOBIGNORE=".:.."
 
 for file in .*; do
-    echo "Linking $file"
-    /bin/ln -s "$(pwd)/$file" ~/"${file}"
+    [[ "${file}" == ".git" ]] && continue 1
+    [[ "$1" == "-debug" ]] && echo "ln -s $(pwd)${file} ~/"${file}"" && continue 1
+    [[ -h ~/"${file}" ]] && echo -e "\e[94m${file} \e[92malready linked\e[0m" && continue 1
+    echo -e "\e[96mLinking \e[94m${file}\e[0m"
+    /bin/ln -s "$(pwd)/${file}" ~/"${file}"
 done

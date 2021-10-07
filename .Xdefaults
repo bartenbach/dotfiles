@@ -7,7 +7,7 @@ Xcursor*theme: Vanilla-DMZ
 Xcursor*size: 24
 
 ! [URxvt - General Settings]
-*font: xft:Terminess Powerline:pixelsize=18
+*font: xft:Terminess Powerline:size=18
 *saveLines: 1200
 *visualBell: true
 *cursorColor: magenta
