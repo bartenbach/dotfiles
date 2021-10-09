@@ -1,0 +1,48 @@
+window:
+  decorations: none
+  startup_mode: Fullscreen
+
+background_opacity: .8
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+scrolling:
+  history: 10000
+
+font:
+  normal:
+    family: TerminessTTF Nerd Font Mono
+    style: Medium
+  bold:
+    family: TerminessTTF Nerd Font Mono
+    style: Bold
+  italic:
+    family: TerminessTTF Nerd Font Mono
+    style: Italic
+  bold_italic:
+    family: TerminessTTF Nerd Font Mono
+    style: Bold Italic
+  size: 30
+  use_thin_strokes: true
+
+draw_bold_text_with_bright_colors: true
+colors:
+  cursor:
+    text: '#000000'
+    cursor: '#ff007f'
+  vi_mode_cursor:
+    text: '#000000'
+    cursor: '#ffff00'
+
+selection:
+  save_to_clipboard: true
+
+live_config_reload: true
+
+shell:
+  program: /bin/zsh
+
+key_bindings:
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }

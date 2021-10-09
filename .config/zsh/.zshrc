@@ -3,6 +3,7 @@
 # ~/.zshrc
 #  Author: Blake Bartenbach
 #
+export ZDOTDIR=${XDG_CONFIG_HOME}
 
 #-------------------
 # Interactive Check
@@ -12,8 +13,8 @@
 #------------------
 # Load Zsh Modules
 #------------------
-fpath=(~/.config/functions $fpath);
-autoload -Uz compinit colors ~/.config/functions/proxy ; compinit ; colors
+fpath=(${XDG_CONFIG_HOME}/zsh/functions $fpath);
+autoload -Uz compinit colors ${XDG_CONFIG_HOME}/zsh/functions/proxy ; compinit ; colors
 
 #-----------------
 # General Options
@@ -54,7 +55,7 @@ export LESS_TERMCAP_ue=$(printf '\e[0m')       # end underline
 #------------------------------
 # Personal Configuration Files
 #------------------------------
-files=(aliases zprompt)
+files=(aliases zsh/zprompt)
 foreach file ($files) { 
   filepath="${XDG_CONFIG_HOME}/${file}"            
   if [[ -r "${filepath}" ]] {

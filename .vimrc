@@ -24,9 +24,15 @@ call plug#end()
 
 " nerdtree bindings
 nnoremap <leader><TAB> :NERDTreeFocus<CR>
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
 
 " airline
 let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 
 " autocommands
 autocmd FileType yaml setlocal et ts=2 ai sw=2 nu sts=0
@@ -36,7 +42,11 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" commands
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 " colorscheme stuff
 set bg=dark
-set termguicolors
+"set termguicolors
 colorscheme PaperColor
+hi Normal guibg=NONE ctermbg=NONE
