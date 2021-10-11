@@ -25,6 +25,8 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons'
   Plug 'scrooloose/syntastic'
   Plug 'vim-airline/vim-airline'
+  Plug 'itspriddle/vim-shellcheck'
+  Plug 'junegunn/goyo.vim'
 call plug#end()
 
 " nerdtree bindings
@@ -40,6 +42,8 @@ autocmd BufWritePost,FileWritePost .Xdefaults !xrdb ~/.Xdefaults
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd FileType latex,markdown setlocal spell
+
 
 " colorscheme stuff
 set bg=dark
