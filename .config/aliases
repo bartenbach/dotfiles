@@ -1,5 +1,11 @@
 # vim: set ft:sh
-alias ls='ls --color=always -p --human-readable --group-directories-first'
+if [[ "$(uname)" == "Darwin" ]]; then
+  # this is such trash.  why apple?  just why?
+  alias ls='ls -GF'
+elif [[ "$(uname)" == "Linux" ]]; then
+  alias ls='ls --color=always -p --human-readable --group-directories-first'
+fi
 alias scim='sc-im'
 alias vx='vim ~/.xmonad/xmonad.hs'
 alias history='history 1' # just show me all of it
+alias less='less -r'

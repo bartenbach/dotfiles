@@ -3,6 +3,7 @@
 # ~/.zshrc
 #  Author: Blake Bartenbach
 #
+export ZDOTDIR=${XDG_CONFIG_HOME}
 
 #-------------------
 # Interactive Check
@@ -12,8 +13,8 @@
 #------------------
 # Load Zsh Modules
 #------------------
-fpath=(~/.config/functions $fpath);
-autoload -Uz compinit colors ~/.config/functions/proxy ; compinit ; colors
+fpath=(${XDG_CONFIG_HOME}/zsh/functions $fpath);
+autoload -Uz compinit colors ${XDG_CONFIG_HOME}/zsh/functions/proxy ; compinit ; colors
 
 #-----------------
 # General Options
@@ -41,7 +42,7 @@ bindkey -M menuselect '^M' .accept-line
 #---------------
 # less arguments moved to .aliases
 export LESS='-#0.1 -R'
-export LESSHISTFILE=~/.config/less_history
+export LESSHISTFILE="${XDG_CACHE_HOME}/less_history"
 export LESSHISTSIZE=100
 export LESS_TERMCAP_mb=$(printf '\e[0;31m')    # blink
 export LESS_TERMCAP_md=$(printf '\e[0;35m')    # bold
@@ -54,26 +55,27 @@ export LESS_TERMCAP_ue=$(printf '\e[0m')       # end underline
 #------------------------------
 # Personal Configuration Files
 #------------------------------
-local files
-local file
-files=(.aliases .zprompt .zprofile)
+files=(aliases zsh/zprompt)
 foreach file ($files) { 
-  if [[ -r ~/${XDG_CONFIG_HOME}/$file ]] {
-    source ~/${XDG_CONFIG_HOME}/$file
+  filepath="${XDG_CONFIG_HOME}/${file}"            
+  if [[ -r "${filepath}" ]] {
+    source "${filepath}"
+  } else {
+    echo "cannot source unreadable file: ${filepath}"
   }
 }
 
 #-----------
 # Dircolors
 #-----------
-if [[ -r ~/.config/.dircolors ]] && type -p dircolors >/dev/null;then
-  eval $(dircolors -b ~/.config/.dircolors)
+if [[ -r "${XDG_CONFIG_HOME}/dircolors" ]] && type -p dircolors >/dev/null;then
+  eval $(dircolors -b "${XDG_CONFIG_HOME}/dircolors")
 fi
 
 #-------------
 # Zsh History
 #-------------
-HISTFILE=~/.config/zsh_history
+HISTFILE="${XDG_CACHE_HOME}/zsh_history"
 HISTSIZE=1000
 SAVEHIST=10000
 setopt SHARE_HISTORY # otherwise you get only the terminal you're on
@@ -123,5 +125,3 @@ export PATH=${PATH}:~/.cabal/bin
 # Custom proxy config
 #---------------------
 export CURRENT_PROXY=none
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

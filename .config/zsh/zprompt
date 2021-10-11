@@ -8,7 +8,7 @@ autoload -Uz vcs_info
 
 precmd() { 
   vcs_info
-  PROMPT="%{$fg_no_bold[green]%}[%n.%m] %~ [proxy: ${CURRENT_PROXY}] ${vcs_info_msg_0_}"$'\n'"%# %{$fg[white]%}"
+  PROMPT="%{$fg_no_bold[green]%}[blake.%m] %~ [proxy: ${CURRENT_PROXY}] ${vcs_info_msg_0_}"$'\n'"%# %{$fg[white]%}"
 }
 
 zstyle ':vcs_info:git:*' formats '(%b)'
