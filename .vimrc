@@ -25,6 +25,8 @@ call plug#begin()
   Plug 'scrooloose/syntastic'
   Plug 'vim-airline/vim-airline'
   Plug 'cespare/vim-toml', { 'branch': 'main' }
+  Plug 'itspriddle/vim-shellcheck'
+  Plug 'junegunn/goyo.vim'
 call plug#end()
 
 " syntastic
@@ -66,7 +68,7 @@ autocmd BufWritePost,FileWritePost *.hs !~/.xmonad/xmonad-x86_64-linux --recompi
 autocmd BufWritePost,FileWritePost .Xdefaults !xrdb ~/.Xdefaults
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType *.toml setlocal syntax=ini
-
+autocmd FileType latex,markdown setlocal spell
 
 " commands
 " for the times we forget sudo
