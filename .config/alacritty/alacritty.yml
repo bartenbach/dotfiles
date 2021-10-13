@@ -1,8 +1,8 @@
 window:
   decorations: none
-  startup_mode: Fullscreen
+  startup_mode: Windowed
 
-background_opacity: .8
+background_opacity: .95
 
 cursor:
   style: Block
