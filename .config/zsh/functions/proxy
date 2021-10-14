@@ -1,4 +1,5 @@
-PROXY_DIR=~/.config/proxies
+# vim: set ft=zsh
+PROXY_DIR=${XDG_CONFIG_HOME}/proxies
 
 __proxy() {
   if [[ -z $1 ]]; then

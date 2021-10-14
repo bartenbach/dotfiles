@@ -121,8 +121,3 @@ export PATH=${PATH}:~/.xmonad
 export PATH=${PATH}:~/.local/bin
 export PATH=${PATH}:~/.cabal/bin
 export PATH=${PATH}:/usr/local/bin
-
-#---------------------
-# Custom proxy config
-#---------------------
-export CURRENT_PROXY=none
