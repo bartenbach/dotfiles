@@ -120,6 +120,7 @@ export PATH="$HOME/code/go/bin":$PATH
 export PATH=${PATH}:~/.xmonad
 export PATH=${PATH}:~/.local/bin
 export PATH=${PATH}:~/.cabal/bin
+export PATH=${PATH}:/usr/local/bin
 
 #---------------------
 # Custom proxy config
