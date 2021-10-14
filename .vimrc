@@ -51,6 +51,6 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " colorscheme stuff
 set bg=dark
-"set termguicolors
+set termguicolors
 colorscheme PaperColor
 hi Normal guibg=NONE ctermbg=NONE
