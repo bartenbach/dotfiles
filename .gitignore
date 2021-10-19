@@ -1,3 +1,5 @@
 .config/Code
 .config/fontconfig
 .config/.zcompdump
+.config/less_history
+.config/zsh_history

@@ -1,5 +1,5 @@
-# good ones: cyanism, light, nord is ok, 
-include /usr/local/share/doc/newsboat/contrib/colorschemes/plain
+# good ones: cyanism, light, nord is ok, schleichfahrt is red, simple isn't terrible, solarized is really good
+include /usr/local/share/doc/newsboat/contrib/colorschemes/solarized-dark
 auto-reload yes
 reload-time 2
 confirm-exit no
