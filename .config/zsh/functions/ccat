@@ -1,0 +1,5 @@
+__ccat() {
+  ext=$1:t:e
+  highlight "$1" -O xterm256 --syntax $ext
+}
+__ccat "$@"
