@@ -2,3 +2,5 @@
 [Default Applications]
 text/css=text.desktop
 text/plain=vim.desktop
+application/pdf=zathura.desktop
+inode/directory=vifm.desktop

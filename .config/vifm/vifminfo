@@ -13,10 +13,14 @@
 	/home/4m33979/
 	..
 1633356900
-'z
-	/home/4m33979/.config/vifm
-	..
-1633356899
+'i
+	/home/4m33979/code/ansible/inventory/group_vars/all
+	main.yml
+1634921904
+'p
+	/home/4m33979/code/ansible
+	apps.yml
+1634922023
 
 # Bookmarks:
 
@@ -133,14 +137,113 @@ d/home/4m33979/code/ansible/inventory
 	group_vars
 1
 d/home/4m33979/code/ansible/inventory/group_vars
-	pt.yml
-7
+	db.yml
+4
+d/home/4m33979/code/ansible
+	inventory
+2
+d/home/4m33979/code/ansible/inventory
+	group_vars
+1
+d/home/4m33979/code/ansible/inventory/group_vars
+	all
+1
+d/home/4m33979/code/ansible/inventory/group_vars/all
+	main.yml
+1
+d/home/4m33979/code/ansible/inventory/group_vars
+	db.yml
+4
+d/home/4m33979/code/ansible/inventory
+	can2.ini
+4
+d/home/4m33979/code/ansible
+	inventory
+2
+d/home/4m33979/code/ansible/inventory
+	group_vars
+1
+d/home/4m33979/code/ansible/inventory/group_vars
+	all
+1
+d/home/4m33979/code/ansible/inventory/group_vars/all
+	main.yml
+1
+d/home/4m33979/code/ansible/inventory/group_vars
+	all
+1
+d/home/4m33979/code/ansible/inventory
+	group_vars
+1
+d/home/4m33979/code/ansible/inventory/group_vars/all
+	main.yml
+1
+d/home/4m33979/code/ansible/inventory/group_vars
+	all
+1
+d/home/4m33979/code/ansible/inventory
+	group_vars
+1
+d/home/4m33979/code/ansible
+	configure_db.yml
+9
+d/home/4m33979/code/ansible/inventory/group_vars/all
+	main.yml
+1
+d/home/4m33979/code/ansible
+	configure_db.yml
+9
+d/home/4m33979/code/ansible/inventory/group_vars/all
+	main.yml
+1
+d/home/4m33979/code/ansible
+	db_update.yml
+16
+d/home/4m33979/code/ansible/inventory/group_vars/all
+	..
+0
+d/home/4m33979/code/ansible
+	inventory
+2
+d/home/4m33979/code/ansible/inventory
+	group_vars
+1
+d/home/4m33979/code/ansible/inventory/group_vars
+	app.yml
+3
+d/home/4m33979/code/ansible/inventory
+	group_vars
+1
+d/home/4m33979/code/ansible
+	roles
+3
+d/home/4m33979/code/ansible/roles
+	nms_pt
+12
+d/home/4m33979/code/ansible/roles/nms_db
+	tasks
+2
+d/home/4m33979/code/ansible/roles/nms_db/defaults
+	..
+0
+d/home/4m33979/code/ansible
+	db.yml
+14
 d
 
 # Right window history (oldest to newest):
 D/home/4m33979
-	points.md
-8
+	..
+0
+D/home
+	4m33979
+1
+D/
+	home
+4
+D/home/4m33979/code/ansible
+	deployAnsible.jenkinsfile
+15
 D
 
 # Command line history (oldest to newest):
@@ -152,7 +255,6 @@ D
 :TERM=xterm-256color
 :colorscheme papercolor
 :zo
-:qw
 :t_Co
 :colorscheme?
 :tCo?
@@ -189,6 +291,11 @@ D
 :colorscheme zenburn_1
 :colorscheme Default
 :help
+:qw
+:classify
+:set vicmd
+:set vixcmd?
+:file
 :q
 
 # Search history (oldest to newest):
@@ -196,6 +303,7 @@ D
 /code
 /roles
 /package
+/db
 
 # Prompt history (oldest to newest):
 papps.yml

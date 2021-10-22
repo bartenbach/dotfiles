@@ -4,6 +4,8 @@ set backspace=indent,eol,start
 set number
 set cursorcolumn
 set expandtab
+set visualbell
+set t_vb=
 set cursorline
 set tabstop=2 " please, for the love of GOD
 set shiftwidth=2
@@ -29,6 +31,13 @@ call plug#begin()
   Plug 'junegunn/goyo.vim'
 call plug#end()
 
+" trailing whitespace detection
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 " syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -42,13 +51,14 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" nerdtree 
-nnoremap <leader><tab> <C-w>w
-nnoremap <leader><esc> :NERDTreeToggle<CR>
+" nerdtree
+nnoremap <leader>j     <C-w>w
+nnoremap <leader>n     :NERDTreeToggle<CR>
+nnoremap <leader>v     :NERDTreeVCS<CR>
+nnoremap <leader>g     :Goyo<CR>
+"nnoremap Q             <Nop> this is for dvorak
 let g:NERDTreeMinimalUI = 1
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" open nerdtree by default - annoying
-"autocmd VimEnter * NERDTree | wincmd p 
 
 " airline
 let g:airline_powerline_fonts = 1

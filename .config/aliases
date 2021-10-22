@@ -9,6 +9,8 @@ alias scim='sc-im'
 alias vx='vim ~/.xmonad/xmonad.hs'
 alias history='history 1' # just show me all of it
 alias less='less -r'
+alias vifm='vifm .'
+alias taskell='taskell ~/doc'
 
 # more boomers who won't support the standard
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
