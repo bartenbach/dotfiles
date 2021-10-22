@@ -52,11 +52,12 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " nerdtree
-nnoremap <leader>j     <C-w>w
 nnoremap <leader>n     :NERDTreeToggle<CR>
 nnoremap <leader>v     :NERDTreeVCS<CR>
 nnoremap <leader>g     :Goyo<CR>
-"nnoremap Q             <Nop> this is for dvorak
+nnoremap <leader><tab> <C-w>w
+nnoremap <leader><esc> :NERDTreeToggle<CR>
+"nnoremap <leader>r compile latex
 let g:NERDTreeMinimalUI = 1
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
@@ -78,7 +79,7 @@ autocmd BufWritePost,FileWritePost *.hs !~/.xmonad/xmonad-x86_64-linux --recompi
 autocmd BufWritePost,FileWritePost .Xdefaults !xrdb ~/.Xdefaults
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType *.toml setlocal syntax=ini
-autocmd FileType latex,markdown setlocal spell
+autocmd FileType latex,markdown,tex setlocal spell
 
 " commands
 " for the times we forget sudo

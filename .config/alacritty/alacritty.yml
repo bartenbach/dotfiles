@@ -1,6 +1,6 @@
 window:
   decorations: none
-  startup_mode: Windowed
+  startup_mode: Maximized
 
 background_opacity: .95
 

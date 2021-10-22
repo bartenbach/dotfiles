@@ -1,6 +1,10 @@
 .config/Code
 .config/fontconfig
 .config/.zcompdump
+.config/.zsh_history
+.config/zsh/.zcompdump
+.config/zsh/.zsh_history
+.config/zsh/.zsh_sessions
 .config/less_history
 .config/zsh_history
 .config/rusty-krab-manager

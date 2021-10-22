@@ -3,7 +3,7 @@
 # ~/.zshrc
 #  Author: Blake Bartenbach
 #
-export ZDOTDIR=${XDG_CONFIG_HOME}
+source "${ZDOTDIR}/.zprofile"
 
 #-------------------
 # Interactive Check
@@ -13,8 +13,10 @@ export ZDOTDIR=${XDG_CONFIG_HOME}
 #------------------
 # Load Zsh Modules
 #------------------
-fpath=(${XDG_CONFIG_HOME}/zsh/functions $fpath);
-autoload -Uz compinit colors ${XDG_CONFIG_HOME}/zsh/functions/proxy ; compinit ; colors
+fpath=(${XDG_CONFIG_HOME}/zsh/functions "${fpath[@]}");
+autoload -Uz compinit colors ${XDG_CONFIG_HOME}/zsh/functions
+compinit
+colors
 
 #-----------------
 # General Options
@@ -40,7 +42,6 @@ bindkey -M menuselect '^M' .accept-line
 #---------------
 # More For Less
 #---------------
-# less arguments moved to .aliases
 export LESS='-#0.1 -R'
 export LESSHISTFILE="${XDG_CACHE_HOME}/less_history"
 export LESSHISTSIZE=100
@@ -55,21 +56,22 @@ export LESS_TERMCAP_ue=$(printf '\e[0m')       # end underline
 #------------------------------
 # Personal Configuration Files
 #------------------------------
-files=(aliases zsh/zprompt)
-foreach file ($files) { 
+files=(shell/aliases zsh/zprompt)
+foreach file ($files); do  
   filepath="${XDG_CONFIG_HOME}/${file}"            
-  if [[ -r "${filepath}" ]] {
+  if [[ -r "${filepath}" ]]; then
     source "${filepath}"
-  } else {
+  else
     echo "cannot source unreadable file: ${filepath}"
-  }
-}
+  fi
+done
 
 #-----------
 # Dircolors
 #-----------
-if [[ -r "${XDG_CONFIG_HOME}/dircolors" ]] && type -p dircolors >/dev/null;then
-  eval $(dircolors -b "${XDG_CONFIG_HOME}/dircolors")
+dircolor_file="${XDG_CONFIG_HOME}/shell/dircolors"
+if [[ -r "${dircolor_file}" && $(command -v dircolors) ]]; then
+  eval $(dircolors -b "${dircolor_file}")
 fi
 
 #-------------
@@ -99,8 +101,7 @@ setopt NOMATCH
 # Zsh Options
 #-------------
 unsetopt GLOBAL_RCS BEEP
-setopt PRINT_EXIT_VALUE BG_NICE NOTIFY APPEND_HISTORY EXTENDED_GLOB \
-         LIST_TYPES IGNORE_EOF AUTO_CD
+setopt PRINT_EXIT_VALUE BG_NICE NOTIFY APPEND_HISTORY EXTENDED_GLOB LIST_TYPES IGNORE_EOF
 
 #--------------------- 
 # Vim Shell Emulation
@@ -112,12 +113,29 @@ bindkey -v
 #--------------------------
 export GOPATH=~/code/go
 export GOBIN=~/code/go/bin
-export PATH="$HOME/code/go/bin":$PATH
 
 #------------------------
 # Path Modifications
 #------------------------
-export PATH=${PATH}:~/.xmonad
+export PATH=${PATH}:${GOBIN}
+export PATH=${PATH}:~/.xmonad # TODO this probably changes
 export PATH=${PATH}:~/.local/bin
 export PATH=${PATH}:~/.cabal/bin
 export PATH=${PATH}:/usr/local/bin
+
+#---------------------
+# Custom proxy config
+#---------------------
+export CURRENT_PROXY='none'
+
+#-----------------------
+# Fuck you, Steve jobs
+#-----------------------
+if [[ $(uname) == "Darwin" ]]; then
+    if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+  fi
+fi
