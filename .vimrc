@@ -81,6 +81,6 @@ command -nargs=1 -complete=help H h <args> | only
 
 " colorscheme stuff
 set bg=dark
-"set termguicolors
+set termguicolors
 colorscheme PaperColor
 hi Normal guibg=NONE ctermbg=NONE

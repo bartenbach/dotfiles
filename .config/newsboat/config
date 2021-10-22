@@ -1,0 +1,41 @@
+# good ones: cyanism, light, nord is ok, schleichfahrt is red, simple isn't terrible, solarized is really good
+include /usr/local/share/doc/newsboat/contrib/colorschemes/solarized-dark
+auto-reload yes
+reload-time 2
+confirm-exit no
+datetime-format "%A, %B %d %Y %r"
+articlelist-title-format "%T - %U"
+dirbrowser-title-format "%?0?Open Directory&amp;Save File? - %f"
+filebrowser-title-format "%?0?Open Directory&amp;Save File? - %f"
+dialogs-title-format "Dialogs"
+itemview-title-format "%T"
+notify-beep yes
+
+browser "$(which w3m) %u"
+macro m set browser "/usr/local/bin/mpv %u"; open-in-browser ; set browser "/usr/local/bin/w3m %u"
+macro l set browser "/usr/local/bin/firefox %u"; open-in-browser ; set browser "/usr/local/bin/w3m %u"
+
+unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+bind-key m bookmark # like mark 
+
+#color background         default   default
+#color listnormal         default   default
+#color listnormal_unread  default   default
+#color listfocus          white     cyan
+#color listfocus_unread   white     cyan
+#color info               default   black
+#color article            default   default
+
+# highlights
+#highlight-article "title =~ \"(aborted)\"" yellow
+#highlight-article "title =~ \"(broken)\"" red
+#highlight-article "title =~ \"(stable)\"" green
+#highlight-article "title =~ \"(back to normal)\"" green

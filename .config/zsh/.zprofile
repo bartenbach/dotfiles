@@ -1,6 +1,7 @@
 export PAGER=less
 export EDITOR=vim
 export VISUAL=vim
+export BROWSER=w3m
 
 if [[ $(uname) == "Darwin" ]]; then
   export TERM=xterm-256color

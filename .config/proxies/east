@@ -1,4 +1,4 @@
-PROXY_URL='http://m33979:Start123@eastproxy.northgrum.com:80'
+PROXY_URL='http://eastproxy.northgrum.com:80'
 NO_PROXY='127.0.0.1,localhost,.entds.ngisn.com,10.163.129.*,10.160.45.*'
 
 export http_proxy="${PROXY_URL}"
