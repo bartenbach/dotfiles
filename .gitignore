@@ -8,3 +8,5 @@
 .config/less_history
 .config/zsh_history
 .config/rusty-krab-manager
+.config/chromium
+.config/browsh

@@ -29,6 +29,7 @@ call plug#begin()
   Plug 'cespare/vim-toml', { 'branch': 'main' }
   Plug 'itspriddle/vim-shellcheck'
   Plug 'junegunn/goyo.vim'
+  Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 " trailing whitespace detection
