@@ -2,6 +2,8 @@ export PAGER=less
 export EDITOR=vim
 export VISUAL=vim
 export BROWSER=w3m
+export ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
+export WWW_HOME="https://lite.duckduckgo.com"
 
 if [[ $(uname) == "Darwin" ]]; then
   export TERM=xterm-256color
@@ -13,6 +15,7 @@ fi
 
 # XDG paths
 export XDG_CONFIG_HOME=~/.config
+export cfg="${XDG_CONFIG_HOME}" # laziness
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 export XDG_STATE_HOME=~/.local/state

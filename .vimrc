@@ -25,6 +25,7 @@ call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'ryanoasis/vim-devicons'
   Plug 'scrooloose/syntastic'
+  Plug 'NLKNguyen/papercolor-theme'
   Plug 'vim-airline/vim-airline'
   Plug 'cespare/vim-toml', { 'branch': 'main' }
   Plug 'itspriddle/vim-shellcheck'
@@ -80,11 +81,12 @@ autocmd BufWritePost,FileWritePost *.hs !~/.xmonad/xmonad-x86_64-linux --recompi
 autocmd BufWritePost,FileWritePost .Xdefaults !xrdb ~/.Xdefaults
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType *.toml setlocal syntax=ini
-autocmd FileType latex,markdown,tex setlocal spell
+autocmd FileType latex,markdown,tex setlocal spell spelllang=en
 
 " commands
 " for the times we forget sudo
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command Wq :execute ':silent w !sudo tee % > /dev/null' | :edit! && ':q'
 " boomer friendly help
 command -nargs=0 HELP h | only
 " fullscreen help browsing for topic <args>

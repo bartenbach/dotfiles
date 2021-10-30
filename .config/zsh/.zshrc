@@ -3,6 +3,8 @@
 # ~/.zshrc
 #  Author: Blake Bartenbach
 #
+
+# sourcing the profile here because zsh doesn't appear to?
 source "${ZDOTDIR}/.zprofile"
 
 #-------------------
@@ -10,11 +12,18 @@ source "${ZDOTDIR}/.zprofile"
 #-------------------
 [[ $- == *i* ]] || return
 
-#------------------
-# Load Zsh Modules
-#------------------
-fpath=(${XDG_CONFIG_HOME}/zsh/functions "${fpath[@]}");
-autoload -Uz compinit colors ${XDG_CONFIG_HOME}/zsh/functions
+#------------------------------------------
+# Loading my zsh functions which is absurd
+# and way harder than it should be. I'm
+# legitimately upset at how awful this is.
+#------------------------------------------
+ZFUNC_PATH="${ZDOTDIR}/functions"
+fpath=(${ZFUNC_PATH} $fpath)
+for function in ${ZFUNC_PATH}/*; do
+  autoload -Uz $function
+done
+
+autoload -Uz compinit colors
 compinit
 colors
 
@@ -31,7 +40,7 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle ':completion:*' menu select
-zstyle ':completion:*' verbose yes 
+zstyle ':completion:*' verbose yes
 zmodload zsh/complist
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -43,15 +52,14 @@ bindkey -M menuselect '^M' .accept-line
 # More For Less
 #---------------
 export LESS='-#0.1 -R'
-export LESSHISTFILE="${XDG_CACHE_HOME}/less_history"
-export LESSHISTSIZE=100
-export LESS_TERMCAP_mb=$(printf '\e[0;31m')    # blink
-export LESS_TERMCAP_md=$(printf '\e[0;35m')    # bold
-export LESS_TERMCAP_us=$(printf '\e[0;94m')    # underline
-export LESS_TERMCAP_so=$(printf '\e[0;44;37m') # info box
-export LESS_TERMCAP_me=$(printf '\e[0m')       # end mode
-export LESS_TERMCAP_se=$(printf '\e[0m')       # end info box
-export LESS_TERMCAP_ue=$(printf '\e[0m')       # end underline
+export LESSHISTFILE="-"
+#export LESS_TERMCAP_mb=$(printf '\e[0;31m')    # blink
+#export LESS_TERMCAP_md=$(printf '\e[0;35m')    # bold
+#export LESS_TERMCAP_us=$(printf '\e[0;94m')    # underline
+#export LESS_TERMCAP_so=$(printf '\e[0;44;37m') # info box
+#export LESS_TERMCAP_me=$(printf '\e[0m')       # end mode
+#export LESS_TERMCAP_se=$(printf '\e[0m')       # end info box
+#export LESS_TERMCAP_ue=$(printf '\e[0m')       # end underline
 
 #------------------------------
 # Personal Configuration Files

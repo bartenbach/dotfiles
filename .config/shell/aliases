@@ -9,6 +9,8 @@ fi
 # misc
 alias scim='sc-im'
 alias tree='tree -C'
+alias ddg='elinks https://lite.duckduckgo.com'
+alias emerge='emerge --color y --ask --alert'
 
 # quick edits
 alias va="vim ${XDG_CONFIG_HOME}/shell/aliases"
@@ -30,8 +32,5 @@ alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"
 alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
 alias sa="source ${XDG_CONFIG_HOME}/shell/aliases"
 
-# rust
-alias cr="cargo run"
-alias cb='cargo build'
-alias cu='cargo update'
-
+# systemd configuration
+alias journalctl='journalctl -xb --no-hostname -e'
