@@ -5,6 +5,7 @@
 [user]
 	email = blake.bartenbach@ngc.com
 	name = Blake Bartenbach
+	signingkey = BDD29DFF1BABBFEF3355F0E54A4F6F61B2E80B26
 [ssl]
 	Verify = false
 [http]
@@ -20,3 +21,5 @@
 	prompt = false
 [init]
 	defaultBranch = main
+[commit]
+	gpgsign = true

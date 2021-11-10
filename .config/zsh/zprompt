@@ -6,9 +6,16 @@
 #
 autoload -Uz vcs_info
 
-precmd() { 
+MAIN_PROMPT="%{$fg_no_bold[green]%}%~"
+PROXY_PROMPT="[proxy: ${CURRENT_PROXY:-none}]"
+
+precmd() {
   vcs_info
-  PROMPT="%{$fg_no_bold[green]%}[blake.%m] %~ [proxy: ${CURRENT_PROXY:-none}] ${vcs_info_msg_0_}"$'\n'"%# %{$fg[white]%}"
+  if [[ -z $CURRENT_PROXY ]]; then
+    PROMPT="${MAIN_PROMPT} ${vcs_info_msg_0_}"$'\n'"%# %{$fg[white]%}"
+  else
+    PROMPT="${MAIN_PROMPT} ${PROXY_PROMPT} ${vcs_info_msg_0_}"$'\n'"%# %{$fg[white]%}"
+  fi
 }
 
 zstyle ':vcs_info:git:*' formats '(%b)'

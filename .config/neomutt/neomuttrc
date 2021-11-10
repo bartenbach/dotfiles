@@ -1,0 +1,14 @@
+set imap_user = "blakebartenbach@gmail.com"
+set imap_pass = `pass gmail`
+
+set folder = "imaps://imap.gmail.com:993"
+
+set smtp_url = "smtp://blakebartenbach@smtp.gmail.com:587"
+set smtp_pass = `pass gmail`
+
+set spoolfile = "+INBOX"
+set postponed = "+[GMail]/Drafts"
+set header_cache = "${XDG_CACHE_HOME}/mutt/headers"
+set message_cachedir = "${XDG_CACHE_HOME}/mutt/bodies"
+
+set record = ""

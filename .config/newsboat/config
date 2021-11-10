@@ -1,5 +1,5 @@
 # good ones: cyanism, light, nord is ok, schleichfahrt is red, simple isn't terrible, solarized is really good
-include /usr/share/doc/newsboat-2.23-r1/contrib/colorschemes/solarized-dark.bz2
+include solarized-dark
 auto-reload yes
 reload-time 2
 confirm-exit no

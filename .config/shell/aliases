@@ -6,23 +6,71 @@ elif [[ "$(uname)" == "Linux" ]]; then
   alias ls='ls --color=always -p --human-readable --group-directories-first'
 fi
 
+EMERGE_BASE_ARGS='sudo emerge --color y --ask --alert'
+
 # misc
 alias scim='sc-im'
 alias tree='tree -C'
 alias ddg='elinks https://lite.duckduckgo.com'
-alias emerge='emerge --color y --ask --alert'
+alias emerge="${EMERGE_BASE_ARGS}"
+alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
+alias esync="${EMERGE_BASE_ARGS} --sync"
+alias mutt='neomutt'
+alias grep='grep --color=auto'
+alias tl='task list'
+alias ta='task active'
+alias tt='clear && task list limit:10'
+alias linux='cd /usr/src/linux'
+alias zathura='zathura --fork'
+
+# quick ignore files
+# $1 file(s) to ignore
+function ignore() {
+  echo "$1" >> .gitignore
+}
+
+# grep history easier
+# $1 search string
+function hgrep() {
+  query="$@"
+  history -1 | grep "${query}"
+}
+
+# modify task priority
+# $1 task id
+# $2 priority
+function p() {
+  task mod $1 priority:$2
+}
+
+# start a task
+# $1 task id
+function start() {
+  task $1 start
+}
+
+# complete a task
+# $1 task id
+function complete() {
+  task $1 done
+}
 
 # quick edits
 alias va="vim ${XDG_CONFIG_HOME}/shell/aliases"
 alias vp="vim ${ZDOTDIR}/.zprofile"
-alias vz="vim ${ZDOTDIR}/.zshrc"
 alias vx="vim ~/.xmonad/xmonad.hs"
+alias vu="sudo vim /etc/portage/package.use/package.use"
+alias vuu="sudo vim /etc/portage/make.conf"
 alias vv="vim ~/.vimrc"
+alias vz="vim ${ZDOTDIR}/.zshrc"
 
-alias history='history 1' # just show me all of it
+# "real" aliases
+alias history='history -1' # just show me all of it
 alias less='less -r' # enable color
+alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
 alias taskell='taskell ~/doc' # keep taskell's board in documents
 alias vifm='vifm .' # start vifm in cwd
+alias tw='taskwarrior-tui'
 
 # more boomers who won't support the standard
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
@@ -33,4 +81,4 @@ alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
 alias sa="source ${XDG_CONFIG_HOME}/shell/aliases"
 
 # systemd configuration
-alias journalctl='journalctl -xb --no-hostname -e'
+alias journalctl='sudo journalctl -xb --no-hostname -e'

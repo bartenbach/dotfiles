@@ -11,3 +11,15 @@
 .config/chromium
 .config/browsh
 .config/proxies
+.config/weechat
+.config/elinks/globhist
+.config/elinks/gotohist
+.config/elinks/searchhist
+.config/glib-2.0
+.config/lfm
+.config/qutebrowser
+.config/weechat
+.config/elinks
+.config/zathura/zathurarc.old
+.config/wiki-tui
+.config/neofetch

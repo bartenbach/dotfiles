@@ -3,10 +3,7 @@ PROXY_DIR=${XDG_CONFIG_HOME}/proxies
 
 __proxy() {
   if [[ -z $1 ]]; then
-    if [[ -z ${CURRENT_PROXY} ]]; then
-      CURRENT_PROXY=none
-    fi
-    echo "Current proxy: ${CURRENT_PROXY}"
+    echo "Current proxy: ${CURRENT_PROXY:-none}"
     echo "Available proxies in ${PROXY_DIR}:"
     ls -1 $PROXY_DIR
   else
