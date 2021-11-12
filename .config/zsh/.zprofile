@@ -4,6 +4,7 @@ export VISUAL=vim
 export BROWSER=w3m
 export ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
 export WWW_HOME="https://lite.duckduckgo.com"
+export PASSWORD_STORE_DIR="${XDG_CONFIG_HOME}/pass"
 
 if [[ $(uname) == "Darwin" ]]; then
   export TERM=xterm-256color

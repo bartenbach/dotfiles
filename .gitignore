@@ -23,3 +23,5 @@
 .config/zathura/zathurarc.old
 .config/wiki-tui
 .config/neofetch
+.config/task
+.config/pass

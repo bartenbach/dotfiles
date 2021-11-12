@@ -33,7 +33,7 @@ call plug#begin()
   Plug 'itspriddle/vim-shellcheck'
   Plug 'junegunn/goyo.vim'
   Plug 'wakatime/vim-wakatime'
-"  Plug 'vimwiki/vimwiki' " good idea in theory but not using
+  Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " syntastic
@@ -67,6 +67,11 @@ function TrimWhiteSpace()
   ''
 endfunction
 
+" disable the useless F1 key that no one would ever use
+" and only proves an annoyance
+:nmap <F1> :echo<CR>
+:imap <F1> <C-o>:echo<CR>
+
 " custom mappings
 inoremap <F5>          <C-x><C-f>
 nnoremap <leader>g     :Goyo<CR>
@@ -85,10 +90,8 @@ if !exists('g:airline_symbols')
 endif
 
 " vimwiki
-let g:vimwiki_list = [{'path:': '~/doc/journal/entries/',
-      \ 'path_html': '~/doc/journal/html/',
-      \ 'syntax': 'markdown',
-      \ 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/doc/wiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
 
 " rust
 
@@ -103,7 +106,7 @@ autocmd BufWinLeave * call clearmatches()
 autocmd FileType rust setlocal makeprg=rustc\ %\ &&\ ./%:r
 autocmd FileType yaml setlocal et ts=2 ai sw=2 nu sts=0
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd FileType latex,markdown,tex,text
+autocmd FileType latex,markdown,tex,text,vimwiki
       \ setlocal spell spelllang=en wrap linebreak
 
 " rust formatter

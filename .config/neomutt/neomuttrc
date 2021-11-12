@@ -7,8 +7,43 @@ set smtp_url = "smtp://blakebartenbach@smtp.gmail.com:587"
 set smtp_pass = `pass gmail`
 
 set spoolfile = "+INBOX"
-set postponed = "+[GMail]/Drafts"
+set postponed = "~/.config/neomutt/postponed"
 set header_cache = "${XDG_CACHE_HOME}/mutt/headers"
 set message_cachedir = "${XDG_CACHE_HOME}/mutt/bodies"
 
 set record = ""
+set copy=yes
+set charset="utf-8"
+set delete=yes
+set auto_edit
+set edit_headers
+set fast_reply
+set fcc_attach
+set include
+set indent_string="> "
+set mail_check = 60
+set print_command=lp
+set mailcap_path="~/.config/neomutt/mailcap"
+set signature="~/.config/neomutt/signature"
+set pgp_default_key="BDD29DFF1BABBFEF3355F0E54A4F6F61B2E80B26"
+
+# mailing list helpers
+set use_threads=yes
+set sort=reverse-last-date
+set sort_aux=date
+set sort_browser=reverse-date
+
+set tilde
+set implicit_autoview=yes
+
+bind pager G bottom
+bind pager g top
+
+# get some context
+set pager_index_lines = 20
+
+# straight brainlet shit...
+unset wait_key
+
+# colors
+source solarized

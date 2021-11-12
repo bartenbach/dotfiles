@@ -11,7 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-#data.location=~/.config/task/taskrc
+data.location=~/.config/task
 
 # Color theme (uncomment one to use)
 #include /usr/share/task/rc/light-16.theme

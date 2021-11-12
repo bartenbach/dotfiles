@@ -15,13 +15,21 @@ alias ddg='elinks https://lite.duckduckgo.com'
 alias emerge="${EMERGE_BASE_ARGS}"
 alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
 alias esync="${EMERGE_BASE_ARGS} --sync"
+alias trim="sudo fstrim -Av"
 alias mutt='neomutt'
 alias grep='grep --color=auto'
 alias tl='task list'
 alias ta='task active'
 alias tt='clear && task list limit:10'
 alias linux='cd /usr/src/linux'
-alias zathura='zathura --fork'
+alias wiki='vim -c VimwikiIndex'
+alias zd='zathura --fork'
+alias zl='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
+
+# $1 markdown file
+function mkpdf() {
+  pandoc -o out.pdf -f markdown -t pdf "$1"
+}
 
 # quick ignore files
 # $1 file(s) to ignore
