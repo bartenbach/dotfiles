@@ -24,3 +24,6 @@ export XDG_STATE_HOME=~/.local/state
 # Rust things
 export PATH=${PATH}:~/.cargo/bin
 export RUST_BACKTRACE=1
+
+# Personal bin
+export PATH=${PATH}:~/.local/mybin

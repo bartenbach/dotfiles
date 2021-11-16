@@ -1,0 +1,87 @@
+#!/bin/bash
+
+MAKEARGS='-j12'
+MAKE="sudo make $MAKEARGS"
+GENKERNEL="sudo genkernel"
+BOOTCTL="sudo bootctl"
+STEP=''
+CLEAN=''
+SILENCE=''
+
+# $@ - all arguments
+function main() {
+  parse_args "$@"
+  build_kernel
+  build_modules
+  update_systemd
+  print_success
+}
+
+function print_help() {
+  echo "Usage:"
+  echo "  -h | --help      print this message"
+  echo "  -c | --clean     clean the kernel before building"
+}
+
+function build_modules() {
+  sudo emerge @module-rebuild
+}
+
+# $@ - all arguments
+function parse_args() {
+  if [[ $1 == '-h' ]] || [[ $1 == '--help' ]]; then
+    print_help ; exit 0
+  fi
+}
+
+# $@ - current step
+function print_step() {
+  echo -e "\e[97m==> \e[94m${@}...\e[0m"
+}
+
+# $@ - current sub step
+function print_sub_step() {
+  echo -e "\e[97m   -> \e[95m${@}...\e[0m"
+}
+
+# $@ - the step currently executing
+function check_ret() {
+  if [[ $? -ne "0" ]]; then
+    echo -e "\e[91m Failed during $@ \e[0m"
+    exit 1
+  fi
+}
+
+# $@ - the step currently executing
+function print_fail() {
+  echo "Failed during $@" ; exit 1
+}
+
+function build_kernel() {
+  STEP="building kernel"
+  print_step $STEP
+  if [[ $CLEAN == "y" ]]; then
+    SUBSTEP='cleaning' && print_sub_step $SUBSTEP
+    $MAKE clean
+    check_ret $STEP
+  fi
+  SUBSTEP='building linux' && print_sub_step $SUBSTEP && $MAKE
+  check_ret $STEP
+  SUBSTEP='building modules' && print_sub_step $SUBSTEP && $MAKE modules_install
+  check_ret $STEP
+  SUBSTEP='installing' && print_sub_step $SUBSTEP && $MAKE install
+  check_ret $STEP
+}
+
+function update_systemd() {
+  STEP="Updating systemd-boot"
+  print_step $STEP
+  $BOOTCTL update
+  check_ret $STEP
+}
+
+function print_success() {
+  echo -e "\n\e[92mDone! Enjoy your new kernel and have a wonderful day :)\e[0m"
+}
+
+main "$@"
