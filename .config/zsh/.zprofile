@@ -2,16 +2,16 @@ export PAGER=less
 export EDITOR=vim
 export VISUAL=vim
 export BROWSER=w3m
+
 export ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
 export WWW_HOME="https://lite.duckduckgo.com"
 export PASSWORD_STORE_DIR="${XDG_CONFIG_HOME}/pass"
 
+export TERM=xterm-256color
+
 if [[ $(uname) == "Darwin" ]]; then
-  export TERM=xterm-256color
   export PATH=${PATH}:/usr/local/bin # just why...
   export DASHT_DOCSETS_DIR='/Users/alureon/Library/Application Support/Dash/DocSets'
-else
-  export TERM=rxvt-unicode-256color
 fi
 
 # XDG paths

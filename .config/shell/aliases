@@ -12,17 +12,20 @@ EMERGE_BASE_ARGS='sudo emerge --color y --ask --alert'
 alias scim='sc-im'
 alias tree='tree -C'
 alias ddg='elinks https://lite.duckduckgo.com'
+alias dmesg='dmesg --color=always'
 alias emerge="${EMERGE_BASE_ARGS}"
 alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
 alias esync="${EMERGE_BASE_ARGS} --sync"
 alias trim="sudo fstrim -Av"
 alias mutt='neomutt'
 alias grep='grep --color=auto'
+alias t='clear;task'
 alias tl='task list'
 alias ta='task active'
 alias tt='clear && task list limit:10'
 alias linux='cd /usr/src/linux'
 alias wiki='vim -c VimwikiIndex'
+alias xlog='less ~/.local/share/xorg/Xorg.0.log'
 alias zd='zathura --fork'
 alias zl='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 
@@ -55,12 +58,16 @@ function p() {
 # $1 task id
 function start() {
   task $1 start
+  clear
+  task
 }
 
 # complete a task
 # $1 task id
 function complete() {
   task $1 done
+  clear
+  task
 }
 
 # quick edits

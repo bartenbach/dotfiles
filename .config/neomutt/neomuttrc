@@ -5,6 +5,11 @@ set folder = "imaps://imap.gmail.com:993"
 
 set smtp_url = "smtp://blakebartenbach@smtp.gmail.com:587"
 set smtp_pass = `pass gmail`
+set smtp_authenticators = 'login'
+
+set realname="Blake Bartenbach"
+set from = "blakebartenbach@gmail.com"
+set use_from=yes
 
 set spoolfile = "+INBOX"
 set postponed = "~/.config/neomutt/postponed"

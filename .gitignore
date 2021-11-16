@@ -25,3 +25,10 @@
 .config/neofetch
 .config/task
 .config/pass
+.config/pulse
+.config/mpd
+.config/ncmpcpp
+.config/neomutt/postponed
+.config/redshift
+.config/systemd
+.config/xmonad

@@ -12,6 +12,13 @@ source "${ZDOTDIR}/.zprofile"
 #-------------------
 [[ $- == *i* ]] || return
 
+#--------------------
+# Readable TTY font
+#--------------------
+if [[ -z $DISPLAY ]]; then
+  setfont Lat2-Terminus16 -d
+fi
+
 #------------------------------------------
 # Loading my zsh functions which is absurd
 # and way harder than it should be. I'm
