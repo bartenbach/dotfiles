@@ -4,14 +4,13 @@
 
 data.location=~/.config/task
 
-
 uda.priority.values=highest,high,medium,low,
 
 urgency.uda.priority.highest.coefficient=16
 urgency.uda.priority.high.coefficient=6.1
-urgency.uda.priority.medium.coefficient=4.0
+urgency.uda.priority.medium.coefficient=4.5
 urgency.uda.priority.low.coefficient=1.8
-
+urgency.active.coefficient=1
 urgency.age.coefficient=1.2
 urgency.due.coefficient=4
 urgency.scheduled.coefficient=0

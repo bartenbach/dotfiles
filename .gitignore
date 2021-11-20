@@ -32,3 +32,9 @@
 .config/redshift
 .config/systemd
 .config/xmonad
+.config/.bombadillo.ini
+.config/Unknown Organization
+.config/amfora
+.config/discordo.toml
+.config/nvim/plugged
+.config/zoomus.conf

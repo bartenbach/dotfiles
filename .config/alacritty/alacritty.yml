@@ -22,7 +22,6 @@ font:
   bold_italic:
     family: xos4 terminus
     style: Bold Italic
-  size: 12
 
 colors:
   cursor:

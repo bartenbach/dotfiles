@@ -1,5 +1,7 @@
+-- # vim: set ft=haskell
 Config {
-     font =         "xft:xos4 terminus:size=10:bold"
+     font = "xft:xos4 terminus:size=8:bold"
+   , additionalFonts  = ["xft:FontAwesome-9" ]
    , bgColor =      "black"
    , fgColor =      "#646464"
    , position =     Top
@@ -7,7 +9,7 @@ Config {
    , borderColor =  "#646464"
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery% | %multicpu% | %memory% | %dynnetwork% }{ %KOMA% | %date% "
+   , template = "%battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork%}%XMonadLog% <fc=#000000,#FF8C00>%task%</fc>{%KOMA% | %date% "
    , lowerOnStart =     True    -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      True    -- show on all desktops
@@ -15,30 +17,44 @@ Config {
    , pickBroadest =     False   -- choose widest display (multi-monitor)
    , persistent =       True    -- enable/disable hiding (True = disabled)
    , commands =
-        [ Run Weather "KOMA" [ "--template", "<skyCondition> | <fc=#4682B4><tempF></fc>°F | <fc=#4682B4><rh></fc>% | <fc=#4682B4><pressure></fc>hPa"
-                             ] 36000
-        , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+       [ Run WeatherX "KOMA"
+           [ ("clear", "clear")
+           , ("sunny", "sunny")
+           , ("mostly clear", "mostly clear")
+           , ("mostly sunny", "mostly sunny")
+           , ("partly sunny", "partly sunny")
+           , ("fair", "fair")
+           , ("cloudy","cloudy")
+           , ("overcast","overcast")
+           , ("partly cloudy", "partly cloudy")
+           , ("mostly cloudy", "mostly cloudy")
+           , ("considerable cloudiness", "very cloudy")]
+           ["-t", "<skyConditionS> <tempF>° <windMph> mph"
+           , "-L","20", "-H", "80", "--normal", "gray90"
+           , "--high", "lightgoldenrod4", "--low", "darkseagreen4"
+           ] 18000
+       , Run DynNetwork     [ "--template" , "<dev> <tx>kB/s <rx>kB/s"
                              , "--Low"      , "1000"       -- units: B/s
                              , "--High"     , "5000"       -- units: B/s
                              , "--low"      , "darkgreen"
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
                              ] 10
-        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+       , Run MultiCpu       [ "--template" , "<total0>% <total1>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
                              , "--low"      , "darkgreen"
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
                              ] 10
-        , Run Memory         [ "--template" ,"Mem: <usedratio>%"
+       , Run Memory         [ "--template" ,"<usedratio>%"
                              , "--Low"      , "20"        -- units: %
                              , "--High"     , "90"        -- units: %
                              , "--low"      , "darkgreen"
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
                              ] 10
-        , Run Battery        [ "--template" , "Batt: <acstatus>"
+       , Run Battery        [ "--template" , " <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"
@@ -52,6 +68,11 @@ Config {
                                        -- charged status
                                        , "-i"	, "<fc=#006000>Charged</fc>"
                              ] 50
-        , Run Date           "<fc=#ABABAB>%F (%A) %-I:%M:%S %P</fc>" "date" 10
-        ]
+       , Run Date           "<fc=#ABABAB>%F (%A) %-I:%M:%S %P</fc>" "date" 10
+       , Run CoreTemp ["-t", "<core0>C <core1>C",
+                  "-L", "40", "-H", "60",
+                  "-l", "darkgreen", "-n", "darkorange", "-h", "darkred"] 50
+       , Run Com "taskmobar" [ ] "task" 30
+       , Run XMonadLog
+       ]
    }

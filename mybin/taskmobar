@@ -2,12 +2,10 @@
 #
 # Serves as an xmobar plugin to display the current task (or lack thereof)
 #
-
-ACTIVE_TASK_MSG=
-ACTIVE_TASK=$(task active &> /dev/null)
+task active $> /dev/null
 
 if [[ $? -eq 1 ]]; then
-  ACTIVE_TASK_MSG="No active tasks"
+  echo " No active task "
+else
+  task _get $(task +ACTIVE ids | cut -d' ' -f1).description
 fi
-
-echo $ACTIVE_TASK_MSG

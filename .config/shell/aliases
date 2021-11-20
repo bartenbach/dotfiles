@@ -26,6 +26,7 @@ alias tt='clear && task list limit:10'
 alias linux='cd /usr/src/linux'
 alias wiki='vim -c VimwikiIndex'
 alias xlog='less ~/.local/share/xorg/Xorg.0.log'
+alias zathura='zathura --fork'
 alias zd='zathura --fork'
 alias zl='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 
@@ -44,7 +45,7 @@ function ignore() {
 # $1 search string
 function hgrep() {
   query="$@"
-  history -1 | grep "${query}"
+  history 1 | grep "${query}"
 }
 
 # modify task priority
@@ -72,7 +73,9 @@ function complete() {
 
 # quick edits
 alias va="vim ${XDG_CONFIG_HOME}/shell/aliases"
+alias vn="nvim ${XDG_CONFIG_HOME}/nvim/init.vim"
 alias vp="vim ${ZDOTDIR}/.zprofile"
+alias vq="vim ${XDG_CONFIG_HOME}/qutebrowser/config.py"
 alias vx="vim ~/.xmonad/xmonad.hs"
 alias vu="sudo vim /etc/portage/package.use/package.use"
 alias vuu="sudo vim /etc/portage/make.conf"
@@ -80,7 +83,7 @@ alias vv="vim ~/.vimrc"
 alias vz="vim ${ZDOTDIR}/.zshrc"
 
 # "real" aliases
-alias history='history -1' # just show me all of it
+alias history='history 1' # just show me all of it
 alias less='less -r' # enable color
 alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
 alias taskell='taskell ~/doc' # keep taskell's board in documents
