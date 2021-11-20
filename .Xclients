@@ -1,2 +1,3 @@
+# for centOS and RHEL unfortunately
 xsetroot -bg darkslategray -mod 15 15 &
 exec ~/.xmonad/xmonad-x86_64-linux

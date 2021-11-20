@@ -1,16 +1,14 @@
-## dotfiles
+### dotfiles
+personal configuration files
 
+they are linked into `${XDG_CONFIG_XXXX}` dirs via an admittedly hideous `link` shell script. the reason for this being that my location changes very frequently.
 
-A collection of my personal dotfiles from `$HOME`
+#### advantages
+- configuration is a deployable, version-controlled "package" that can be 'installed' very quickly using the `link` script
+- since the entire `XDG` configuration directories are in version control, it forces the user to examine every entry to the `XDG` directories to ensure that nothing is missed (this is both a blessing and a curse: see disadvantages)
+- `.gitignore` contains a rolling list of files and directories you don't care about, so they only need to be ignored once.
 
-These keep evolving over the years, and there are actually several branches of this repository
-- master: I'm going to just use this mainly from now on
-- desktop: My Linux desktop dotfiles
-- laptop: A separate single-headed version of my desktop branch
-- macbook: Dotfiles from my Macbook Pro
-
-All branches are obsolete except for master.
-
-Master now contains a (hideous) shell script that essentially makes the repository a deployable real-time package.
-
-The linker symlinks all dotfiles and $XDG_CONFIG_HOME, so that the repository no longer requires manual updates. It simply *is* the dotfiles that are being used. There is no more file copying.
+#### disadvantages
+- `XDG` dirs *must* be symlinks. this means, they can't exist at installation time.
+- many useless configuration files will be detected upon creation and must be manually ignored (an opt-out of version control model)
+- if you decide later you actually *do* want to version control a previously ignored file or directory, you would have to remember to manually remove it from `.gitignore`

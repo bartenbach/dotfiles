@@ -9,5 +9,3 @@ for file in .*; do
     echo -e "\e[96mLinking \e[94m${file}\e[0m"
     /bin/ln -s "$(pwd)/${file}" ~/"${file}"
 done
-
-/bin/ln -s "$(pwd)/mybin" ~/".local"/mybin
