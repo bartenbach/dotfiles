@@ -23,12 +23,14 @@ let g:netrw_banner = 0
 
 " vim-plug
 call plug#begin()
+  Plug 'airblade/vim-gitgutter'
   Plug 'cespare/vim-toml', { 'branch': 'main' }
   Plug 'itchyny/calendar.vim'
   Plug 'itspriddle/vim-shellcheck'
   Plug 'junegunn/goyo.vim'
-"  Plug 'mattn/calendar-vim'
-  Plug 'NLKNguyen/papercolor-theme'
+  Plug 'cocopon/iceberg.vim'
+  Plug 'mattn/calendar-vim'
+  "Plug 'NLKNguyen/papercolor-theme'
   Plug 'preservim/nerdtree'
   Plug 'rust-lang/rust.vim'
   Plug 'ryanoasis/vim-devicons'
@@ -135,5 +137,5 @@ command -nargs=1 -complete=help H h <args> | only
 " colorscheme
 set bg=dark
 set termguicolors
-colorscheme PaperColor
+colorscheme iceberg
 hi Normal guibg=NONE ctermbg=NONE
