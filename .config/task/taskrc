@@ -19,4 +19,92 @@ urgency.tags.coefficient=0
 uda.priority.label=priority
 news.version=2.6.0
 
-include dark-256.theme
+urgency.project.coefficient=0
+urgency.annotations.coefficient=0
+report.list.labels=ID,Active,Age,Depends,Priority,Project,Tags,R,Sch,Due,Until,Description,Urgency
+
+report.next.columns=id,due.relative,priority,description,start.age,entry.age,depends,project,scheduled.countdown,until.remaining,urgency
+report.next.context=1
+report.next.description=Most urgent tasks
+report.next.filter=status:pending -WAITING limit:page
+report.next.labels=ID,Due,Priority,Description,Active,Age,Deps,Project,S,Until,Urgency
+report.next.sort=urgency-
+urgency.inherit=1
+urgency.blocking.coefficient=1
+urgency.blocked.coefficient=-1
+
+# color theme
+rule.precedence.color=deleted,completed,active,tag.,overdue,due.today,due,blocked,blocking,uda.,recurring,tagged,project.
+
+# General decoration
+color.label=color252 on
+color.label.sort=color252 on
+color.alternate=on gray1
+color.header=white on gray5
+color.footnote=color3
+color.warning=bold red
+color.error=white on red
+color.debug=color4
+
+# Task state
+color.completed=color12
+color.deleted=red
+color.active=rgb555 on rgb410
+color.recurring=
+color.scheduled=
+color.until=
+color.blocked=color245 on gray5
+color.blocking=white on color10
+
+# color 10 bright magenta
+
+# Project
+color.project.none=color245
+
+# Priority
+color.uda.priority.highest=white on red
+color.uda.priority.high=rgb410
+color.uda.priority.low=color245
+color.uda.priority.medium=color250
+
+# Tags
+color.tag.next=
+color.tag.none=
+color.tagged=
+
+# Due
+color.due.today=white on rgb410
+color.due=
+color.overdue=white on red
+
+# Report: burndown
+color.burndown.done=on rgb010
+color.burndown.pending=on color9
+color.burndown.started=on color11
+
+# Report: history
+color.history.add=color0 on rgb500
+color.history.delete=color0 on rgb550
+color.history.done=color0 on rgb050
+
+# Report: summary
+color.summary.background=white on color0
+color.summary.bar=black on rgb141
+
+# Command: calendar
+color.calendar.due.today=color15 on color1
+color.calendar.due=color0 on color1
+color.calendar.holiday=color0 on color11
+color.calendar.overdue=color0 on color9
+color.calendar.today=color15 on rgb013
+color.calendar.weekend=on color235
+color.calendar.weeknumber=rgb013
+
+# Command: sync
+color.sync.added=rgb010
+color.sync.changed=color11
+color.sync.rejected=color9
+
+# Command: undo
+color.undo.after=color2
+color.undo.before=color1

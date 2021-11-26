@@ -18,11 +18,13 @@ alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
 alias esync="${EMERGE_BASE_ARGS} --sync"
 alias trim="sudo fstrim -Av"
 alias mutt='neomutt'
+alias pm='pulsemixer'
 alias grep='grep --color=auto'
-alias t='clear;task'
-alias tl='task list'
-alias ta='task active'
-alias tt='clear && task list limit:10'
+alias systemctl='systemctl --user'
+alias t='clear;task project:'
+alias tl='task list project:'
+alias ta='task active project:'
+alias tt='clear && task list limit:10 project:'
 alias linux='cd /usr/src/linux'
 alias vim='nvim'
 alias wiki='vim -c VimwikiIndex'
@@ -61,7 +63,15 @@ function p() {
 function start() {
   task $1 start
   clear
-  task
+  task project:
+}
+
+# stop a task
+# $1 task id
+function stop() {
+  task $1 stop
+  clear
+  task project:
 }
 
 # complete a task
@@ -69,27 +79,24 @@ function start() {
 function complete() {
   task $1 done
   clear
-  task
+  task project:
 }
 
 # quick edits
 alias va="vim ${XDG_CONFIG_HOME}/shell/aliases"
-alias vn="nvim ${XDG_CONFIG_HOME}/nvim/init.vim"
 alias vp="vim ${ZDOTDIR}/.zprofile"
 alias vq="vim ${XDG_CONFIG_HOME}/qutebrowser/config.py"
-alias vx="vim ~/.xmonad/xmonad.hs"
+alias vx="vim ${XDG_CONFIG_HOME}/xmonad/xmonad.hs"
 alias vu="sudo vim /etc/portage/package.use/package.use"
 alias vuu="sudo vim /etc/portage/make.conf"
-alias vv="vim ~/.vimrc"
+alias vv="nvim ${XDG_CONFIG_HOME}/nvim/init.vim"
 alias vz="vim ${ZDOTDIR}/.zshrc"
 
 # "real" aliases
 alias history='history 1' # just show me all of it
 alias less='less -r' # enable color
 alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
-alias taskell='taskell ~/doc' # keep taskell's board in documents
 alias vifm='vifm .' # start vifm in cwd
-alias tw='taskwarrior-tui'
 
 # more boomers who won't support the standard
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"

@@ -25,12 +25,16 @@ let g:netrw_banner = 0
 call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'cespare/vim-toml', { 'branch': 'main' }
-  Plug 'itchyny/calendar.vim'
   Plug 'itspriddle/vim-shellcheck'
   Plug 'junegunn/goyo.vim'
   Plug 'cocopon/iceberg.vim'
   Plug 'mattn/calendar-vim'
-  "Plug 'NLKNguyen/papercolor-theme'
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+  Plug 'junegunn/fzf'
+  Plug 'NLKNguyen/papercolor-theme'
   Plug 'preservim/nerdtree'
   Plug 'rust-lang/rust.vim'
   Plug 'ryanoasis/vim-devicons'
@@ -38,7 +42,21 @@ call plug#begin()
   Plug 'vim-airline/vim-airline'
   Plug 'vimwiki/vimwiki'
   Plug 'wakatime/vim-wakatime'
+"  Plug '~/code/vim-wakatime' need to fix XDG on this...
 call plug#end()
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'] }
+
+nmap <F7> <Plug>(lcn-menu)
+nmap <silent>K <Plug>(lcn-hover)
+nmap <silent> gd <Plug>(lcn-definition)
+
+" wakatime
+let g:wakatime_home="~/.config/wakatime"
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -71,18 +89,24 @@ function TrimWhiteSpace()
   ''
 endfunction
 
-" vim calendar
-source ~/.cache/calendar.vim/credentials.vim
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-
 " disable the useless F1 key that no one would ever use
 " and only proves an annoyance
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
 
 " custom mappings
-inoremap <F5>          <C-x><C-f> " filename completion
+
+" this is cryptic and needs explaining - so spelling replacement in vim is
+" arguably not great. this binds ctrl+s in both normal and insert mode to
+" replace the last (most recent previous) detected spelling mistake with the
+" first suggestion from vim's suggestion list. can be undone with 'u' as
+" you would expect.
+nnoremap <c-s>         <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <c-s>         <c-g>u<Esc>[s1z=`]a<c-g>u
+
+" this is an easier binding for filename comletion in insert mode
+inoremap <F5>          <C-x><C-f>
+
 nnoremap <F12>         :VimwikiMakeDiaryNote<CR>
 nnoremap <leader>g     :Goyo<CR>
 nnoremap <leader>h     :nohls<CR>
@@ -116,15 +140,15 @@ autocmd BufWinLeave * call clearmatches()
 autocmd FileType rust setlocal makeprg=rustc\ %\ &&\ ./%:r
 autocmd FileType yaml setlocal et ts=2 ai sw=2 nu sts=0
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd FileType latex,markdown,tex,text,vimwiki
+autocmd FileType latex,markdown,vimwiki,plaintex
       \ setlocal spell spelllang=en wrap linebreak
 
 " rust formatter
 autocmd BufWritePost,FileWritePost *.rs :RustFmt
 
 " xmonad auto recompiler
-autocmd BufWritePost,FileWritePost xmonad.hs !~/.xmonad/xmonad-x86_64-linux
-      \ --recompile; ~/.xmonad/xmonad-x86_64-linux --restart
+autocmd BufWritePost,FileWritePost xmonad.hs !xmonad --recompile;
+          \ xmonad --restart
 " xrdb auto merger
 autocmd BufWritePost,FileWritePost .Xdefaults !xrdb ~/.Xdefaults
 autocmd BufWritePost,FileWritePost *.mod !cafeobj -batch %

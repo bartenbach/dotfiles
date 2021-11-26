@@ -52,7 +52,7 @@ xMod      = mod4Mask
 xShiftMod = xMod .|. shiftMask
 xKillMask = xMod .|. controlMask
 
-xWorkspaces = ["1","2","3","4","5","6"]
+xWorkspaces = ["1:irc","2:org","3:doc","4:web","5:code","6:ext"]
 xWorkspaceKeys = [((m .|. xMod, k), windows $ f i)
                  | (i, k) <- zip xWorkspaces [xK_1 .. xK_5]
                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
@@ -67,8 +67,8 @@ xKeys = [ ((xMod,      xK_Delete),    kill)
         , ((xMod,      xK_q),         spawn xBrowser)
         , ((xMod,      xK_p),         passTypePrompt def)
         , ((xMod,      xK_space),     sendMessage NextLayout)
-        , ((xMod,      xK_l),         sendMessage Shrink)
-        , ((xMod,      xK_h),         sendMessage Expand)
+        , ((xMod,      xK_h),         sendMessage Shrink)
+        , ((xMod,      xK_l),         sendMessage Expand)
         , ((xMod,      xK_f),         sendMessage $ JumpToLayout "Full")
         , ((xMod,      xK_k),         windows W.focusUp)
         , ((xMod,      xK_j),         windows W.focusDown)
@@ -131,7 +131,7 @@ myConfig = def { modMask            = xMod
                , terminal           = xTerm
                , focusFollowsMouse  = False
                , clickJustFocuses   = True
-               , borderWidth        = 5
+               , borderWidth        = 10
                , normalBorderColor  = black
                , focusedBorderColor = magenta
                , workspaces         = xWorkspaces

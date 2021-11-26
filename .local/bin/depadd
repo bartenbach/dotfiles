@@ -1,0 +1,8 @@
+#!/bin/bash
+# No clue why Cargo can't already do this
+
+DEP=$(cargo search "$@" | head -1)
+echo ${DEP} >> Cargo.toml
+
+echo -e "\e[93mAdded \e[96m${@}\e[0m"
+cargo build

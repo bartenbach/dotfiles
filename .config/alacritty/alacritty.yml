@@ -11,17 +11,18 @@ scrolling:
 
 font:
   normal:
-    family: xos4 terminus
+    family: Fira Code
     style: Medium
   bold:
-    family: xos4 terminus
+    family: Fira Code
     style: Bold
   italic:
-    family: xos4 terminus
+    family: Fira Code
     style: Italic
   bold_italic:
-    family: xos4 terminus
+    family: Fira Code
     style: Bold Italic
+  size: 10
 
 colors:
   cursor:

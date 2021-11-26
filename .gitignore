@@ -42,3 +42,5 @@
 .local/state
 .local/bin/cafeobj
 .local/share
+.config/imgurbash2
+.config/discord
