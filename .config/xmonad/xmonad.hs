@@ -1,28 +1,27 @@
 --------------------------------------------------------------------------------
---                            ~/.xmonad/xmonad.hs                             --
+--                        ~/.config/xmonad/xmonad.hs                          --
 --------------------------------------------------------------------------------
 
 ------------------
 -- {-# Imports #-}
 ------------------
-import XMonad hiding ((|||))
-import qualified XMonad.Layout.Magnifier as Mag
-import qualified XMonad.Util.Hacks as Hacks
+import System.Exit (exitWith, ExitCode(ExitSuccess))
+import XMonad.Actions.EasyMotion (selectWindow)
+import XMonad.Actions.GridSelect
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
-import XMonad.Actions.NoBorders
+import XMonad.Hooks.SetWMName
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Spacing
 import XMonad.Prompt.Pass
 import XMonad.Util.Loggers
-import XMonad.Hooks.SetWMName
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
 import XMonad.Util.EZConfig (additionalKeys,removeKeys)
-import System.Exit (exitWith, ExitCode(ExitSuccess))
+import XMonad hiding ((|||))
+import qualified XMonad.Layout.Magnifier as Mag
 import qualified XMonad.Hooks.EwmhDesktops as E
 import qualified XMonad.StackSet as W
 
@@ -42,6 +41,7 @@ darkMagenta = "#711c91"
 xTerm = "alacritty"
 xBrowser = "qutebrowser"
 xLaunch = "dmenu_run -b -fn terminus -i"
+xLock = "slock"
 xMoji = "splatmoji type"
 xFont  = "xft:xos4 terminus"
 
@@ -65,22 +65,26 @@ xKeys = [ ((xMod,      xK_Delete),    kill)
         , ((xMod,      xK_Return),    spawn xTerm)
         , ((xMod,      xK_r),         spawn xLaunch)
         , ((xMod,      xK_q),         spawn xBrowser)
+        , ((xMod,      xK_x),         spawn xLock)
         , ((xMod,      xK_p),         passTypePrompt def)
+        , ((xMod,      xK_g),         goToSelected def)
         , ((xMod,      xK_space),     sendMessage NextLayout)
         , ((xMod,      xK_h),         sendMessage Shrink)
         , ((xMod,      xK_l),         sendMessage Expand)
-        , ((xMod,      xK_f),         sendMessage $ JumpToLayout "Full")
         , ((xMod,      xK_k),         windows W.focusUp)
         , ((xMod,      xK_j),         windows W.focusDown)
+        , ((xMod,      xK_f),         selectWindow def >>= (`whenJust` windows . W.focusWindow))
         , ((xMod,      xK_m),         sendMessage Mag.Toggle)
         , ((xMod,      xK_equal),     sendMessage Mag.MagnifyMore)
         , ((xMod,      xK_minus),     sendMessage Mag.MagnifyLess)
         , ((xMod,      xK_s),         withFocused $ windows . W.sink)
+        , ((xShiftMod, xK_f),         selectWindow def >>= (`whenJust` killWindow))
         , ((xShiftMod, xK_j),         windows W.swapUp)
         , ((xShiftMod, xK_k),         windows W.swapDown)
         , ((xShiftMod, xK_m),         windows W.swapMaster)
         , ((xShiftMod, xK_n),         windows W.shiftMaster)
-        , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))]
+        , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))
+        ]
 
 xNoKeys = [ (xMod, xK_comma)
           , (xMod, xK_ampersand)
@@ -167,6 +171,8 @@ myXmobarPP = def
 
 main :: IO ()
 main = xmonad
+     . docks
+     . E.ewmhFullscreen
      . E.ewmh
      . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
      $ myConfig

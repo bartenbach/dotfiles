@@ -44,3 +44,4 @@
 .local/share
 .config/imgurbash2
 .config/discord
+.config/rofi

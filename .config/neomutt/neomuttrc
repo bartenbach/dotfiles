@@ -1,10 +1,10 @@
 set imap_user = "blakebartenbach@gmail.com"
-set imap_pass = `pass gmail`
+set imap_pass = `pass gmail/blakebartenbach@gmail.com`
 
 set folder = "imaps://imap.gmail.com:993"
 
 set smtp_url = "smtp://blakebartenbach@smtp.gmail.com:587"
-set smtp_pass = `pass gmail`
+set smtp_pass = `pass gmail/blakebartenbach@gmail.com`
 set smtp_authenticators = 'login'
 
 set realname="Blake Bartenbach"
