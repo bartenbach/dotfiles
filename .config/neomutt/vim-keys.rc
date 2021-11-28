@@ -21,17 +21,20 @@ bind browser,pager              \Ce next-line
 bind browser,pager              \Cy previous-line
 bind index                      \Ce next-line
 bind index                      \Cy previous-line
+bind index,pager                \Cp sidebar-prev
+bind index,pager                \Cn sidebar-next
+bind index,pager                \Co sidebar-open
 
-bind pager,index                d   noop
-bind pager,index                dd  delete-message
+#bind pager,index                d    noop
+bind pager,index                d   delete-message
 
 # Mail & Reply
 # bind index                      \Cm list-reply # Doesn't work currently
 
 # Threads
 bind browser,pager,index        N   search-opposite
-bind pager,index                dT  delete-thread
-bind pager,index                dt  delete-subthread
+#bind pager,index                dT  delete-thread
+#bind pager,index                dt  delete-subthread
 bind pager,index                gt  next-thread
 bind pager,index                gT  previous-thread
 bind index                      za  collapse-thread

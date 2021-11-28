@@ -1,28 +1,21 @@
 # vim: filetype=muttrc
 
 # accounts
-set imap_user = "blakebartenbach@gmail.com"
-set imap_pass = `pass gmail/blakebartenbach@gmail.com`
+set my_gmail=~/.config/neomutt/gmail
+source $my_gmail
+folder-hook $folder 'source $my_gmail'
 
-set folder = "imaps://imap.gmail.com:993"
+#set my_uno=~/.config/neomutt/uno
+#source $my_uno
+#folder-hook $folder 'source $my_uno'
 
-set smtp_url = "smtp://blakebartenbach@smtp.gmail.com:587"
-set smtp_pass = `pass gmail/blakebartenbach@gmail.com`
-set smtp_authenticators = 'login'
-
-set realname="Blake Bartenbach"
-set from = "blakebartenbach@gmail.com"
-set use_from=yes
-
-set spoolfile = "+INBOX"
-set postponed = "~/.config/neomutt/postponed"
-set header_cache = "${XDG_CACHE_HOME}/mutt/headers"
-set message_cachedir = "${XDG_CACHE_HOME}/mutt/bodies"
 
 # general configuration
-
+set header_cache = "${XDG_CACHE_HOME}/mutt/headers"
+set message_cachedir = "${XDG_CACHE_HOME}/mutt/bodies"
+set use_from=yes
 auto_view text/html text/calendar application/ics # view html automatically
-set record = ""
+set imap_check_subscribed
 set copy=yes
 set askcc
 set charset="utf-8"
@@ -33,16 +26,30 @@ set edit_headers # let me edit them if i please
 set fast_reply # skip straight to replying
 set fcc_attach # include attachments
 set include
+set tilde
 set indent_string="> "
+set implicit_autoview=yes
 set mail_check = 60 # poll email server every minute
-set print_command=lp # cups setup for printing emails
+set print_command="/usr/bin/muttprint %s"
 set mailcap_path="~/.config/neomutt/mailcap" # file handlers
 set signature="~/.config/neomutt/signature"
-set pgp_default_key="BDD29DFF1BABBFEF3355F0E54A4F6F61B2E80B26"
+
+# pgp
+set pgp_default_key=0x4A4F6F61B2E80B26
+set pgp_sign_as=$pgp_default_key
+set crypt_use_gpgme=yes
+set postpone_encrypt = yes
+set pgp_self_encrypt = yes
+set crypt_use_pka = no
+set crypt_autosign = yes
+set crypt_autoencrypt = no
+set crypt_autopgp = yes
 
 # annoying...why?
 unset sig_dashes
 unset help
+unset imap_passive
+set imap_keepalive=300
 
 # mailing list helpers
 set use_threads=yes
@@ -50,21 +57,33 @@ set sort=reverse-last-date
 set sort_aux=date
 set sort_browser=reverse-date
 
-set tilde
-set implicit_autoview=yes
-
-#bind pager G bottom
-#bind pager g top
-
 # get some context
 set pager_index_lines = 20
+set pager_stop = yes # don't automatically go to next email
 
 # straight brainlet shit...
 unset wait_key
 
-set sidebar_visible=no
+# sidebar
+set sidebar_visible=yes
+set sidebar_short_path=yes
+set sidebar_width=25
+set sidebar_new_mail_only=no
+set mail_check_stats
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+sidebar_whitelist 'INBOX'
+sidebar_whitelist 'Saved'
+sidebar_whitelist 'Drafts'
+sidebar_whitelist 'Sent Mail'
+sidebar_whitelist 'Spam'
+bind index,pager <TAB> sidebar-toggle-visible
+
+## Abook
+set query_command= "abook --mutt-query '%s'"
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor <Tab> complete-query
 
 # colors
-source darcula
-#source neonwolf-256.neomuttrc
+#source darcula
+source neonwolf-256.neomuttrc
 source vim-keys.rc

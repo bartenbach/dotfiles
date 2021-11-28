@@ -48,3 +48,7 @@
 .config/QtProject.conf
 .config/obs-studio
 .config/neomutt/neonwolf-256.neomuttrc
+.config/neomutt/ng_signature
+.config/neomutt/smime.rc
+.config/htop/htoprc
+.config/neomutt/darcula

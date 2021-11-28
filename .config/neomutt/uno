@@ -1,0 +1,20 @@
+# vim: filetype=muttrc
+
+## Receive options.
+set imap_user = "bbartenbach@unomaha.edu"
+set imap_pass = `pass office365/bbartenbach@unomaha.edu`
+set folder = "imaps://outlook.office365.com:993"
+set spoolfile = +INBOX
+#set postponed = +Drafts
+#set record = +Sent
+
+## Send options.
+set smtp_url="smtps://smtp.office365.com"
+set realname='Blake Bartenbach'
+set from="bbartenbach@unomaha.edu"
+set hostname="unomaha.edu"
+set ssl_force_tls = yes
+unset ssl_starttls
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_user=bbartenbach@unomaha.edu imap_pass=`pass office365/bbartenbach@unomaha.edu`"

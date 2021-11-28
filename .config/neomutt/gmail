@@ -1,0 +1,21 @@
+# vim: filetype=muttrc
+
+## Receive options.
+set imap_user="blakebartenbach@gmail.com"
+set imap_pass=`pass gmail/blakebartenbach@gmail.com`
+set folder="imaps://imap.gmail.com:993"
+set spoolfile=+INBOX
+set postponed=+[Gmail]/Drafts
+set record="+[Gmail]/Sent Mail"
+
+## Send options.
+set smtp_url="smtps://blakebartenbach@smtp.gmail.com"
+set smtp_pass=`pass gmail/blakebartenbach@gmail.com`
+set realname='Blake Bartenbach'
+set from="blakebartenbach@gmail.com"
+set hostname="gmail.com"
+set signature=~/.config/neomutt/signature
+set ssl_force_tls=yes
+unset ssl_starttls
+
+account-hook $folder "set imap_user=blakebartenbach@gmail.com imap_pass=`pass gmail/blakebartenbach@gmail.com`"

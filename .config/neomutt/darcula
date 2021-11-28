@@ -13,7 +13,7 @@ color normal		default		default
 color prompt		default	        default
 color search		color84		default
 #color status 		color141	color236
-color status 		color16 color63
+color status 		default color21
 color tilde		color231	default
 color tree		color141	default
 
@@ -53,15 +53,15 @@ color quoted4		color212	default
 color signature		color212	default
 
 # Sidebar-specific color of the selected item
-color sidebar_indicator black green
+color sidebar_indicator default black
 # Color of the highlighted, but not open, mailbox.
-color sidebar_highlight blue black
+color sidebar_highlight color16 color11
 # Color of the divider separating the Sidebar from NeoMutt panels
 color sidebar_divider color8 default
 # Color to give mailboxes containing flagged mail
 color sidebar_flagged red default
 # Color to give mailboxes containing new mail
-color sidebar_new green default
+color sidebar_new color40 default
 # Color to give mailboxes containing no new/flagged mail, etc.
 color sidebar_ordinary blue default
 

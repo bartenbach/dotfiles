@@ -7,8 +7,8 @@ export ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
 export WWW_HOME="https://lite.duckduckgo.com"
 export PASSWORD_STORE_DIR="${XDG_CONFIG_HOME}/pass"
 
-#export LIBVA_DRIVER_NAME=vdpau
-#export VDPAU_DRIVER=nvidia
+export LIBVA_DRIVER_NAME=vdpau
+export VDPAU_DRIVER=nvidia
 
 export TERM=xterm-256color
 

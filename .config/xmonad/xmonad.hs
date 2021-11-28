@@ -48,36 +48,38 @@ xFont  = "xft:xos4 terminus"
 ----------------------
 --{-# Key Bindings #-}
 ----------------------
-xMod      = mod4Mask
-xShiftMod = xMod .|. shiftMask
-xKillMask = xMod .|. controlMask
+modm      = mod4Mask
+xShiftMod = modm .|. shiftMask
+xKillMask = modm .|. controlMask
 
-xWorkspaces = ["1:irc","2:org","3:doc","4:web","5:code","6:ext"]
-xWorkspaceKeys = [((m .|. xMod, k), windows $ f i)
+xWorkspaces = ["1:irc","2:org","3:src","4:web","5:doc","6:ext"]
+xWorkspaceKeys = [((m .|. modm, k), windows $ f i)
                  | (i, k) <- zip xWorkspaces [xK_1 .. xK_5]
                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
                  ++
-                 [((m .|. xMod, key), screenWorkspace sc >>= flip whenJust (windows . f))
+                 [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
                  | (key, sc) <- zip [xK_w, xK_e] [0..]
                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-xKeys = [ ((xMod,      xK_Delete),    kill)
-        , ((xMod,      xK_Return),    spawn xTerm)
-        , ((xMod,      xK_r),         spawn xLaunch)
-        , ((xMod,      xK_q),         spawn xBrowser)
-        , ((xMod,      xK_x),         spawn xLock)
-        , ((xMod,      xK_p),         passTypePrompt def)
-        , ((xMod,      xK_g),         goToSelected def)
-        , ((xMod,      xK_space),     sendMessage NextLayout)
-        , ((xMod,      xK_h),         sendMessage Shrink)
-        , ((xMod,      xK_l),         sendMessage Expand)
-        , ((xMod,      xK_k),         windows W.focusUp)
-        , ((xMod,      xK_j),         windows W.focusDown)
-        , ((xMod,      xK_f),         selectWindow def >>= (`whenJust` windows . W.focusWindow))
-        , ((xMod,      xK_m),         sendMessage Mag.Toggle)
-        , ((xMod,      xK_equal),     sendMessage Mag.MagnifyMore)
-        , ((xMod,      xK_minus),     sendMessage Mag.MagnifyLess)
-        , ((xMod,      xK_s),         withFocused $ windows . W.sink)
+xKeys = [ ((modm,      xK_Delete),    kill)
+        , ((modm,      xK_Return),    spawn xTerm)
+        , ((modm,      xK_r),         spawn xLaunch)
+        , ((modm,      xK_q),         spawn xBrowser)
+        , ((modm,      xK_x),         spawn xLock)
+        , ((modm,      xK_p),         passTypePrompt def)
+        , ((modm,      xK_g),         goToSelected def)
+        , ((modm,      xK_space),     sendMessage NextLayout)
+        , ((modm,      xK_h),         sendMessage Shrink)
+        , ((modm,      xK_l),         sendMessage Expand)
+        , ((modm,      xK_k),         windows W.focusUp)
+        , ((modm,      xK_j),         windows W.focusDown)
+        , ((modm,      xK_f),         selectWindow def >>= (`whenJust` windows . W.focusWindow))
+        , ((modm,      xK_m),         sendMessage Mag.Toggle)
+        , ((modm,      xK_equal),     sendMessage Mag.MagnifyMore)
+        , ((modm,      xK_minus),     sendMessage Mag.MagnifyLess)
+        , ((modm,      xK_s),         withFocused $ windows . W.sink)
+        , ((0,         xK_F4),        spawn "scrot")
+        , ((0,         xK_F12),       spawn "xdotool key Shift+Insert")
         , ((xShiftMod, xK_f),         selectWindow def >>= (`whenJust` killWindow))
         , ((xShiftMod, xK_j),         windows W.swapUp)
         , ((xShiftMod, xK_k),         windows W.swapDown)
@@ -86,9 +88,9 @@ xKeys = [ ((xMod,      xK_Delete),    kill)
         , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))
         ]
 
-xNoKeys = [ (xMod, xK_comma)
-          , (xMod, xK_ampersand)
-          , (xMod, xK_dollar)
+xNoKeys = [ (modm, xK_comma)
+          , (modm, xK_ampersand)
+          , (modm, xK_dollar)
           ]
 
 ---------------------
@@ -118,6 +120,7 @@ isProp x y = stringProperty x =? y
 isClass x  = className        =? x
 
 xManage = composeAll [ isClass "Gimp"            --> doFloat
+                     , isClass "qutebrowser"     --> doShiftAndGo "4:web"
                      , isClass "zoom"            --> doShift "5"
                      , isClass "zoom"            --> doFloat
                      , isClass "Xmessage"        --> doCenterFloat
@@ -127,11 +130,14 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isFullscreen              --> (doF W.focusDown <+> doFullFloat)
                      , transience'
                      ]
+          where
+              doShiftAndGo ws = doF (W.greedyView ws) <+> doShift ws
+
 
 --------------
 --{-# Main #-}
 --------------
-myConfig = def { modMask            = xMod
+myConfig = def { modMask            = modm
                , terminal           = xTerm
                , focusFollowsMouse  = False
                , clickJustFocuses   = True
