@@ -1,6 +1,5 @@
 # vim: set ft:sh
 if [[ "$(uname)" == "Darwin" ]]; then
-  # this is such trash.  why apple?  just why?
   alias ls='ls -GF'
 elif [[ "$(uname)" == "Linux" ]]; then
   alias ls='ls --color=always -p --human-readable --group-directories-first'
@@ -8,25 +7,44 @@ fi
 
 EMERGE_BASE_ARGS='sudo emerge --color y --ask --alert'
 
-# misc
-alias scim='sc-im'
-alias tree='tree -C'
 alias ddg='elinks https://lite.duckduckgo.com'
 alias dmesg='dmesg --color=always'
+alias dot="cd ~/code/dotfiles"
 alias emerge="${EMERGE_BASE_ARGS}"
-alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
 alias esync="${EMERGE_BASE_ARGS} --sync"
-alias trim="sudo fstrim -Av"
-alias mutt='neomutt'
-alias pm='pulsemixer'
 alias grep='grep --color=auto'
+alias history='history 1' # just show me all of it
+alias journalctl='sudo journalctl -xb --no-hostname -e'
+alias less='less -r' # enable color
+alias linux='cd /usr/src/linux'
+alias mutt='neomutt'
+alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
+alias pm='pulsemixer'
+alias scim='sc-im'
+alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
+alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"
+alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
+alias sa="source ${XDG_CONFIG_HOME}/shell/aliases"
 alias systemctl='systemctl --user'
+alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
+alias tree='tree -C'
+alias trim="sudo fstrim -Av"
 alias t='clear;task project:'
 alias tl='task list project:'
 alias ta='task active project:'
 alias tt='clear && task list limit:10 project:'
-alias linux='cd /usr/src/linux'
+alias vifm='vifm .' # start vifm in cwd
 alias vim='nvim'
+alias va="vim ${XDG_CONFIG_HOME}/shell/aliases"
+alias vm="vim ${XDG_CONFIG_HOME}/neomutt/neomuttrc"
+alias vp="vim ${ZDOTDIR}/.zprofile"
+alias vq="vim ${XDG_CONFIG_HOME}/qutebrowser/config.py"
+alias vt="vim ${XDG_CONFIG_HOME}/task/taskrc"
+alias vx="vim ${XDG_CONFIG_HOME}/xmonad/xmonad.hs"
+alias vu="sudo vim /etc/portage/package.use/package.use"
+alias vuu="sudo vim /etc/portage/make.conf"
+alias vv="nvim ${XDG_CONFIG_HOME}/nvim/init.vim"
+alias vz="vim ${ZDOTDIR}/.zshrc"
 alias wiki='vim -c VimwikiIndex'
 alias xlog='less ~/.local/share/xorg/Xorg.0.log'
 alias zathura='zathura --fork'
@@ -81,30 +99,3 @@ function complete() {
   clear
   task project:
 }
-
-# quick edits
-alias va="vim ${XDG_CONFIG_HOME}/shell/aliases"
-alias vp="vim ${ZDOTDIR}/.zprofile"
-alias vq="vim ${XDG_CONFIG_HOME}/qutebrowser/config.py"
-alias vx="vim ${XDG_CONFIG_HOME}/xmonad/xmonad.hs"
-alias vu="sudo vim /etc/portage/package.use/package.use"
-alias vuu="sudo vim /etc/portage/make.conf"
-alias vv="nvim ${XDG_CONFIG_HOME}/nvim/init.vim"
-alias vz="vim ${ZDOTDIR}/.zshrc"
-
-# "real" aliases
-alias history='history 1' # just show me all of it
-alias less='less -r' # enable color
-alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
-alias vifm='vifm .' # start vifm in cwd
-
-# more boomers who won't support the standard
-alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
-
-# quick source
-alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"
-alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
-alias sa="source ${XDG_CONFIG_HOME}/shell/aliases"
-
-# systemd configuration
-alias journalctl='sudo journalctl -xb --no-hostname -e'

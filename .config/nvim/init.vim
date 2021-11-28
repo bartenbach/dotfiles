@@ -111,10 +111,10 @@ nnoremap <F12>         :VimwikiMakeDiaryNote<CR>
 nnoremap <leader>g     :Goyo<CR>
 nnoremap <leader>h     :nohls<CR>
 nnoremap <leader>l     :execute ':!pdflatex % > /dev/null'<CR>
-nnoremap <leader>n     :NERDTreeVCS<CR>
-nnoremap <leader>r     :RustRun<CR>
+" i've never done this on purpose nnoremap <leader>n     :NERDTreeVCS<CR>
+" not really needed anymore? nnoremap <leader>r     :RustRun<CR>
 nnoremap <leader>w     :call TrimWhiteSpace()<CR>
-nnoremap <leader><esc> :NERDTreeToggle<CR>
+" nnoremap <leader><esc> :NERDTreeToggle<CR>
 nnoremap <leader><tab> <C-w>w
 
 " airline

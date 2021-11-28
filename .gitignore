@@ -45,3 +45,6 @@
 .config/imgurbash2
 .config/discord
 .config/rofi
+.config/QtProject.conf
+.config/obs-studio
+.config/neomutt/neonwolf-256.neomuttrc

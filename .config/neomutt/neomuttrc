@@ -1,3 +1,6 @@
+# vim: filetype=muttrc
+
+# accounts
 set imap_user = "blakebartenbach@gmail.com"
 set imap_pass = `pass gmail/blakebartenbach@gmail.com`
 
@@ -16,21 +19,30 @@ set postponed = "~/.config/neomutt/postponed"
 set header_cache = "${XDG_CACHE_HOME}/mutt/headers"
 set message_cachedir = "${XDG_CACHE_HOME}/mutt/bodies"
 
+# general configuration
+
+auto_view text/html text/calendar application/ics # view html automatically
 set record = ""
 set copy=yes
+set askcc
 set charset="utf-8"
 set delete=yes
 set auto_edit
-set edit_headers
-set fast_reply
-set fcc_attach
+set beep_new # beep on new email
+set edit_headers # let me edit them if i please
+set fast_reply # skip straight to replying
+set fcc_attach # include attachments
 set include
 set indent_string="> "
-set mail_check = 60
-set print_command=lp
-set mailcap_path="~/.config/neomutt/mailcap"
+set mail_check = 60 # poll email server every minute
+set print_command=lp # cups setup for printing emails
+set mailcap_path="~/.config/neomutt/mailcap" # file handlers
 set signature="~/.config/neomutt/signature"
 set pgp_default_key="BDD29DFF1BABBFEF3355F0E54A4F6F61B2E80B26"
+
+# annoying...why?
+unset sig_dashes
+unset help
 
 # mailing list helpers
 set use_threads=yes
@@ -41,8 +53,8 @@ set sort_browser=reverse-date
 set tilde
 set implicit_autoview=yes
 
-bind pager G bottom
-bind pager g top
+#bind pager G bottom
+#bind pager g top
 
 # get some context
 set pager_index_lines = 20
@@ -50,5 +62,9 @@ set pager_index_lines = 20
 # straight brainlet shit...
 unset wait_key
 
+set sidebar_visible=no
+
 # colors
-source solarized
+source darcula
+#source neonwolf-256.neomuttrc
+source vim-keys.rc
