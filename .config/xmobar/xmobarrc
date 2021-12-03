@@ -3,13 +3,13 @@ Config {
      font = "xft:xos4 terminus:size=8:bold"
    , additionalFonts  = ["xft:FontAwesome-9" ]
    , bgColor =      "black"
-   , fgColor =      "#646464"
+   , fgColor =      "#00ced1"
    , position =     Top
    , border =       BottomB
    , borderColor =  "#646464"
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork%}%XMonadLog% <fc=#FF8C00> %task% </fc>{%KOMA% | %date% "
+   , template = "%battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork%}<fc=#FF00FF> %context% </fc> %XMonadLog% <fc=#66ff00> %task% </fc>{%KOMA% | %date% "
    , lowerOnStart =     True    -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      True    -- show on all desktops
@@ -36,22 +36,22 @@ Config {
        , Run DynNetwork     [ "--template" , "<dev> <tx>kB/s <rx>kB/s"
                              , "--Low"      , "1000"       -- units: B/s
                              , "--High"     , "5000"       -- units: B/s
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
+                             , "--low"      , "magenta"
+                             , "--normal"   , "magenta"
                              , "--high"     , "darkred"
                              ] 10
        , Run MultiCpu       [ "--template" , "<total0>% <total1>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
+                             , "--low"      , "magenta"
+                             , "--normal"   , "magenta"
                              , "--high"     , "darkred"
                              ] 10
        , Run Memory         [ "--template" ,"<usedratio>%"
                              , "--Low"      , "20"        -- units: %
                              , "--High"     , "90"        -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
+                             , "--low"      , "magenta"
+                             , "--normal"   , "magenta"
                              , "--high"     , "darkred"
                              ] 10
        , Run Battery        [ "--template" , " <acstatus>"
@@ -64,15 +64,16 @@ Config {
                                        -- discharging status
                                        , "-o"	, "<left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       , "-O"	, "<fc=#00ced1>Charging</fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                                       , "-i"	, "<fc=#FF00FF>Charged</fc>"
                              ] 50
        , Run Date           "<fc=#ABABAB>%F (%A) %-I:%M:%S %P</fc>" "date" 10
        , Run CoreTemp ["-t", "<core0>C <core1>C",
                   "-L", "40", "-H", "60",
-                  "-l", "darkgreen", "-n", "darkorange", "-h", "darkred"] 50
-       , Run Com "taskmobar" [ ] "task" 30
+                  "-l", "#FF00FF", "-n", "#FF00FF", "-h", "#ff05ff"] 50
+       , Run Com "taskmobar" [ "--active" ] "task" 30
+       , Run Com "taskmobar" [ "--context" ] "context" 30
        , Run XMonadLog
        ]
    }

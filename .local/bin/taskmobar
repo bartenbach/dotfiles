@@ -3,10 +3,14 @@
 # Serves as an xmobar plugin to display the current task (or lack thereof)
 #
 
-if [[ -z $(task active) ]]; then
-  echo "No active task"
-else
-  id=$(task +ACTIVE ids | cut -d' ' -f1)
-  description=$(task _get ${id}.description)
-  echo "(${id}) ${description}"
+if [[ $1 == "--active" ]]; then
+  if [[ -z $(task active) ]]; then
+    echo "No active task"
+  else
+    id=$(task +ACTIVE ids | cut -d' ' -f1)
+    description=$(task _get ${id}.description)
+    echo "${id}: ${description}"
+  fi
+elif [[ $1 == "--context" ]]; then
+  task context show | head -1 | grep -Eo "'.*'" | tr -d "'"
 fi
