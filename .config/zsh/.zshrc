@@ -12,6 +12,9 @@ source "${ZDOTDIR}/.zprofile"
 #-------------------
 [[ $- == *i* ]] || return
 
+# serious brainlet shit
+stty -ixon
+
 #--------------------
 # Readable TTY font
 #--------------------
@@ -92,18 +95,21 @@ fi
 #-------------
 # Zsh History
 #-------------
-HISTFILE="${XDG_CACHE_HOME}/zsh_history"
-HISTSIZE=1000
-SAVEHIST=10000
+HISTFILE="${XDG_CACHE_HOME}/zsh/zsh_history"
+HISTSIZE=1000000
+SAVEHIST=1000000
 setopt SHARE_HISTORY # otherwise you get only the terminal you're on
+setopt EXTENDED_HISTORY # record the time the command occurred
+setopt INC_APPEND_HISTORY_TIME # record time in history file immediately
 setopt HIST_FCNTL_LOCK
-setopt HIST_IGNORE_DUPS
-setopt BANG_HIST
+setopt HIST_IGNORE_ALL_DUPS # no point recording duplicates
+setopt HIST_SAVE_NO_DUPS
 setopt HIST_FIND_NO_DUPS
+setopt BANG_HIST
 setopt HIST_VERIFY
 setopt HIST_LEX_WORDS # better whitespace handling / maybe slower
 setopt HIST_REDUCE_BLANKS # remove extra whitespace from commands in history
-setopt COMPLETE_ALIASES
+setopt COMPLETE_ALIASES # show what actually was executed
 
 #----------------
 # Zsh Completion
@@ -137,3 +143,5 @@ export PATH=${PATH}:~/.xmonad # TODO this probably changes
 export PATH=${PATH}:~/.local/bin
 export PATH=${PATH}:~/.cabal/bin
 export PATH=${PATH}:/usr/local/bin
+
+neofetch

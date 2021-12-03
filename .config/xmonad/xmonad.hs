@@ -6,8 +6,6 @@
 -- {-# Imports #-}
 ------------------
 import System.Exit (exitWith, ExitCode(ExitSuccess))
-import XMonad.Actions.EasyMotion (selectWindow)
-import XMonad.Actions.GridSelect
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.SetWMName
@@ -17,11 +15,9 @@ import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Spacing
-import XMonad.Prompt.Pass
 import XMonad.Util.Loggers
 import XMonad.Util.EZConfig (additionalKeys,removeKeys)
 import XMonad hiding ((|||))
-import qualified XMonad.Layout.Magnifier as Mag
 import qualified XMonad.Hooks.EwmhDesktops as E
 import qualified XMonad.StackSet as W
 
@@ -31,19 +27,18 @@ import qualified XMonad.StackSet as W
 red    = "#FF0000"
 black  = "#000"
 yellow = "#FFFF00"
-orange  = "#d69131"
-darkOrange  = "#68502e"
-darkSlateGray = "#2f4f4f"
 magenta = "#FF007f"
-darkMagenta = "#711c91"
 
---xTerm = "st -f terminus:pixelsize=32"
+---------------------------
+--{-# Shell commands    #-}
+---------------------------
 xTerm = "alacritty"
 xBrowser = "qutebrowser"
-xLaunch = "dmenu_run -b -fn terminus -i"
-xLock = "slock"
-xMoji = "splatmoji type"
-xFont  = "xft:xos4 terminus"
+xLaunch = "rofi -show run"
+xRecompile = "xmonad --recompile && xmonad --restart"
+xClipboardScreenshot = "maim -s -u | xclip -selection clipboard -t image/png -i"
+xPersistentScreenshot = "maim -s ~/img/screenshots/$(date +%F-%H-%M-%S).png"
+xPasswordSelect = "passmenu"
 
 ----------------------
 --{-# Key Bindings #-}
@@ -65,22 +60,16 @@ xKeys = [ ((modm,      xK_Delete),    kill)
         , ((modm,      xK_Return),    spawn xTerm)
         , ((modm,      xK_r),         spawn xLaunch)
         , ((modm,      xK_q),         spawn xBrowser)
-        , ((modm,      xK_x),         spawn xLock)
-        , ((modm,      xK_p),         passTypePrompt def)
-        , ((modm,      xK_g),         goToSelected def)
+        , ((modm,      xK_x),         spawn xRecompile)
+        , ((0,         xK_F4),        spawn xClipboardScreenshot)
+        , ((0,         xK_F5),        spawn xPersistentScreenshot)
+        , ((modm,      xK_p),         spawn xPasswordSelect)
         , ((modm,      xK_space),     sendMessage NextLayout)
         , ((modm,      xK_h),         sendMessage Shrink)
         , ((modm,      xK_l),         sendMessage Expand)
+        , ((modm,      xK_s),         withFocused $ windows . W.sink)
         , ((modm,      xK_k),         windows W.focusUp)
         , ((modm,      xK_j),         windows W.focusDown)
-        , ((modm,      xK_f),         selectWindow def >>= (`whenJust` windows . W.focusWindow))
-        , ((modm,      xK_m),         sendMessage Mag.Toggle)
-        , ((modm,      xK_equal),     sendMessage Mag.MagnifyMore)
-        , ((modm,      xK_minus),     sendMessage Mag.MagnifyLess)
-        , ((modm,      xK_s),         withFocused $ windows . W.sink)
-        , ((0,         xK_F4),        spawn "scrot")
-        , ((0,         xK_F12),       spawn "xdotool key Shift+Insert")
-        , ((xShiftMod, xK_f),         selectWindow def >>= (`whenJust` killWindow))
         , ((xShiftMod, xK_j),         windows W.swapUp)
         , ((xShiftMod, xK_k),         windows W.swapDown)
         , ((xShiftMod, xK_m),         windows W.swapMaster)
@@ -97,7 +86,7 @@ xNoKeys = [ (modm, xK_comma)
 --{-# Layout Hook #-}
 ----------------------
 xSpacing = spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True
-xLayout = avoidStruts(Mag.magnifierOff(tiled) ||| Grid ||| fullscreenFull Full)
+xLayout = avoidStruts(tiled ||| Grid ||| fullscreenFull Full)
   where
     tiled    = Tall nmaster delta ratio
     nmaster  = 1
@@ -113,7 +102,6 @@ xStartupHook = setWMName "LG3D"  -- because Java...
 --{-# Manage Hook #-}
 ---------------------
 fileDialog = "GtkFileChooserDialog"
-popUp      = "pop-up"
 role       = "WM_WINDOW_ROLE"
 
 isProp x y = stringProperty x =? y
@@ -124,14 +112,14 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "zoom"            --> doShift "5"
                      , isClass "zoom"            --> doFloat
                      , isClass "Xmessage"        --> doCenterFloat
-                     , isProp role popUp         --> doFullFloat
+                     , isProp role "pop-up"      --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat
                      , isFullscreen              --> (doF W.focusDown <+> doFullFloat)
                      , transience'
                      ]
-          where
-              doShiftAndGo ws = doF (W.greedyView ws) <+> doShift ws
+                  where
+                     doShiftAndGo ws = doF (W.greedyView ws) <+> doShift ws
 
 
 --------------

@@ -12,12 +12,14 @@ alias dmesg='dmesg --color=always'
 alias dot="cd ~/code/dotfiles"
 alias emerge="${EMERGE_BASE_ARGS}"
 alias esync="${EMERGE_BASE_ARGS} --sync"
+alias feh="feh --conversion-timeout 10 -Gd --draw-tinted --edit -."
 alias grep='grep --color=auto'
 alias history='history 1' # just show me all of it
 alias journalctl='sudo journalctl -xb --no-hostname -e'
 alias less='less -r' # enable color
 alias linux='cd /usr/src/linux'
 alias mutt='neomutt'
+alias mv='mv -i'
 alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
 alias pm='pulsemixer'
 alias scim='sc-im'
@@ -29,13 +31,14 @@ alias systemctl='systemctl --user'
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
 alias tree='tree -C'
 alias trim="sudo fstrim -Av"
-alias t='clear;task project:'
-alias tl='task list project:'
-alias ta='task active project:'
-alias tt='clear && task list limit:10 project:'
+alias t='clear;task'
+alias tl='task list'
+alias ta='task active'
+alias tt='clear && task list limit:10'
 alias vifm='vifm .' # start vifm in cwd
 alias vim='nvim'
 alias va="vim ${XDG_CONFIG_HOME}/shell/aliases"
+alias vb="vim ${XDG_CONFIG_HOME}/xmobar/xmobarrc"
 alias vm="vim ${XDG_CONFIG_HOME}/neomutt/neomuttrc"
 alias vp="vim ${ZDOTDIR}/.zprofile"
 alias vq="vim ${XDG_CONFIG_HOME}/qutebrowser/config.py"
@@ -67,7 +70,7 @@ function ignore() {
 # $1 search string
 function hgrep() {
   query="$@"
-  history 1 | grep "${query}"
+  fc -l 1 | grep "${query}"
 }
 
 # modify task priority
@@ -81,22 +84,26 @@ function p() {
 # $1 task id
 function start() {
   task $1 start
-  clear
-  task project:
+  clear;task
 }
 
 # stop a task
 # $1 task id
 function stop() {
   task $1 stop
-  clear
-  task project:
+  clear;task
 }
 
 # complete a task
 # $1 task id
 function complete() {
   task $1 done
-  clear
-  task project:
+  clear;task
+}
+
+# switch task context
+# $1 context to move to
+function context() {
+  task @ $1
+  clear;task
 }

@@ -28,21 +28,18 @@ call plug#begin()
   Plug 'itspriddle/vim-shellcheck'
   Plug 'junegunn/goyo.vim'
   Plug 'cocopon/iceberg.vim'
-  Plug 'mattn/calendar-vim'
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
   Plug 'junegunn/fzf'
   Plug 'NLKNguyen/papercolor-theme'
-  Plug 'preservim/nerdtree'
   Plug 'rust-lang/rust.vim'
   Plug 'ryanoasis/vim-devicons'
   Plug 'scrooloose/syntastic'
   Plug 'vim-airline/vim-airline'
   Plug 'vimwiki/vimwiki'
   Plug 'wakatime/vim-wakatime'
-"  Plug '~/code/vim-wakatime' need to fix XDG on this...
 call plug#end()
 
 " Required for operations modifying multiple buffers like rename.
@@ -106,15 +103,11 @@ inoremap <c-s>         <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " this is an easier binding for filename comletion in insert mode
 inoremap <F5>          <C-x><C-f>
-
 nnoremap <F12>         :VimwikiMakeDiaryNote<CR>
 nnoremap <leader>g     :Goyo<CR>
 nnoremap <leader>h     :nohls<CR>
 nnoremap <leader>l     :execute ':!pdflatex % > /dev/null'<CR>
-" i've never done this on purpose nnoremap <leader>n     :NERDTreeVCS<CR>
-" not really needed anymore? nnoremap <leader>r     :RustRun<CR>
 nnoremap <leader>w     :call TrimWhiteSpace()<CR>
-" nnoremap <leader><esc> :NERDTreeToggle<CR>
 nnoremap <leader><tab> <C-w>w
 
 " airline
@@ -126,8 +119,6 @@ endif
 " vimwiki
 let g:vimwiki_list = [{'path': '~/doc/wiki', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0
-
-" rust
 
 " trailing whitespace detection
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -143,13 +134,8 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType latex,markdown,vimwiki,plaintex
       \ setlocal spell spelllang=en wrap linebreak
 
-" rust formatter
 autocmd BufWritePost,FileWritePost *.rs :RustFmt
-
-" xmonad auto recompiler
-autocmd BufWritePost,FileWritePost xmonad.hs !xmonad --recompile;
-          \ xmonad --restart
-" xrdb auto merger
+autocmd BufWritePost,FileWritePost xmonad.hs !xmonad --recompile; xmonad --restart
 autocmd BufWritePost,FileWritePost .Xdefaults !xrdb ~/.Xdefaults
 autocmd BufWritePost,FileWritePost *.mod !cafeobj -batch %
 

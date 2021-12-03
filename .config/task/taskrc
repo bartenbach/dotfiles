@@ -1,8 +1,19 @@
+# vim: set ft=toml
+# (not toml, but good enough highlighting)
 # Taskwarrior program configuration file.
 # For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
 # 'man task-sync' or 'man taskrc'
 
 data.location=~/.config/task
+
+alias.@=context
+default.project=home
+context.home.read=project:home
+context.home.write=project:home
+context.work.read=project:work
+context.work.write=project:work
+context.ideas.read=project:ideas
+context.ideas.write=project:ideas
 
 uda.priority.values=highest,high,medium,low,
 
@@ -19,15 +30,18 @@ urgency.tags.coefficient=0
 uda.priority.label=priority
 news.version=2.6.0
 
+uda.dod.type=string
+uda.dod.label=Definition of Done
+
 urgency.project.coefficient=0
 urgency.annotations.coefficient=0
 report.list.labels=ID,Active,Age,Depends,Priority,Project,Tags,R,Sch,Due,Until,Description,Urgency
 
-report.next.columns=id,due.relative,priority,description,start.age,entry.age,depends,project,scheduled.countdown,until.remaining,urgency
+report.next.columns=id,due.relative,priority,description,start.age,entry.age,depends,project,scheduled.countdown,until.remaining,urgency,tags
 report.next.context=1
 report.next.description=Most urgent tasks
 report.next.filter=status:pending -WAITING limit:page
-report.next.labels=ID,Due,Priority,Description,Active,Age,Deps,Project,S,Until,Urgency
+report.next.labels=ID,Due,Priority,Description,Active,Age,Deps,Project,S,Until,Urgency,Tags
 report.next.sort=urgency-
 urgency.inherit=1
 urgency.blocking.coefficient=1
@@ -66,6 +80,7 @@ color.uda.priority.highest=white on red
 color.uda.priority.high=rgb410
 color.uda.priority.low=color245
 color.uda.priority.medium=color250
+color.uda.priority.=color240
 
 # Tags
 color.tag.next=
@@ -108,3 +123,4 @@ color.sync.rejected=color9
 # Command: undo
 color.undo.after=color2
 color.undo.before=color1
+context=home

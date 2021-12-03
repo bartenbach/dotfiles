@@ -5,6 +5,7 @@ set my_gmail=~/.config/neomutt/gmail
 source $my_gmail
 folder-hook $folder 'source $my_gmail'
 
+# broken
 #set my_uno=~/.config/neomutt/uno
 #source $my_uno
 #folder-hook $folder 'source $my_uno'
