@@ -1,0 +1,3 @@
+check_hash = yes
+directory = ~/down/torrent
+session = ~/.cache/rtorrent

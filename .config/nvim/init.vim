@@ -106,7 +106,7 @@ inoremap <c-s>         <c-g>u<Esc>[s1z=`]a<c-g>u
 " this is an easier binding for filename comletion in insert mode
 inoremap <F5>          <C-x><C-f>
 nnoremap <F12>         :VimwikiMakeDiaryNote<CR>
-nnoremap <leader>g     :Goyo<CR>
+"nnoremap <leader>g     <Plug>Goyo
 nnoremap <leader>h     :nohls<CR>
 nnoremap <leader>l     :execute ':!pdflatex % > /dev/null'<CR>
 nnoremap <leader>w     :call TrimWhiteSpace()<CR>
