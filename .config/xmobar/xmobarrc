@@ -1,6 +1,6 @@
 -- # vim: set ft=haskell
 Config {
-     font = "xft:xos4 terminus:size=8:bold"
+     font = "xft:xos4 terminus:size=10:bold"
    , additionalFonts  = ["xft:FontAwesome-9" ]
    , bgColor =      "black"
    , fgColor =      "#00ced1"

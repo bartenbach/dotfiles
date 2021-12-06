@@ -2,17 +2,18 @@
 set encoding=utf-8
 set backspace=indent,eol,start
 set number
-set cursorcolumn
+"set cursorcolumn
+"set cursorline
 set cc=80
 set expandtab
 set visualbell
 set t_vb=
-set cursorline
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set noautoindent
 set relativenumber
+set conceallevel=2
 filetype plugin indent on " required by rust.vim
 if has('unnamedplus')
   set clipboard=unnamedplus
@@ -26,16 +27,17 @@ call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'cespare/vim-toml', { 'branch': 'main' }
   Plug 'itspriddle/vim-shellcheck'
-  Plug 'junegunn/goyo.vim'
+"  Plug 'junegunn/goyo.vim'
   Plug 'cocopon/iceberg.vim'
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-  Plug 'junegunn/fzf'
-  Plug 'NLKNguyen/papercolor-theme'
+"  Plug 'junegunn/fzf'
+"  Plug 'junegunn/limelight.vim'
+"  Plug 'NLKNguyen/papercolor-theme'
   Plug 'rust-lang/rust.vim'
-  Plug 'ryanoasis/vim-devicons'
+"  Plug 'ryanoasis/vim-devicons'
   Plug 'scrooloose/syntastic'
   Plug 'vim-airline/vim-airline'
   Plug 'vimwiki/vimwiki'
@@ -136,6 +138,7 @@ autocmd FileType latex,markdown,vimwiki,plaintex
 
 autocmd BufWritePost,FileWritePost *.rs :RustFmt
 autocmd BufWritePost,FileWritePost xmonad.hs !xmonad --recompile; xmonad --restart
+autocmd BufWritePost,FileWritePost xmobarrc !xmonad --recompile; xmonad --restart
 autocmd BufWritePost,FileWritePost .Xdefaults !xrdb ~/.Xdefaults
 autocmd BufWritePost,FileWritePost *.mod !cafeobj -batch %
 

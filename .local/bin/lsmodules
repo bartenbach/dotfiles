@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# TODO trim extension
+find /lib/modules/$(uname -r) -name "*.ko" -exec basename {} \;

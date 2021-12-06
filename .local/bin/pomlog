@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# times in minutes
+POMODORO_TIME=25
+SHORT_BREAK_TIME=5
+LONG_BREAK_TIME=30
+
+function main() {
+  while :; do
+    pomodoro "1st pomodoro"
+    breaktime "1st short" "Short" $(( ${SHORT_BREAK_TIME} * 60 ))
+    pomodoro "2nd pomodoro"
+    breaktime "2nd short" "Short" $(( ${SHORT_BREAK_TIME} * 60 ))
+    pomodoro "3rd pomodoro"
+    breaktime "3rd short" "Short" $(( ${SHORT_BREAK_TIME} * 60 ))
+    pomodoro "4th pomodoro"
+    breaktime "long" "Long" $(( ${LONG_BREAK_TIME} * 60 ))
+  done
+}
+
+# $1 - current break type
+# $2 - current break type (title)
+# $3 - seconds in the current break
+function breaktime() {
+  dialog --title "$2 Break" --no-ok --no-shadow \
+         --cancel-label "End Break" --erase-on-exit \
+         --pause "You are on your $1 break" -1 -1 $3
+  break_end_tone
+}
+
+# $1 - current pomodoro name
+function pomodoro() {
+  dialog --title "Start $1?" --no-shadow --erase-on-exit --yesno \
+         "Start $1?" -1 -1
+  [[ $? -ne 0 ]] && exit 0
+  pomodoro_start_tone
+  dialog --title "$1" --no-ok --no-shadow --erase-on-exit \
+         --pause "You are on your $1" -1 -1 $(( ${POMODORO_TIME} * 60 ))
+  [[ $? -eq 0 ]] && pomodoro_end_tone
+}
+
+function pomodoro_start_tone {
+  beep -r 4 -l 3
+  beep -r 4 -l 2
+}
+
+function pomodoro_end_tone {
+  for x in {0..40}; do
+    printf "\e[7;9$(expr $x % 7)m%*s\n" $(tput cols)
+    beep -d 0 -D 0 -l $x
+  done
+  for x in {40..0..-1}; do
+    printf "\e[7;9$(expr $x % 7)m%*s\n" $(tput cols)
+    beep -d 0 -D 0 -l $x
+  done
+}
+
+function break_end_tone {
+  beep -d 200 -r 3 -l 4
+  beep -D 400 -l 4
+  beep -r 4 -l 3
+}
+
+main "$@"

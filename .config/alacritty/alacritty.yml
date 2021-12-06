@@ -23,7 +23,7 @@ font:
   bold_italic:
     family: Fira Code
     style: Bold Italic
-  size: 10
+  size: 9
 
 colors:
   cursor:
@@ -61,6 +61,7 @@ selection:
   save_to_clipboard: true
 
 key_bindings:
+  - { key: Escape,      mods: Shift,      action: ToggleViMode }
   - { key: A,           mode: Vi|~Search, action: ToggleViMode }
   - { key: O,           mode: Vi|~Search, action: ToggleViMode }
   - { key: Equals,      mods: Control,    action: IncreaseFontSize }
