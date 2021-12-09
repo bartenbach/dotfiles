@@ -59,10 +59,10 @@ Config {
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"
                              , "--normal"   , "darkorange"
-                             , "--high"     , "darkgreen"
+                             , "--high"     , "darkorange"
                              , "--" -- battery specific options
                                        -- discharging status
-                                       , "-o"	, "<left>% (<timeleft>)"
+                                       , "-o"	, "<left>% <timeleft>"
                                        -- AC "on" status
                                        , "-O"	, "<fc=#00ced1>Charging</fc>"
                                        -- charged status

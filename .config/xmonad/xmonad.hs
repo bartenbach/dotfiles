@@ -35,9 +35,10 @@ magenta = "#FF007f"
 xTerm = "alacritty"
 xBrowser = "qutebrowser"
 xLaunch = "rofi -show run"
+xSsh = "rofi -show ssh"
 xRecompile = "xmonad --recompile && xmonad --restart"
 xClipboardScreenshot = "maim -s -u | xclip -selection clipboard -t image/png -i"
-xPersistentScreenshot = "maim -s ~/img/screenshots/$(date +%F-%H-%M-%S).png"
+xPersistentScreenshot = "namedshot"
 xPasswordSelect = "passmenu"
 
 ----------------------
@@ -61,6 +62,7 @@ xKeys = [ ((modm,      xK_Delete),    kill)
         , ((modm,      xK_r),         spawn xLaunch)
         , ((modm,      xK_q),         spawn xBrowser)
         , ((modm,      xK_x),         spawn xRecompile)
+        , ((modm,      xK_z),         spawn xSsh)
         , ((0,         xK_F4),        spawn xClipboardScreenshot)
         , ((0,         xK_F5),        spawn xPersistentScreenshot)
         , ((modm,      xK_p),         spawn xPasswordSelect)

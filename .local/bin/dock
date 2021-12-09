@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Workaround for my shitty thunderbolt dock
+
+if [[ $1 == "on" ]]; then
+  xrandr --output DP-4 --mode 3840x2160 --rate 60 \
+         --output DP-5 --mode 3840x2160 --rate 60 --left-of DP-4
+elif [[ $1 == "off" ]]; then
+  xrandr --output DP-4 --mode 3840x2160 --rate 60
+elif [[ -z $1 ]]; then
+  echo "usage: dock [on|off]"
+fi

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+FILENAME=$(rofi -dmenu -p "Filename")
+
+if [[ ! -z $FILENAME ]]; then
+  maim -s ~/img/screenshots/${FILENAME}-$(date +%F-%H-%M-%S).png
+fi
