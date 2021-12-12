@@ -1,6 +1,7 @@
 # vim: set ft:sh
 
 EMERGE_BASE_ARGS='sudo emerge --color y --ask --alert'
+TASK_BASE='task project.not:maybesomeday'
 
 alias dmesg='dmesg --color=always'
 alias dot="cd ~/code/dotfiles"
@@ -18,6 +19,7 @@ alias mv='mv -i'
 alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
 alias otpadd="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
 alias pm='pulsemixer'
+alias projects='task projects'
 alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
 alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"
 alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
@@ -25,7 +27,7 @@ alias sa="source ${XDG_CONFIG_HOME}/shell/aliases"
 alias systemctl='systemctl --user' # the way it should be
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
 alias tree='tree -C'
-alias t='clear;task'
+alias t="clear;${TASK_BASE}"
 alias tl='task list'
 alias ta='task active'
 alias tt='clear && task list limit:10'
@@ -46,10 +48,10 @@ alias vv="nvim ${XDG_CONFIG_HOME}/nvim/init.vim"
 alias vz="vim ${ZDOTDIR}/.zshrc"
 alias wiki='vim -c VimwikiIndex'
 alias xlog='less ${XDG_DATA_HOME}/xorg/Xorg.0.log'
-alias z='zathura --fork'
-alias zathura='zathura --fork'
-alias zd='zathura --fork'
+alias z='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 alias zl='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
+alias zathura='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
+alias zd='zathura --fork'
 
 # $1 markdown file
 function mkpdf() {
@@ -69,24 +71,36 @@ function hgrep() {
   fc -l 1 | grep "${query}"
 }
 
-# modify task priority
+# modify task
 # $1 task id
-# $2 priority
-function p() {
-  task mod $1 priority:$2
+# $2 modification
+function mod() {
+  task $1 mod "$2"
+}
+
+function taskclear() {
+   clear
+   "${TASK_BASE}"
 }
 
 # start a task
 # $1 task id
 function start() {
   task $1 start
-  clear;task
+  taskclear
 }
 
 # stop a task
 # $1 task id
 function stop() {
   task $1 stop
+  taskclear
+}
+
+# add a task
+# $@ everything else
+function add() {
+  task add "$@"
   clear;task
 }
 
@@ -94,12 +108,40 @@ function stop() {
 # $1 task id
 function complete() {
   task $1 done
-  clear;task
+  taskclear
+}
+
+# complete a task
+# $1 task id
+function del() {
+  task $1 del
+  taskclear
+}
+
+# annotate a task
+# $1 task id
+function annotate() {
+  task $1 annotate "$2"
+  taskclear
+}
+
+# move a task to maybesomeday
+# $1 task to move
+function maybesomeday() {
+  task $1 mod project:maybesomeday
+  taskclear
+}
+
+# move a task to maybesomeday
+# $1 task to move
+function waitingfor() {
+  task $1 mod project:waitingfor
+  taskclear
 }
 
 # switch task context
 # $1 context to move to
 function context() {
   task @ $1
-  clear;task
+  taskclear
 }

@@ -10,8 +10,9 @@ folder-hook $folder 'source $my_gmail'
 #source $my_uno
 #folder-hook $folder 'source $my_uno'
 
-
 # general configuration
+set date_format="%x %r"
+set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
 set header_cache = "${XDG_CACHE_HOME}/mutt/headers"
 set message_cachedir = "${XDG_CACHE_HOME}/mutt/bodies"
 set use_from=yes
@@ -22,7 +23,7 @@ set askcc
 set charset="utf-8"
 set delete=yes
 set auto_edit
-set beep_new # beep on new email
+#set beep_new # beep on new email - disabling, causes context switching
 set edit_headers # let me edit them if i please
 set fast_reply # skip straight to replying
 set fcc_attach # include attachments
@@ -48,7 +49,7 @@ set crypt_autopgp = yes
 
 # annoying...why?
 unset sig_dashes
-unset help
+#unset help
 unset imap_passive
 set imap_keepalive=300
 
@@ -68,15 +69,10 @@ unset wait_key
 # sidebar
 set sidebar_visible=yes
 set sidebar_short_path=yes
-set sidebar_width=25
+set sidebar_width=23
 set sidebar_new_mail_only=no
 set mail_check_stats
 set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
-sidebar_whitelist 'INBOX'
-sidebar_whitelist 'Saved'
-sidebar_whitelist 'Drafts'
-sidebar_whitelist 'Sent Mail'
-sidebar_whitelist 'Spam'
 bind index,pager <TAB> sidebar-toggle-visible
 
 ## Abook
@@ -84,7 +80,30 @@ set query_command= "abook --mutt-query '%s'"
 macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
 bind editor <Tab> complete-query
 
+
+# refresh if in the index view
+macro index A "<save-message>=Actionable<enter>y$"
+macro index S "<save-message>=[Gmail]/Spam<enter>y$"
+macro index M "<save-message>=Maybe/Someday<enter>y$"
+macro index R "<save-message>=Reference<enter>y$"
+macro index W "<save-message>=Waiting For<enter>y$"
+
+# if using the pager, don't refresh (distracting, just mark it)
+macro pager A "<save-message>=Actionable<enter>y<enter>"
+macro pager S "<save-message>=[Gmail]/Spam<enter>y<enter>"
+macro pager M "<save-message>=Maybe/Someday<enter>y<enter>"
+macro pager R "<save-message>=Reference<enter>y<enter>"
+macro pager W "<save-message>=Waiting For<enter>y<enter>"
+
+macro index,pager U "<next-unread><enter>"
+macro index d "<delete-message>$"
+
+# unbind uncancelable "send-key" function
+unbind index <Esc>k
+bind index <Esc>k noop
+bind index <Esc>j noop
+
 # colors
-#source darcula
-source neonwolf-256.neomuttrc
+source darcula
+#source neonwolf-256.neomuttrc
 source vim-keys.rc

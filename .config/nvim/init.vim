@@ -3,7 +3,7 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set number
 "set cursorcolumn
-"set cursorline
+set cursorline
 set cc=80
 set expandtab
 set visualbell

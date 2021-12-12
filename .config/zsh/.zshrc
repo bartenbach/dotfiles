@@ -139,9 +139,9 @@ export GOBIN=~/code/go/bin
 # Path Modifications
 #------------------------
 export PATH=${PATH}:${GOBIN}
-export PATH=${PATH}:~/.xmonad # TODO this probably changes
 export PATH=${PATH}:~/.local/bin
 export PATH=${PATH}:~/.cabal/bin
 export PATH=${PATH}:/usr/local/bin
 
+eval $(thefuck --alias) # please help my git typos
 neofetch

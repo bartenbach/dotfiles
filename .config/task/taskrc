@@ -37,11 +37,11 @@ urgency.project.coefficient=0
 urgency.annotations.coefficient=0
 report.list.labels=ID,Active,Age,Depends,Priority,Project,Tags,R,Sch,Due,Until,Description,Urgency
 
-report.next.columns=id,due.relative,priority,description,start.age,entry.age,depends,scheduled.countdown,until.remaining,urgency
+report.next.columns=due.relative,priority,id,description,start.age,entry.age,depends,scheduled.countdown,until.remaining,urgency
 report.next.context=1
 report.next.description=Most urgent tasks
 report.next.filter=status:pending -WAITING limit:page
-report.next.labels=ID,Due,Priority,Description,Active,Age,Deps,S,Until,Urgency
+report.next.labels=Due,Priority,ID,Description,Active,Age,Deps,S,Until,Urgency
 report.next.sort=urgency-
 urgency.inherit=1
 urgency.blocking.coefficient=1
@@ -63,7 +63,7 @@ color.debug=color4
 # Task state
 color.completed=color12
 color.deleted=red
-color.active=rgb555 on rgb410
+color.active=rgb150 on rgb020
 color.recurring=
 color.scheduled=
 color.until=
@@ -123,4 +123,3 @@ color.sync.rejected=color9
 # Command: undo
 color.undo.after=color2
 color.undo.before=color1
-context=home
