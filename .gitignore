@@ -55,3 +55,5 @@
 .config/vifm/vifminfo.json
 .config/ncspot
 .config/thefuck
+.config/taskwarrior-tui
+.config/neomutt/gpg.rc

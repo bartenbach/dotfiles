@@ -98,7 +98,7 @@ xLayout = avoidStruts(tiled ||| Grid ||| fullscreenFull Full)
 ---------------------
 --{-# Startup Hook #-}
 ---------------------
-xStartupHook = setWMName "LG3D"  -- because Java...
+-- xStartupHook = setWMName "LG3D"  -- because Java...
 
 ---------------------
 --{-# Manage Hook #-}
@@ -137,7 +137,7 @@ myConfig = def { modMask            = modm
                , workspaces         = xWorkspaces
                , layoutHook         = avoidStruts $ xSpacing $ xLayout
                , manageHook         = xManage <+> manageDocks <+> fullscreenManageHook
-               , startupHook        = xStartupHook
+               --, startupHook        = xStartupHook
                , handleEventHook    = fullscreenEventHook
                }
                `removeKeys` xNoKeys

@@ -33,15 +33,18 @@ news.version=2.6.0
 uda.dod.type=string
 uda.dod.label=Definition of Done
 
+uda.points.type=numeric
+uda.points.label=Points
+
 urgency.project.coefficient=0
 urgency.annotations.coefficient=0
 report.list.labels=ID,Active,Age,Depends,Priority,Project,Tags,R,Sch,Due,Until,Description,Urgency
 
-report.next.columns=due.relative,priority,id,description,start.age,entry.age,depends,scheduled.countdown,until.remaining,urgency
+report.next.columns=due.relative,priority,id,description,start.age,entry.age,depends,points,scheduled.countdown,until.remaining,urgency
 report.next.context=1
 report.next.description=Most urgent tasks
 report.next.filter=status:pending -WAITING limit:page
-report.next.labels=Due,Priority,ID,Description,Active,Age,Deps,S,Until,Urgency
+report.next.labels=Due,Priority,ID,Description,Active,Age,Deps,Points,S,Until,Urgency
 report.next.sort=urgency-
 urgency.inherit=1
 urgency.blocking.coefficient=1
@@ -123,3 +126,30 @@ color.sync.rejected=color9
 # Command: undo
 color.undo.after=color2
 color.undo.before=color1
+
+# tw tui
+uda.taskwarrior-tui.keyconfig.quit=q
+uda.taskwarrior-tui.keyconfig.refresh=r
+uda.taskwarrior-tui.keyconfig.go-to-bottom=G
+uda.taskwarrior-tui.keyconfig.go-to-top=g
+uda.taskwarrior-tui.keyconfig.down=j
+uda.taskwarrior-tui.keyconfig.up=k
+uda.taskwarrior-tui.keyconfig.page-down=J
+uda.taskwarrior-tui.keyconfig.page-up=K
+uda.taskwarrior-tui.keyconfig.delete=d
+uda.taskwarrior-tui.keyconfig.done=c
+uda.taskwarrior-tui.keyconfig.start-stop=s
+uda.taskwarrior-tui.keyconfig.quick-tag=t
+uda.taskwarrior-tui.keyconfig.undo=u
+uda.taskwarrior-tui.keyconfig.edit=e
+uda.taskwarrior-tui.keyconfig.modify=m
+uda.taskwarrior-tui.keyconfig.shell=!
+uda.taskwarrior-tui.keyconfig.log=l
+uda.taskwarrior-tui.keyconfig.add=a
+uda.taskwarrior-tui.keyconfig.annotate=A
+uda.taskwarrior-tui.keyconfig.filter=/
+uda.taskwarrior-tui.keyconfig.zoom=z
+uda.taskwarrior-tui.keyconfig.context-menu=c
+uda.taskwarrior-tui.keyconfig.next-tab=]
+uda.taskwarrior-tui.keyconfig.previous-tab=[
+

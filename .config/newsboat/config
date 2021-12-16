@@ -1,7 +1,7 @@
 # good ones: cyanism, light, nord is ok, schleichfahrt is red, simple isn't terrible, solarized is really good
 include solarized-dark
 auto-reload yes
-reload-time 2
+reload-time 60
 confirm-exit no
 datetime-format "%A, %B %d %Y %r"
 articlelist-title-format "%T - %U"
@@ -9,7 +9,7 @@ dirbrowser-title-format "%?0?Open Directory&amp;Save File? - %f"
 filebrowser-title-format "%?0?Open Directory&amp;Save File? - %f"
 dialogs-title-format "Dialogs"
 itemview-title-format "%T"
-notify-beep yes
+#notify-beep yes
 
 browser "$(which elinks) %u"
 unbind-key ENTER
@@ -19,8 +19,8 @@ unbind-key J
 unbind-key K
 bind-key j down
 bind-key k up
-bind-key l open
-bind-key h quit
+bind-key ENTER open
+bind-key ESC quit
 bind-key m bookmark # like mark
 
 # using color theme for now, but can override like this
@@ -34,6 +34,3 @@ bind-key m bookmark # like mark
 
 # highlights
 #highlight-article "title =~ \"(aborted)\"" yellow
-#highlight-article "title =~ \"(broken)\"" red
-#highlight-article "title =~ \"(stable)\"" green
-#highlight-article "title =~ \"(back to normal)\"" green

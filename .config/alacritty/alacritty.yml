@@ -23,7 +23,7 @@ font:
   bold_italic:
     family: Fira Code
     style: Bold Italic
-  size: 10
+  size: 9
 
 colors:
   cursor:

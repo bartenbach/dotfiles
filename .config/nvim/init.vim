@@ -27,17 +27,13 @@ call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'cespare/vim-toml', { 'branch': 'main' }
   Plug 'itspriddle/vim-shellcheck'
-"  Plug 'junegunn/goyo.vim'
   Plug 'cocopon/iceberg.vim'
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-"  Plug 'junegunn/fzf'
-"  Plug 'junegunn/limelight.vim'
 "  Plug 'NLKNguyen/papercolor-theme'
   Plug 'rust-lang/rust.vim'
-"  Plug 'ryanoasis/vim-devicons'
   Plug 'scrooloose/syntastic'
   Plug 'vim-airline/vim-airline'
   Plug 'vimwiki/vimwiki'
@@ -105,8 +101,8 @@ inoremap <c-s>         <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " this is an easier binding for filename comletion in insert mode
 inoremap <F5>          <C-x><C-f>
-nnoremap <F12>         :VimwikiMakeDiaryNote<CR>
-"nnoremap <leader>g     <Plug>Goyo
+nnoremap <leader>t     :VimwikiTOC<CR>
+nnoremap <leader>T     :VimwikiTable<CR>
 nnoremap <leader>h     :nohls<CR>
 nnoremap <leader>l     :execute ':!pdflatex % > /dev/null'<CR>
 nnoremap <leader>w     :call TrimWhiteSpace()<CR>
