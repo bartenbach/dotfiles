@@ -57,6 +57,12 @@ function print_fail() {
   echo "Failed during $@" ; exit 1
 }
 
+function make_oldconfig() {
+  STEP="making oldconfig"
+  print_step $STEP
+  $MAKE oldconfig
+}
+
 function build_kernel() {
   STEP="building kernel"
   print_step $STEP

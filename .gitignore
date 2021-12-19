@@ -57,3 +57,8 @@
 .config/thefuck
 .config/taskwarrior-tui
 .config/neomutt/gpg.rc
+.config/dconf
+.config/ibus
+.config/uim
+.config/mozc
+.config/newsboat/

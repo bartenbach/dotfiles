@@ -6,6 +6,8 @@
 -- {-# Imports #-}
 ------------------
 import System.Exit (exitWith, ExitCode(ExitSuccess))
+import XMonad.Actions.NoBorders
+import XMonad.Actions.SpawnOn
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.SetWMName
@@ -15,8 +17,9 @@ import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Spacing
-import XMonad.Util.Loggers
 import XMonad.Util.EZConfig (additionalKeys,removeKeys)
+import XMonad.Util.Loggers
+import XMonad.Util.SpawnOnce
 import XMonad hiding ((|||))
 import qualified XMonad.Hooks.EwmhDesktops as E
 import qualified XMonad.StackSet as W
@@ -67,6 +70,7 @@ xKeys = [ ((modm,      xK_Delete),    kill)
         , ((0,         xK_F5),        spawn xPersistentScreenshot)
         , ((modm,      xK_p),         spawn xPasswordSelect)
         , ((modm,      xK_space),     sendMessage NextLayout)
+        , ((modm,      xK_b),         withFocused toggleBorder)
         , ((modm,      xK_h),         sendMessage Shrink)
         , ((modm,      xK_l),         sendMessage Expand)
         , ((modm,      xK_s),         withFocused $ windows . W.sink)
@@ -98,7 +102,12 @@ xLayout = avoidStruts(tiled ||| Grid ||| fullscreenFull Full)
 ---------------------
 --{-# Startup Hook #-}
 ---------------------
--- xStartupHook = setWMName "LG3D"  -- because Java...
+xStartupHook :: X ()
+xStartupHook = do
+    spawnOnOnce "1:irc" "alacritty -e weechat"
+    spawnOnOnce "2:org" "alacritty -e calcurse"
+    spawnOnOnce "2:org" "alacritty -e taskwarrior-tui"
+    spawnOnOnce "2:org" "alacritty -e neomutt"
 
 ---------------------
 --{-# Manage Hook #-}
@@ -111,7 +120,7 @@ isClass x  = className        =? x
 
 xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "qutebrowser"     --> doShiftAndGo "4:web"
-                     , isClass "zoom"            --> doShift "5"
+                     , isClass "zoom"            --> doShift "6:ext"
                      , isClass "zoom"            --> doFloat
                      , isClass "Xmessage"        --> doCenterFloat
                      , isProp role "pop-up"      --> doFullFloat
@@ -136,8 +145,8 @@ myConfig = def { modMask            = modm
                , focusedBorderColor = magenta
                , workspaces         = xWorkspaces
                , layoutHook         = avoidStruts $ xSpacing $ xLayout
-               , manageHook         = xManage <+> manageDocks <+> fullscreenManageHook
-               --, startupHook        = xStartupHook
+               , manageHook         = xManage <+> manageDocks <+> fullscreenManageHook <+> manageSpawn
+               , startupHook        = xStartupHook
                , handleEventHook    = fullscreenEventHook
                }
                `removeKeys` xNoKeys

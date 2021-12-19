@@ -81,6 +81,8 @@ set sidebar_new_mail_only=no
 set mail_check_stats
 set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
 bind index,pager <TAB> sidebar-toggle-visible
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
 
 ## Abook
 set query_command = "abook --mutt-query '%s'"
@@ -102,13 +104,28 @@ macro pager M "<save-message>=Maybe/Someday<enter>y<enter>"
 macro pager R "<save-message>=Reference<enter>y<enter>"
 macro pager W "<save-message>=WaitingFor<enter>y<enter>"
 
-macro index,pager U "<next-unread><enter>"
+#macro index U "<next-unread><enter>"
 macro index d "<delete-message>"
+
+# when emails don't look right, open in regular browser
+macro attach 'V' "<pipe-entry>iconv -c --to-code=UTF8 > ~/.cache/mutt/mail.html<enter><shell-escape>$BROWSER ~/.cache/mutt/mail.html<enter>"
 
 # unbind uncancelable "send-key" function
 unbind index <Esc>k
 bind index <Esc>k noop
 bind index <Esc>j noop
+bind pager <Up> previous-line
+bind pager <Down> next-line
+macro pager \cl <pipe-entry>'extract_url'<enter> 'Follow links with extract_url'
+
+
+## From field gets 30% of remaining space, Subject gets 70%.
+## Remaining space is the total width minus the other fields (35), minus the sidebar (24)
+set my_index_format_pre='set my_col_from = `echo $((30 * ($(tput cols)-35-24) / 100))`; set my_col_subject = `echo $((70 * ($(tput cols)-35-24) / 100))`; set index_format="%2C | %Z [%d] %-$my_col_from.${my_col_from}'
+set my_index_format_post=' (%-4.4c) %?M?<%M> ?%-$my_col_subject.${my_col_subject}s"'
+
+folder-hook .*[sS]ent.* "$my_index_format_pre"t"$my_index_format_post"
+folder-hook ! .*[sS]ent.* "$my_index_format_pre"F"$my_index_format_post"
 
 # colors
 source darcula

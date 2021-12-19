@@ -17,12 +17,13 @@ image/*; feh %s; needsterminal
 
 # HTML
 #text/html; lynx -dump -assume_charset=%{charset} %s; copiousoutput; description=HTML Text; nametemplate=%s.html
-#text/html; elinks -dump -dump-color-mode 1; copiousoutput;
+text/html; elinks -dump -dump-color-mode 1; copiousoutput;
 
 application/msword; antiword '%s'; copiousoutput; description=Word Document; nametemplate=%s.doc
 
 # curious how this will even work
-text/html; qutebrowser %s; needsterminal; nametemplate=%s.html
+# works amazing, but requires switching to qutebrower every time
+#text/html; qutebrowser %s; needsterminal; nametemplate=%s.html
 
 text/troff; man -l %s; needsterminal; description=Man page
 

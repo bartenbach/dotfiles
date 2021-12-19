@@ -68,5 +68,7 @@ key_bindings:
   - { key: Plus,        mods: Control,    action: IncreaseFontSize }
   - { key: NumpadAdd,   mods: Control,    action: IncreaseFontSize }
   - { key: Minus,       mods: Control,    action: DecreaseFontSize }
+  - { key: F1,          action: PasteSelection }
+  - { key: F12,         action: Paste }
 
 live_config_reload: true

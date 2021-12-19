@@ -32,5 +32,3 @@
     XF86AudioMute
 "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
     XF86AudioMicMute
-"xdotool key Shift+Insert"
-    Print

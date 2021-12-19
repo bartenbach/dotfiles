@@ -2,8 +2,11 @@
 set encoding=utf-8
 set backspace=indent,eol,start
 set number
+set nocompatible
 "set cursorcolumn
 set cursorline
+filetype plugin on
+syntax on
 set cc=80
 set expandtab
 set visualbell
@@ -100,7 +103,7 @@ nnoremap <c-s>         <c-g>u<Esc>[s1z=`]a<c-g>u
 inoremap <c-s>         <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " this is an easier binding for filename comletion in insert mode
-inoremap <F5>          <C-x><C-f>
+inoremap <F2>          <C-x><C-f>
 nnoremap <leader>t     :VimwikiTOC<CR>
 nnoremap <leader>T     :VimwikiTable<CR>
 nnoremap <leader>h     :nohls<CR>
@@ -115,8 +118,22 @@ if !exists('g:airline_symbols')
 endif
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/doc/wiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/doc/wiki', 'syntax': 'markdown'
+      \, 'ext': '.md', 'auto_toc': 1, 'links_space_char': '_', 'maxhi': 1
+      \, 'auto_diary_index': 1 }]
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_auto_header = 1
+:hi VimwikiHeader1 guifg=#FF0000
+:hi VimwikiHeader2 guifg=#00FF00
+:hi VimwikiHeader3 guifg=#0000FF
+:hi VimwikiHeader4 guifg=#FF00FF
+:hi VimwikiHeader5 guifg=#00FFFF
+:hi VimwikiHeader6 guifg=#FFFF00
 let g:vimwiki_global_ext = 0
+let g:diary_caption_level = 2
+let g:list_margin = 0
 
 " trailing whitespace detection
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red

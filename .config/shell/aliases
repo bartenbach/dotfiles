@@ -1,6 +1,6 @@
 # vim: set ft:sh
 
-EMERGE_BASE_ARGS='sudo emerge --color y --ask --alert'
+EMERGE_BASE_ARGS='sudo emerge --ask --alert'
 TASK_BASE='task project.not:maybesomeday'
 
 alias dmesg='dmesg --color=always'
@@ -10,6 +10,7 @@ alias esync="${EMERGE_BASE_ARGS} --sync"
 alias feh="feh --conversion-timeout 10 -Gd --draw-tinted --edit -."
 alias grep='grep --color=auto'
 alias history='history 1' # just show me all of it
+alias imgur=imgurbash2
 alias journal='sudo journalctl -xb --no-hostname -e'
 alias less='less -r' # enable color
 alias linux='cd /usr/src/linux'
@@ -33,25 +34,33 @@ alias ta='task active'
 alias tt='clear && task list limit:10'
 alias vifm='vifm .' # start vifm in cwd
 alias vim='nvim'
-alias va="vim ${XDG_CONFIG_HOME}/shell/aliases"
-alias vb="vim ${XDG_CONFIG_HOME}/xmobar/xmobarrc"
-alias vd="vim ~/.Xdefaults"
-alias vm="vim ${XDG_CONFIG_HOME}/neomutt/neomuttrc"
-alias vp="vim ${ZDOTDIR}/.zprofile"
-alias vq="vim ${XDG_CONFIG_HOME}/qutebrowser/config.py"
-alias vt="vim ${XDG_CONFIG_HOME}/task/taskrc"
-alias vx="vim ${XDG_CONFIG_HOME}/xmonad/xmonad.hs"
-alias vy="vim ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
 alias vu="sudo vim /etc/portage/package.use/package.use"
 alias vuu="sudo vim /etc/portage/make.conf"
-alias vv="nvim ${XDG_CONFIG_HOME}/nvim/init.vim"
-alias vz="vim ${ZDOTDIR}/.zshrc"
 alias wiki='vim -c VimwikiIndex'
 alias xlog='less ${XDG_DATA_HOME}/xorg/Xorg.0.log'
 alias z='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 alias zl='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 alias zathura='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 alias zd='zathura --fork'
+
+# mnemonic map
+declare -A KEYMAP=( ["va"]="${XDG_CONFIG_HOME}/shell/aliases"
+                    ["vb"]="${XDG_CONFIG_HOME}/xmobar/xmobarr"
+                    ["vd"]="${HOME}/.Xdefaults"
+                    ["vn"]="${XDG_CONFIG_HOME}/newsboat/config"
+                    ["vm"]="${XDG_CONFIG_HOME}/neomutt/neomuttrc"
+                    ["vp"]="${ZDOTDIR}/.zprofile"
+                    ["vq"]="${XDG_CONFIG_HOME}/qutebrowser/config.py"
+                    ["vt"]="${XDG_CONFIG_HOME}/task/taskrc"
+                    ["vv"]="${XDG_CONFIG_HOME}/nvim/init.vim"
+                    ["vx"]="${XDG_CONFIG_HOME}/xmonad/xmonad.hs"
+                    ["vy"]="${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
+                    ["vz"]="${ZDOTDIR}/.zshrc"
+                 )
+
+for key value in "${(kv)KEYMAP[@]}"; do
+  alias "$key"="nvim $value"
+done
 
 # $1 markdown file
 function mkpdf() {
@@ -145,3 +154,4 @@ function context() {
   task @ $1
   taskclear
 }
+
