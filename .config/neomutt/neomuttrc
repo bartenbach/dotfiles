@@ -54,9 +54,6 @@ set crypt_autoencrypt = no
 set crypt_autopgp = yes
 set crypt_use_gpgme = yes
 
-# annoying...why?
-unset sig_dashes
-#unset help
 unset imap_passive
 set imap_keepalive=300
 
@@ -116,7 +113,13 @@ bind index <Esc>k noop
 bind index <Esc>j noop
 bind pager <Up> previous-line
 bind pager <Down> next-line
-macro pager \cl <pipe-entry>'extract_url'<enter> 'Follow links with extract_url'
+#macro pager \cl <pipe-entry>'extract_url'<enter> 'Follow links with extract_url'
+macro index,pager \cl "\
+           <enter-command> set my_pdsave=\$pipe_decode<enter>\
+           <enter-command> unset pipe_decode<enter>\
+           <pipe-message>extract_url<enter>\
+           <enter-command> set pipe_decode=\$my_pdsave<enter>" \
+           "get URLs"
 
 
 ## From field gets 30% of remaining space, Subject gets 70%.

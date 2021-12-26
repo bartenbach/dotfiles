@@ -62,3 +62,5 @@
 .config/uim
 .config/mozc
 .config/newsboat/
+.config/imsettings
+.config/mps-youtube

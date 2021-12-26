@@ -1,7 +1,7 @@
 import:
   - ~/.config/alacritty/cyberpunk.yml
 
-background_opacity: .95
+window.opacity: .95
 cursor:
   style: Block
   unfocused_hollow: true

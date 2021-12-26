@@ -26,8 +26,3 @@ export XDG_STATE_HOME=~/.local/state
 export PATH=${PATH}:~/.cargo/bin
 export RUST_BACKTRACE=1
 
-# japanese input
-export GTK_IM_MODULE=uim
-export QT_IM_MODULE=uim
-uim-xim &
-export XMODIFIERS=@im=uim

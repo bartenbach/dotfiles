@@ -3,10 +3,11 @@
 !+++++++++++++
 
 ! [Cursor]
-!Xcursor*theme: Vanilla-DMZ
+Xcursor*theme: Vanilla-DMZ
 Xcursor.size: 32
 URxvt*font:xft:Fira Code:pixelsize=30
 URxvt*scrollBar: none
+Xft.dpi: 192
 
 !! Colorscheme
 ! papercolor dark

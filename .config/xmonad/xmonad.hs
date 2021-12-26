@@ -16,6 +16,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.LayoutCombinators ((|||), JumpToLayout(..))
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.Fullscreen
+import XMonad.Layout.Magnifier
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig (additionalKeys,removeKeys)
 import XMonad.Util.Loggers
@@ -35,7 +36,7 @@ magenta = "#FF007f"
 ---------------------------
 --{-# Shell commands    #-}
 ---------------------------
-xTerm = "alacritty"
+xTerm = "~/.cargo/bin/alacritty"
 xBrowser = "qutebrowser"
 xLaunch = "rofi -show run"
 xSsh = "rofi -show ssh"
@@ -73,6 +74,9 @@ xKeys = [ ((modm,      xK_Delete),    kill)
         , ((modm,      xK_b),         withFocused toggleBorder)
         , ((modm,      xK_h),         sendMessage Shrink)
         , ((modm,      xK_l),         sendMessage Expand)
+        , ((modm,      xK_m),         sendMessage Toggle)
+        , ((modm,      xK_plus),      sendMessage MagnifyMore)
+        , ((modm,      xK_minus),     sendMessage MagnifyLess)
         , ((modm,      xK_s),         withFocused $ windows . W.sink)
         , ((modm,      xK_k),         windows W.focusUp)
         , ((modm,      xK_j),         windows W.focusDown)
@@ -92,7 +96,7 @@ xNoKeys = [ (modm, xK_comma)
 --{-# Layout Hook #-}
 ----------------------
 xSpacing = spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True
-xLayout = avoidStruts(tiled ||| Grid ||| fullscreenFull Full)
+xLayout = avoidStruts $ magnifierOff(tiled ||| Grid) ||| fullscreenFull Full
   where
     tiled    = Tall nmaster delta ratio
     nmaster  = 1

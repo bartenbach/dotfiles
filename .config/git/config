@@ -3,9 +3,9 @@
 [pager]
 	branch = false
 [user]
-	email = blake.bartenbach@ngc.com
+	email = blakebartenbach@gmail.com
 	name = Blake Bartenbach
-	signingkey = BDD29DFF1BABBFEF3355F0E54A4F6F61B2E80B26
+	signingkey = 4A4F6F61B2E80B26
 [ssl]
 	Verify = false
 [http]

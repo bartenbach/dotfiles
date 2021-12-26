@@ -32,8 +32,10 @@ alias t="clear;${TASK_BASE}"
 alias tl='task list'
 alias ta='task active'
 alias tt='clear && task list limit:10'
+alias tw='taskwarrior-tui'
 alias vifm='vifm .' # start vifm in cwd
 alias vim='nvim'
+alias vimdiff='nvim -d'
 alias vu="sudo vim /etc/portage/package.use/package.use"
 alias vuu="sudo vim /etc/portage/make.conf"
 alias wiki='vim -c VimwikiIndex'
@@ -45,7 +47,7 @@ alias zd='zathura --fork'
 
 # mnemonic map
 declare -A KEYMAP=( ["va"]="${XDG_CONFIG_HOME}/shell/aliases"
-                    ["vb"]="${XDG_CONFIG_HOME}/xmobar/xmobarr"
+                    ["vb"]="${XDG_CONFIG_HOME}/xmobar/xmobarrc"
                     ["vd"]="${HOME}/.Xdefaults"
                     ["vn"]="${XDG_CONFIG_HOME}/newsboat/config"
                     ["vm"]="${XDG_CONFIG_HOME}/neomutt/neomuttrc"

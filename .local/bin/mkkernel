@@ -2,30 +2,29 @@
 
 MAKEARGS='-j12'
 MAKE="sudo make $MAKEARGS"
-GENKERNEL="sudo genkernel"
 BOOTCTL="sudo bootctl"
-STEP=''
-CLEAN=''
-SILENCE=''
 
 # $@ - all arguments
 function main() {
   parse_args "$@"
+  make_oldconfig
   build_kernel
   build_modules
   update_systemd
+  make_bootentry
   print_success
 }
 
 function print_help() {
   echo "Usage:"
   echo "  -h | --help      print this message"
-  echo "  -c | --clean     clean the kernel before building"
+#  echo "  -c | --clean     clean the kernel before building"
 }
 
 function build_modules() {
   sudo emerge @module-rebuild
 }
+
 
 # $@ - all arguments
 function parse_args() {
@@ -61,11 +60,13 @@ function make_oldconfig() {
   STEP="making oldconfig"
   print_step $STEP
   $MAKE oldconfig
+  check_ret $STEP
 }
 
 function build_kernel() {
   STEP="building kernel"
   print_step $STEP
+  # FIXME: unimplemented - do I even want this functionality?
   if [[ $CLEAN == "y" ]]; then
     SUBSTEP='cleaning' && print_sub_step $SUBSTEP
     $MAKE clean
@@ -79,6 +80,12 @@ function build_kernel() {
   check_ret $STEP
 }
 
+function make_bootentry() {
+  STEP="Updating bootloader entries"
+  print_step $STEP
+  sudo /usr/local/sbin/mkbootentry
+  check_ret $STEP
+}
 function update_systemd() {
   STEP="Updating systemd-boot"
   print_step $STEP

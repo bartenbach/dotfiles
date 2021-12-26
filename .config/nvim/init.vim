@@ -99,8 +99,8 @@ endfunction
 " replace the last (most recent previous) detected spelling mistake with the
 " first suggestion from vim's suggestion list. can be undone with 'u' as
 " you would expect.
-nnoremap <c-s>         <c-g>u<Esc>[s1z=`]a<c-g>u
-inoremap <c-s>         <c-g>u<Esc>[s1z=`]a<c-g>u
+nnoremap <leader>s        <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <c-s>s        <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " this is an easier binding for filename comletion in insert mode
 inoremap <F2>          <C-x><C-f>
@@ -147,7 +147,7 @@ autocmd FileType rust setlocal makeprg=rustc\ %\ &&\ ./%:r
 autocmd FileType yaml setlocal et ts=2 ai sw=2 nu sts=0
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType latex,markdown,vimwiki,plaintex
-      \ setlocal spell spelllang=en wrap linebreak
+      \ setlocal spell spelllang=en wrap linebreak textwidth=80
 
 autocmd BufWritePost,FileWritePost *.rs :RustFmt
 autocmd BufWritePost,FileWritePost xmonad.hs !xmonad --recompile; xmonad --restart
