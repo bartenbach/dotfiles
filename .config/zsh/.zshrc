@@ -145,3 +145,4 @@ export PATH=${PATH}:/usr/local/bin
 
 eval $(thefuck --alias) # please help my git typos
 neofetch
+fortune | lolcat

@@ -64,3 +64,4 @@
 .config/newsboat/
 .config/imsettings
 .config/mps-youtube
+.config/aerc/accounts.conf

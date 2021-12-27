@@ -99,8 +99,8 @@ endfunction
 " replace the last (most recent previous) detected spelling mistake with the
 " first suggestion from vim's suggestion list. can be undone with 'u' as
 " you would expect.
-nnoremap <leader>s        <c-g>u<Esc>[s1z=`]a<c-g>u
-inoremap <c-s>s        <c-g>u<Esc>[s1z=`]a<c-g>u
+nnoremap <c-s>        <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <c-s>        <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " this is an easier binding for filename comletion in insert mode
 inoremap <F2>          <C-x><C-f>
