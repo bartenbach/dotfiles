@@ -33,6 +33,7 @@ alias tl='task list'
 alias ta='task active'
 alias tt='clear && task list limit:10'
 alias tw='taskwarrior-tui'
+alias updot='git commit -m update && git push && git push gh'
 alias vifm='vifm .' # start vifm in cwd
 alias vim='nvim'
 alias vimdiff='nvim -d'
