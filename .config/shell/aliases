@@ -21,7 +21,7 @@ alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
 alias otpadd="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
 alias pm='pulsemixer'
 alias projects='task projects'
-alias repoman='repoman -j12'
+alias repoman='repoman -j12 -v --ask'
 alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
 alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"
 alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
@@ -53,6 +53,7 @@ declare -A KEYMAP=( ["va"]="${XDG_CONFIG_HOME}/shell/aliases"
                     ["vae"]="${XDG_CONFIG_HOME}/aerc/aerc.conf"
                     ["vb"]="${XDG_CONFIG_HOME}/xmobar/xmobarrc"
                     ["vd"]="${HOME}/.Xdefaults"
+                    ["vg"]="${XDG_CONFIG_HOME}/git/config"
                     ["vn"]="${XDG_CONFIG_HOME}/newsboat/config"
                     ["vnu"]="${XDG_CONFIG_HOME}/newsboat/urls"
                     ["vm"]="${XDG_CONFIG_HOME}/neomutt/neomuttrc"

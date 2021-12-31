@@ -12,18 +12,18 @@ scrolling:
 
 font:
   normal:
-    family: Fira Code
-    style: Retina,Regular
+    family: JetBrains Mono
+    style: Retina
   bold:
-    family: Fira Code
+    family: JetBrains Mono
     style: Bold
   italic:
-    family: Fira Code
+    family: JetBrains Mono
     style: Italic
   bold_italic:
-    family: Fira Code
+    family: JetBrains Mono
     style: Bold Italic
-  size: 9
+  size: 10
 
 colors:
   cursor:
@@ -68,7 +68,5 @@ key_bindings:
   - { key: Plus,        mods: Control,    action: IncreaseFontSize }
   - { key: NumpadAdd,   mods: Control,    action: IncreaseFontSize }
   - { key: Minus,       mods: Control,    action: DecreaseFontSize }
-  - { key: F1,          action: PasteSelection }
-  - { key: F12,         action: Paste }
 
 live_config_reload: true

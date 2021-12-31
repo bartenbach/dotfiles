@@ -3,11 +3,9 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set number
 set nocompatible
-"set cursorcolumn
+"set cursorcolumn only useful when aligning things, otherwise distracting
 set cursorline
-filetype plugin on
-syntax on
-set cc=80
+set colorcolumn=80
 set expandtab
 set visualbell
 set t_vb=
@@ -15,17 +13,23 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set noautoindent
-set relativenumber
+set updatetime=100 " gitgutter speed hack
+"set relativenumber this is just not for me...
 set conceallevel=2
+syntax on
+filetype plugin on
 filetype plugin indent on " required by rust.vim
+" sync clipboard with X11
 if has('unnamedplus')
   set clipboard=unnamedplus
 endif
 
+" the leader key - this is your personal leader key for miscellaneous commands
 let mapleader = ";"
-let g:netrw_banner = 0
 
-" vim-plug
+" this will turn off the vim file browser banner if you open a directory with vim
+"let g:netrw_banner = 0
+
 call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'cespare/vim-toml', { 'branch': 'main' }
@@ -47,9 +51,9 @@ call plug#end()
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
+" rust language server - have not tested this yet!
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'] }
-
 nmap <F7> <Plug>(lcn-menu)
 nmap <silent>K <Plug>(lcn-hover)
 nmap <silent> gd <Plug>(lcn-definition)
@@ -62,12 +66,13 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" plugin options
-let g:NERDTreeMinimalUI = 1
+" rust plugin
 let g:rustfmt_autosave = 1
 let g:rustfmt_options = "--edition 2018"
 let g:rust_recommended_style = 1
 let g:rust_cargo_check_all_features = 1
+
+" syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_loc_list_height = 10
 let g:syntastic_enable_signs = 1
@@ -77,11 +82,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" nerdtree
-autocmd BufEnter * if tabpagenr('$') == 1
-      \ && winnr('$') == 1
-      \ && exists('b:NERDTree')
-      \ && b:NERDTree.isTabTree() | quit | endif
+" gitgutter
+let g:gitgutter_highlight_lines = 1
 
 " functions
 function TrimWhiteSpace()
