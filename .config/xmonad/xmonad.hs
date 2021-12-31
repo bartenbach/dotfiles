@@ -7,6 +7,7 @@
 ------------------
 import System.Exit (exitWith, ExitCode(ExitSuccess))
 import XMonad.Actions.NoBorders
+import XMonad.Actions.SinkAll
 import XMonad.Actions.SpawnOn
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
@@ -71,7 +72,6 @@ xKeys = [ ((modm,      xK_Delete),    kill)
         , ((0,         xK_F5),        spawn xPersistentScreenshot)
         , ((modm,      xK_p),         spawn xPasswordSelect)
         , ((modm,      xK_space),     sendMessage NextLayout)
-        , ((modm,      xK_b),         withFocused toggleBorder)
         , ((modm,      xK_h),         sendMessage Shrink)
         , ((modm,      xK_l),         sendMessage Expand)
         , ((modm,      xK_m),         sendMessage Toggle)
@@ -111,7 +111,9 @@ xStartupHook = do
     spawnOnOnce "1:irc" "alacritty -e weechat"
     spawnOnOnce "2:org" "alacritty -e calcurse"
     spawnOnOnce "2:org" "alacritty -e taskwarrior-tui"
-    spawnOnOnce "2:org" "alacritty -e neomutt"
+    spawnOnOnce "2:org" "alacritty -e aerc"
+    spawnOnOnce "2:org" "alacritty -e nvim -c VimwikiIndex"
+    spawnOnOnce "4:web" "qutebrowser"
 
 ---------------------
 --{-# Manage Hook #-}
@@ -130,7 +132,8 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isProp role "pop-up"      --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat
-                     , isFullscreen              --> (doF W.focusDown <+> doFullFloat)
+---                      why did I want this? do I want this???
+---                     , isFullscreen              --> (doF W.focusDown <+> doFullFloat)
                      , transience'
                      ]
                   where

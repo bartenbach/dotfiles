@@ -35,7 +35,8 @@ call plug#begin()
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-"  Plug 'NLKNguyen/papercolor-theme'
+  Plug 'NLKNguyen/papercolor-theme'
+  Plug 'junegunn/goyo.vim'
   Plug 'rust-lang/rust.vim'
   Plug 'scrooloose/syntastic'
   Plug 'vim-airline/vim-airline'
@@ -64,6 +65,7 @@ set statusline+=%*
 " plugin options
 let g:NERDTreeMinimalUI = 1
 let g:rustfmt_autosave = 1
+let g:rustfmt_options = "--edition 2018"
 let g:rust_recommended_style = 1
 let g:rust_cargo_check_all_features = 1
 let g:syntastic_always_populate_loc_list = 1
@@ -106,6 +108,10 @@ inoremap <c-s>        <c-g>u<Esc>[s1z=`]a<c-g>u
 inoremap <F2>          <C-x><C-f>
 nnoremap <leader>t     :VimwikiTOC<CR>
 nnoremap <leader>T     :VimwikiTable<CR>
+nnoremap <leader>G     :VimwikiDiaryGenerateLinks<CR>
+nnoremap <leader>g     :Goyo<CR>
+nnoremap <leader>I     :VimwikiIndex<CR>
+nnoremap <leader>D     :VimwikiMakeDiaryNote<CR>
 nnoremap <leader>h     :nohls<CR>
 nnoremap <leader>l     :execute ':!pdflatex % > /dev/null'<CR>
 nnoremap <leader>w     :call TrimWhiteSpace()<CR>

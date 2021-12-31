@@ -21,6 +21,7 @@ alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
 alias otpadd="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
 alias pm='pulsemixer'
 alias projects='task projects'
+alias repoman='repoman -j12'
 alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
 alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"
 alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
@@ -40,6 +41,7 @@ alias vimdiff='nvim -d'
 alias vu="sudo vim /etc/portage/package.use/package.use"
 alias vuu="sudo vim /etc/portage/make.conf"
 alias wiki='vim -c VimwikiIndex'
+alias world='vim /var/lib/portage/world'
 alias xlog='less ${XDG_DATA_HOME}/xorg/Xorg.0.log'
 alias z='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 alias zl='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
@@ -48,9 +50,11 @@ alias zd='zathura --fork'
 
 # mnemonic map
 declare -A KEYMAP=( ["va"]="${XDG_CONFIG_HOME}/shell/aliases"
+                    ["vae"]="${XDG_CONFIG_HOME}/aerc/aerc.conf"
                     ["vb"]="${XDG_CONFIG_HOME}/xmobar/xmobarrc"
                     ["vd"]="${HOME}/.Xdefaults"
                     ["vn"]="${XDG_CONFIG_HOME}/newsboat/config"
+                    ["vnu"]="${XDG_CONFIG_HOME}/newsboat/urls"
                     ["vm"]="${XDG_CONFIG_HOME}/neomutt/neomuttrc"
                     ["vp"]="${ZDOTDIR}/.zprofile"
                     ["vq"]="${XDG_CONFIG_HOME}/qutebrowser/config.py"

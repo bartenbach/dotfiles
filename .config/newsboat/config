@@ -1,21 +1,40 @@
-# good ones: cyanism, light, nord is ok, schleichfahrt is red, simple isn't terrible, solarized is really good
-include plain
+#include commander
+#include config
+#include cyanism
+#include greenscreen
+include inkpot
+#include kinda
+#include maia
+#include light
+#include nord
+#include plain
+#include psychedelic
+#include schleichfahrt
+#include simple
+#include solarized-dark
+#include solarized-light
 auto-reload yes
 reload-time 60
 confirm-exit no
-datetime-format "%A, %B %d %Y %r"
+datetime-format "%x %r"
 articlelist-title-format "%T - %U"
 dirbrowser-title-format "%?0?Open Directory&amp;Save File? - %f"
 filebrowser-title-format "%?0?Open Directory&amp;Save File? - %f"
+feedlist-format     "%n %11u %t"
+articlelist-format  "%f (%D)  %?T?|%-17T|  ?%t"
 dialogs-title-format "Dialogs"
 itemview-title-format "%T"
 external-url-viewer "extract_url"
 show-keymap-hint yes
 reload-threads 10
+
+# subscribers of a particular youtube channel can open the video with mpv, by doing the following:
 macro y set browser "mpv %u" ; open-in-browser ; set browser "elinks %u"
+html-renderer "w3m -dump -T text/html"
 #notify-beep yes
-highlight feedlist "---.*---" default default bold
+#highlight feedlist ".*---" default default default
 highlight feedlist ".*0/0.." default default invis
+#pager "nvim -c \"setlocal wrap linebreak textwidth=80\" -c Goyo -c \"colo Papercolor\" %f"
 
 browser "$(which qutebrowser) %u"
 unbind-key ENTER

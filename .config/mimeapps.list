@@ -1,6 +1,9 @@
-
 [Default Applications]
 text/css=text.desktop
 text/plain=vim.desktop
 application/pdf=zathura.desktop
 inode/directory=vifm.desktop
+image/jpeg=feh.desktop
+image/jpg=feh.desktop
+image/png=feh.desktop
+x-scheme-handler/mailto/aerc.desktop
