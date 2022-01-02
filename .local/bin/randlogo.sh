@@ -148,4 +148,4 @@ distros=(AIX
          postmarketOS_small
          Void_small
 )
-echo -n "${distros[$(( $(date +%N) % ${#distros[@]} ))]}"
+echo -n "${distros[$(( $(date +%-s) % ${#distros[@]} ))]}"

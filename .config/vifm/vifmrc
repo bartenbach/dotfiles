@@ -1,4 +1,4 @@
-" vim: filetype=vifm :
+" vim: filetype=vim :
 " Sample configuration file for vifm (last updated: 2 June, 2019)
 " You can edit this file by hand.
 " The " character at the beginning of a line comments out the line.
@@ -10,9 +10,7 @@
 " Command used to edit files in various contexts.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
-set vicmd=vim
-" set vicmd=elvis\ -G\ termcap
-" set vicmd=vile
+set vicmd=nvim
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
@@ -27,15 +25,12 @@ set syscalls
 " files by deleting them and then using p to put the file in the new location.
 " I recommend not changing this until you are familiar with vifm.
 " This probably shouldn't be an option.
-
 set trash
 
 " This is how many directories to store in the directory history.
-
 set history=100
 
 " Automatically resolve symbolic links on l or Enter.
-
 set nofollowlinks
 
 " With this option turned on you can run partially entered commands with
@@ -44,25 +39,20 @@ set nofollowlinks
 " set fastrun
 
 " Natural sort of (version) numbers within text.
-
 set sortnumbers
 
 " Maximum number of changes that can be undone.
-
 set undolevels=100
 
 " Use Vim's format of help file (has highlighting and "hyperlinks").
 " If you would rather use a plain text help file set novimhelp.
-
 set vimhelp
 
 " If you would like to run an executable file when you
 " press return on the file name set this.
-
 set norunexec
 
 " Selected color scheme
-
 colorscheme matrix
 
 " Format for displaying time in file list. For example:
@@ -354,11 +344,11 @@ filextype */
 "
 " Or leave it for automatic detection
 "
-" fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
+fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
 
 " Displaying pictures in terminal
 "
- fileviewer *.jpg,*.png shellpic %c
+fileviewer *.jpg,*.png catimg %c
 
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide

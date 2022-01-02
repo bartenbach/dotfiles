@@ -1,23 +1,22 @@
-# vim: set ft:sh
+# vim: set ft:bash
 
-EMERGE_BASE_ARGS='sudo emerge --ask --alert'
 TASK_BASE='task project.not:maybesomeday'
 
 alias dmesg='dmesg --color=always'
 alias dot="cd ~/code/dotfiles"
-alias emerge="${EMERGE_BASE_ARGS}"
-alias esync="${EMERGE_BASE_ARGS} --sync"
+alias emerge="ewrapper"
+alias esync="/usr/bin/doas /usr/bin/emerge --sync"
 alias feh="feh --conversion-timeout 10 -Gd --draw-tinted --edit -."
 alias grep='grep --color=auto'
 alias history='history 1' # just show me all of it
 alias imgur=imgurbash2
-alias journal='sudo journalctl -xb --no-hostname -e'
+alias journal='/usr/bin/doas journalctl -xb --no-hostname -e'
 alias less='less -r' # enable color
 alias linux='cd /usr/src/linux'
 alias ls='ls --color=always -p --human-readable --group-directories-first'
 alias mutt='neomutt'
 alias mv='mv -i'
-alias nudworld="${EMERGE_BASE_ARGS} -NuD @world"
+alias nudworld="ewrapper -NuD @world"
 alias otpadd="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
 alias pm='pulsemixer'
 alias projects='task projects'
@@ -38,8 +37,8 @@ alias updot='git commit -m update && git push && git push gh'
 alias vifm='vifm .' # start vifm in cwd
 alias vim='nvim'
 alias vimdiff='nvim -d'
-alias vu="sudo vim /etc/portage/package.use/package.use"
-alias vuu="sudo vim /etc/portage/make.conf"
+alias vu="/usr/bin/doas vim /etc/portage/package.use/package.use"
+alias vuu="/usr/bin/doas vim /etc/portage/make.conf"
 alias wiki='vim -c VimwikiIndex'
 alias world='vim /var/lib/portage/world'
 alias xlog='less ${XDG_DATA_HOME}/xorg/Xorg.0.log'
@@ -53,6 +52,7 @@ declare -A KEYMAP=( ["va"]="${XDG_CONFIG_HOME}/shell/aliases"
                     ["vae"]="${XDG_CONFIG_HOME}/aerc/aerc.conf"
                     ["vb"]="${XDG_CONFIG_HOME}/xmobar/xmobarrc"
                     ["vd"]="${HOME}/.Xdefaults"
+                    ["vf"]="${XDG_CONFIG_HOME}/vifm/vifmrc"
                     ["vg"]="${XDG_CONFIG_HOME}/git/config"
                     ["vn"]="${XDG_CONFIG_HOME}/newsboat/config"
                     ["vnu"]="${XDG_CONFIG_HOME}/newsboat/urls"

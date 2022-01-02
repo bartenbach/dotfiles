@@ -66,7 +66,7 @@ color.debug=color4
 # Task state
 color.completed=color12
 color.deleted=red
-color.active=rgb020
+color.active=rgb150 on rgb020
 color.recurring=
 color.scheduled=
 color.until=

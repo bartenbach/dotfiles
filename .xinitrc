@@ -9,6 +9,10 @@ xset r rate 220 40
 # XF86 keys (volume up/down/mute)
 xbindkeys &
 
+# someone called me a boomer for using this
+# i mean i *am* a boomer, but damn.
+xscreensaver --no-splash &
+
 # make caps lock be control
 xmodmap ~/.Xmodmap
 

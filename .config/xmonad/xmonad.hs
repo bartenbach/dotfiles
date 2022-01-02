@@ -128,7 +128,7 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "qutebrowser"     --> doShiftAndGo "4:web"
                      , isClass "zoom"            --> doShift "6:ext"
                      , isClass "zoom"            --> doFloat
-                     , isClass "Xmessage"        --> doCenterFloat
+                     , isClass "Xmessage"        --> doFullFloat
                      , isProp role "pop-up"      --> doFullFloat
                      , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat
