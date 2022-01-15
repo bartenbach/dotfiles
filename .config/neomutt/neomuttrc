@@ -14,7 +14,7 @@ folder-hook $folder 'source $my_gmail'
 set editor="nvim -c 'set syntax=mail ft=mail enc=utf-8'"
 set menu_scroll=yes
 set date_format="%x %r"
-set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
+set index_format="%2C | %Z [%d] %-0.30F (%-4.4c) %s"
 set header_cache = "${XDG_CACHE_HOME}/mutt/headers"
 set message_cachedir = "${XDG_CACHE_HOME}/mutt/bodies"
 set use_from=yes
@@ -80,6 +80,7 @@ set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
 bind index,pager <TAB> sidebar-toggle-visible
 bind index,pager K sidebar-prev
 bind index,pager J sidebar-next
+bind index,pager O sidebar-open
 
 ## Abook
 set query_command = "abook --mutt-query '%s'"
@@ -124,11 +125,11 @@ macro index,pager \cl "\
 
 ## From field gets 30% of remaining space, Subject gets 70%.
 ## Remaining space is the total width minus the other fields (35), minus the sidebar (24)
-set my_index_format_pre='set my_col_from = `echo $((30 * ($(tput cols)-35-24) / 100))`; set my_col_subject = `echo $((70 * ($(tput cols)-35-24) / 100))`; set index_format="%2C | %Z [%d] %-$my_col_from.${my_col_from}'
-set my_index_format_post=' (%-4.4c) %?M?<%M> ?%-$my_col_subject.${my_col_subject}s"'
+#set my_index_format_pre='set my_col_from = `echo $((30 * ($(tput cols)-35-24) / 100))`; set my_col_subject = `echo $((70 * ($(tput cols)-35-24) / 100))`; set index_format="%2C | %Z [%d] %-$my_col_from.${my_col_from}'
+#set my_index_format_post=' (%-4.4c) %?M?<%M> ?%-$my_col_subject.${my_col_subject}s"'
 
-folder-hook .*[sS]ent.* "$my_index_format_pre"t"$my_index_format_post"
-folder-hook ! .*[sS]ent.* "$my_index_format_pre"F"$my_index_format_post"
+#folder-hook .*[sS]ent.* "$my_index_format_pre"t"$my_index_format_post"
+#folder-hook ! .*[sS]ent.* "$my_index_format_pre"F"$my_index_format_post"
 
 # colors
 source darcula

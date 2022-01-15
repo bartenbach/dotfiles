@@ -164,7 +164,7 @@ autocmd BufWritePost,FileWritePost .Xdefaults !xrdb ~/.Xdefaults
 autocmd BufWritePost,FileWritePost *.mod !cafeobj -batch %
 
 " :commands
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command W :execute ':silent w !doas tee % > /dev/null' | :edit!
 command -nargs=0 HELP h | only # boomer friendly help
 command -nargs=1 -complete=help H h <args> | only
 

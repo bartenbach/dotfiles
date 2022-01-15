@@ -9,7 +9,7 @@ config.load_autoconfig(False)
 # general configuration
 #-------------------------
 c.qt.highdpi = True
-c.zoom.default = '100%'
+c.zoom.default = '90%'
 
 c.url.default_page = "https://lite.duckduckgo.com"
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}"}
@@ -26,19 +26,19 @@ c.downloads.remove_finished = 10000
 c.fileselect.handler = 'external'
 c.editor.command = [
         'alacritty',
-        '--class', 'Xmessage,Xmessage',
+        '--class', 'quteSelect,quteSelect',
         '-e', 'nvim',
         '-f', '{file}'
         ]
 c.fileselect.single_file.command = [
         'alacritty',
-        '--class', 'Xmessage,Xmessage',
+        '--class', 'quteSelect,quteSelect',
         '-e', 'vifm',
         '--choose-files={}'
         ]
 c.fileselect.multiple_files.command = [
         'alacritty',
-        '--class', 'Xmessage,Xmessage',
+        '--class', 'quteSelect,quteSelect',
         '-e', 'vifm',
         '--choose-files={}'
         ]
@@ -50,6 +50,11 @@ c.tabs.last_close = 'close'
 c.tabs.show = 'always'
 c.window.hide_decoration = True
 c.window.transparent = True
+
+# don't just leave insert mode or do other bizarre things with insert mode
+c.input.insert_mode.auto_leave = False
+c.input.insert_mode.auto_load = False
+c.input.insert_mode.leave_on_load = False
 
 #------------------
 # content settings
@@ -102,6 +107,7 @@ keybinds = {
     "normal": {
         "J": "tab-prev",
         "K": "tab-next",
+        "d": "tab-close --force",
         "<Ctrl-V>": None,
         "gJ": "tab-move -",
         "gK": "tab-move +",
@@ -111,11 +117,12 @@ keybinds = {
         "cs": "config-source",
         "ge": "set-cmd-text :open {url:pretty}",
         "gE": "set-cmd-text :open -t -r {url:pretty}",
-        "gp": "set-cmd-text :open -p ",
-        "'": "set-cmd-text :quickmark-load ",
+        "gp": "set-cmd-text -s :open -p",
+        "'": "set-cmd-text -s :quickmark-load",
         ",m": "spawn mpv {url}",
         ",M": "hint links spawn mpv {hint-url}",
-        ",a": "spawn -d youtube-dl -x -o /home/blake/snd/%(title)s-%(id)s.%(ext)s -- {url}"
+        ",a": "spawn -d youtube-dl -x -o /home/blake/snd/%(title)s-%(id)s.%(ext)s -- {url}",
+        "cu": "spawn alacritty --class 'quteSelect,quteSelect' -e nvim -f /home/blake/.config/qutebrowser/whitelist.py"
     }
 }
 

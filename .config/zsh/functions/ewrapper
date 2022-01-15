@@ -1,7 +1,7 @@
 # wrapper function to rehash zsh completion after package modifications
 # $@ - emerge args
 __ewrapper() {
-  /usr/bin/doas /usr/bin/emerge --ask --alert "$@"
+  /usr/bin/sudo /usr/bin/emerge --ask --alert "$@"
   hash -r
 }
 

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo mv /etc/portage/package.use/._cfg0000_package.use /etc/portage/package.use/package.use
+doas mv /etc/portage/package.use/._cfg0000_package.use /etc/portage/package.use/package.use

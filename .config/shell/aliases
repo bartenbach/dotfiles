@@ -5,12 +5,12 @@ TASK_BASE='task project.not:maybesomeday'
 alias dmesg='dmesg --color=always'
 alias dot="cd ~/code/dotfiles"
 alias emerge="ewrapper"
-alias esync="/usr/bin/doas /usr/bin/emerge --sync"
+alias esync="/usr/bin/sudo /usr/bin/emerge --sync"
 alias feh="feh --conversion-timeout 10 -Gd --draw-tinted --edit -."
 alias grep='grep --color=auto'
 alias history='history 1' # just show me all of it
 alias imgur=imgurbash2
-alias journal='/usr/bin/doas journalctl -xb --no-hostname -e'
+alias journal='/usr/bin/sudo journalctl -xb --no-hostname -e'
 alias less='less -r' # enable color
 alias linux='cd /usr/src/linux'
 alias ls='ls --color=always -p --human-readable --group-directories-first'
@@ -22,9 +22,9 @@ alias pm='pulsemixer'
 alias projects='task projects'
 alias repoman='repoman -j12 -v --ask'
 alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
-alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"
-alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
 alias sa="source ${XDG_CONFIG_HOME}/shell/aliases"
+alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
+alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"
 alias systemctl='systemctl --user' # the way it should be
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
 alias tree='tree -C'
@@ -37,8 +37,8 @@ alias updot='git commit -m update && git push && git push gh'
 alias vifm='vifm .' # start vifm in cwd
 alias vim='nvim'
 alias vimdiff='nvim -d'
-alias vu="/usr/bin/doas vim /etc/portage/package.use/package.use"
-alias vuu="/usr/bin/doas vim /etc/portage/make.conf"
+alias vu="/usr/bin/sudo vim /etc/portage/package.use/package.use"
+alias vuu="/usr/bin/sudo vim /etc/portage/make.conf"
 alias wiki='vim -c VimwikiIndex'
 alias world='vim /var/lib/portage/world'
 alias xlog='less ${XDG_DATA_HOME}/xorg/Xorg.0.log'

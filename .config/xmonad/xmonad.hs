@@ -21,6 +21,7 @@ import XMonad.Layout.Magnifier
 import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig (additionalKeys,removeKeys)
 import XMonad.Util.Loggers
+import XMonad.Util.NamedScratchpad
 import XMonad.Util.SpawnOnce
 import XMonad hiding ((|||))
 import qualified XMonad.Hooks.EwmhDesktops as E
@@ -37,7 +38,7 @@ magenta = "#FF007f"
 ---------------------------
 --{-# Shell commands    #-}
 ---------------------------
-xTerm = "~/.cargo/bin/alacritty"
+xTerm = "alacritty"
 xBrowser = "qutebrowser"
 xLaunch = "rofi -show run"
 xSsh = "rofi -show ssh"
@@ -62,8 +63,9 @@ xWorkspaceKeys = [((m .|. modm, k), windows $ f i)
                  | (key, sc) <- zip [xK_w, xK_e] [0..]
                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-xKeys = [ ((modm,      xK_Delete),    kill)
-        , ((modm,      xK_Return),    spawn xTerm)
+xKeys = [
+        --  applications and scripts
+          ((modm,      xK_Return),    spawn xTerm)
         , ((modm,      xK_r),         spawn xLaunch)
         , ((modm,      xK_q),         spawn xBrowser)
         , ((modm,      xK_x),         spawn xRecompile)
@@ -71,6 +73,13 @@ xKeys = [ ((modm,      xK_Delete),    kill)
         , ((0,         xK_F4),        spawn xClipboardScreenshot)
         , ((0,         xK_F5),        spawn xPersistentScreenshot)
         , ((modm,      xK_p),         spawn xPasswordSelect)
+
+        -- scratchpads
+        , ((modm,      xK_t),         namedScratchpadAction scratchpads "taskwarrior")
+        , ((modm,      xK_a),         namedScratchpadAction scratchpads "term")
+        , ((modm,      xK_c),         namedScratchpadAction scratchpads "calcurse")
+
+        -- window management
         , ((modm,      xK_space),     sendMessage NextLayout)
         , ((modm,      xK_h),         sendMessage Shrink)
         , ((modm,      xK_l),         sendMessage Expand)
@@ -84,6 +93,9 @@ xKeys = [ ((modm,      xK_Delete),    kill)
         , ((xShiftMod, xK_k),         windows W.swapDown)
         , ((xShiftMod, xK_m),         windows W.swapMaster)
         , ((xShiftMod, xK_n),         windows W.shiftMaster)
+
+        -- kill
+        , ((modm,      xK_Delete),    kill)
         , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))
         ]
 
@@ -112,8 +124,7 @@ xStartupHook = do
     spawnOnOnce "2:org" "alacritty -e calcurse"
     spawnOnOnce "2:org" "alacritty -e taskwarrior-tui"
     spawnOnOnce "2:org" "alacritty -e aerc"
-    spawnOnOnce "2:org" "alacritty -e nvim -c VimwikiIndex"
-    spawnOnOnce "4:web" "qutebrowser"
+    spawnOnOnce "5:doc" "alacritty -e nvim -c VimwikiIndex"
 
 ---------------------
 --{-# Manage Hook #-}
@@ -128,17 +139,33 @@ xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "qutebrowser"     --> doShiftAndGo "4:web"
                      , isClass "zoom"            --> doShift "6:ext"
                      , isClass "zoom"            --> doFloat
+                     , isClass "quteSelect"      --> doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9)
+                     , isProp role fileDialog    --> doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9)
                      , isClass "Xmessage"        --> doFullFloat
                      , isProp role "pop-up"      --> doFullFloat
-                     , isProp role fileDialog    --> doCenterFloat
                      , isDialog                  --> doCenterFloat
----                      why did I want this? do I want this???
----                     , isFullscreen              --> (doF W.focusDown <+> doFullFloat)
                      , transience'
                      ]
                   where
                      doShiftAndGo ws = doF (W.greedyView ws) <+> doShift ws
 
+scratchpads :: [NamedScratchpad]
+scratchpads = [
+    NS "calcurse"
+       "alacritty --class tw_calcurse,tw_calcurse -e calcurse"
+       (className =? "tw_calcurse")
+       (customFloating $ W.RationalRect 0.2 0.2 0.6 0.6),
+
+    NS "taskwarrior"
+       "alacritty --class tw_scratchpad,tw_scratchpad -e ~/.cargo/bin/taskwarrior-tui"
+       (className =? "tw_scratchpad")
+       (customFloating $ W.RationalRect 0.2 0.2 0.6 0.6),
+
+    NS "term"
+       "alacritty --class term_scratchpad,term_scratchpad"
+       (className =? "term_scratchpad")
+       (customFloating $ W.RationalRect 0.1 0.1 0.8 0.8)
+  ]
 
 --------------
 --{-# Main #-}
@@ -152,7 +179,11 @@ myConfig = def { modMask            = modm
                , focusedBorderColor = magenta
                , workspaces         = xWorkspaces
                , layoutHook         = avoidStruts $ xSpacing $ xLayout
-               , manageHook         = xManage <+> manageDocks <+> fullscreenManageHook <+> manageSpawn
+               , manageHook         = xManage
+                                      <+> manageDocks
+                                      <+> fullscreenManageHook
+                                      <+> manageSpawn
+                                      <+> namedScratchpadManageHook scratchpads
                , startupHook        = xStartupHook
                , handleEventHook    = fullscreenEventHook
                }

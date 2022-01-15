@@ -90,7 +90,7 @@ function update_systemd() {
   STEP="Updating systemd-boot"
   print_step $STEP
   $BOOTCTL update
-  check_ret $STEP
+  #check_ret $STEP
 }
 
 function print_success() {

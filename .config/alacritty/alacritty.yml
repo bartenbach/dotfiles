@@ -1,7 +1,6 @@
 import:
   - ~/.config/alacritty/cyberpunk.yml
 
-window.opacity: .95
 cursor:
   style: Block
   unfocused_hollow: true
@@ -12,16 +11,16 @@ scrolling:
 
 font:
   normal:
-    family: JetBrains Mono
+    family: Bartenbach
     style: Retina
   bold:
-    family: JetBrains Mono
+    family: Bartenbach
     style: Bold
   italic:
-    family: JetBrains Mono
+    family: Bartenbach
     style: Italic
   bold_italic:
-    family: JetBrains Mono
+    family: Bartenbach
     style: Bold Italic
   size: 12
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # hide cursor when inactive
 unclutter --timeout 2 --start-hidden &
@@ -11,7 +11,7 @@ xbindkeys &
 
 # someone called me a boomer for using this
 # i mean i *am* a boomer, but damn.
-xscreensaver --no-splash &
+# xscreensaver --no-splash &
 
 # make caps lock be control
 xmodmap ~/.Xmodmap
@@ -22,10 +22,13 @@ xmodmap ~/.Xmodmap
 # start a sick X11 compositor for muh GUIz
 picom &
 
+# save my eyeballs
+redshift &
+
 # japanese input
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 ibus-daemon -drxR
 
-exec xmonad
+exec /usr/bin/xmonad
