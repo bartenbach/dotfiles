@@ -11,7 +11,7 @@ xbindkeys &
 
 # someone called me a boomer for using this
 # i mean i *am* a boomer, but damn.
-# xscreensaver --no-splash &
+xscreensaver --no-splash &
 
 # make caps lock be control
 xmodmap ~/.Xmodmap

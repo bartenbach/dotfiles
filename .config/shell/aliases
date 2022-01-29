@@ -2,6 +2,7 @@
 
 TASK_BASE='task project.not:maybesomeday'
 
+alias bit='bitcoin-cli getbalance'
 alias dmesg='dmesg --color=always'
 alias dot="cd ~/code/dotfiles"
 alias emerge="ewrapper"
@@ -14,6 +15,7 @@ alias journal='/usr/bin/sudo journalctl -xb --no-hostname -e'
 alias less='less -r' # enable color
 alias linux='cd /usr/src/linux'
 alias ls='ls --color=always -p --human-readable --group-directories-first'
+alias minicom='sudo minicom -c on'
 alias mutt='neomutt'
 alias mv='mv -i'
 alias nudworld="ewrapper -NuD @world"
@@ -21,7 +23,6 @@ alias otpadd="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
 alias pm='pulsemixer'
 alias projects='task projects'
 alias repoman='repoman -j12 -v --ask'
-alias scrot='maim -s -u | xclip -selection clipboard -t image/png -i'
 alias sa="source ${XDG_CONFIG_HOME}/shell/aliases"
 alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
 alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"

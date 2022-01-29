@@ -52,9 +52,9 @@ c.window.hide_decoration = True
 c.window.transparent = True
 
 # don't just leave insert mode or do other bizarre things with insert mode
-c.input.insert_mode.auto_leave = False
+c.input.insert_mode.auto_leave = True
 c.input.insert_mode.auto_load = False
-c.input.insert_mode.leave_on_load = False
+c.input.insert_mode.leave_on_load = True
 
 #------------------
 # content settings

@@ -225,8 +225,8 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ gpicview %c,
         \ {View in shotwell}
         \ shotwell,
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-         \ identify %f
+"fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+"         \ identify %f
 
 " OpenRaster
 filextype *.ora
@@ -325,9 +325,9 @@ filetype *.tudu tudu -f %c
 filextype *.pro qtcreator %f &
 
 " Directories
-filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
+"filextype */
+"        \ {View in thunar}
+"        \ Thunar %f &,
 
 " Syntax highlighting in preview
 "
@@ -341,14 +341,14 @@ filextype */
 "
 " 16-color terminal
 " fileviewer *.c,*.h highlight -O ansi -s dante %c
-"
-" Or leave it for automatic detection
-"
-fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
 
 " Displaying pictures in terminal
 "
-fileviewer *.jpg,*.png catimg %c
+fileviewer *.jpg,*.png shellpic %c
+
+
+" Or leave it for automatic detection
+"fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
 
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide

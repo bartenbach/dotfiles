@@ -65,3 +65,6 @@
 .config/imsettings
 .config/mps-youtube
 .config/aerc/accounts.conf
+.config/Bitcoin/Bitcoin-Qt.conf
+.config/Yubico/YubiKey Manager.conf
+.local/bin/shellpic

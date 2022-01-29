@@ -17,6 +17,9 @@ export __GL_SYNC_DISPLAY_DEVICE=DP-4
 export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-4
 export WINIT_X11_SCALE_FACTOR=1.66
 
+# gentoo bullshit - this is fuckin dumb
+export JAVA_HOME=/usr/lib64/openjdk-17
+
 # XDG paths
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache

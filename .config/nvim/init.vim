@@ -68,7 +68,7 @@ set statusline+=%*
 
 " rust plugin
 let g:rustfmt_autosave = 1
-let g:rustfmt_options = "--edition 2018"
+"let g:rustfmt_options = "--edition 2018"
 let g:rust_recommended_style = 1
 let g:rust_cargo_check_all_features = 1
 
@@ -113,7 +113,7 @@ nnoremap <leader>T     :VimwikiTable<CR>
 nnoremap <leader>G     :VimwikiDiaryGenerateLinks<CR>
 nnoremap <leader>g     :Goyo<CR>
 nnoremap <leader>I     :VimwikiIndex<CR>
-nnoremap <leader>D     :VimwikiMakeDiaryNote<CR>
+nnoremap <leader>N     :VimwikiMakeDiaryNote<CR>
 nnoremap <leader>h     :nohls<CR>
 nnoremap <leader>l     :execute ':!pdflatex % > /dev/null'<CR>
 nnoremap <leader>w     :call TrimWhiteSpace()<CR>
