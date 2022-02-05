@@ -56,12 +56,12 @@ xKillMask = modm .|. controlMask
 
 xWorkspaces = ["1:irc","2:org","3:src","4:web","5:doc","6:ext"]
 xWorkspaceKeys = [((m .|. modm, k), windows $ f i)
-                 | (i, k) <- zip xWorkspaces [xK_1 .. xK_5]
-                 , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+                     | (i, k) <- zip (xWorkspaces) [xK_1 .. xK_9]
+                     , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
                  ++
                  [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-                 | (key, sc) <- zip [xK_w, xK_e] [0..]
-                 , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+                     | (key, sc) <- zip [xK_e, xK_w] [0..]
+                     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 xKeys = [
         --  applications and scripts
@@ -98,6 +98,7 @@ xKeys = [
         , ((modm,      xK_Delete),    kill)
         , ((xKillMask, xK_BackSpace), io (exitWith ExitSuccess))
         ]
+        ++ xWorkspaceKeys
 
 xNoKeys = [ (modm, xK_comma)
           , (modm, xK_ampersand)
