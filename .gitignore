@@ -68,3 +68,5 @@
 .config/Bitcoin/Bitcoin-Qt.conf
 .config/Yubico/YubiKey Manager.conf
 .local/bin/shellpic
+.config/transmission
+.local/bin/bitbal

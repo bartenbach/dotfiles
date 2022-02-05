@@ -1,12 +1,15 @@
 # vim: set ft:bash
 
-TASK_BASE='task project.not:maybesomeday'
+TASK_BASE='task'
 
 alias bit='bitcoin-cli getbalance'
+alias backup='sudo systemctl status rsync-backup.service'
+alias backupt='sudo systemctl status rsync-backup.timer'
 alias dmesg='dmesg --color=always'
 alias dot="cd ~/code/dotfiles"
 alias emerge="ewrapper"
-alias esync="/usr/bin/sudo /usr/bin/emerge --sync"
+alias esync='sudo systemctl status esync.service'
+alias esynct='sudo systemctl status esync.timer'
 alias feh="feh --conversion-timeout 10 -Gd --draw-tinted --edit -."
 alias grep='grep --color=auto'
 alias history='history 1' # just show me all of it
@@ -14,6 +17,7 @@ alias imgur=imgurbash2
 alias journal='/usr/bin/sudo journalctl -xb --no-hostname -e'
 alias less='less -r' # enable color
 alias linux='cd /usr/src/linux'
+alias loadwallet='bitcoin-cli loadwallet bitcoin'
 alias ls='ls --color=always -p --human-readable --group-directories-first'
 alias minicom='sudo minicom -c on'
 alias mutt='neomutt'
@@ -98,7 +102,7 @@ function mod() {
 
 function taskclear() {
    clear
-   "${TASK_BASE}"
+   `"${TASK_BASE}"`
 }
 
 # start a task
@@ -119,7 +123,7 @@ function stop() {
 # $@ everything else
 function add() {
   task add "$@"
-  clear;task
+  taskclear
 }
 
 # complete a task

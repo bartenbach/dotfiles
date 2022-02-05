@@ -2,14 +2,22 @@
 #
 # Serves as an xmobar plugin to display the current task (or lack thereof)
 #
+if [[ -z $1 ]]; then
+  echo "taskmobar [args]"
+  echo "  --active"
+  echo "  --context"
+fi
 
 if [[ $1 == "--active" ]]; then
   if [[ -z $(task active) ]]; then
     echo "No active task"
   else
-    id=$(task +ACTIVE ids | cut -d' ' -f1)
-    description=$(task _get ${id}.description)
-    echo "${id}: ${description}"
+    IFS=' '
+    read -r -a array <<< "$(task +ACTIVE ids)"
+    for id in "${array[@]}"; do
+      description=$(task _get ${id}.description)
+      echo -n "(${id}: ${description}) "
+    done
   fi
 elif [[ $1 == "--context" ]]; then
   task context show | head -1 | grep -Eo "'.*'" | tr -d "'"

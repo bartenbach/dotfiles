@@ -115,6 +115,7 @@ nnoremap <leader>g     :Goyo<CR>
 nnoremap <leader>I     :VimwikiIndex<CR>
 nnoremap <leader>N     :VimwikiMakeDiaryNote<CR>
 nnoremap <leader>h     :nohls<CR>
+nnoremap <leader>H     :VimwikiIndex<CR> " think 'home'
 nnoremap <leader>l     :execute ':!pdflatex % > /dev/null'<CR>
 nnoremap <leader>w     :call TrimWhiteSpace()<CR>
 nnoremap <leader><tab> <C-w>w

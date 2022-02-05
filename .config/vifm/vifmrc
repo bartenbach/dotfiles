@@ -225,8 +225,8 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ gpicview %c,
         \ {View in shotwell}
         \ shotwell,
-"fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-"         \ identify %f
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+         \ identify %f
 
 " OpenRaster
 filextype *.ora
@@ -344,7 +344,7 @@ filextype *.pro qtcreator %f &
 
 " Displaying pictures in terminal
 "
-fileviewer *.jpg,*.png shellpic %c
+"fileviewer *.jpg,*.png shellpic %c
 
 
 " Or leave it for automatic detection

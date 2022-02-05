@@ -123,7 +123,7 @@ xStartupHook = do
     spawnOnOnce "1:irc" "alacritty -e weechat"
     spawnOnOnce "2:org" "alacritty -e calcurse"
     spawnOnOnce "2:org" "alacritty -e taskwarrior-tui"
-    spawnOnOnce "2:org" "alacritty -e aerc"
+    spawnOnOnce "2:org" "alacritty -e neomutt"
     spawnOnOnce "5:doc" "alacritty -e nvim -c VimwikiIndex"
 
 ---------------------
