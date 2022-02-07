@@ -70,3 +70,4 @@
 .local/bin/shellpic
 .config/transmission
 .local/bin/bitbal
+.config/gtk-3.0

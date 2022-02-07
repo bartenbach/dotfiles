@@ -19,6 +19,7 @@ export WINIT_X11_SCALE_FACTOR=1.66
 
 # gentoo bullshit - this is fuckin dumb
 export JAVA_HOME=/usr/lib64/openjdk-17
+export EQUERY=$(which equery)
 
 # XDG paths
 export XDG_CONFIG_HOME=~/.config

@@ -99,6 +99,23 @@ c.colors.webpage.preferred_color_scheme = 'dark'
 c.fonts.downloads = 'default_size default_family'
 c.fonts.hints = 'bold 7pt default_family'
 c.fonts.keyhint = '7pt default_family'
+c.colors.tabs.even.bg = "black"
+c.colors.tabs.even.fg = "white"
+c.colors.tabs.odd.bg = "black"
+c.colors.tabs.odd.fg = "white"
+c.colors.tabs.pinned.even.bg = "black"
+c.colors.tabs.pinned.even.fg = "white"
+c.colors.tabs.pinned.odd.bg = "black"
+c.colors.tabs.pinned.odd.fg = "white"
+c.colors.tabs.pinned.selected.even.bg = "magenta"
+c.colors.tabs.pinned.selected.even.fg = "white"
+c.colors.tabs.pinned.selected.odd.bg = "magenta"
+c.colors.tabs.pinned.selected.odd.fg = "white"
+c.colors.tabs.selected.odd.bg = "magenta"
+c.colors.tabs.selected.odd.fg = "white"
+c.colors.tabs.selected.even.bg = "magenta"
+c.colors.tabs.selected.even.fg = "white"
+c.colors.webpage.bg = ""
 
 #---------------
 # key bindings
@@ -120,6 +137,7 @@ keybinds = {
         "gp": "set-cmd-text -s :open -p",
         "'": "set-cmd-text -s :quickmark-load",
         ",m": "spawn mpv {url}",
+        ",p": "mode-enter passthrough",
         ",M": "hint links spawn mpv {hint-url}",
         ",a": "spawn -d youtube-dl -x -o /home/blake/snd/%(title)s-%(id)s.%(ext)s -- {url}",
         "cu": "spawn alacritty --class 'quteSelect,quteSelect' -e nvim -f /home/blake/.config/qutebrowser/whitelist.py"

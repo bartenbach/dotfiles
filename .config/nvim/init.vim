@@ -41,6 +41,7 @@ call plug#begin()
     \ }
   Plug 'NLKNguyen/papercolor-theme'
   Plug 'junegunn/goyo.vim'
+  Plug 'ron-rs/ron.vim'
   Plug 'rust-lang/rust.vim'
   Plug 'scrooloose/syntastic'
   Plug 'vim-airline/vim-airline'
@@ -172,5 +173,5 @@ command -nargs=1 -complete=help H h <args> | only
 " colorscheme
 set bg=dark
 set termguicolors
-colorscheme iceberg
+"colorscheme iceberg
 hi Normal guibg=NONE ctermbg=NONE

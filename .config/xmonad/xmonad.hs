@@ -43,7 +43,7 @@ xBrowser = "qutebrowser"
 xLaunch = "rofi -show run"
 xSsh = "rofi -show ssh"
 xRecompile = "xmonad --recompile && xmonad --restart"
-xClipboardScreenshot = "maim -s -u | xclip -selection clipboard -t image/png -i"
+xClipboardScreenshot = "scrot -s -l width=2,color=magenta -f - | xclip -selection clipboard -t image/png -i"
 xPersistentScreenshot = "namedshot"
 xPasswordSelect = "passmenu"
 
@@ -175,7 +175,7 @@ myConfig = def { modMask            = modm
                , terminal           = xTerm
                , focusFollowsMouse  = False
                , clickJustFocuses   = True
-               , borderWidth        = 10
+               , borderWidth        = 5
                , normalBorderColor  = black
                , focusedBorderColor = magenta
                , workspaces         = xWorkspaces
@@ -212,11 +212,11 @@ myXmobarPP = def
     red      = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
 
-
+mySB = statusBarProp "xmobar" (pure myXmobarPP)
 main :: IO ()
 main = xmonad
      . docks
      . E.ewmhFullscreen
      . E.ewmh
-     . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+     . withSB mySB
      $ myConfig

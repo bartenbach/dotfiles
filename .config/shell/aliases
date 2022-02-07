@@ -1,15 +1,11 @@
-# vim: set ft:bash
+# vim: ft=sh
 
 TASK_BASE='task'
 
 alias bit='bitcoin-cli getbalance'
-alias backup='sudo systemctl status rsync-backup.service'
-alias backupt='sudo systemctl status rsync-backup.timer'
 alias dmesg='dmesg --color=always'
 alias dot="cd ~/code/dotfiles"
 alias emerge="ewrapper"
-alias esync='sudo systemctl status esync.service'
-alias esynct='sudo systemctl status esync.timer'
 alias feh="feh --conversion-timeout 10 -Gd --draw-tinted --edit -."
 alias grep='grep --color=auto'
 alias history='history 1' # just show me all of it
@@ -23,17 +19,14 @@ alias minicom='sudo minicom -c on'
 alias mutt='neomutt'
 alias mv='mv -i'
 alias nudworld="ewrapper -NuD @world"
-alias otpadd="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
+alias octal='stat -c "%a"'
+alias zcam="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
 alias pm='pulsemixer'
 alias projects='task projects'
 alias repoman='repoman -j12 -v --ask'
-alias sa="source ${XDG_CONFIG_HOME}/shell/aliases"
-alias sp="source ${XDG_CONFIG_HOME}/zsh/.zprofile"
-alias sz="source ${XDG_CONFIG_HOME}/zsh/.zshrc"
-#alias systemctl='systemctl --user' # the way it should be
-alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"
+alias tmux='tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf'
 alias tree='tree -C'
-alias t="clear;${TASK_BASE}"
+alias t='clear;${TASK_BASE}'
 alias tl='task list'
 alias ta='task active'
 alias tt='clear && task list limit:10'
@@ -42,38 +35,58 @@ alias updot='git commit -m update && git push && git push gh'
 alias vifm='vifm .' # start vifm in cwd
 alias vim='nvim'
 alias vimdiff='nvim -d'
-alias vu="/usr/bin/sudo vim /etc/portage/package.use/package.use"
-alias vuu="/usr/bin/sudo vim /etc/portage/make.conf"
-alias wiki='vim -c VimwikiIndex'
-alias world='vim /var/lib/portage/world'
-alias xlog='less ${XDG_DATA_HOME}/xorg/Xorg.0.log'
 alias z='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 alias zl='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 alias zathura='zathura -c ${XDG_CONFIG_HOME}/zathura/light --fork'
 alias zd='zathura --fork'
 
 # mnemonic map
-declare -A KEYMAP=( ["va"]="${XDG_CONFIG_HOME}/shell/aliases"
-                    ["vae"]="${XDG_CONFIG_HOME}/aerc/aerc.conf"
-                    ["vb"]="${XDG_CONFIG_HOME}/xmobar/xmobarrc"
-                    ["vd"]="${HOME}/.Xdefaults"
-                    ["vf"]="${XDG_CONFIG_HOME}/vifm/vifmrc"
-                    ["vg"]="${XDG_CONFIG_HOME}/git/config"
-                    ["vn"]="${XDG_CONFIG_HOME}/newsboat/config"
-                    ["vnu"]="${XDG_CONFIG_HOME}/newsboat/urls"
-                    ["vm"]="${XDG_CONFIG_HOME}/neomutt/neomuttrc"
-                    ["vp"]="${ZDOTDIR}/.zprofile"
-                    ["vq"]="${XDG_CONFIG_HOME}/qutebrowser/config.py"
-                    ["vt"]="${XDG_CONFIG_HOME}/task/taskrc"
-                    ["vv"]="${XDG_CONFIG_HOME}/nvim/init.vim"
-                    ["vx"]="${XDG_CONFIG_HOME}/xmonad/xmonad.hs"
-                    ["vy"]="${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
-                    ["vz"]="${ZDOTDIR}/.zshrc"
-                 )
+declare -A KEYMAP=(
+    [eqg]='${EQUERY} g'
+    [eqh]='${EQUERY} h'
+    [eqs]='${EQUERY} s'
+    [equ]='${EQUERY} u'
+    [sa]='source ${XDG_CONFIG_HOME}/shell/aliases'
+    [sp]='source ${XDG_CONFIG_HOME}/zsh/.zprofile'
+    [sz]='source ${XDG_CONFIG_HOME}/zsh/.zshrc'
+    [va]="${EDITOR} ${XDG_CONFIG_HOME}/shell/aliases"
+    [vae]="${EDITOR} ${XDG_CONFIG_HOME}/aerc/aerc.conf"
+    [vb]="${EDITOR} ${XDG_CONFIG_HOME}/xmobar/xmobarrc"
+    [vd]="${EDITOR} ${HOME}/.Xdefaults"
+    [vf]="${EDITOR} ${XDG_CONFIG_HOME}/vifm/vifmrc"
+    [vg]="${EDITOR} ${XDG_CONFIG_HOME}/git/config"
+    [vn]="${EDITOR} ${XDG_CONFIG_HOME}/newsboat/config"
+    [vnu]="${EDITOR} ${XDG_CONFIG_HOME}/newsboat/urls"
+    [vm]="${EDITOR} ${XDG_CONFIG_HOME}/neomutt/neomuttrc"
+    [vp]="${EDITOR} ${ZDOTDIR}/.zprofile"
+    [vq]="${EDITOR} ${XDG_CONFIG_HOME}/qutebrowser/config.py"
+    [vt]="${EDITOR} ${XDG_CONFIG_HOME}/task/taskrc"
+    [vu]="${ELEVATOR} ${EDITOR} /etc/portage/package.use/package.use"
+    [vuu]="${ELEVATOR} ${EDITOR} /etc/portage/make.conf"
+    [vv]="${EDITOR} ${XDG_CONFIG_HOME}/nvim/init.vim"
+    [vw]="vimwhich"
+    [vx]="${EDITOR} ${XDG_CONFIG_HOME}/xmonad/xmonad.hs"
+    [vy]="${EDITOR} ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
+    [vz]="${EDITOR} ${ZDOTDIR}/.zshrc"
+    [xlog]="${PAGER} ${XDG_DATA_HOME}/xorg/Xorg.0.log"
+    [wiki]="${EDITOR} -c VimwikiIndex"
+    [world]="${ELEVATOR} ${EDITOR} /var/lib/portage/world"
+)
 
+# shellcheck disable=SC1073,SC1058,SC1072
 for key value in "${(kv)KEYMAP[@]}"; do
-  alias "$key"="nvim $value"
+  alias "${key}=${value}"
 done
+
+# $1 - the file you want to edit but don't know where in $PATH it is
+function vimwhich() {
+  vim $(which "$1")
+}
+
+# $1 - the img (qr code) to generate otp from
+function zimg() {
+  zbarimg -q --raw $1 | pass otp insert
+}
 
 # $1 markdown file
 function mkpdf() {
@@ -89,33 +102,26 @@ function ignore() {
 # grep history easier
 # $1 search string
 function hgrep() {
-  query="$@"
+  query="$1"
   fc -l 1 | grep "${query}"
-}
-
-# modify task
-# $1 task id
-# $2 modification
-function mod() {
-  task $1 mod "$2"
 }
 
 function taskclear() {
    clear
-   `"${TASK_BASE}"`
+   eval "${TASK_BASE}"
 }
 
 # start a task
 # $1 task id
 function start() {
-  task $1 start
+  task "$1" start
   taskclear
 }
 
 # stop a task
 # $1 task id
 function stop() {
-  task $1 stop
+  task "$1" stop
   taskclear
 }
 
@@ -129,42 +135,20 @@ function add() {
 # complete a task
 # $1 task id
 function complete() {
-  task $1 done
+  task "$1" "done"
   taskclear
 }
 
 # complete a task
 # $1 task id
 function del() {
-  task $1 del
+  task "$1" del
   taskclear
 }
 
 # annotate a task
 # $1 task id
 function annotate() {
-  task $1 annotate "$2"
+  task "$1" annotate "$2"
   taskclear
 }
-
-# move a task to maybesomeday
-# $1 task to move
-function maybesomeday() {
-  task $1 mod project:maybesomeday
-  taskclear
-}
-
-# move a task to maybesomeday
-# $1 task to move
-function waitingfor() {
-  task $1 mod project:waitingfor
-  taskclear
-}
-
-# switch task context
-# $1 context to move to
-function context() {
-  task @ $1
-  taskclear
-}
-
