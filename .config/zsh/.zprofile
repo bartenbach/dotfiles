@@ -1,6 +1,7 @@
 export PAGER=less
 export EDITOR=nvim
 export VISUAL=nvim
+export ELEVATOR=sudo
 
 # web
 export BROWSER=qutebrowser

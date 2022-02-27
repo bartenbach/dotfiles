@@ -1,0 +1,33 @@
+#!/bin/bash
+
+function shart() {
+  # unclutter must be killed or the mouse will be invisible rendering it
+  # impossible to select a regional screenshot
+  pkill unclutter
+
+  if [[ $1 == "--clipboard" ]]; then
+    screenshot_to_clipboard
+  else
+    screenshot_to_file
+  fi
+
+  # start unclutter again
+  unclutter --timeout 2 --start-hidden &
+}
+
+function screenshot_to_clipboard() {
+  scrot -s -l width=2,color=magenta -f - | xclip -selection clipboard -t image/png -i
+}
+
+function screenshot_to_file() {
+  FILENAME=$(rofi -dmenu -p "Optional filename (date used if empty)")
+
+  # if no filename specified, just use the current date and time
+  if [[ -z $FILENAME ]]; then
+    FILENAME=$(date +%F-%H-%M-%S)
+  fi
+
+  scrot -s -l width=2,color=magenta -f "$HOME/img/screenshots/${FILENAME}.png"
+}
+
+shart "$@"

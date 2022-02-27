@@ -3,6 +3,7 @@
 TASK_BASE='task'
 
 alias bit='bitcoin-cli getbalance'
+alias bci='bitcoin-cli'
 alias dmesg='dmesg --color=always'
 alias dot="cd ~/code/dotfiles"
 alias emerge="ewrapper"
@@ -11,9 +12,10 @@ alias grep='grep --color=auto'
 alias history='history 1' # just show me all of it
 alias imgur=imgurbash2
 alias journal='/usr/bin/sudo journalctl -xb --no-hostname -e'
+alias lci='litecoin-cli -rpcwallet=litecoin'
 alias less='less -r' # enable color
 alias linux='cd /usr/src/linux'
-alias loadwallet='bitcoin-cli loadwallet bitcoin'
+alias lit='litecoin-cli -rpcwallet=litecoin getbalance'
 alias ls='ls --color=always -p --human-readable --group-directories-first'
 alias minicom='sudo minicom -c on'
 alias mutt='neomutt'
@@ -24,12 +26,15 @@ alias zcam="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
 alias pm='pulsemixer'
 alias projects='task projects'
 alias repoman='repoman -j12 -v --ask'
+alias sds='systemctl status'
 alias tmux='tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf'
 alias tree='tree -C'
 alias t='clear;${TASK_BASE}'
-alias tl='task list'
-alias ta='task active'
+alias tl='tmux list-sessions'
+alias tls='tmux list-sessions'
+alias ta='tmux attach-session -t'
 alias tt='clear && task list limit:10'
+alias tn='tmux new-session -s'
 alias tw='taskwarrior-tui'
 alias updot='git commit -m update && git push && git push gh'
 alias vifm='vifm .' # start vifm in cwd
@@ -78,9 +83,63 @@ for key value in "${(kv)KEYMAP[@]}"; do
   alias "${key}=${value}"
 done
 
+# $1 - start and follow service log of this service
+function sdf() {
+  sudo systemctl start "$1"
+  sudo journalctl -fu "$1"
+}
+
 # $1 - the file you want to edit but don't know where in $PATH it is
 function vimwhich() {
-  vim $(which "$1")
+  if [[ -z $1 ]]; then
+    echo "usage: vimwhich [[ -s | --sudo ]] file"
+    echo "  open file in vim using which"
+  elif [[ "$1" == "-s" ]] || [[ "$1" == "--sudo" ]]; then
+    if [[ -n "$2" ]]; then
+      sudo vim $(which "$2")
+    else
+      echo "usage: vimwhich [[ -s | --sudo ]] file"
+    fi
+  else
+    vim $(which "$1")
+  fi
+}
+
+# $1 - the wallet you wish to load
+function loadwallet() {
+  if [[ -n $1 ]]; then
+    currency=$1
+    eval "${currency}-cli" loadwallet "${currency}"
+  else
+    echo "Please specify cryptocurrency name"
+  fi
+}
+
+# $1 - the balance you wish to inquire about
+function bal() {
+  if [[ -n $1 ]]; then
+    currency=$1
+    eval "${currency}-cli" getbalance
+  else
+    echo "Please specify cryptocurrency name"
+  fi
+}
+
+# $1 - the address you want
+function getaddress() {
+  if [[ -n $1 ]]; then
+    currency=$1
+    eval "${currency}-cli" getaddressesbylabel '""'
+  else
+    echo "Please specify cryptocurrency name"
+  fi
+}
+
+# rename a tmux session
+# $1 - old session name
+# $2 - new session name
+function tmv() {
+  tmux rename-session -t "$1" "$2"
 }
 
 # $1 - the img (qr code) to generate otp from

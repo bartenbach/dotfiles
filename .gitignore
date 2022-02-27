@@ -71,3 +71,7 @@
 .config/transmission
 .local/bin/bitbal
 .config/gtk-3.0
+.config/bottom
+.config/gitui
+.config/sonos-controller-unofficial
+.config/configstore

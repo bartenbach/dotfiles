@@ -1,3 +1,8 @@
 #!/bin/bash
 
-pdfgrep -in "$@" *.pdf
+if [[ -z "$1" ]]; then
+  echo "Please supply search terms"
+  exit 1
+fi
+
+pdfgrep -in "$@" ./*.pdf

@@ -43,8 +43,8 @@ xBrowser = "qutebrowser"
 xLaunch = "rofi -show run"
 xSsh = "rofi -show ssh"
 xRecompile = "xmonad --recompile && xmonad --restart"
-xClipboardScreenshot = "scrot -s -l width=2,color=magenta -f - | xclip -selection clipboard -t image/png -i"
-xPersistentScreenshot = "namedshot"
+xClipboardScreenshot = "shart --clipboard"
+xPersistentScreenshot = "shart"
 xPasswordSelect = "passmenu"
 
 ----------------------
@@ -139,7 +139,6 @@ isClass x  = className        =? x
 xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "qutebrowser"     --> doShiftAndGo "4:web"
                      , isClass "zoom"            --> doShift "6:ext"
-                     , isClass "zoom"            --> doFloat
                      , isClass "quteSelect"      --> doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9)
                      , isProp role fileDialog    --> doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9)
                      , isClass "Xmessage"        --> doFullFloat
@@ -175,7 +174,7 @@ myConfig = def { modMask            = modm
                , terminal           = xTerm
                , focusFollowsMouse  = False
                , clickJustFocuses   = True
-               , borderWidth        = 5
+               , borderWidth        = 8
                , normalBorderColor  = black
                , focusedBorderColor = magenta
                , workspaces         = xWorkspaces

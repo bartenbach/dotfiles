@@ -1,7 +1,0 @@
-#!/bin/bash
-
-FILENAME=$(rofi -dmenu -p "Optional filename (date used if empty)")
-
-if [[ -n $FILENAME ]]; then
-  scrot -s -l width=2,color=magenta -f "$HOME/img/screenshots/${FILENAME}-$(date +%F-%H-%M-%S).png"
-fi

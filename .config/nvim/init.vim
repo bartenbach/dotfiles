@@ -39,6 +39,7 @@ call plug#begin()
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug 'NLKNguyen/papercolor-theme'
   Plug 'junegunn/goyo.vim'
   Plug 'ron-rs/ron.vim'
@@ -166,12 +167,14 @@ autocmd BufWritePost,FileWritePost .Xdefaults !xrdb ~/.Xdefaults
 autocmd BufWritePost,FileWritePost *.mod !cafeobj -batch %
 
 " :commands
-command W :execute ':silent w !doas tee % > /dev/null' | :edit!
+command SAVE :execute ':silent w !sudo tee % > /dev/null' | :edit!
 command -nargs=0 HELP h | only # boomer friendly help
 command -nargs=1 -complete=help H h <args> | only
 
 " colorscheme
+let g:tokyonight_style = "night"
 set bg=dark
 set termguicolors
 "colorscheme iceberg
+colorscheme tokyonight
 hi Normal guibg=NONE ctermbg=NONE
