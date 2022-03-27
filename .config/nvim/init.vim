@@ -33,6 +33,7 @@ let mapleader = ";"
 call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'cespare/vim-toml', { 'branch': 'main' }
+  Plug 'dense-analysis/ale'
   Plug 'itspriddle/vim-shellcheck'
   Plug 'cocopon/iceberg.vim'
   Plug 'autozimu/LanguageClient-neovim', {
@@ -44,7 +45,6 @@ call plug#begin()
   Plug 'junegunn/goyo.vim'
   Plug 'ron-rs/ron.vim'
   Plug 'rust-lang/rust.vim'
-  Plug 'scrooloose/syntastic'
   Plug 'vim-airline/vim-airline'
   Plug 'vimwiki/vimwiki'
   Plug 'wakatime/vim-wakatime'
@@ -120,6 +120,8 @@ nnoremap <leader>h     :nohls<CR>
 nnoremap <leader>H     :VimwikiIndex<CR> " think 'home'
 nnoremap <leader>l     :execute ':!pdflatex % > /dev/null'<CR>
 nnoremap <leader>w     :call TrimWhiteSpace()<CR>
+nnoremap <C-J>         :tabprevious<CR>
+nnoremap <C-K>         :tabnext<CR>
 nnoremap <leader><tab> <C-w>w
 
 " airline

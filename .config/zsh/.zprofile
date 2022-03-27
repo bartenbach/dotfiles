@@ -32,3 +32,8 @@ export XDG_STATE_HOME=~/.local/state
 export PATH=${PATH}:~/.cargo/bin
 export RUST_BACKTRACE=1
 
+# pumpkin's pool public key
+export PPI=4cheZ7QmWigAXpbZog7SMeXBXLHgKG2U8aGGJ8ba772y
+export PPV=DsiG71AvUHUEo9rMMHqM9NAWQ6ptguRAHyot6wGzLJjx
+
+export PATH="/home/blake/.local/share/solana/install/active_release/bin:$PATH"

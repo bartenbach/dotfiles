@@ -145,4 +145,4 @@ export PATH=${PATH}:/usr/local/bin
 
 eval $(thefuck --alias) # please help my git typos
 neofetch --ascii_distro $(randlogo.sh) --logo
-fortune | lolcat
+fortune | buttbutt -i 27 | lolcat

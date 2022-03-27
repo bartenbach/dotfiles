@@ -75,3 +75,6 @@
 .config/gitui
 .config/sonos-controller-unofficial
 .config/configstore
+.config/autostart
+.config/keybase
+.config/solana

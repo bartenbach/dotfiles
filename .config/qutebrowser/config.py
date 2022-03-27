@@ -3,13 +3,13 @@
 # you prefer, you can also configure qutebrowser using the
 # :set/:bind/:config-* commands without having to write a config.py
 # file.
-config.load_autoconfig(False)
+config.load_autoconfig(True)
 
 #-------------------------
 # general configuration
 #-------------------------
 c.qt.highdpi = True
-c.zoom.default = '90%'
+c.zoom.default = '150%'
 
 c.url.default_page = "https://google.com"
 c.url.searchengines = {

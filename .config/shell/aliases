@@ -7,8 +7,10 @@ alias bci='bitcoin-cli'
 alias dmesg='dmesg --color=always'
 alias dot="cd ~/code/dotfiles"
 alias emerge="ewrapper"
+alias epoch="solana epoch-info"
 alias feh="feh --conversion-timeout 10 -Gd --draw-tinted --edit -."
 alias grep='grep --color=auto'
+alias gw='fortune | buttbutt -i 27 | lolcat' # RIP terry davis
 alias history='history 1' # just show me all of it
 alias imgur=imgurbash2
 alias journal='/usr/bin/sudo journalctl -xb --no-hostname -e'
@@ -16,12 +18,15 @@ alias lci='litecoin-cli -rpcwallet=litecoin'
 alias less='less -r' # enable color
 alias linux='cd /usr/src/linux'
 alias lit='litecoin-cli -rpcwallet=litecoin getbalance'
+alias lock='xscreensaver-command -lock'
 alias ls='ls --color=always -p --human-readable --group-directories-first'
 alias minicom='sudo minicom -c on'
 alias mutt='neomutt'
 alias mv='mv -i'
-alias nudworld="ewrapper -NuD @world"
+alias nudworld="ewrapper -NuD @world && emerge -c"
+alias nw="ewrapper -NuD @world && emerge -c"
 alias octal='stat -c "%a"'
+alias stake='solana stake-account ~/doc/solana/stake-account.json --with-rewards'
 alias zcam="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
 alias pm='pulsemixer'
 alias projects='task projects'

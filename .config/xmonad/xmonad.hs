@@ -54,7 +54,7 @@ modm      = mod4Mask
 xShiftMod = modm .|. shiftMask
 xKillMask = modm .|. controlMask
 
-xWorkspaces = ["1:irc","2:org","3:src","4:web","5:doc","6:ext"]
+xWorkspaces = ["1:irc","2:org","3:src","4:web","5:doc","6:dsc","7:ext"]
 xWorkspaceKeys = [((m .|. modm, k), windows $ f i)
                      | (i, k) <- zip (xWorkspaces) [xK_1 .. xK_9]
                      , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
@@ -138,7 +138,7 @@ isClass x  = className        =? x
 
 xManage = composeAll [ isClass "Gimp"            --> doFloat
                      , isClass "qutebrowser"     --> doShiftAndGo "4:web"
-                     , isClass "zoom"            --> doShift "6:ext"
+                     , isClass "zoom"            --> doShift "7:ext"
                      , isClass "quteSelect"      --> doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9)
                      , isProp role fileDialog    --> doRectFloat (W.RationalRect 0.05 0.05 0.9 0.9)
                      , isClass "Xmessage"        --> doFullFloat

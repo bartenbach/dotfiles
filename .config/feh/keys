@@ -1,8 +1,6 @@
-zoom_out minus
-zoom_in plus
-scroll_right l
-scroll_left h
+zoom_out j
+zoom_in k
 delete D
 
-next_img k
-prev_img j
+next_img l
+prev_img h
