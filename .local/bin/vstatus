@@ -1,0 +1,28 @@
+#!/bin/bash
+
+API_ENDPOINT=http://api.mainnet-beta.solana.com
+TEST_API_ENDPOINT=http://api.testnet.solana.com
+CONTENT_TYPE="Content-Type: application/json"
+PUBLIC_KEY=\"4cheZ7QmWigAXpbZog7SMeXBXLHgKG2U8aGGJ8ba772y\"
+JSON_RPC='"jsonrpc":"2.0","id":1'
+
+curl --no-progress-meter -X POST -H "${CONTENT_TYPE}" \
+     -d "{${JSON_RPC}, \"method\":\"getClusterNodes\"}" ${API_ENDPOINT} \
+     | jq -r ".result[] | select(.pubkey==${PUBLIC_KEY})"
+
+curl --no-progress-meter -X POST -H "${CONTENT_TYPE}" \
+     -d '{"jsonrpc":"2.0","id":1, "method":"getVoteAccounts"}' ${API_ENDPOINT} \
+     | jq -r ".result.current[] | select(.nodePubkey==${PUBLIC_KEY})"
+
+if solana leader-schedule | grep -q ${PUBLIC_KEY}; then
+  echo "Validator is on the leader schedule"
+else
+  echo "Validator not found on the leader schedule"
+fi
+
+curl --no-progress-meter -X POST -H "${CONTENT_TYPE}" \
+  -d '{"jsonrpc":"2.0","id":1, "method":"getEpochInfo"}' ${API_ENDPOINT}
+
+curl --no-progress-meter -X POST -H "${CONTENT_TYPE}" \
+  -d '{"jsonrpc":"2.0", "id":1, "method":"getMinimumBalanceForRentExemption", "params":[50]}' \
+  ${TEST_API_ENDPOINT}
