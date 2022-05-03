@@ -1,0 +1,7 @@
+#!/bin/bash
+
+function stakeview_rank() {
+  echo "$(curl -s https://stakeview.app/apy/$(solana epoch).json | jq '[ .validators[] | .id == env.PPI ] | index(true)') + 1" | bc
+}
+
+stakeview_rank

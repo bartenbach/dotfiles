@@ -9,7 +9,7 @@ config.load_autoconfig(True)
 # general configuration
 #-------------------------
 c.qt.highdpi = True
-c.zoom.default = '150%'
+c.zoom.default = '200%'
 
 c.url.default_page = "https://google.com"
 c.url.searchengines = {

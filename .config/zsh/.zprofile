@@ -32,8 +32,11 @@ export XDG_STATE_HOME=~/.local/state
 export PATH=${PATH}:~/.cargo/bin
 export RUST_BACKTRACE=1
 
-# pumpkin's pool public key
-export PPI=4cheZ7QmWigAXpbZog7SMeXBXLHgKG2U8aGGJ8ba772y
+# solana
+export SOLANA_METRICS_CONFIG="host=https://metrics.solana.com:8086,db=mainnet-beta,u=mainnet-beta_write,p=password"
+export PPIO=4cheZ7QmWigAXpbZog7SMeXBXLHgKG2U8aGGJ8ba772y
+export PPI=PUmpKiNnSVAZ3w4KaFX6jKSjXUNHFShGkXbERo54xjb
 export PPV=DsiG71AvUHUEo9rMMHqM9NAWQ6ptguRAHyot6wGzLJjx
-
+export SSI=Ninja1spj6n9t5hVYgF3PdnYz2PLnkt7rvaw3firmjs
+export SOL=◎
 export PATH="/home/blake/.local/share/solana/install/active_release/bin:$PATH"

@@ -44,6 +44,6 @@ unbind-key J
 unbind-key K
 bind-key j down
 bind-key k up
-bind-key ENTER open
-bind-key BACKSPACE quit
+bind-key l open
+bind-key h quit
 bind-key m bookmark # like mark

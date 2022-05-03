@@ -26,7 +26,7 @@ alias mv='mv -i'
 alias nudworld="ewrapper -NuD @world && emerge -c"
 alias nw="ewrapper -NuD @world && emerge -c"
 alias octal='stat -c "%a"'
-alias stake='solana stake-account ~/doc/solana/stake-account.json --with-rewards'
+alias mystake='solana stake-account ~/doc/solana/stake-account.json --with-rewards'
 alias zcam="zbarcam -q --raw --oneshot /dev/video4 | pass otp insert"
 alias pm='pulsemixer'
 alias projects='task projects'
@@ -41,6 +41,7 @@ alias ta='tmux attach-session -t'
 alias tt='clear && task list limit:10'
 alias tn='tmux new-session -s'
 alias tw='taskwarrior-tui'
+alias tower="solana-watchtower --validator-identity ${PPI}"
 alias updot='git commit -m update && git push && git push gh'
 alias vifm='vifm .' # start vifm in cwd
 alias vim='nvim'
@@ -92,6 +93,72 @@ done
 function sdf() {
   sudo systemctl start "$1"
   sudo journalctl -fu "$1"
+}
+
+function report() {
+  clear
+  echo -e "\e[0;92m==================================================================="
+  echo -e "===                    \e[0;94mValidator Report\e[0;92m                         ==="
+  echo -e "===================================================================\e[0m"
+  pp
+  echo ""
+  echo -e "\e[0;92m===> \e[0;94mLeader\e[0m"
+  echo "  --> Leader slots: $(leader | ((wc -l - 1)))"
+  echo ""
+  echo -e "\e[0;92m===> \e[0;94mStake\e[0m"
+  stake
+  echo ""
+  echo -e "\e[0;92m===> \e[0;94mEpoch\e[0m"
+  epoch | grep "Epoch"
+  echo ""
+  echo -e "\e[0;92m===> \e[0;94mBalance\e[0m"
+  fundvalidator
+  echo ""
+  echo -e "\e[0;92m===> \e[0;94mStakeView Rank\e[0m"
+  stakeview_rank
+  echo ""
+  echo -e "\e[0;92m===> \e[0;94mStakeWiz Rank\e[0m"
+  stakewiz_rank
+}
+
+function rank() {
+  stakeview_rank
+  stakewiz_rank
+}
+
+function stakewiz_rank() {
+  echo -n "Stakewiz rank: "
+  curl -s https://api.stakewiz.com/validator/DsiG71AvUHUEo9rMMHqM9NAWQ6ptguRAHyot6wGzLJjx | jq '.rank'
+}
+
+function stakeview_rank() {
+  echo -n "Stakeview rank: "
+  echo "$(curl -s https://stakeview.app/apy/$(solana epoch).json | jq '[ .validators[] | .id == env.PPI ] | index(true)') + 1" | bc
+}
+
+function stake() {
+  echo "\e[0;92m  ->\e[0;94mActivating\e[0m"
+  if ! solana stakes $PPV | grep -i "Activating"; then
+    echo "None"
+  fi
+  echo "\e[0;92m  ->\e[0;94mDeactivating\e[0m"
+  if ! solana stakes $PPV | grep -C1 "deactivates"; then
+    echo "None"
+  fi
+}
+
+function pp() {
+  solana validators -n 2>/dev/null | grep Identity -m1
+  solana validators -n -r --sort credits | grep $PPI
+}
+
+function credits() {
+  solana validators -n -r --sort credits | less
+}
+
+function leader(){
+  echo "Current slot: $(solana slot)"
+  solana leader-schedule | grep $PPI
 }
 
 # $1 - the file you want to edit but don't know where in $PATH it is

@@ -9,7 +9,7 @@ Config {
    , borderColor =  "#646464"
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork%}<fc=#FF00FF> %context% </fc> %XMonadLog% <fc=#66ff00> %task% </fc>{%kbd% | %KOMA% | %date% "
+   , template = "%battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% | StakeView Rank: %sv% }<fc=#FF00FF> %context% </fc> %XMonadLog% <fc=#66ff00> %task% </fc>{%KOMA% | %date% "
    , lowerOnStart =     True    -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      False -- show on all desktops
@@ -74,7 +74,7 @@ Config {
                   "-l", "#FF00FF", "-n", "#FF00FF", "-h", "#ff05ff"] 50
        , Run Com "taskmobar" [ "--active" ] "task" 30
        , Run Com "taskmobar" [ "--context" ] "context" 30
+       , Run Com "svrank" [ ] "sv" 120
        , Run XMonadLog
-       , Run Kbd [("us", "US")]
    ]
 }

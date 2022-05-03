@@ -78,3 +78,10 @@
 .config/autostart
 .config/keybase
 .config/solana
+.config/libreoffice
+.local/bin/__pycache__
+.local/bin/futurize
+.local/bin/pasteurize
+.local/bin/backup-pfsense
+.local/bin/mibcopy.py
+.local/bin/mibdump.py
